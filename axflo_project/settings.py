@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*)tsnxbh0wxc-v3vhd@u7k0si-7@0&psa-xd!zzn3_u7e)n$b8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://axflo-django.onrender.com/']
+ALLOWED_HOSTS = ['axflo-django.onrender.com/']
 
 
 # Application definition
