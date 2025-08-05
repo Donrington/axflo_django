@@ -1,0 +1,293 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Contact Management - Axflo{% endblock %}
+
+{% block content %}
+<!-- Messages -->
+{% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+    <style>
+        :root {
+            --primary-gold: #d6a019;
+            --primary-gold-light: #ffcc00;
+            --bg-dark: #0a0a0a;
+            --bg-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass-hover: rgba(255, 255, 255, 0.12);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --text-tertiary: rgba(255, 255, 255, 0.65);
+            --text-dark: #000000;
+            --border-glass: rgba(255, 255, 255, 0.15);
+            --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.3);
+            --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+            --blur-amount: 20px;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --background: rgb(214, 160, 25);
+            --hover-color: #ffcc00;
+            --accent-glow: rgba(214, 160, 25, 0.3);
+            --glass-border: rgba(214, 160, 25, 0.2);
+            --card-bg: rgba(20, 20, 20, 0.6);
+            --card-border: rgba(214, 160, 25, 0.15);
+            --gradient-overlay: linear-gradient(135deg, rgba(214, 160, 25, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1a1a1a 100%);
+            min-height: 100vh;
+            font-family: 'Epilogue', sans-serif;
+        }
+
+
+
+        .users-container {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            margin-bottom: 2rem;
+        }
+
+        .page-header h2 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .users-table-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .users-table-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-overlay);
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+            z-index: 1;
+        }
+
+        .users-table thead {
+            background: rgba(214, 160, 25, 0.15);
+        }
+
+        .users-table thead th {
+            padding: 1rem;
+            text-align: left;
+            color: var(--primary-gold);
+            font-weight: 600;
+            border-bottom: 1px solid var(--card-border);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .users-table tbody tr {
+            border-bottom: 1px solid rgba(214, 160, 25, 0.08);
+            transition: var(--transition-smooth);
+        }
+
+        .users-table tbody tr:hover {
+            background: rgba(214, 160, 25, 0.08);
+        }
+
+        .users-table tbody td {
+            padding: 1rem;
+            color: var(--text-primary);
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-right: 1rem;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-details .username {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .user-details .email {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-superuser {
+            background: rgba(214, 160, 25, 0.25);
+            color: var(--primary-gold);
+            border: 1px solid rgba(214, 160, 25, 0.3);
+        }
+
+        .status-staff {
+            background: rgba(40, 167, 69, 0.25);
+            color: #28a745;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+        }
+
+        .status-user {
+            background: rgba(108, 117, 125, 0.25);
+            color: #adb5bd;
+            border: 1px solid rgba(108, 117, 125, 0.3);
+        }
+
+        .no-users {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .no-users h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .users-table-container {
+                overflow-x: auto;
+            }
+            
+            .users-table {
+                min-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="users-container">
+        <div class="page-header">
+            <h2>User Management</h2>
+            <p>View and manage all registered users</p>
+        </div>
+
+        <div class="users-table-container">
+            {% if users %}
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Status</th>
+                            <th>Last Login</th>
+                            <th>Date Joined</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>
+                                <div class="user-info">
+                                    <div class="user-avatar">
+                                        {{ user.first_name|first|default:user.username|first|upper }}
+                                    </div>
+                                    <div class="user-details">
+                                        <div class="username">
+                                            {% if user.first_name or user.last_name %}
+                                                {{ user.first_name }} {{ user.last_name }}
+                                            {% else %}
+                                                {{ user.username }}
+                                            {% endif %}
+                                        </div>
+                                        <div class="email">{{ user.email|default:"No email provided" }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                {% if user.is_superuser %}
+                                    <span class="status-badge status-superuser">Super Admin</span>
+                                {% elif user.is_staff %}
+                                    <span class="status-badge status-staff">Staff</span>
+                                {% else %}
+                                    <span class="status-badge status-user">User</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if user.last_login %}
+                                    {{ user.last_login|date:"M d, Y H:i" }}
+                                {% else %}
+                                    <span style="color: var(--text-light-secondary);">Never</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ user.date_joined|date:"M d, Y" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="no-users">
+                    <h3>No Users Found</h3>
+                    <p>There are currently no registered users in the system.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        // Add any additional JavaScript here if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Example: Toggle user status badge on click
+            const badges = document.querySelectorAll('.status-badge');
+            badges.forEach(badge => {
+                badge.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+{% endblock %}

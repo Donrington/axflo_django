@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}Axflo Oil & Gas - Delivering cutting-edge energy solutions through innovation, sustainability, and excellence. Join us in powering a sustainable future.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}Axflo Oil and Gas, Energy Solutions, Sustainability, Renewable Energy, CCUS, Waste Management, Oil and Gas Nigeria, Energy Innovation{% endblock %}">
+    <meta name="author" content="Axflo Oil & Gas Nigeria Limited">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}Axflo Oil & Gas - Innovating Energy Solutions{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Explore Axflo's commitment to sustainability and innovation in the oil and gas sector. Empowering industries with advanced technologies.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}https://www.axfloo.com/assets/axfloo-og-image.jpg{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}https://www.axfloo.com{% endblock %}">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}Axflo Oil & Gas - Innovating Energy Solutions{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Discover cutting-edge energy solutions and sustainability initiatives from Axflo Oil & Gas Nigeria Limited.{% endblock %}">
+    <meta name="twitter:image" content="{% block twitter_image %}https://www.axfloo.com/axflo.png{% endblock %}">
+    <meta name="twitter:site" content="@axflo">
+    
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="YOUR_GOOGLE_SITE_VERIFICATION_CODE">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}https://www.axfloo.com{% endblock %}">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" href="{% static 'axflo_app/logo/AOGLogoWhite.png' %}" type="image/png">
+    <link rel="apple-touch-icon" href="{% static 'axflo_app/logo/AOGLogoWhite.png' %}">
+    
+    <title>{% block title %}Axflo Oil & Gas Nig Ltd - Innovating Energy Solutions{% endblock %}</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Epilogue:ital,wght@0,100..900;1,100&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Rosario:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="{% static 'axflo_app/css/base.css' %}">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Axflo Oil & Gas Nigeria Limited",
+        "url": "https://www.axfloo.com",
+        "logo": "https://www.axfloo.com/axflo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+234 (0) 803 471 6831",
+            "email": "info@axfloo.com",
+            "contactType": "Customer Service"
+        },
+        "sameAs": [
+            "https://www.facebook.com/axflo",
+            "https://twitter.com/axflo",
+            "https://www.linkedin.com/company/axflo"
+        ]
+    }
+    </script>
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% block content %}{% endblock %}
+    
+    <!-- External JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

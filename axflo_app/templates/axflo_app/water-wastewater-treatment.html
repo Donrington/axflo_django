@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Water-Wastewater-Treatment - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/water-wastewater-treatment.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Water Treatment Hero Section -->
+    <section class="water-hero">
+        <div class="water-backdrop"></div>
+        
+        <div class="water-flow">
+            <div class="flow-stream"></div>
+            <div class="flow-stream"></div>
+            <div class="flow-stream"></div>
+            <div class="flow-stream"></div>
+            <div class="flow-stream"></div>
+        </div>
+        
+        <div class="treatment-nodes">
+            <div class="treatment-node node-1">
+                <i class="fas fa-filter"></i>
+                <div class="treatment-indicator"></div>
+            </div>
+            <div class="treatment-node node-2">
+                <i class="fas fa-recycle"></i>
+                <div class="treatment-indicator"></div>
+            </div>
+            <div class="treatment-node node-3">
+                <i class="fas fa-tint"></i>
+                <div class="treatment-indicator"></div>
+            </div>
+            <div class="treatment-node node-4">
+                <i class="fas fa-leaf"></i>
+                <div class="treatment-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="water-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="treatment-badge">
+                <div class="treatment-icon"></div>
+                Environmental Water Solutions Since 2009
+            </div>
+            
+            <h1 class="water-title">Water & Wastewater Treatment</h1>
+            
+            <p class="water-subtitle">
+                Advanced environmental water treatment solutions for Nigeria's oil and gas operations, 
+                ensuring compliance with environmental standards while protecting water resources and 
+                supporting sustainable operations through innovative treatment technologies.
+            </p>
+            
+            <a href="#water-overview" class="water-cta">
+                Explore Our Solutions
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Water Treatment Overview -->
+    <section id="water-overview" class="water-overview">
+        <div class="water-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Environmental Water Treatment Excellence</h2>
+                    <p>
+                        Axflo's Water & Wastewater Treatment services provide comprehensive environmental 
+                        solutions for oil and gas operations across Nigeria. Our advanced treatment 
+                        technologies ensure compliance with environmental regulations while protecting 
+                        water resources and supporting sustainable operational practices.
+                    </p>
+                    <p>
+                        From produced water management to industrial wastewater treatment, we deliver 
+                        reliable, efficient solutions that minimize environmental impact while meeting 
+                        stringent discharge standards and supporting our clients' commitment to 
+                        environmental stewardship and regulatory compliance.
+                    </p>
+                    
+                    <div class="water-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-number">Advanced</span>
+                            <span class="metric-title">Treatment Technology</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-title">Compliance Rate</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-number">Environmental</span>
+                            <span class="metric-title">Protection Focus</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="water-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                                  <img src=" {% static 'axflo_app/images/watertreatment2.avif' %}" alt="Reverse Osmosis water treatment" loading="lazy">
+                  
+                        <p>Water Treatment Solutions</p>
+                        <small>Environmental compliance & protection</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Water Treatment Services -->
+    <section class="water-services">
+        <div class="water-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Water Treatment Solutions</h2>
+                <p>
+                    Comprehensive water and wastewater treatment services supporting environmental 
+                    protection and regulatory compliance for Nigeria's oil and gas sector.
+                </p>
+            </div>
+            
+            <div class="water-services-grid">
+                <!-- Industrial Water Treatment -->
+                <div class="water-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3>Industrial Water Treatment</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced treatment solutions for industrial water used in oil and gas operations, 
+                        ensuring water quality meets operational requirements while protecting equipment 
+                        and supporting environmental compliance through effective treatment processes.
+                    </p>
+                    <ul class="service-features">
+                        <li>Pre-treatment & Filtration Systems</li>
+                        <li>Chemical Treatment Processes</li>
+                        <li>Water Quality Monitoring</li>
+                        <li>Scale & Corrosion Prevention</li>
+                        <li>Equipment Protection Solutions</li>
+                        <li>Process Water Optimization</li>
+                        <li>Regulatory Compliance Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Produced Water Management -->
+                <div class="water-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-oil-well"></i>
+                        </div>
+                        <h3>Produced Water Management</h3>
+                    </div>
+                    <p class="service-description">
+                        Specialized treatment and management of produced water from oil and gas operations, 
+                        including oil-water separation, contaminant removal, and safe disposal or reuse 
+                        options ensuring environmental protection and regulatory compliance.
+                    </p>
+                    <ul class="service-features">
+                        <li>Oil-Water Separation Systems</li>
+                        <li>Contaminant Removal Processes</li>
+                        <li>Water Recycling & Reuse</li>
+                        <li>Disposal Management</li>
+                        <li>Environmental Impact Minimization</li>
+                        <li>Regulatory Compliance</li>
+                        <li>Treatment Optimization</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Zero Liquid Discharge -->
+                <div class="water-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>Zero Liquid Discharge</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced zero liquid discharge systems that eliminate wastewater discharge 
+                        through comprehensive treatment and recovery processes, maximizing water reuse 
+                        while minimizing environmental impact and supporting sustainable operations.
+                    </p>
+                    <ul class="service-features">
+                        <li>Complete Water Recovery Systems</li>
+                        <li>Advanced Membrane Technologies</li>
+                        <li>Evaporation & Crystallization</li>
+                        <li>Solid Waste Minimization</li>
+                        <li>Energy Efficient Design</li>
+                        <li>Environmental Impact Elimination</li>
+                        <li>Sustainability Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Wastewater Treatment -->
+                <div class="water-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3>Wastewater Treatment</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive wastewater treatment solutions for various industrial waste streams, 
+                        ensuring safe discharge or reuse while meeting environmental standards and 
+                        supporting sustainable water management practices.
+                    </p>
+                    <ul class="service-features">
+                        <li>Primary & Secondary Treatment</li>
+                        <li>Advanced Biological Processes</li>
+                        <li>Chemical Treatment Systems</li>
+                        <li>Sludge Management</li>
+                        <li>Effluent Quality Assurance</li>
+                        <li>Environmental Monitoring</li>
+                        <li>Discharge Compliance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Process -->
+    <section class="treatment-process">
+        <div class="water-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Water Treatment Process</h2>
+                <p>
+                    Systematic approach to water treatment ensuring optimal results through 
+                    proven technologies and environmental best practices.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Assessment & Analysis</h3>
+                    <p>Comprehensive water quality assessment, contaminant analysis, and treatment requirement evaluation for optimal system design.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>System Design</h3>
+                    <p>Custom treatment system design based on water characteristics, discharge requirements, and environmental compliance standards.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Treatment Implementation</h3>
+                    <p>Professional installation and commissioning of treatment systems with performance verification and optimization.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Monitoring & Maintenance</h3>
+                    <p>Continuous monitoring, performance optimization, and preventive maintenance ensuring sustained treatment efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatment Applications -->
+    <section class="treatment-applications">
+        <div class="water-container">
+            <div class="applications-header" data-aos="fade-up">
+                <h2>Treatment Applications</h2>
+                <p>
+                    Specialized water treatment solutions for various applications across 
+                    Nigeria's oil and gas operations supporting environmental protection.
+                </p>
+            </div>
+            
+            <div class="applications-grid">
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="application-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h4>Oil Field Operations</h4>
+                    <p>Water treatment solutions for drilling operations, enhanced oil recovery, and produced water management in oil field environments.</p>
+                </div>
+                
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="application-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4>Offshore Platforms</h4>
+                    <p>Compact treatment systems for offshore operations including ballast water treatment and produced water management.</p>
+                </div>
+                
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="application-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4>Refineries</h4>
+                    <p>Comprehensive wastewater treatment for refinery operations including process water treatment and effluent management.</p>
+                </div>
+                
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="application-icon">
+                        <i class="fas fa-gas-pump"></i>
+                    </div>
+                    <h4>Gas Processing</h4>
+                    <p>Water treatment solutions for gas processing facilities including condensate treatment and process water systems.</p>
+                </div>
+                
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="application-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4>Pipeline Operations</h4>
+                    <p>Water management for pipeline construction and operations including hydrostatic testing and maintenance activities.</p>
+                </div>
+                
+                <div class="application-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="application-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h4>Storage Facilities</h4>
+                    <p>Water treatment for tank farm operations including rainwater management and containment area drainage.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="water-cta-section">
+        <div class="water-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Optimize Your Water Management?</h2>
+                <p>
+                    Partner with Nigeria's trusted water treatment specialists for comprehensive 
+                    environmental solutions ensuring compliance and sustainability.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#solutions" class="cta-action cta-secondary">
+                        <i class="fas fa-file-download"></i>
+                        View Our Solutions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/water-wastewater-treatment.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

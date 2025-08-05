@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Marine-Support-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/marine-support-services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+  <!-- Marine Hero Section -->
+    <section class="marine-hero">
+        <div class="ocean-backdrop"></div>
+        
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+        <div class="marine-elements">
+            <div class="marine-vessel vessel-1">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div class="marine-vessel vessel-2">
+                <i class="fas fa-life-ring"></i>
+            </div>
+            <div class="marine-vessel vessel-3">
+                <i class="fas fa-water"></i>
+            </div>
+            <div class="marine-vessel vessel-4">
+                <i class="fas fa-anchor"></i>
+            </div>
+            <div class="marine-vessel vessel-5">
+                <i class="fas fa-compass"></i>
+            </div>
+            <div class="marine-vessel vessel-6">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+        </div>
+        
+        <div class="marine-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="marine-badge">
+                <div class="marine-indicator"></div>
+                Marine Environmental Protection Since 2009
+            </div>
+            
+            <h1 class="marine-title">Marine Support Services</h1>
+            
+            <p class="marine-subtitle">
+                Specialized marine support for oil spill response operations, environmental equipment logistics, 
+                and emergency response services with advanced maritime expertise and 24/7 availability 
+                for Nigeria's offshore and coastal environmental protection.
+            </p>
+            
+            <a href="#marine-services" class="marine-cta">
+                Explore Our Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Marine Services -->
+    <section id="marine-services" class="marine-services">
+        <div class="marine-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Marine Support Services</h2>
+                <p>
+                    Specialized marine support services ensuring rapid oil spill response deployment and 
+                    efficient environmental equipment logistics with comprehensive maritime safety solutions.
+                </p>
+            </div>
+            
+            <div class="marine-deck">
+                <!-- Marine Oil Spill Response -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="100">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h3>Marine Oil Spill Response Support</h3>
+                    </div>
+                    <p class="marine-description">
+                        Comprehensive marine support for oil spill response operations providing rapid deployment 
+                        of containment and recovery equipment, vessel coordination, and emergency response logistics 
+                        for offshore and nearshore oil spill incidents across Nigerian waters.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Rapid OSR Equipment Deployment</li>
+                        <li>Offshore Boom Installation Support</li>
+                        <li>Oil Recovery Operations Coordination</li>
+                        <li>Emergency Response Vessel Coordination</li>
+                        <li>Marine Incident Command Support</li>
+                        <li>Equipment Recovery & Logistics</li>
+                        <li>24/7 Emergency Response Activation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Marine Equipment Logistics -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="200">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3>Marine Equipment Transport & Logistics</h3>
+                    </div>
+                    <p class="marine-description">
+                        Specialized marine logistics for environmental and oil spill response equipment transport 
+                        including vessel charters, cargo handling, and offshore equipment positioning with 
+                        focus on environmental protection equipment and emergency response materials.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>OSR Equipment Transport to Offshore Sites</li>
+                        <li>Vessel Charter & Marine Logistics</li>
+                        <li>Offshore Cargo Handling & Positioning</li>
+                        <li>Environmental Equipment Deployment</li>
+                        <li>Marine Supply Chain Coordination</li>
+                        <li>Equipment Staging & Pre-positioning</li>
+                        <li>Emergency Supply Delivery</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Offshore Accommodation -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="300">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Offshore Accommodation Services</h3>
+                    </div>
+                    <p class="marine-description">
+                        Comprehensive offshore accommodation solutions providing safe, comfortable, and 
+                        well-equipped living facilities for oil spill response teams, environmental specialists, 
+                        and offshore operations personnel with full catering and support services.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Offshore Living Quarters Management</li>
+                        <li>Catering & Food Services</li>
+                        <li>Accommodation Facility Maintenance</li>
+                        <li>Personnel Safety & Welfare</li>
+                        <li>Recreation & Communication Facilities</li>
+                        <li>Medical & First Aid Support</li>
+                        <li>Environmental Compliance Management</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Marine Safety & Emergency Response -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="400">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Marine Safety & Emergency Coordination</h3>
+                    </div>
+                    <p class="marine-description">
+                        Advanced marine safety and emergency coordination services providing comprehensive 
+                        emergency preparedness, search and rescue support, medical evacuation, and crisis 
+                        management with rapid response capabilities for offshore environmental operations.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Marine Emergency Response Coordination</li>
+                        <li>Search & Rescue Support</li>
+                        <li>Medical Evacuation Services</li>
+                        <li>Marine Safety Protocol Implementation</li>
+                        <li>Emergency Communication Systems</li>
+                        <li>Incident Command Support</li>
+                        <li>Crisis Management & Coordination</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marine Equipment & Support -->
+    <section class="marine-fleet" style="padding: 8rem 0; background: var(--bg-light);">
+        <div class="marine-container">
+            <div class="fleet-header" style="text-align: center; margin-bottom: 5rem;" data-aos="fade-up">
+                <h2 style="font-family: 'Libre Baskerville', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; color: var(--text-primary); margin-bottom: 1.5rem;">Marine Support Equipment & Capabilities</h2>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.8;">
+                    Specialized marine equipment and support capabilities ensuring safe and efficient 
+                    offshore oil spill response operations with comprehensive maritime safety systems.
+                </p>
+            </div>
+            
+            <div class="fleet-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="fleet-card::before" style="content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary-gold) 0%, #40a4df 50%, var(--hover-color) 100%);"></div>
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Marine Transport Vessels</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Specialized vessels for transporting oil spill response equipment and personnel to offshore locations with advanced safety systems.</p>
+                </div>
+                
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Offshore Boom Deployment</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Marine support for offshore containment boom deployment and recovery operations with specialized handling equipment.</p>
+                </div>
+                
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Offshore Accommodation</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Comfortable and safe offshore accommodation facilities for response teams and environmental specialists during operations.</p>
+                </div>
+                
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Marine Communication Systems</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Advanced marine communication and coordination systems ensuring reliable connectivity during emergency response operations.</p>
+                </div>
+                
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Emergency Response Equipment</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Comprehensive marine emergency response equipment including life-saving appliances and emergency coordination systems.</p>
+                </div>
+                
+                <div class="fleet-card" style="background: white; border-radius: 20px; padding: 2.5rem; text-align: center; transition: var(--transition); position: relative; overflow: hidden; box-shadow: var(--shadow-primary);" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="fleet-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                        <i class="fas fa-anchor"></i>
+                    </div>
+                    <h4 style="font-size: 1.3rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">Marine Anchoring & Mooring</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">Specialized marine anchoring and mooring systems for offshore equipment deployment and vessel positioning during operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marine Operations Dashboard -->
+    <section class="marine-dashboard" style="padding: 8rem 0; background: var(--bg-dark); color: white;">
+        <div class="marine-container">
+            <div class="dashboard-header" style="text-align: center; margin-bottom: 5rem;" data-aos="fade-up">
+                <h2 style="font-family: 'Libre Baskerville', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); font-weight: 700; margin-bottom: 1.5rem;">Marine Operations Dashboard</h2>
+                <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto; line-height: 1.8;">Real-time monitoring and coordination systems providing comprehensive oversight of marine oil spill response operations and emergency management.</p>
+            </div>
+            
+            <div class="dashboard-controls" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 4rem; flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+                <button class="dashboard-button active" onclick="showDashboard('fleet')" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border: 1px solid var(--primary-gold); border-radius: 50px; color: white; cursor: pointer; transition: var(--transition); font-weight: 500; position: relative; overflow: hidden;">Response Operations</button>
+                <button class="dashboard-button" onclick="showDashboard('logistics')" style="padding: 1rem 2rem; background: transparent; border: 1px solid var(--border-glass); border-radius: 50px; color: white; cursor: pointer; transition: var(--transition); font-weight: 500; position: relative; overflow: hidden;">Equipment Logistics</button>
+                <button class="dashboard-button" onclick="showDashboard('emergency')" style="padding: 1rem 2rem; background: transparent; border: 1px solid var(--border-glass); border-radius: 50px; color: white; cursor: pointer; transition: var(--transition); font-weight: 500; position: relative; overflow: hidden;">Emergency Coordination</button>
+            </div>
+            
+            <div id="fleet" class="dashboard-content active" style="display: block; animation: dashboardFade 0.8s ease-in;">
+                <div class="dashboard-showcase" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="100">
+                        <div style="content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--primary-gold) 0%, #40a4df 50%, var(--hover-color) 100%);"></div>
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Oil Spill Response Coordination</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Real-time coordination of marine oil spill response operations including equipment deployment and recovery activities.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Integrated Logistics</span>
+                    </div>
+                </div>
+
+                
+            </div>
+
+      <div id="logistics" class="dashboard-content active" style="display: block; animation: dashboardFade 0.8s ease-in;">
+
+  <div class="dashboard-showcase" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+         <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="200">
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Equipment Positioning</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Precise positioning and anchoring services for offshore equipment deployment and environmental protection systems.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Precise Deployment</span>
+                    </div>
+
+
+      <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="300">
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Marine Supply Chain</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Comprehensive marine supply chain management for environmental equipment and emergency response materials.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Logistics Excellence</span>
+                        </div>
+                        </div>
+      </div>
+             
+
+
+              
+
+     
+            
+            <div id="emergency" class="dashboard-content" style="display: none;">
+                <div class="dashboard-showcase" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="100">
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Emergency Response Coordination</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">24/7 emergency response coordination for marine oil spill incidents with rapid deployment capabilities.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">&lt; 2hr Response</span>
+                    </div>
+                    <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="200">
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Marine Communication</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Advanced marine communication systems ensuring reliable connectivity during emergency operations.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">99.9% Uptime</span>
+                    </div>
+                    <div class="dashboard-item" style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(var(--blur-amount)); transition: var(--transition); position: relative; overflow: hidden;" data-aos="fade-up" data-aos-delay="300">
+                        <div class="dashboard-icon" style="width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; font-size: 1.5rem; color: white; box-shadow: 0 10px 20px rgba(64, 164, 223, 0.3);">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 1rem; color: white;">Personnel Safety</h4>
+                        <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">Comprehensive personnel safety monitoring and medical evacuation capabilities for offshore operations.</p>
+                        <span class="dashboard-metric" style="display: inline-block; padding: 0.3rem 0.8rem; background: linear-gradient(135deg, var(--primary-gold) 0%, #40a4df 100%); color: white; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Zero Incidents</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="marine-cta-section">
+        <div class="marine-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Navigate Marine Environmental Protection Excellence?</h2>
+                <p>
+                    Partner with Nigeria's specialized marine support services provider for 
+                    comprehensive offshore oil spill response, equipment logistics, and emergency coordination.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Marine Team
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Marine Capabilities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+                   
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/marine-support-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

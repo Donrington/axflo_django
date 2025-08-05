@@ -1,0 +1,377 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Offshore-Accommodation-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/offshore-accommodation-services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Accommodation Hero Section -->
+    <section class="accommodation-hero">
+        <div class="ocean-backdrop"></div>
+        
+        <div class="accommodation-elements">
+            <div class="accommodation-facility facility-1">
+                <i class="fas fa-life-ring"></i>
+            </div>
+            <div class="accommodation-facility facility-2">
+                <i class="fas fa-utensils"></i>
+            </div>
+            <div class="accommodation-facility facility-3">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="accommodation-facility facility-4">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <div class="accommodation-facility facility-5">
+                <i class="fas fa-first-aid"></i>
+            </div>
+            <div class="accommodation-facility facility-6">
+                <i class="fas fa-bed"></i>
+            </div>
+        </div>
+        
+        <div class="accommodation-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="accommodation-badge">
+                <div class="accommodation-indicator"></div>
+                Supporting Environmental Response Teams Since 2009
+            </div>
+            
+            <h1 class="accommodation-title">Offshore Accommodation Support</h1>
+            
+            <p class="accommodation-subtitle">
+                Essential offshore accommodation support for oil spill response teams and environmental 
+                operations personnel ensuring safe, functional living facilities during emergency response 
+                and environmental protection operations.
+            </p>
+            
+            <a href="#accommodation-services" class="accommodation-cta">
+                Explore Our Support Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Accommodation Services -->
+    <section id="accommodation-services" class="accommodation-services">
+        <div class="accommodation-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Accommodation Support Services</h2>
+                <p>
+                    Essential accommodation support solutions providing safe and functional living 
+                    facilities for oil spill response teams and environmental operations personnel.
+                </p>
+            </div>
+            
+            <div class="accommodation-deck">
+                <!-- Emergency Response Accommodation -->
+                <div class="service-card-accommodation" data-aos="fade-up" data-aos-delay="100">
+                    <div class="accommodation-card-header">
+                        <div class="accommodation-service-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h3>Emergency Response Team Accommodation</h3>
+                    </div>
+                    <p class="accommodation-description">
+                        Rapid deployment accommodation facilities for oil spill response teams providing 
+                        essential living quarters, safety equipment, and basic amenities during emergency 
+                        response operations with focus on operational readiness and team coordination.
+                    </p>
+                    <ul class="accommodation-capabilities">
+                        <li>Rapid Deployment Living Quarters</li>
+                        <li>Emergency Response Team Facilities</li>
+                        <li>Basic Safety & Life Support Systems</li>
+                        <li>Communication & Coordination Centers</li>
+                        <li>Equipment Storage & Staging Areas</li>
+                        <li>Decontamination Facilities</li>
+                        <li>24/7 Operational Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="accommodation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Operations Support -->
+                <div class="service-card-accommodation" data-aos="fade-up" data-aos-delay="200">
+                    <div class="accommodation-card-header">
+                        <div class="accommodation-service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Environmental Operations Accommodation</h3>
+                    </div>
+                    <p class="accommodation-description">
+                        Accommodation support for environmental monitoring and remediation teams providing 
+                        functional living facilities, work spaces, and essential services during extended 
+                        environmental operations and site remediation activities.
+                    </p>
+                    <ul class="accommodation-capabilities">
+                        <li>Environmental Team Housing</li>
+                        <li>Mobile Field Office Facilities</li>
+                        <li>Laboratory & Analysis Space</li>
+                        <li>Sample Storage & Handling Areas</li>
+                        <li>Equipment Maintenance Facilities</li>
+                        <li>Data Collection & Processing Centers</li>
+                        <li>Environmental Monitoring Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="accommodation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Basic Catering & Support Services -->
+                <div class="service-card-accommodation" data-aos="fade-up" data-aos-delay="300">
+                    <div class="accommodation-card-header">
+                        <div class="accommodation-service-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Catering & Support Services</h3>
+                    </div>
+                    <p class="accommodation-description">
+                        Essential catering and support services providing nutritious meals, basic amenities, 
+                        and housekeeping services for response teams during emergency operations and 
+                        environmental projects with focus on operational efficiency and team welfare.
+                    </p>
+                    <ul class="accommodation-capabilities">
+                        <li>Field Catering & Meal Services</li>
+                        <li>Basic Food Preparation Facilities</li>
+                        <li>Water Supply & Purification</li>
+                        <li>Waste Management & Sanitation</li>
+                        <li>Housekeeping & Maintenance</li>
+                        <li>Basic Medical & First Aid Support</li>
+                        <li>Emergency Supply Coordination</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="accommodation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Safety & Communication Support -->
+                <div class="service-card-accommodation" data-aos="fade-up" data-aos-delay="400">
+                    <div class="accommodation-card-header">
+                        <div class="accommodation-service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Safety & Communication Support</h3>
+                    </div>
+                    <p class="accommodation-description">
+                        Comprehensive safety and communication support ensuring secure accommodation 
+                        facilities with emergency protocols, communication systems, and safety equipment 
+                        for personnel working in offshore and remote environmental operations.
+                    </p>
+                    <ul class="accommodation-capabilities">
+                        <li>Safety & Security Systems</li>
+                        <li>Emergency Evacuation Protocols</li>
+                        <li>Communication & Coordination Systems</li>
+                        <li>Personnel Safety Monitoring</li>
+                        <li>Emergency Medical Response</li>
+                        <li>Weather Monitoring & Alerts</li>
+                        <li>Incident Reporting & Management</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="accommodation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Overview -->
+    <section class="facilities-overview">
+        <div class="accommodation-container">
+            <div class="overview-header" data-aos="fade-up">
+                <h2>Essential Support Facilities</h2>
+                <p>
+                    Functional accommodation facilities designed for environmental response operations 
+                    with essential amenities and safety systems for effective field operations.
+                </p>
+            </div>
+            
+            <div class="facilities-grid">
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="facility-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Basic Living Quarters</h4>
+                    <p>Functional sleeping quarters and rest areas for response teams with basic amenities and safety features for short to medium-term stays.</p>
+                </div>
+                
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="facility-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <h4>Communication Center</h4>
+                    <p>Essential communication facilities including radio systems, satellite communication, and coordination centers for emergency response operations.</p>
+                </div>
+                
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="facility-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Equipment Storage</h4>
+                    <p>Secure storage facilities for oil spill response equipment, environmental monitoring tools, and emergency supplies with easy access for operations.</p>
+                </div>
+                
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="facility-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h4>Basic Dining Facilities</h4>
+                    <p>Simple dining areas with food preparation facilities providing nutritious meals for response teams during field operations and emergency deployments.</p>
+                </div>
+                
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="facility-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h4>Field Office Space</h4>
+                    <p>Mobile office facilities for planning, coordination, data analysis, and reporting activities during environmental operations and response missions.</p>
+                </div>
+                
+                <div class="facility-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="facility-icon">
+                        <i class="fas fa-first-aid"></i>
+                    </div>
+                    <h4>First Aid & Safety</h4>
+                    <p>Basic medical facilities with first aid equipment, emergency medical supplies, and trained personnel for health and safety support during operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Standards -->
+    <section class="comfort-standards">
+        <div class="accommodation-container">
+            <div class="standards-header" data-aos="fade-up">
+                <h2>Essential Support Standards</h2>
+                <p>
+                    Our accommodation support services meet essential safety and operational standards 
+                    ensuring effective field operations and personnel welfare during environmental missions.
+                </p>
+            </div>
+            
+            <div class="standards-showcase">
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="standard-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety Compliance</h4>
+                    <p>All accommodation facilities meet essential safety standards with emergency protocols, safety equipment, and trained personnel for secure operations.</p>
+                    <span class="standard-metric">100% Compliant</span>
+                </div>
+                
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="standard-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Water & Sanitation</h4>
+                    <p>Clean water supply and basic sanitation facilities ensuring hygiene standards and health requirements for field operations personnel.</p>
+                    <span class="standard-metric">Clean & Safe</span>
+                </div>
+                
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="standard-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h4>Power & Utilities</h4>
+                    <p>Reliable power generation and distribution systems supporting accommodation facilities, communication equipment, and operational requirements.</p>
+                    <span class="standard-metric">24/7 Power</span>
+                </div>
+                
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="standard-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h4>Communication Access</h4>
+                    <p>Essential communication capabilities including emergency contact systems, coordination networks, and reporting capabilities for field operations.</p>
+                    <span class="standard-metric">Always Connected</span>
+                </div>
+                
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="standard-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>Emergency Response</h4>
+                    <p>Comprehensive emergency response capabilities with evacuation procedures, emergency equipment, and rapid response protocols for personnel safety.</p>
+                    <span class="standard-metric">Rapid Response</span>
+                </div>
+                
+                <div class="standard-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="standard-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Environmental Compliance</h4>
+                    <p>Environmentally responsible accommodation operations with waste management, environmental protection, and minimal impact on local ecosystems.</p>
+                    <span class="standard-metric">Eco-Friendly</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="accommodation-cta-section">
+        <div class="accommodation-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Support Your Environmental Operations?</h2>
+                <p>
+                    Partner with Nigeria's specialized accommodation support provider for 
+                    essential living facilities and operational support during environmental response missions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Support Team
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Support Capabilities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/offshore-accommodation-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

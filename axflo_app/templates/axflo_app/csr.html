@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Csr - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/csr.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+
+    <!-- CSR Hero Section -->
+    <section class="about-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Corporate Responsibility
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">Building Sustainable Communities</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+                As Nigeria's leading environmental services provider for the oil and gas industry, Axflo integrates responsible business practices with community engagement to protect our environment while supporting local development.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#csr-intro" class="cta-button">
+                Explore Our Impact
+                <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- CSR Introduction Section -->
+    <section class="csr-intro" id="csr-intro">
+        <div class="container">
+            <div class="intro-content" data-aos="fade-up">
+                <div class="intro-text">
+                    <h2>Environmental Stewardship & Community Partnership</h2>
+                    <p>
+                        As specialists in oil spill response, environmental remediation, and water treatment, Axflo Oil & Gas 
+                        Nigeria Ltd understands that our business success depends on healthy communities and ecosystems. 
+                        Our CSR initiatives focus on environmental protection, emergency preparedness training, and 
+                        supporting communities in oil-producing regions.
+                    </p>
+                    <p>
+                        Working closely with local communities, government agencies, and international partners like DESMI 
+                        Denmark, we combine cutting-edge environmental technology with grassroots community engagement 
+                        to create sustainable positive impact across Nigeria's coastal regions.
+                    </p>
+                </div>
+                <div class="intro-image">
+                    <img src="{% static 'axflo_app/images/sea.jpg' %}" 
+                         alt="Community Development Initiative">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pillars of CSR Section -->
+    <section class="pillars-section">
+        <div class="container">
+            <div class="pillars-content">
+                <div class="section-header" data-aos="fade-up">
+                    <h2 class="section-title">Pillars of CSR</h2>
+                    <p class="section-subtitle">
+                        Our comprehensive approach to corporate social responsibility is built on four fundamental 
+                        pillars that guide our community engagement and sustainable development initiatives.
+                    </p>
+                </div>
+                
+                <div class="pillars-grid">
+                    <div class="pillar-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pillar-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="pillar-title">Emergency Response Training</h3>
+                        <p class="pillar-description">
+                            Building local capacity through specialized training in oil spill response, 
+                            environmental emergency procedures, and safety protocols. We train community 
+                            response teams and government agencies in modern environmental protection techniques.
+                        </p>
+                    </div>
+                    
+                    <div class="pillar-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pillar-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3 class="pillar-title">Clean Water Access</h3>
+                        <p class="pillar-description">
+                            Leveraging our water treatment expertise to provide clean water solutions 
+                            for coastal communities. We install water purification systems and conduct 
+                            water quality monitoring to ensure safe drinking water access.
+                        </p>
+                    </div>
+                    
+                    <div class="pillar-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="pillar-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="pillar-title">Environmental Restoration</h3>
+                        <p class="pillar-description">
+                            Active remediation of contaminated sites using advanced bioremediation 
+                            techniques and ecosystem restoration programs. We focus on restoring 
+                            mangrove forests and cleaning up oil-impacted coastal areas.
+                        </p>
+                    </div>
+                    
+                    <div class="pillar-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="pillar-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="pillar-title">Community Partnerships</h3>
+                        <p class="pillar-description">
+                            Collaborating with fishing communities, local governments, and traditional 
+                            leaders to develop sustainable livelihoods that complement environmental 
+                            protection. We support alternative income sources and environmental awareness programs.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Statistics Section -->
+    <section class="impact-stats">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title2">Our Impact in Numbers</h2>
+                <p class="section-subtitle" style="color: var(--text-secondary);">
+                    Measurable results that demonstrate our commitment to creating positive change 
+                    in Nigerian communities through focused CSR initiatives.
+                </p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Coastal States Served</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Response Centers</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Personnel Trained</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Carousel Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Featured CSR Projects</h2>
+                <p class="section-subtitle">
+                    Discover some of our flagship initiatives that are making a real difference 
+                    in communities across Nigeria through sustainable development and innovation.
+                </p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="project-carousel" id="projectCarousel">
+                    <div class="project-slide">
+                        <img src="{% static 'axflo_app/images/oilspill.jpg' %}" 
+                             alt="Oil Spill Response Training" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Emergency Training</span>
+                            <h3 class="project-title">Community Response Training Program</h3>
+                            <p class="project-description">
+                                Training local fishermen and community leaders in early oil spill detection 
+                                and initial response procedures. Over 200 community members across Delta 
+                                and Rivers states have been certified in basic response techniques.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-slide">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Healthcare Initiative" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Healthcare</span>
+                            <h3 class="project-title">Mobile Health Clinics</h3>
+                            <p class="project-description">
+                                Deploying fully equipped mobile medical units to provide essential healthcare 
+                                services to underserved coastal communities, conducting regular health screenings 
+                                and preventive care programs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-slide">
+                        <img src="" 
+                             alt="Water Treatment Project" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Environment</span>
+                            <h3 class="project-title">Clean Water Initiative</h3>
+                            <p class="project-description">
+                                Installing advanced water treatment systems in 15 communities, providing 
+                                access to clean, safe drinking water for over 20,000 residents while 
+                                implementing water conservation education programs.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="project-slide">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Skills Training Program" class="project-image">
+                        <div class="project-content">
+                            <span class="project-category">Skills Development</span>
+                            <h3 class="project-title">Youth Empowerment Program</h3>
+                            <p class="project-description">
+                                Comprehensive vocational training in renewable energy technology, digital 
+                                skills, and entrepreneurship, equipping young Nigerians with market-relevant 
+                                skills for sustainable employment opportunities.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn" onclick="scrollCarousel('left')">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn" onclick="scrollCarousel('right')">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commitment Section -->
+    <section class="commitment-section">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title2">Our Commitments</h2>
+                <p class="section-subtitle" style="color: var(--text-secondary);">
+                    Long-term pledges that guide our actions and ensure accountability 
+                    in our journey toward sustainable development and community empowerment.
+                </p>
+            </div>
+            
+            <div class="commitment-grid">
+                <div class="commitment-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="commitment-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="commitment-title">Carbon Neutrality by 2030</h3>
+                    <p class="commitment-description">
+                        Achieving net-zero carbon emissions through renewable energy adoption, 
+                        operational efficiency improvements, and carbon offset programs that 
+                        contribute to Nigeria's climate goals.
+                    </p>
+                </div>
+                
+                <div class="commitment-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="commitment-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3 class="commitment-title">Community Investment</h3>
+                    <p class="commitment-description">
+                        Dedicating 5% of annual revenue to community development initiatives, 
+                        ensuring sustained investment in education, healthcare, and infrastructure 
+                        development across our operational areas.
+                    </p>
+                </div>
+                
+                <div class="commitment-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="commitment-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3 class="commitment-title">Local Capacity Building</h3>
+                    <p class="commitment-description">
+                        Training and employing 80% of our workforce from local communities, 
+                        providing skills development opportunities and creating sustainable 
+                        employment that drives economic empowerment.
+                    </p>
+                </div>
+                
+                <div class="commitment-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="commitment-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="commitment-title">Transparent Reporting</h3>
+                    <p class="commitment-description">
+                        Publishing annual sustainability reports with measurable impact metrics, 
+                        financial transparency, and third-party verification of our CSR 
+                        initiatives and environmental performance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% include 'axflo_app/includes/footer.html' %}
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/csr.js' %}"></script>
+   <script src="{% static 'axflo_app/js/main.js' %}"></script>
+{% endblock %}

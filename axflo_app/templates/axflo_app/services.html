@@ -1,0 +1,543 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/services.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+
+
+    
+    <div class="background-circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+    
+
+
+    <section class="about-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content" data-aos="fade-down" data-aos-duration="1200">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+               Empowering Industries with Advanced Solutions
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">Our Services</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+             Axflo Oil & Gas offers a range of innovative services that prioritize safety, sustainability, and operational excellence.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#mission" class="cta-button">
+                Explore Our Services
+                <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+
+
+
+
+
+
+ <div class="bg-animation">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+
+    <!-- Services Container -->
+    <div class="services-container">
+        
+        <!-- EPC Contracting Section -->
+        <section id="epc-contracting" class="service-category fade-in" data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header" data-aos="fade-right" data-aos-duration="800">
+                <div class="category-icon">
+                    <i class="fas fa-hard-hat"></i>
+                </div>
+                <h2 class="category-title">EPC Contracting</h2>
+                <p class="category-description">End-to-end Engineering, Procurement, and Construction solutions delivering world-class energy infrastructure projects</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Engineering & Consultancy -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header" id="engineering">
+                        <div class="service-icon" >
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3 class="service-name">Engineering & Consultancy</h3>
+                    </div>
+                    <p class="service-excerpt">Comprehensive engineering solutions from conceptual design to detailed engineering, leveraging cutting-edge technology and industry expertise.</p>
+                    <ul class="service-features">
+                        <li>FEED Studies & Conceptual Design</li>
+                        <li>Process Engineering & Optimization</li>
+                        <li>Technical Due Diligence</li>
+                    </ul>
+                    <a href="engineering-consultancy.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Procurement & Logistics -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header" id="procurement">
+                        <div class="service-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="service-name">Procurement & Logistics</h3>
+                    </div>
+                    <p class="service-excerpt">Strategic sourcing and supply chain management ensuring timely delivery of quality materials and equipment for critical projects.</p>
+                    <ul class="service-features">
+                        <li>Global Vendor Network</li>
+                        <li>Quality Assurance & Control</li>
+                        <li>Just-in-Time Delivery</li>
+                    </ul>
+                    <a href="procurement-logistics.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Construction Services -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header" id="construction">
+                        <div class="service-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="service-name">Construction Services</h3>
+                    </div>
+                    <p class="service-excerpt">Expert construction management delivering complex projects on time and within budget while maintaining the highest safety standards.</p>
+                    <ul class="service-features">
+                        <li>Civil & Structural Works</li>
+                        <li>Mechanical & Piping Installation</li>
+                        <li>HSE-First Approach</li>
+                    </ul>
+                    <a href="construction-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Installation Services -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header" id="installation">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="service-name">Installation Services</h3>
+                    </div>
+                    <p class="service-excerpt">Precision installation of critical equipment and systems with rigorous quality control and commissioning protocols.</p>
+                    <ul class="service-features">
+                        <li>Equipment Installation</li>
+                        <li>System Integration</li>
+                        <li>Performance Verification</li>
+                    </ul>
+                    <a href="installation-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Testing & Commissioning -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card-header" id="testing">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="service-name">Testing & Commissioning</h3>
+                    </div>
+                    <p class="service-excerpt">Comprehensive testing and commissioning services ensuring optimal performance and regulatory compliance.</p>
+                    <ul class="service-features">
+                        <li>Pre-commissioning Activities</li>
+                        <li>Performance Testing</li>
+                        <li>Training & Handover</li>
+                    </ul>
+                    <a href="testing.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Project Management -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card-header" id="project-mgmt">
+                        <div class="service-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="service-name">Project Management</h3>
+                    </div>
+                    <p class="service-excerpt">End-to-end project management expertise delivering complex projects with precision, efficiency, and excellence.</p>
+                    <ul class="service-features">
+                        <li>PMO Setup & Governance</li>
+                        <li>Risk Management</li>
+                        <li>Cost & Schedule Control</li>
+                    </ul>
+                    <a href="project-management.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Plant Operation & Facility Management -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-card-header" id="facility-mgmt">
+                        <div class="service-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h3 class="service-name">Plant Operation & Facility Management</h3>
+                    </div>
+                    <p class="service-excerpt">Professional operation and maintenance services maximizing asset performance and operational efficiency.</p>
+                    <ul class="service-features">
+                        <li>Operations Excellence</li>
+                        <li>Predictive Maintenance</li>
+                        <li>Asset Optimization</li>
+                    </ul>
+                    <a href="plant-operation-facility-management.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offshore & Marine Section -->
+        <section id="offshore-marine" class="service-category dark fade-in" data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header" data-aos="fade-left" data-aos-duration="800">
+                <div class="category-icon">
+                    <i class="fas fa-ship"></i>
+                </div>
+                <h2 class="category-title">Offshore & Marine Services</h2>
+                <p class="category-description">Specialized marine and offshore solutions supporting Nigeria's deepwater energy operations</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Offshore Services -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header" id="offshore">
+                        <div class="service-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h3 class="service-name">Offshore Services</h3>
+                    </div>
+                    <p class="service-excerpt">Comprehensive offshore support services for exploration, production, and infrastructure development in challenging environments.</p>
+                    <ul class="service-features">
+                        <li>Offshore Installation</li>
+                        <li>Subsea Services</li>
+                        <li>Platform Maintenance</li>
+                    </ul>
+                    <a href="offshore-marine-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Marine Support -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header" id="marine">
+                        <div class="service-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h3 class="service-name">Marine Support</h3>
+                    </div>
+                    <p class="service-excerpt">Full-spectrum marine support services ensuring safe and efficient offshore operations with 24/7 availability.</p>
+                    <ul class="service-features">
+                        <li>Vessel Operations</li>
+                        <li>Marine Logistics</li>
+                        <li>Emergency Response</li>
+                    </ul>
+                    <a href="marine-support-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Offshore Accommodation -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header" id="accommodation">
+                        <div class="service-icon">
+                            <i class="fas fa-bed"></i>
+                        </div>
+                        <h3 class="service-name">Offshore Accommodation</h3>
+                    </div>
+                    <p class="service-excerpt">State-of-the-art offshore accommodation solutions ensuring comfort, safety, and productivity for offshore personnel.</p>
+                    <ul class="service-features">
+                        <li>Accommodation Barges</li>
+                        <li>Life Support Systems</li>
+                        <li>Catering Services</li>
+                    </ul>
+                    <a href="offshore-accommodation-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Equipment Hire -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header" id="equipment-hire">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="service-name">Equipment Hire</h3>
+                    </div>
+                    <p class="service-excerpt">Extensive fleet of specialized equipment available for hire with full maintenance and operational support.</p>
+                    <ul class="service-features">
+                        <li>Heavy Lift Equipment</li>
+                        <li>Specialized Tools</li>
+                        <li>24/7 Technical Support</li>
+                    </ul>
+                    <a href="equipment-hire-services.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Environmental Services Section -->
+        <section id="environmental-services" class="service-category fade-in" data-aos="fade-up" data-aos-duration="1000">
+            <div class="category-header" id="environmental-tech" data-aos="fade-right" data-aos-duration="800">
+                <div class="category-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h2 class="category-title">Environmental Services</h2>
+                <p class="category-description">Leading environmental solutions protecting Nigeria's ecosystems while supporting sustainable energy development</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Environmental Technologies -->
+                <div class="service-card" id="env-tech" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3 class="service-name">Environmental Technologies</h3>
+                    </div>
+                    <p class="service-excerpt">Cutting-edge environmental technologies for monitoring, assessment, and remediation of impacted sites.</p>
+                    <ul class="service-features">
+                        <li>Environmental Monitoring</li>
+                        <li>Impact Assessment</li>
+                        <li>Remediation Technologies</li>
+                    </ul>
+                    <a href="environmental-technologies.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Water & Wastewater Treatment -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header" id="water-treatment">
+                        <div class="service-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="service-name">Water & Wastewater Treatment</h3>
+                    </div>
+                    <p class="service-excerpt">Advanced water treatment solutions ensuring compliance with environmental standards and operational efficiency.</p>
+                    <ul class="service-features">
+                        <li>Industrial Water Treatment</li>
+                        <li>Produced Water Management</li>
+                        <li>Zero Liquid Discharge</li>
+                    </ul>
+                    <a href="water-wastewater-treatment.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Waste and Recycling -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header" id="waste-recycling">
+                        <div class="service-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3 class="service-name">Waste and Recycling</h3>
+                    </div>
+                    <p class="service-excerpt">Comprehensive waste management and recycling programs supporting circular economy principles.</p>
+                    <ul class="service-features">
+                        <li>Waste Classification</li>
+                        <li>Recycling Programs</li>
+                        <li>Hazardous Waste Management</li>
+                    </ul>
+                    <a href="waste-recycling.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Renewable Energy -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header" id="renewable-details">
+                        <div class="service-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <h3 class="service-name">Renewable Energy</h3>
+                    </div>
+                    <p class="service-excerpt">Innovative renewable energy solutions supporting Nigeria's transition to sustainable energy sources.</p>
+                    <ul class="service-features">
+                        <li>Solar Power Systems</li>
+                        <li>Hybrid Energy Solutions</li>
+                        <li>Energy Efficiency Audits</li>
+                    </ul>
+                    <a href="renewable-energy.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Oil Spill Response -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-card-header" id="oil-spill">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-name">Oil Spill Response</h3>
+                    </div>
+                    <p class="service-excerpt">24/7 emergency response capabilities with advanced containment and recovery systems for rapid spill mitigation.</p>
+                    <ul class="service-features">
+                        <li>Emergency Response Teams</li>
+                        <li>Advanced Containment Systems</li>
+                        <li>Recovery Operations</li>
+                    </ul>
+                    <a href="oil-spill-response.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Preparedness -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-card-header" id="preparedness">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="service-name">Preparedness Planning</h3>
+                    </div>
+                    <p class="service-excerpt">Comprehensive preparedness programs ensuring readiness for environmental emergencies and operational challenges.</p>
+                    <ul class="service-features">
+                        <li>Response Planning</li>
+                        <li>Risk Assessment</li>
+                        <li>Equipment Pre-positioning</li>
+                    </ul>
+                    <a href="preparedness-planning.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Incident Management -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="service-card-header" id="incident-mgmt">
+                        <div class="service-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 class="service-name">Incident Management</h3>
+                    </div>
+                    <p class="service-excerpt">Expert incident management services coordinating response efforts and ensuring effective crisis resolution.</p>
+                    <ul class="service-features">
+                        <li>Command Center Operations</li>
+                        <li>Multi-agency Coordination</li>
+                        <li>Post-incident Analysis</li>
+                    </ul>
+                    <a href="incident-management.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Training -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="service-card-header" id="training">
+                        <div class="service-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="service-name">Training Programs</h3>
+                    </div>
+                    <p class="service-excerpt">Industry-leading training programs building capacity in environmental protection and emergency response.</p>
+                    <ul class="service-features">
+                        <li>HSE Training</li>
+                        <li>Response Team Training</li>
+                        <li>Certification Programs</li>
+                    </ul>
+                    <a href="training-programs.html" class="details-button">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="services-cta fade-in" data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="cta-title">Ready to Transform Your Operations?</h2>
+            <p class="cta-description">Partner with Nigeria's leading environmental and energy services provider. Our expert teams are ready to deliver solutions tailored to your unique challenges.</p>
+            <div class="cta-buttons">
+                <a href="{% url 'axflo_app:contact' %}" class="cta-button-primary">Get Started</a>
+                <a href="#download-brochure" class="cta-button-secondary">Download Brochure</a>
+            </div>
+        </section>
+    </div>
+
+
+
+{% include 'axflo_app/includes/footer.html' %}
+  
+
+
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+      
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

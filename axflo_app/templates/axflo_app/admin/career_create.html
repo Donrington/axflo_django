@@ -1,0 +1,176 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Create Job Posting - Axflo{% endblock %}
+
+{% block content %}
+<div class="career-form-container">
+    <div class="career-form-card">
+        <div class="career-form-header">
+            <h1><i class="fas fa-plus-circle"></i> Create Job Posting</h1>
+            <p class="subtitle">Add a new job opportunity to attract top talent</p>
+        </div>
+        
+        <form method="post" class="career-form-body" id="careerForm">
+            {% csrf_token %}
+            
+            <div class="form-section">
+                <h3 class="section-title"><i class="fas fa-info-circle"></i> Basic Information</h3>
+                <div class="form-grid">
+                    <div class="career-form-group">
+                        <label for="title" class="required"><i class="fas fa-briefcase"></i> Job Title</label>
+                        <input type="text" id="title" name="title" class="career-input" required placeholder="Enter job title (e.g., Senior Software Engineer)">
+                        <div class="input-hint">Be specific and descriptive to attract the right candidates</div>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="department" class="required"><i class="fas fa-building"></i> Department</label>
+                        <input type="text" id="department" name="department" class="career-input" required placeholder="Enter department name (e.g., Engineering, Marketing, Operations)">
+                        <div class="input-hint">Specify the department or division for this position</div>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="employment_type" class="required"><i class="fas fa-clock"></i> Employment Type</label>
+                        <select id="employment_type" name="employment_type" class="career-select" required>
+                            <option value="">Select Employment Type</option>
+                            {% for type_code, type_name in employment_types %}
+                            <option value="{{ type_code }}">{{ type_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="location" class="required"><i class="fas fa-map-marker-alt"></i> Location</label>
+                        <input type="text" id="location" name="location" class="career-input" placeholder="e.g., Lagos, Nigeria or Remote" required>
+                        <div class="input-hint">Include city, state/region, or specify if remote work is available</div>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="salary_range"><i class="fas fa-money-bill-wave"></i> Salary Range</label>
+                        <input type="text" id="salary_range" name="salary_range" class="career-input" placeholder="e.g., ₦200,000 - ₦350,000 per month">
+                        <div class="input-hint">Optional: Providing salary range increases application quality</div>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="closing_date"><i class="fas fa-calendar-alt"></i> Application Closing Date</label>
+                        <input type="date" id="closing_date" name="closing_date" class="career-input">
+                        <div class="input-hint">Leave blank if accepting applications indefinitely</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="section-title"><i class="fas fa-file-alt"></i> Job Details</h3>
+                <div class="form-grid single-column">
+                    <div class="career-form-group">
+                        <label for="description" class="required"><i class="fas fa-align-left"></i> Job Description</label>
+                        <textarea id="description" name="description" class="career-textarea large" required placeholder="Describe the role, key responsibilities, team structure, and what makes this opportunity exciting...
+
+Example:
+• Lead development of core platform features
+• Mentor junior developers and conduct code reviews
+• Collaborate with product and design teams
+• Drive technical decisions and architecture"></textarea>
+                        <div class="character-count" id="descriptionCount">0 characters</div>
+                    </div>
+
+                    <div class="career-form-group">
+                        <label for="requirements" class="required"><i class="fas fa-list-check"></i> Requirements & Qualifications</label>
+                        <textarea id="requirements" name="requirements" class="career-textarea large" required placeholder="List the essential and preferred qualifications...
+
+Required:
+• Bachelor's degree in Computer Science or related field
+• 5+ years of experience in software development
+• Proficiency in Python, Django, and React
+• Strong problem-solving and communication skills
+
+Preferred:
+• Experience with cloud platforms (AWS, Azure)
+• Leadership or mentoring experience
+• Open source contributions"></textarea>
+                        <div class="character-count" id="requirementsCount">0 characters</div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        
+        <div class="career-form-actions">
+            <div class="form-actions-left">
+                <div class="save-indicator" id="saveIndicator">
+                    <i class="fas fa-circle"></i>
+                    <span>Draft not saved</span>
+                </div>
+            </div>
+            <div class="form-actions-right">
+                <a href="/admin-careers/" class="career-btn career-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Jobs
+                </a>
+                <button type="button" class="career-btn career-btn-secondary" onclick="saveDraft()">
+                    <i class="fas fa-file-text"></i>
+                    Save Draft
+                </button>
+                <button type="submit" class="career-btn career-btn-primary" form="careerForm">
+                    <i class="fas fa-plus-circle"></i>
+                    Create Job Posting
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'careers';
+    
+    // Character count functionality
+    function updateCharacterCount(textareaId, countId) {
+        const textarea = document.getElementById(textareaId);
+        const counter = document.getElementById(countId);
+        
+        if (textarea && counter) {
+            const count = textarea.value.length;
+            counter.textContent = `${count} characters`;
+            
+            // Add warning/error classes based on length
+            counter.classList.remove('warning', 'error');
+            if (count > 2000) {
+                counter.classList.add('error');
+            } else if (count > 1500) {
+                counter.classList.add('warning');
+            }
+        }
+    }
+    
+    // Initialize character counters
+    document.addEventListener('DOMContentLoaded', function() {
+        const descriptionTextarea = document.getElementById('description');
+        const requirementsTextarea = document.getElementById('requirements');
+        
+        if (descriptionTextarea) {
+            descriptionTextarea.addEventListener('input', () => updateCharacterCount('description', 'descriptionCount'));
+            updateCharacterCount('description', 'descriptionCount');
+        }
+        
+        if (requirementsTextarea) {
+            requirementsTextarea.addEventListener('input', () => updateCharacterCount('requirements', 'requirementsCount'));
+            updateCharacterCount('requirements', 'requirementsCount');
+        }
+    });
+    
+    // Save draft functionality (placeholder)
+    function saveDraft() {
+        const indicator = document.getElementById('saveIndicator');
+        indicator.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Saving draft...</span>';
+        indicator.className = 'save-indicator saving';
+        
+        // Simulate save operation
+        setTimeout(() => {
+            indicator.innerHTML = '<i class="fas fa-check"></i> <span>Draft saved</span>';
+            indicator.className = 'save-indicator saved';
+        }, 1000);
+    }
+</script>
+{% endblock %}

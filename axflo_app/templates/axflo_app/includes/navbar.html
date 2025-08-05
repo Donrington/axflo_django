@@ -1,0 +1,188 @@
+{% load static %}
+
+<header class="header">
+    <nav class="nav">
+        <div class="nav__brand">
+            <!-- Light logo for transparent background -->
+            <img src="{% static 'axflo_app/logo/AOGLogoWhite2.png' %}" alt="Light Logo" class="logo-light">
+            <!-- Dark logo for white background -->
+            <img src="{% static 'axflo_app/logo/AOGLogoBlack2.png' %}" alt="Dark Logo" class="logo-dark">
+        </div>
+        <ul class="nav__links">
+            <li><a href="{% url 'axflo_app:index' %}">Home</a></li>
+            
+            <!-- About Us Dropdown -->
+            <li class="dropdown">
+                <a href="{% url 'axflo_app:about' %}">
+                    About Us
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{% url 'axflo_app:about' %}#our-company">Our Company</a>
+                    <a href="{% url 'axflo_app:about' %}#board-directors">Board of Directors</a>
+                    <a href="{% url 'axflo_app:about' %}#about">Company Overview</a>
+                    <a href="{% url 'axflo_app:about' %}#hse">Health Safety and Environment</a>
+                    <a href="{% url 'axflo_app:about' %}#our-people">Our People</a>
+                    <a href="{% url 'axflo_app:about' %}#milestones">Major Milestones</a>
+                    <a href="{% url 'axflo_app:about' %}#services">Our Services</a>
+                    <a href="{% url 'axflo_app:about' %}#technology">Technology Partners</a>
+                    <a href="{% url 'axflo_app:about' %}#leadership">Leadership & Innovation</a>
+                    <a href="{% url 'axflo_app:contact' %}">Contact Us</a>
+                </div>
+            </li>
+            
+            <!-- Services Mega Dropdown -->
+            <li class="dropdown mega-dropdown">
+                <a href="{% url 'axflo_app:services' %}">
+                    Services
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <div class="mega-content">
+                        <div class="mega-section">
+                            <h4>EPC Contracting</h4>
+                            <ul>
+                                <li><a href="{% url 'axflo_app:engineering_consultancy' %}">Engineering & Consultancy</a></li>
+                                <li><a href="{% url 'axflo_app:procurement_logistics' %}">Procurement & Logistics</a></li>
+                                <li><a href="{% url 'axflo_app:construction_services' %}">Construction Services</a></li>
+                                <li><a href="{% url 'axflo_app:installation_services' %}">Installation Services</a></li>
+                                <li><a href="{% url 'axflo_app:testing_commissioning' %}">Testing & Commissioning</a></li>
+                                <li><a href="{% url 'axflo_app:project_management' %}">Project Management</a></li>
+                                <li><a href="{% url 'axflo_app:plant_operation_facility_management' %}">Plant Operation & Facility Management</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-section">
+                            <h4>Offshore & Marine</h4>
+                            <ul>
+                                <li><a href="{% url 'axflo_app:offshore_marine_services' %}">Offshore Services</a></li>
+                                <li><a href="{% url 'axflo_app:marine_support_services' %}">Marine Support</a></li>
+                                <li><a href="{% url 'axflo_app:offshore_accommodation_services' %}">Offshore Accommodation</a></li>
+                                <li><a href="{% url 'axflo_app:equipment_hire_services' %}">Equipment Hire</a></li>
+                            </ul>
+                        </div>
+                        <div class="mega-section">
+                            <h4>Environmental Services</h4>
+                            <ul>
+                                <li><a href="{% url 'axflo_app:environmental_technologies' %}">Environmental Technologies</a></li>
+                                <li><a href="{% url 'axflo_app:water_wastewater_treatment' %}">Water & Wastewater Treatment</a></li>
+                                <li><a href="{% url 'axflo_app:waste_recycling' %}">Waste and Recycling</a></li>
+                                <li><a href="{% url 'axflo_app:renewable_energy' %}">Renewable Energy</a></li>
+                                <li><a href="{% url 'axflo_app:oil_spill_response' %}">Oil Spill Response</a></li>
+                                <li><a href="{% url 'axflo_app:preparedness_planning' %}">Preparedness</a></li>
+                                <li><a href="{% url 'axflo_app:incident_management' %}">Incident Management</a></li>
+                                <li><a href="{% url 'axflo_app:training_programs' %}">Training</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            
+            <li><a href="{% url 'axflo_app:achievements' %}">Projects</a></li>
+            
+            <!-- QHSE Dropdown -->
+            <li class="dropdown">
+                <a href="{% url 'axflo_app:qshe' %}">
+                    QHSE
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{% url 'axflo_app:qshe' %}#policies">Policies</a>
+                    <a href="{% url 'axflo_app:qshe' %}#certifications">Certifications</a>
+                    <a href="{% url 'axflo_app:qshe' %}#safety-standards">Safety Standards</a>
+                </div>
+            </li>
+            
+            <li><a href="{% url 'axflo_app:careers' %}">Careers</a></li>
+            <li><a href="{% url 'axflo_app:media' %}">Media Centre</a></li>
+            <li><a href="{% url 'axflo_app:csr' %}">CSR</a></li>
+          
+        </ul>
+        
+        <div class="nav__action">
+            <a href="{% url 'axflo_app:contact' %}">Contact</a>
+        </div>
+    </nav>
+</header>
+
+<!-- Mobile Toggle Button -->
+<div class="toggle-btn" onclick="toggleNav()">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<!-- Mobile Slide Modal -->
+<div class="mobile-nav">
+    <div class="mobile-nav__header">
+        <img src="{% static 'axflo_app/images/axflo.png' %}" alt="Axflo logo">
+    </div>
+    <ul class="mobile-nav__links">
+        <li><a href="{% url 'axflo_app:index' %}"><i class="fas fa-home"></i>Home</a></li>
+        
+        <li>
+            <a href="{% url 'axflo_app:about' %}" onclick="toggleMobileDropdown(event, 'about-dropdown')">
+                <i class="fas fa-users"></i>About Us
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </a>
+            <div class="mobile-dropdown" id="about-dropdown">
+                <a href="{% url 'axflo_app:about' %}#our-company">Our Company</a>
+                <a href="{% url 'axflo_app:about' %}#board-directors">Board of Directors</a>
+                <a href="{% url 'axflo_app:about' %}#about">Company Overview</a>
+                <a href="{% url 'axflo_app:about' %}#hse">Health Safety and Environment</a>
+                <a href="{% url 'axflo_app:about' %}#our-people">Our People</a>
+                <a href="{% url 'axflo_app:about' %}#milestones">Major Milestones</a>
+                <a href="{% url 'axflo_app:about' %}#services">Our Services</a>
+                <a href="{% url 'axflo_app:about' %}#technology">Technology Partners</a>
+                <a href="{% url 'axflo_app:about' %}#leadership">Leadership & Innovation</a>
+                <a href="{% url 'axflo_app:contact' %}">Contact Us</a>
+            </div>
+        </li>
+        
+        <li>
+            <a href="{% url 'axflo_app:services' %}" onclick="toggleMobileDropdown(event, 'services-dropdown')">
+                <i class="fas fa-cogs"></i>Services
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </a>
+            <div class="mobile-dropdown" id="services-dropdown">
+                <a href="{% url 'axflo_app:services' %}#epc">EPC Contracting</a>
+                <a href="{% url 'axflo_app:engineering_consultancy' %}">Engineering & Consultancy</a>
+                <a href="{% url 'axflo_app:procurement_logistics' %}">Procurement & Logistics</a>
+                <a href="{% url 'axflo_app:construction_services' %}">Construction Services</a>
+                <a href="{% url 'axflo_app:offshore_marine_services' %}">Offshore Services</a>
+                <a href="{% url 'axflo_app:marine_support_services' %}">Marine Support</a>
+                <a href="{% url 'axflo_app:offshore_accommodation_services' %}">Offshore Accommodation</a>
+                <a href="{% url 'axflo_app:environmental_technologies' %}">Environmental Technologies</a>
+                <a href="{% url 'axflo_app:water_wastewater_treatment' %}">Water Treatment</a>
+                <a href="{% url 'axflo_app:oil_spill_response' %}">Oil Spill Response</a>
+                <a href="{% url 'axflo_app:equipment_hire_services' %}">Equipment Hire</a>
+            </div>
+        </li>
+        
+        <li><a href="{% url 'axflo_app:achievements' %}"><i class="fas fa-project-diagram"></i>Projects</a></li>
+        
+        <li>
+            <a href="{% url 'axflo_app:csr' %}" onclick="toggleMobileDropdown(event, 'qhse-dropdown')">
+                <i class="fas fa-shield-alt"></i>QHSE
+                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+            </a>
+            <div class="mobile-dropdown" id="qhse-dropdown">
+                <a href="{% url 'axflo_app:csr' %}#policies">Policies</a>
+                <a href="{% url 'axflo_app:csr' %}#certifications">Certifications</a>
+                <a href="{% url 'axflo_app:csr' %}#safety-standards">Safety Standards</a>
+            </div>
+        </li>
+        
+        <li><a href="{% url 'axflo_app:careers' %}"><i class="fas fa-briefcase"></i>Careers</a></li>
+        <li><a href="{% url 'axflo_app:media' %}"><i class="fas fa-newspaper"></i>Media Centre</a></li>
+        <li><a href="{% url 'axflo_app:csr' %}"><i class="fas fa-envelope"></i>CSR</a></li>
+    </ul>
+    <div class="mobile-nav__action">
+        <a href="{% url 'axflo_app:contact' %}">
+            <i class="fas fa-envelope"></i>
+            Contact
+        </a>
+    </div>
+</div>
+
+<!-- Overlay -->
+<div class="overlay" onclick="toggleNav()"></div>

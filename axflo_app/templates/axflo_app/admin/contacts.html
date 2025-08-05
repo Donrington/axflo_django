@@ -1,0 +1,344 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Contact Management - Axflo{% endblock %}
+
+{% block content %}
+<!-- Messages -->
+{% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<!-- Stats Cards -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-address-book"></i>
+        </div>
+        <div class="stat-number">{{ total_contacts }}</div>
+        <div class="stat-label">Total Contacts</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-envelope-open"></i>
+        </div>
+        <div class="stat-number">{{ unread_contacts }}</div>
+        <div class="stat-label">Unread Messages</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-calendar-day"></i>
+        </div>
+        <div class="stat-number">{{ contacts.paginator.count }}</div>
+        <div class="stat-label">Filtered Results</div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="filters-section">
+    <form method="get" class="filters-form">
+        <div class="filter-group">
+            <label for="search">Search:</label>
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search" name="search" value="{{ search_query }}" placeholder="Search contacts...">
+            </div>
+        </div>
+        
+        <div class="filter-group">
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All</option>
+                <option value="unread" {% if status_filter == 'unread' %}selected{% endif %}>Unread</option>
+                <option value="read" {% if status_filter == 'read' %}selected{% endif %}>Read</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label for="inquiry_type">Inquiry Type:</label>
+            <select id="inquiry_type" name="inquiry_type">
+                <option value="all">All Types</option>
+                {% for category in inquiry_categories %}
+                    <option value="{{ category.id }}" {% if inquiry_type_filter == category.id|stringformat:"s" %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="filter-actions">
+            <button type="submit" class="btn-primary">
+                <i class="fas fa-filter"></i>
+                Filter
+            </button>
+            <a href="/admin-contacts/" class="btn-secondary">
+                <i class="fas fa-times"></i>
+                Clear
+            </a>
+        </div>
+    </form>
+</div>
+
+<!-- Contacts Table -->
+<div class="table-section">
+    <div class="table-header">
+        <h2>Contact Submissions</h2>
+        <div class="table-actions">
+            <button class="btn-secondary" id="bulkActionsBtn">
+                <i class="fas fa-tasks"></i>
+                Bulk Actions
+            </button>
+            <div class="bulk-actions-dropdown" id="bulkActionsDropdown" style="display: none;">
+                <button class="btn-danger" id="bulkDeleteBtn">
+                    <i class="fas fa-trash"></i>
+                    Delete Selected
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th><input type="checkbox" id="selectAll"></th>
+                    <th>Status</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Company</th>
+                    <th>Inquiry Type</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                <tr class="contact-row {% if not contact.read %}unread{% endif %}">
+                    <td><input type="checkbox" class="contact-checkbox" value="{{ contact.id }}"></td>
+                    <td>
+                        <span class="status-badge {% if contact.read %}read{% else %}unread{% endif %}">
+                            <i class="fas {% if contact.read %}fa-envelope-open{% else %}fa-envelope{% endif %}"></i>
+                            {% if contact.read %}Read{% else %}Unread{% endif %}
+                        </span>
+                    </td>
+                    <td class="contact-name">
+                        <strong>{{ contact.name }}</strong>
+                    </td>
+                    <td class="contact-email">{{ contact.email }}</td>
+                    <td class="contact-company">{{ contact.company|default:"-" }}</td>
+                    <td class="inquiry-type">
+                        <span class="type-badge">{{ contact.inquiry_type.name }}</span>
+                    </td>
+                    <td class="contact-date">
+                        <span class="date-primary">{{ contact.date|date:"M d, Y" }}</span>
+                        <span class="date-secondary">{{ contact.date|time:"H:i" }}</span>
+                    </td>
+                    <td class="actions">
+                        <div class="action-buttons">
+                            <a href="/admin-contact/{{ contact.id }}/" class="btn-action btn-view" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <button class="btn-action btn-toggle" data-contact-id="{{ contact.id }}" title="Toggle Read Status">
+                                <i class="fas {% if contact.read %}fa-envelope-open{% else %}fa-envelope{% endif %}"></i>
+                            </button>
+                            <button class="btn-action btn-delete" data-contact-id="{{ contact.id }}" title="Delete Contact">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="8" class="no-data">
+                        <div class="no-data-content">
+                            <i class="fas fa-inbox"></i>
+                            <h3>No contacts found</h3>
+                            <p>Try adjusting your search criteria or filters.</p>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    {% if contacts.has_other_pages %}
+    <div class="pagination-wrapper">
+        <div class="pagination-info">
+            Showing {{ contacts.start_index }}-{{ contacts.end_index }} of {{ contacts.paginator.count }} contacts
+        </div>
+        <div class="pagination">
+            {% if contacts.has_previous %}
+                <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if inquiry_type_filter != 'all' %}&inquiry_type={{ inquiry_type_filter }}{% endif %}" class="page-link">
+                    <i class="fas fa-angle-double-left"></i>
+                </a>
+                <a href="?page={{ contacts.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if inquiry_type_filter != 'all' %}&inquiry_type={{ inquiry_type_filter }}{% endif %}" class="page-link">
+                    <i class="fas fa-angle-left"></i>
+                </a>
+            {% endif %}
+
+            <span class="page-current">
+                Page {{ contacts.number }} of {{ contacts.paginator.num_pages }}
+            </span>
+
+            {% if contacts.has_next %}
+                <a href="?page={{ contacts.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if inquiry_type_filter != 'all' %}&inquiry_type={{ inquiry_type_filter }}{% endif %}" class="page-link">
+                    <i class="fas fa-angle-right"></i>
+                </a>
+                <a href="?page={{ contacts.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if inquiry_type_filter != 'all' %}&inquiry_type={{ inquiry_type_filter }}{% endif %}" class="page-link">
+                    <i class="fas fa-angle-double-right"></i>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'contacts';
+    
+    // Toggle read status via AJAX
+    document.querySelectorAll('.btn-toggle').forEach(button => {
+        button.addEventListener('click', async function() {
+            const contactId = this.dataset.contactId;
+            const row = this.closest('tr');
+            
+            try {
+                const response = await fetch(`/admin-contact/${contactId}/toggle-read/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Update UI
+                    const statusBadge = row.querySelector('.status-badge');
+                    const icon = this.querySelector('i');
+                    
+                    if (data.read) {
+                        row.classList.remove('unread');
+                        statusBadge.className = 'status-badge read';
+                        statusBadge.innerHTML = '<i class="fas fa-envelope-open"></i> Read';
+                        icon.className = 'fas fa-envelope-open';
+                    } else {
+                        row.classList.add('unread');
+                        statusBadge.className = 'status-badge unread';
+                        statusBadge.innerHTML = '<i class="fas fa-envelope"></i> Unread';
+                        icon.className = 'fas fa-envelope';
+                    }
+                }
+            } catch (error) {
+                console.error('Error toggling read status:', error);
+            }
+        });
+    });
+
+    // Select all functionality
+    document.getElementById('selectAll').addEventListener('change', function() {
+        const checkboxes = document.querySelectorAll('.contact-checkbox');
+        checkboxes.forEach(checkbox => checkbox.checked = this.checked);
+    });
+
+    // Delete contact functionality
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', async function() {
+            const contactId = this.dataset.contactId;
+            const row = this.closest('tr');
+            const contactName = row.querySelector('.contact-name strong').textContent;
+            
+            if (!confirm(`Are you sure you want to delete the contact message from ${contactName}? This action cannot be undone.`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/admin-contact/${contactId}/delete/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Remove the row from the table
+                    row.remove();
+                    
+                    // Show success message
+                    alert(data.message);
+                    
+                    // Reload page to update counts
+                    window.location.reload();
+                } else {
+                    alert(data.message || 'Error deleting contact');
+                }
+            } catch (error) {
+                console.error('Error deleting contact:', error);
+                alert('Error deleting contact. Please try again.');
+            }
+        });
+    });
+
+    // Bulk actions functionality
+    document.getElementById('bulkActionsBtn').addEventListener('click', function() {
+        const dropdown = document.getElementById('bulkActionsDropdown');
+        dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Bulk delete functionality
+    document.getElementById('bulkDeleteBtn').addEventListener('click', async function() {
+        const selectedCheckboxes = document.querySelectorAll('.contact-checkbox:checked');
+        
+        if (selectedCheckboxes.length === 0) {
+            alert('Please select at least one contact to delete.');
+            return;
+        }
+        
+        if (!confirm(`Are you sure you want to delete ${selectedCheckboxes.length} selected contact message(s)? This action cannot be undone.`)) {
+            return;
+        }
+        
+        const contactIds = Array.from(selectedCheckboxes).map(cb => cb.value);
+        
+        try {
+            const response = await fetch('/admin-contacts/bulk-delete/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ contact_ids: contactIds })
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                alert(data.message);
+                window.location.reload();
+            } else {
+                alert(data.message || 'Error deleting contacts');
+            }
+        } catch (error) {
+            console.error('Error deleting contacts:', error);
+            alert('Error deleting contacts. Please try again.');
+        }
+    });
+</script>
+{% endblock %}

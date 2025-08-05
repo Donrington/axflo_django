@@ -1,0 +1,253 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Contact Details - {{ contact.name }} - Axflo{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<div class="breadcrumb">
+    <a href="/admin-contacts/" class="breadcrumb-link">
+        <i class="fas fa-address-book"></i>
+        Contact Management
+    </a>
+    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+    <span class="breadcrumb-current">{{ contact.name }}</span>
+</div>
+
+<!-- Messages -->
+{% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<div class="contact-detail-layout">
+    <!-- Contact Information Card -->
+    <div class="contact-info-card">
+        <div class="card-header">
+            <div class="contact-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="contact-meta">
+                <h1 class="contact-name">{{ contact.name }}</h1>
+                <span class="status-badge {% if contact.read %}read{% else %}unread{% endif %}">
+                    <i class="fas {% if contact.read %}fa-envelope-open{% else %}fa-envelope{% endif %}"></i>
+                    {% if contact.read %}Read{% else %}Unread{% endif %}
+                </span>
+            </div>
+        </div>
+
+        <div class="contact-details">
+            <div class="detail-row">
+                <div class="detail-label">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </div>
+                <div class="detail-value">
+                    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                </div>
+            </div>
+
+            {% if contact.company %}
+            <div class="detail-row">
+                <div class="detail-label">
+                    <i class="fas fa-building"></i>
+                    Company
+                </div>
+                <div class="detail-value">{{ contact.company }}</div>
+            </div>
+            {% endif %}
+
+            {% if contact.phone %}
+            <div class="detail-row">
+                <div class="detail-label">
+                    <i class="fas fa-phone"></i>
+                    Phone
+                </div>
+                <div class="detail-value">
+                    <a href="tel:{{ contact.phone }}">{{ contact.phone }}</a>
+                </div>
+            </div>
+            {% endif %}
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    <i class="fas fa-tag"></i>
+                    Inquiry Type
+                </div>
+                <div class="detail-value">
+                    <span class="type-badge">{{ contact.inquiry_type.name }}</span>
+                </div>
+            </div>
+
+            <div class="detail-row">
+                <div class="detail-label">
+                    <i class="fas fa-calendar"></i>
+                    Submitted
+                </div>
+                <div class="detail-value">
+                    <span class="date-primary">{{ contact.date|date:"F d, Y" }}</span>
+                    <span class="date-secondary">at {{ contact.date|time:"H:i" }}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-actions">
+            <a href="/admin-contacts/" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i>
+                Back to List
+            </a>
+            <button class="btn-primary" id="replyBtn">
+                <i class="fas fa-reply"></i>
+                Reply
+            </button>
+            <button class="btn-danger" id="deleteContactBtn" data-contact-id="{{ contact.id }}">
+                <i class="fas fa-trash"></i>
+                Delete
+            </button>
+        </div>
+    </div>
+
+    <!-- Message and Responses -->
+    <div class="message-section">
+        <!-- Original Message -->
+        <div class="message-card original-message">
+            <div class="message-header">
+                <div class="message-meta">
+                    <h3>Original Message</h3>
+                    <span class="message-date">{{ contact.date|date:"F d, Y \a\t H:i" }}</span>
+                </div>
+                <div class="message-actions">
+                    <button class="btn-action" title="Copy Message">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="message-content">
+                <p>{{ contact.message|linebreaks }}</p>
+            </div>
+        </div>
+
+        <!-- Responses -->
+        {% for response in responses %}
+        <div class="message-card response-message">
+            <div class="message-header">
+                <div class="response-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="message-meta">
+                    <h4>{{ response.staff_member.get_full_name|default:response.staff_member.username }}</h4>
+                    <span class="message-date">{{ response.response_date|date:"F d, Y \a\t H:i" }}</span>
+                </div>
+            </div>
+            <div class="message-content">
+                <p>{{ response.response_text|linebreaks }}</p>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Reply Form -->
+        <div class="reply-form-container" id="replyForm" style="display: none;">
+            <div class="form-card">
+                <div class="form-header">
+                    <h3>Send Response</h3>
+                    <button class="btn-close" id="closeReplyBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form method="post" class="response-form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="response_text">Your Response:</label>
+                        <textarea id="response_text" name="response_text" rows="6" placeholder="Type your response here..." required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" id="cancelReplyBtn">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Response
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'contacts';
+    
+    // Reply form toggle
+    const replyBtn = document.getElementById('replyBtn');
+    const replyForm = document.getElementById('replyForm');
+    const closeReplyBtn = document.getElementById('closeReplyBtn');
+    const cancelReplyBtn = document.getElementById('cancelReplyBtn');
+
+    replyBtn.addEventListener('click', function() {
+        replyForm.style.display = 'block';
+        document.getElementById('response_text').focus();
+    });
+
+    [closeReplyBtn, cancelReplyBtn].forEach(btn => {
+        btn.addEventListener('click', function() {
+            replyForm.style.display = 'none';
+            document.getElementById('response_text').value = '';
+        });
+    });
+
+    // Delete contact functionality
+    document.getElementById('deleteContactBtn').addEventListener('click', async function() {
+        const contactId = this.dataset.contactId;
+        const contactName = '{{ contact.name }}';
+        
+        if (!confirm(`Are you sure you want to delete the contact message from ${contactName}? This action cannot be undone.`)) {
+            return;
+        }
+        
+        try {
+            const response = await fetch(`/admin-contact/${contactId}/delete/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            });
+            
+            const data = await response.json();
+            
+            if (data.success) {
+                alert(data.message);
+                window.location.href = '/admin-contacts/';
+            } else {
+                alert(data.message || 'Error deleting contact');
+            }
+        } catch (error) {
+            console.error('Error deleting contact:', error);
+            alert('Error deleting contact. Please try again.');
+        }
+    });
+
+    // Copy message functionality
+    document.querySelector('.btn-action[title="Copy Message"]').addEventListener('click', function() {
+        const messageText = document.querySelector('.original-message .message-content p').textContent;
+        navigator.clipboard.writeText(messageText).then(function() {
+            // Show success feedback
+            this.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-copy"></i>';
+            }, 2000);
+        }.bind(this));
+    });
+</script>
+{% endblock %}

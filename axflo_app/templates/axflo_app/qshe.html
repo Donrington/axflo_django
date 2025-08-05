@@ -1,0 +1,524 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}QSHE - Quality, Safety, Health & Environment | Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/qshe.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!-- Include Navigation -->
+    {% include 'axflo_app/includes/navbar.html' %}
+
+    
+    <!-- Overlay -->
+    <div class="overlay" onclick="toggleNav()"></div>
+
+    <!-- Hero Section -->
+    <section class="qshe-hero">
+        <div class="background-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span>Q</span><span>u</span><span>a</span><span>l</span><span>i</span><span>t</span><span>y</span><span>,</span>
+                <span>S</span><span>a</span><span>f</span><span>e</span><span>t</span><span>y</span><span>,</span>
+                <br>
+                <span>H</span><span>e</span><span>a</span><span>l</span><span>t</span><span>h</span>
+                <span>&</span>
+                <span>E</span><span>n</span><span>v</span><span>i</span><span>r</span><span>o</span><span>n</span><span>m</span><span>e</span><span>n</span><span>t</span>
+            </h1>
+            <p class="hero-subtitle">
+                At Axflo Oil & Gas Nigeria Limited, we maintain the highest standards of quality, safety, health, and environmental protection across all our operations. Our comprehensive QSHE framework ensures sustainable and responsible business practices.
+            </p>
+        </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <section class="qshe-navigation">
+        <div class="nav-container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-target="policies">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Policies</span>
+                </button>
+                <button class="nav-tab" data-target="certifications">
+                    <i class="fas fa-certificate"></i>
+                    <span>Certifications</span>
+                </button>
+                <button class="nav-tab" data-target="safety-standards">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Safety Standards</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Sections -->
+    <main class="qshe-content">
+        
+        <!-- Policies Section -->
+        <section id="policies" class="content-section active">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our QSHE Policies</h2>
+                    <p>Comprehensive policies governing our commitment to excellence in quality, safety, health, and environmental stewardship</p>
+                </div>
+
+                <div class="policies-grid">
+                    <!-- Quality Policy -->
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Quality Policy</h3>
+                        <p>Our commitment to delivering excellence through systematic quality management, continuous improvement, and customer satisfaction.</p>
+                        <div class="policy-details">
+                            <h4>Key Principles:</h4>
+                            <ul>
+                                <li>Customer-focused approach to service delivery</li>
+                                <li>Continuous improvement of processes and systems</li>
+                                <li>Compliance with ISO 9001:2015 standards</li>
+                                <li>Employee competency development and training</li>
+                                <li>Data-driven decision making</li>
+                                <li>Supplier and partner quality assurance</li>
+                            </ul>
+                            <div class="policy-actions">
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Download Policy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Policy -->
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h3>Safety Policy</h3>
+                        <p>Zero harm philosophy ensuring the safety and well-being of all personnel, contractors, and communities where we operate.</p>
+                        <div class="policy-details">
+                            <h4>Core Commitments:</h4>
+                            <ul>
+                                <li>Zero tolerance for preventable incidents</li>
+                                <li>Comprehensive risk assessment and management</li>
+                                <li>Regular safety training and awareness programs</li>
+                                <li>Implementation of best-in-class safety technologies</li>
+                                <li>Emergency response and crisis management</li>
+                                <li>Contractor and visitor safety orientation</li>
+                            </ul>
+                            <div class="policy-actions">
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Download Policy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Health Policy -->
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Health Policy</h3>
+                        <p>Promoting and protecting the health and wellness of our workforce through proactive health management programs.</p>
+                        <div class="policy-details">
+                            <h4>Health Initiatives:</h4>
+                            <ul>
+                                <li>Occupational health monitoring and surveillance</li>
+                                <li>Workplace wellness and fitness programs</li>
+                                <li>Mental health support and counseling services</li>
+                                <li>Medical emergency response capabilities</li>
+                                <li>Health risk assessment and mitigation</li>
+                                <li>Ergonomic workplace design and practices</li>
+                            </ul>
+                            <div class="policy-actions">
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Download Policy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Environmental Policy -->
+                    <div class="policy-card">
+                        <div class="policy-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Environmental Policy</h3>
+                        <p>Commitment to environmental stewardship through sustainable practices, pollution prevention, and conservation efforts.</p>
+                        <div class="policy-details">
+                            <h4>Environmental Goals:</h4>
+                            <ul>
+                                <li>Minimize environmental impact of operations</li>
+                                <li>Compliance with ISO 14001:2015 standards</li>
+                                <li>Waste reduction and circular economy practices</li>
+                                <li>Energy efficiency and carbon footprint reduction</li>
+                                <li>Biodiversity protection and habitat conservation</li>
+                                <li>Water resource management and protection</li>
+                            </ul>
+                            <div class="policy-actions">
+                                <a href="#" class="btn-download">
+                                    <i class="fas fa-download"></i>
+                                    Download Policy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Certifications</h2>
+                    <p>Internationally recognized certifications demonstrating our commitment to excellence and compliance</p>
+                </div>
+
+                <div class="certifications-showcase">
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <div class="cert-logo">ISO</div>
+                            <div class="cert-status active">Active</div>
+                        </div>
+                        <div class="cert-title">ISO 9001:2015</div>
+                        <div class="cert-subtitle">Quality Management Systems</div>
+                        <div class="cert-description">
+                            This certification demonstrates our commitment to consistent quality in products and services through systematic process management, customer focus, and continuous improvement methodologies.
+                        </div>
+                        <div class="cert-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Process Optimization</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Customer Satisfaction</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Continuous Improvement</span>
+                            </div>
+                        </div>
+                        <div class="cert-details">
+                            <div class="cert-info">
+                                <span class="label">Certification Body:</span>
+                                <span class="value">International Certification Agency</span>
+                            </div>
+                            <div class="cert-info">
+                                <span class="label">Valid Until:</span>
+                                <span class="value">December 2027</span>
+                            </div>
+                            <div class="cert-info">
+                                <span class="label">Scope:</span>
+                                <span class="value">Oil & Gas Operations, Engineering Services</span>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="{% static 'axflo_app/certificates/ISO9001.pdf' %}" class="btn-primary" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Download Certificate
+                            </a>
+                            <button class="btn-secondary" onclick="viewCertificate('ISO9001')">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="certification-card">
+                        <div class="cert-header">
+                            <div class="cert-logo">ISO</div>
+                            <div class="cert-status active">Active</div>
+                        </div>
+                        <div class="cert-title">ISO 14001:2015</div>
+                        <div class="cert-subtitle">Environmental Management Systems</div>
+                        <div class="cert-description">
+                            This certification validates our systematic approach to environmental management, demonstrating our commitment to reducing environmental impact and promoting sustainable business practices.
+                        </div>
+                        <div class="cert-features">
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Environmental Protection</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Compliance Management</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check"></i>
+                                <span>Sustainability Goals</span>
+                            </div>
+                        </div>
+                        <div class="cert-details">
+                            <div class="cert-info">
+                                <span class="label">Certification Body:</span>
+                                <span class="value">International Certification Agency</span>
+                            </div>
+                            <div class="cert-info">
+                                <span class="label">Valid Until:</span>
+                                <span class="value">December 2027</span>
+                            </div>
+                            <div class="cert-info">
+                                <span class="label">Scope:</span>
+                                <span class="value">Environmental Services, Waste Management</span>
+                            </div>
+                        </div>
+                        <div class="cert-actions">
+                            <a href="{% static 'axflo_app/certificates/ISO14001.pdf' %}" class="btn-primary" target="_blank">
+                                <i class="fas fa-download"></i>
+                                Download Certificate
+                            </a>
+                            <button class="btn-secondary" onclick="viewCertificate('ISO14001')">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification Stats -->
+                <div class="cert-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">Active ISO Certifications</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Compliance Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Certified</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Quality Monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety Standards Section -->
+        <section id="safety-standards" class="content-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Safety Standards & Protocols</h2>
+                    <p>Comprehensive safety frameworks and industry-leading standards that guide our operations</p>
+                </div>
+
+                <div class="standards-grid">
+                    <!-- International Standards -->
+                    <div class="standards-category">
+                        <h3>
+                            <i class="fas fa-globe"></i>
+                            International Standards
+                        </h3>
+                        <div class="standards-list">
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>OHSAS 18001 / ISO 45001</h4>
+                                    <p>Occupational Health and Safety Management Systems</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-oil-can"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>API Standards</h4>
+                                    <p>American Petroleum Institute safety and operational standards</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-water"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>IMO MARPOL</h4>
+                                    <p>International Maritime Organization pollution prevention standards</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nigerian Standards -->
+                    <div class="standards-category">
+                        <h3>
+                            <i class="fas fa-flag"></i>
+                            Nigerian Regulatory Standards
+                        </h3>
+                        <div class="standards-list">
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>DPR Regulations</h4>
+                                    <p>Department of Petroleum Resources safety and environmental guidelines</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>NESREA Guidelines</h4>
+                                    <p>National Environmental Standards and Regulations Enforcement Agency</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                            <div class="standard-item">
+                                <div class="standard-icon">
+                                    <i class="fas fa-anchor"></i>
+                                </div>
+                                <div class="standard-content">
+                                    <h4>NIMASA Standards</h4>
+                                    <p>Nigerian Maritime Administration and Safety Agency requirements</p>
+                                    <span class="standard-status implemented">Implemented</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Protocols -->
+                    <div class="standards-category full-width">
+                        <h3>
+                            <i class="fas fa-clipboard-check"></i>
+                            Key Safety Protocols
+                        </h3>
+                        <div class="protocols-grid">
+                            <div class="protocol-card">
+                                <div class="protocol-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h4>Emergency Response</h4>
+                                <ul>
+                                    <li>24/7 Emergency Response Team</li>
+                                    <li>Oil Spill Response Equipment</li>
+                                    <li>Medical Emergency Protocols</li>
+                                    <li>Evacuation Procedures</li>
+                                    <li>Crisis Communication Plans</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-card">
+                                <div class="protocol-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+                                <h4>Training & Competency</h4>
+                                <ul>
+                                    <li>Safety Induction Programs</li>
+                                    <li>Technical Skills Training</li>
+                                    <li>Regular Safety Refreshers</li>
+                                    <li>Competency Assessments</li>
+                                    <li>Certification Programs</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-card">
+                                <div class="protocol-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>Risk Management</h4>
+                                <ul>
+                                    <li>Hazard Identification (HIRA)</li>
+                                    <li>Job Safety Analysis (JSA)</li>
+                                    <li>Process Safety Management</li>
+                                    <li>Risk Assessment Matrix</li>
+                                    <li>Mitigation Strategies</li>
+                                </ul>
+                            </div>
+                            <div class="protocol-card">
+                                <div class="protocol-icon">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <h4>Equipment & Maintenance</h4>
+                                <ul>
+                                    <li>Preventive Maintenance Programs</li>
+                                    <li>Equipment Inspection Schedules</li>
+                                    <li>Safety Device Testing</li>
+                                    <li>Calibration Management</li>
+                                    <li>Asset Integrity Management</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Safety Performance Metrics -->
+                <div class="safety-metrics">
+                    <h3>Safety Performance</h3>
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value">0</div>
+                            <div class="metric-label">Lost Time Incidents (2024)</div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-arrow-down"></i>
+                                Zero incidents maintained
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">1,000+</div>
+                            <div class="metric-label">Safe Working Hours</div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-arrow-up"></i>
+                                Continuously increasing
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">100%</div>
+                            <div class="metric-label">Training Completion Rate</div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-check"></i>
+                                All personnel trained
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value">24/7</div>
+                            <div class="metric-label">Emergency Response</div>
+                            <div class="metric-trend positive">
+                                <i class="fas fa-clock"></i>
+                                Always ready
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Include Footer -->
+    {% include 'axflo_app/includes/footer.html' %}
+
+    <!-- Ultra Modern Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <button class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+            <svg class="progress-ring">
+                <circle class="progress-ring-circle" cx="30" cy="30" r="28"></circle>
+            </svg>
+            <svg viewBox="0 0 384 512" class="back-to-top-icon">
+                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+            </svg>
+        </button>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/main.js' %}"></script>
+<script src="{% static 'axflo_app/js/qshe.js' %}"></script>
+{% endblock %}

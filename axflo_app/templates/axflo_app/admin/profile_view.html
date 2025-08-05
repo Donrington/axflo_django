@@ -1,0 +1,408 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}My Profile - Axflo Admin{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .profile-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        .profile-header {
+            background: var(--gradient-mesh);
+            color: var(--text-primary);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: var(--shadow-primary);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid var(--glass-border);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: var(--bg-glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            border: 3px solid var(--border-glass);
+            color: var(--primary-gold);
+        }
+
+        .profile-name {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0 0 5px 0;
+            color: var(--text-primary);
+        }
+
+        .profile-role {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .profile-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow-primary);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .profile-section h3 {
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-section h3 i {
+            margin-right: 10px;
+            color: var(--primary-gold);
+        }
+
+        .profile-field {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .profile-field:last-child {
+            border-bottom: none;
+        }
+
+        .field-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .field-value {
+            color: var(--text-primary);
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .status-active {
+            background: var(--accent-glow);
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+        }
+
+        .status-staff {
+            background: var(--bg-glass);
+            color: var(--primary-gold-light);
+            border: 1px solid var(--primary-gold-light);
+        }
+
+        .status-admin {
+            background: var(--gradient-overlay);
+            color: var(--hover-color);
+            border: 1px solid var(--hover-color);
+        }
+
+        .profile-actions {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow-primary);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(var(--blur-amount));
+            text-align: center;
+        }
+
+        .profile-actions h3 {
+            color: var(--text-primary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .action-btn {
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--text-dark);
+            border-color: var(--primary-gold);
+        }
+
+        .btn-primary:hover {
+            background: var(--hover-color);
+            border-color: var(--hover-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: var(--bg-glass);
+            color: var(--primary-gold);
+            border-color: var(--primary-gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-glass-hover);
+            color: var(--hover-color);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-danger {
+            background: var(--bg-glass);
+            color: #ff6b6b;
+            border-color: #ff6b6b;
+        }
+
+        .btn-danger:hover {
+            background: #ff6b6b;
+            color: var(--text-dark);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-glass);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-glass);
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary-gold);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="profile-name">
+                {{ user_profile.get_full_name|default:user_profile.username }}
+            </h1>
+            <p class="profile-role">
+                {% if user_profile.is_superuser %}
+                    System Administrator
+                {% elif user_profile.is_staff %}
+                    Staff Member
+                {% else %}
+                    User
+                {% endif %}
+            </p>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">{{ user_stats.date_joined|timesince }}</div>
+                    <div class="stat-label">Member For</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">
+                        {% if user_stats.last_login %}
+                            {{ user_stats.last_login|timesince }} ago
+                        {% else %}
+                            Never
+                        {% endif %}
+                    </div>
+                    <div class="stat-label">Last Login</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">
+                        {% if user_profile.is_active %}Active{% else %}Inactive{% endif %}
+                    </div>
+                    <div class="stat-label">Account Status</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Content -->
+        <div class="profile-content">
+            <!-- Personal Information -->
+            <div class="profile-section">
+                <h3><i class="fas fa-user"></i>Personal Information</h3>
+                
+                <div class="profile-field">
+                    <span class="field-label">Username</span>
+                    <span class="field-value">{{ user_profile.username }}</span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">First Name</span>
+                    <span class="field-value">{{ user_profile.first_name|default:"Not set" }}</span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Last Name</span>
+                    <span class="field-value">{{ user_profile.last_name|default:"Not set" }}</span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Email Address</span>
+                    <span class="field-value">{{ user_profile.email|default:"Not set" }}</span>
+                </div>
+            </div>
+
+            <!-- Account Information -->
+            <div class="profile-section">
+                <h3><i class="fas fa-cog"></i>Account Information</h3>
+                
+                <div class="profile-field">
+                    <span class="field-label">Account Status</span>
+                    <span class="field-value">
+                        {% if user_profile.is_active %}
+                            <span class="status-badge status-active">Active</span>
+                        {% else %}
+                            <span class="status-badge">Inactive</span>
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Staff Status</span>
+                    <span class="field-value">
+                        {% if user_profile.is_staff %}
+                            <span class="status-badge status-staff">Staff Member</span>
+                        {% else %}
+                            <span class="status-badge">Regular User</span>
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Administrator</span>
+                    <span class="field-value">
+                        {% if user_profile.is_superuser %}
+                            <span class="status-badge status-admin">Superuser</span>
+                        {% else %}
+                            <span class="status-badge">No</span>
+                        {% endif %}
+                    </span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Date Joined</span>
+                    <span class="field-value">{{ user_profile.date_joined|date:"F d, Y" }}</span>
+                </div>
+                
+                <div class="profile-field">
+                    <span class="field-label">Last Login</span>
+                    <span class="field-value">
+                        {% if user_profile.last_login %}
+                            {{ user_profile.last_login|date:"F d, Y - g:i A" }}
+                        {% else %}
+                            Never
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Actions -->
+        <div class="profile-actions">
+            <h3><i class="fas fa-tools"></i>Profile Management</h3>
+            
+            <div class="action-buttons">
+                <a href="/admin-profile-edit/" class="action-btn btn-primary">
+                    <i class="fas fa-edit"></i>
+                    Edit Profile
+                </a>
+                
+                <a href="/admin-profile-password/" class="action-btn btn-secondary">
+                    <i class="fas fa-key"></i>
+                    Change Password
+                </a>
+                
+                <a href="/admindashboard/" class="action-btn btn-secondary">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                
+                <a href="/admin-profile-delete/" class="action-btn btn-danger">
+                    <i class="fas fa-trash-alt"></i>
+                    Delete Account
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

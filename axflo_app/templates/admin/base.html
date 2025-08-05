@@ -1,0 +1,108 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <style>
+        /* Custom admin sidebar integration styles */
+        .profile-nav-section {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007cba;
+        }
+        .profile-nav-section h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .profile-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .profile-nav-links a {
+            background: #007cba;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .profile-nav-links a:hover {
+            background: #005a85;
+            color: white;
+            text-decoration: none;
+        }
+        .profile-nav-links a i {
+            margin-right: 5px;
+        }
+        
+        /* Custom admin header enhancement */
+        .admin-profile-info {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 20px;
+            padding: 5px 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            color: white;
+            font-size: 12px;
+        }
+        .admin-profile-info i {
+            margin-right: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block nav-global %}
+    {{ block.super }}
+    
+    <!-- Add profile info to admin header -->
+    <div class="admin-profile-info">
+        <i class="fas fa-user-circle"></i>
+        {{ user.get_full_name|default:user.username }}
+        {% if user.is_superuser %}
+            <span style="margin-left: 10px; background: #28a745; padding: 2px 6px; border-radius: 3px; font-size: 10px;">ADMIN</span>
+        {% elif user.is_staff %}
+            <span style="margin-left: 10px; background: #17a2b8; padding: 2px 6px; border-radius: 3px; font-size: 10px;">STAFF</span>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- Profile navigation section for admin pages -->
+    {% if '/admin/auth/user/' in request.path or 'user' in request.resolver_match.url_name %}
+        <div class="profile-nav-section">
+            <h4><i class="fas fa-user-cog"></i> Profile Management</h4>
+            <div class="profile-nav-links">
+                <a href="{% url 'admin:auth_user_changelist' %}">
+                    <i class="fas fa-list"></i>
+                    {% if user.is_superuser %}All Users{% else %}My Profile{% endif %}
+                </a>
+                <a href="{% url 'admin:auth_user_change' user.pk %}">
+                    <i class="fas fa-edit"></i>Edit Profile
+                </a>
+                <a href="{% url 'admin:auth_user_password_change' user.pk %}">
+                    <i class="fas fa-key"></i>Change Password
+                </a>
+                {% if user.is_superuser %}
+                <a href="{% url 'admin:auth_user_add' %}">
+                    <i class="fas fa-plus"></i>Add User
+                </a>
+                {% endif %}
+                <a href="{% url 'admin:index' %}">
+                    <i class="fas fa-home"></i>Admin Home
+                </a>
+            </div>
+        </div>
+    {% endif %}
+    
+    {{ block.super }}
+{% endblock %}

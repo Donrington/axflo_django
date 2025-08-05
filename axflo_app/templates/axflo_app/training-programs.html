@@ -1,0 +1,401 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Training-Programs - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/training-programs.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Training Programs Hero Section -->
+    <section class="training-hero">
+        <div class="learning-backdrop"></div>
+        
+        <div class="knowledge-flow">
+            <div class="learning-stream"></div>
+            <div class="learning-stream"></div>
+            <div class="learning-stream"></div>
+            <div class="learning-stream"></div>
+        </div>
+        
+        <div class="training-nodes">
+            <div class="training-node node-1">
+                <i class="fas fa-graduation-cap"></i>
+                <div class="training-indicator"></div>
+            </div>
+            <div class="training-node node-2">
+                <i class="fas fa-shield-alt"></i>
+                <div class="training-indicator"></div>
+            </div>
+            <div class="training-node node-3">
+                <i class="fas fa-certificate"></i>
+                <div class="training-indicator"></div>
+            </div>
+            <div class="training-node node-4">
+                <i class="fas fa-users"></i>
+                <div class="training-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="training-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="learning-badge">
+                <div class="learning-icon"></div>
+                Expert Training Excellence Since 2009
+            </div>
+            
+            <h1 class="training-title">Training Programs</h1>
+            
+            <p class="training-subtitle">
+                Industry-leading training programs building capacity in environmental protection, oil spill 
+                response, and emergency management across Nigeria's oil and gas operations, through comprehensive 
+                HSE training, response team development, and professional certification programs.
+            </p>
+            
+            <a href="#training-overview" class="training-cta">
+                Explore Training
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Training Overview -->
+    <section id="training-overview" class="training-overview">
+        <div class="training-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Environmental Training Excellence</h2>
+                    <p>
+                        Axflo's Training Programs provide comprehensive capacity building in environmental 
+                        protection, oil spill response, and emergency management for Nigeria's oil and gas 
+                        sector. Our industry-leading training develops skilled professionals equipped to 
+                        protect Nigeria's marine environment and manage environmental challenges.
+                    </p>
+                    <p>
+                        From HSE fundamentals to advanced oil spill response techniques, our training 
+                        programs combine theoretical knowledge with practical hands-on experience. Our 
+                        certified instructors deliver world-class training ensuring participants gain 
+                        competencies essential for environmental protection and emergency response operations.
+                    </p>
+                    
+                    <div class="training-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-letter">Professional</span>
+                            <span class="metric-title">Certification</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">1000+</span>
+                            <span class="metric-title">Trained Personnel</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-letter">Environmental</span>
+                            <span class="metric-title">Focus</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="training-visual" data-aos="slide-left" data-aos-duration="1000">
+         <div class="visual-image">
+                          <img src=" {% static 'axflo_app/images/training2.webp' %}" alt="Training Program" loading="lazy">
+                        <p>Training Programs</p>
+                        <small>Capacity building & certification</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Services -->
+    <section class="training-services">
+        <div class="training-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Training & Certification Programs</h2>
+                <p>
+                    Comprehensive training solutions building expertise in environmental protection, 
+                    oil spill response, and emergency management for Nigeria's oil and gas sector.
+                </p>
+            </div>
+            
+            <div class="training-services-grid">
+                <!-- HSE Training -->
+                <div class="training-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>HSE Training</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive Health, Safety, and Environmental training programs covering 
+                        environmental protection, risk management, and safety protocols for oil and 
+                        gas operations ensuring regulatory compliance and environmental stewardship.
+                    </p>
+                    <ul class="service-features">
+                        <li>Environmental Protection Training</li>
+                        <li>Safety Management Systems</li>
+                        <li>Risk Assessment Procedures</li>
+                        <li>Regulatory Compliance</li>
+                        <li>Environmental Impact Assessment</li>
+                        <li>Incident Prevention</li>
+                        <li>HSE Leadership Development</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Response Team Training -->
+                <div class="training-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3>Response Team Training</h3>
+                    </div>
+                    <p class="service-description">
+                        Specialized training for oil spill response teams covering equipment operation, 
+                        deployment techniques, and emergency procedures ensuring rapid and effective 
+                        response to environmental emergencies and spill incidents.
+                    </p>
+                    <ul class="service-features">
+                        <li>Oil Spill Response Techniques</li>
+                        <li>Equipment Operation Training</li>
+                        <li>Deployment Procedures</li>
+                        <li>Emergency Response Protocols</li>
+                        <li>Team Coordination</li>
+                        <li>Practical Drill Exercises</li>
+                        <li>Response Team Leadership</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Certification Programs -->
+                <div class="training-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certification Programs</h3>
+                    </div>
+                    <p class="service-description">
+                        Professional certification programs providing recognized credentials in 
+                        environmental protection, oil spill response, and emergency management 
+                        ensuring competency verification and career advancement opportunities.
+                    </p>
+                    <ul class="service-features">
+                        <li>Oil Spill Response Certification</li>
+                        <li>Environmental Management Certification</li>
+                        <li>Emergency Response Certification</li>
+                        <li>HSE Professional Certification</li>
+                        <li>Equipment Operator Certification</li>
+                        <li>Competency Assessment</li>
+                        <li>Continuing Education Credits</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Management Training -->
+                <div class="training-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Environmental Management</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced environmental management training covering ecosystem protection, 
+                        environmental impact assessment, and sustainable practices for oil and gas 
+                        operations ensuring environmental stewardship and regulatory compliance.
+                    </p>
+                    <ul class="service-features">
+                        <li>Environmental Impact Assessment</li>
+                        <li>Ecosystem Protection</li>
+                        <li>Biodiversity Conservation</li>
+                        <li>Sustainable Operations</li>
+                        <li>Environmental Monitoring</li>
+                        <li>Remediation Techniques</li>
+                        <li>Compliance Management</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Process -->
+    <section class="learning-process">
+        <div class="training-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Training Development Process</h2>
+                <p>
+                    Systematic approach to training development ensuring effective knowledge transfer 
+                    and skill development for environmental protection professionals.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Needs Assessment</h3>
+                    <p>Comprehensive assessment of training requirements and competency gaps for targeted skill development programs.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>Curriculum Development</h3>
+                    <p>Design of comprehensive training curricula combining theoretical knowledge with practical application and hands-on experience.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Training Delivery</h3>
+                    <p>Expert instruction using interactive methods, practical exercises, and real-world scenarios for effective learning outcomes.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Assessment & Certification</h3>
+                    <p>Comprehensive competency assessment and professional certification ensuring training effectiveness and skill verification.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Categories -->
+    <section class="training-categories">
+        <div class="training-container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2>Training Specializations</h2>
+                <p>
+                    Specialized training programs covering essential competencies for environmental 
+                    protection and emergency response in Nigeria's oil and gas operations.
+                </p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Oil Spill Response</h4>
+                    <p>Comprehensive training in oil spill response techniques, equipment operation, and emergency deployment procedures for effective environmental protection.</p>
+                </div>
+                
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h4>Safety Management</h4>
+                    <p>Health and safety training programs covering risk assessment, hazard identification, and safety management systems for oil and gas operations.</p>
+                </div>
+                
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Environmental Protection</h4>
+                    <p>Environmental stewardship training covering ecosystem protection, biodiversity conservation, and sustainable operational practices.</p>
+                </div>
+                
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="category-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>Emergency Management</h4>
+                    <p>Emergency response and crisis management training ensuring effective coordination and resolution of environmental emergencies.</p>
+                </div>
+                
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="category-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Equipment Operations</h4>
+                    <p>Technical training for oil spill response equipment operation, maintenance, and deployment ensuring optimal equipment performance.</p>
+                </div>
+                
+                <div class="training-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="category-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4>Compliance Management</h4>
+                    <p>Regulatory compliance training ensuring adherence to environmental standards and regulatory requirements for oil and gas operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="training-cta-section">
+        <div class="training-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Advance Your Environmental Expertise</h2>
+                <p>
+                    Build essential skills with Nigeria's leading environmental training specialists. 
+                    Develop expertise that protects our environment while advancing your career.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Enroll Today
+                    </a>
+                    <a href="#programs" class="cta-action cta-secondary">
+                        <i class="fas fa-graduation-cap"></i>
+                        View Programs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/training-programs.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

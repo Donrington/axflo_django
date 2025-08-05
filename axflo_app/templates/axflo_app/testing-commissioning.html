@@ -1,0 +1,527 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Testing-Commissioning - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/testing-commissioning.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Testing & Commissioning Hero Section -->
+    <section class="testing-hero">
+        <div class="validation-backdrop"></div>
+        
+        <div class="testing-matrix">
+            <div class="matrix-line"></div>
+            <div class="matrix-line"></div>
+            <div class="matrix-line"></div>
+            <div class="matrix-line"></div>
+            <div class="matrix-line"></div>
+        </div>
+        
+        <div class="testing-validators">
+            <div class="validation-node validator-1">
+                <i class="fas fa-check-circle"></i>
+                <div class="validation-status"></div>
+            </div>
+            <div class="validation-node validator-2">
+                <i class="fas fa-clipboard-check"></i>
+                <div class="validation-status"></div>
+            </div>
+            <div class="validation-node validator-3">
+                <i class="fas fa-chart-line"></i>
+                <div class="validation-status"></div>
+            </div>
+            <div class="validation-node validator-4">
+                <i class="fas fa-award"></i>
+                <div class="validation-status"></div>
+            </div>
+            <div class="validation-node validator-5">
+                <i class="fas fa-shield-alt"></i>
+                <div class="validation-status"></div>
+            </div>
+        </div>
+        
+        <div class="testing-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="validation-badge">
+                <div class="validation-icon"></div>
+                Equipment Testing Excellence Since 2009
+            </div>
+            
+            <h1 class="testing-title">Testing, Commissioning & Training</h1>
+            
+            <p class="testing-subtitle">
+                Professional testing, commissioning, and training services for oil spill response equipment 
+                ensuring optimal performance, operational readiness, and compliance with environmental 
+                protection standards across Nigeria's oil and gas operations.
+            </p>
+            
+            <a href="#testing-overview" class="testing-cta">
+                Explore Our Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Testing Overview -->
+    <section id="testing-overview" class="testing-overview">
+        <div class="testing-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>OSR Equipment Testing & Commissioning</h2>
+                    <p>
+                        Axflo's Testing, Commissioning & Training services ensure that oil spill response 
+                        equipment operates at peak performance when needed most. Our comprehensive testing 
+                        protocols and commissioning procedures verify that all OSR equipment meets 
+                        manufacturer specifications and regulatory requirements for emergency deployment.
+                    </p>
+                    <p>
+                        From initial equipment installation through operational handover, our experienced 
+                        technicians conduct thorough testing, performance verification, and operator training 
+                        ensuring equipment readiness and personnel competency for effective environmental 
+                        protection and emergency response operations.
+                    </p>
+                    
+                    <div class="testing-metrics">
+                        <div class="metric-validation" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-validation" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-number">200+</span>
+                            <span class="metric-title">Equipment Units Tested</span>
+                        </div>
+                        <div class="metric-validation" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-title">Compliance Rate</span>
+                        </div>
+                        <div class="metric-validation" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-number">Professional</span>
+                            <span class="metric-title">Training Programs</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testing-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/crew2.jpg' %}" alt="Equipment Testing & Validation" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Equipment Testing & Validation</p>
+                            <small>OSR equipment commissioning protocols</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Services Detailed -->
+    <section class="testing-services">
+        <div class="testing-container">
+            <div class="testing-header" data-aos="fade-up">
+                <h2>Core Testing & Commissioning Services</h2>
+                <p>
+                    Specialized testing and commissioning solutions for oil spill response equipment 
+                    ensuring operational readiness and compliance with environmental protection standards.
+                </p>
+            </div>
+            
+            <div class="testing-grid">
+                <!-- OSR Equipment Testing -->
+                <div class="testing-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testing-card-header">
+                        <div class="testing-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <h3>OSR Equipment Testing</h3>
+                    </div>
+                    <p class="testing-description">
+                        Comprehensive testing of oil spill response equipment including skimmers, booms, 
+                        pumps, and recovery systems ensuring optimal performance and immediate readiness 
+                        for emergency deployment when environmental protection is critical.
+                    </p>
+                    <ul class="testing-features">
+                        <li>Skimmer Performance Testing</li>
+                        <li>Boom Deployment & Recovery Tests</li>
+                        <li>Pump Flow Rate Verification</li>
+                        <li>Equipment Integration Testing</li>
+                        <li>Performance Optimization</li>
+                        <li>Operational Readiness Verification</li>
+                        <li>Manufacturer Specification Compliance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="testing-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Equipment Commissioning -->
+                <div class="testing-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testing-card-header">
+                        <div class="testing-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Equipment Commissioning</h3>
+                    </div>
+                    <p class="testing-description">
+                        Professional commissioning services for newly installed oil spill response equipment 
+                        including systematic startup procedures, performance validation, and operational 
+                        handover ensuring equipment meets project specifications.
+                    </p>
+                    <ul class="testing-features">
+                        <li>Installation Verification</li>
+                        <li>System Startup Procedures</li>
+                        <li>Performance Validation Testing</li>
+                        <li>Safety System Verification</li>
+                        <li>Documentation & Certification</li>
+                        <li>Operational Handover</li>
+                        <li>Warranty Support Coordination</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="testing-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Training Services -->
+                <div class="testing-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testing-card-header">
+                        <div class="testing-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3>Equipment Training Services</h3>
+                    </div>
+                    <p class="testing-description">
+                        Comprehensive training programs for equipment operation, maintenance, and emergency 
+                        deployment ensuring personnel competency and operational effectiveness during 
+                        oil spill response and environmental protection activities.
+                    </p>
+                    <ul class="testing-features">
+                        <li>Equipment Operation Training</li>
+                        <li>Deployment Procedures</li>
+                        <li>Maintenance Training</li>
+                        <li>Safety Protocol Training</li>
+                        <li>Emergency Response Procedures</li>
+                        <li>Hands-on Practical Training</li>
+                        <li>Competency Assessment</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="testing-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Maintenance Support -->
+                <div class="testing-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testing-card-header">
+                        <div class="testing-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Post-Commissioning Support</h3>
+                    </div>
+                    <p class="testing-description">
+                        Ongoing technical support following commissioning including performance monitoring, 
+                        maintenance guidance, and troubleshooting assistance ensuring sustained equipment 
+                        performance and operational reliability.
+                    </p>
+                    <ul class="testing-features">
+                        <li>Performance Monitoring</li>
+                        <li>Technical Support</li>
+                        <li>Troubleshooting Assistance</li>
+                        <li>Maintenance Guidance</li>
+                        <li>Equipment Optimization</li>
+                        <li>Upgrade Recommendations</li>
+                        <li>Emergency Technical Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="testing-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testing Process -->
+    <section class="quality-assurance">
+        <div class="testing-container">
+            <div class="qa-header" data-aos="fade-up">
+                <h2>Testing & Commissioning Process</h2>
+                <p>
+                    Systematic approach ensuring comprehensive equipment validation through proven 
+                    testing protocols and commissioning procedures for OSR equipment.
+                </p>
+            </div>
+            
+            <div class="qa-workflow">
+                <div class="workflow-connector"></div>
+                <div class="qa-phases">
+                    <div class="qa-phase" data-aos="fade-up" data-aos-delay="100">
+                        <div class="phase-icon">01</div>
+                        <h3>Pre-Testing Inspection</h3>
+                        <p>Comprehensive equipment inspection, documentation review, and test preparation ensuring readiness for commissioning procedures.</p>
+                    </div>
+                    
+                    <div class="qa-phase" data-aos="fade-up" data-aos-delay="200">
+                        <div class="phase-icon">02</div>
+                        <h3>Performance Testing</h3>
+                        <p>Systematic testing of equipment performance, functionality, and safety systems according to manufacturer specifications.</p>
+                    </div>
+                    
+                    <div class="qa-phase" data-aos="fade-up" data-aos-delay="300">
+                        <div class="phase-icon">03</div>
+                        <h3>Verification & Certification</h3>
+                        <p>Performance validation, compliance verification, and certification that equipment meets all operational requirements.</p>
+                    </div>
+                    
+                    <div class="qa-phase" data-aos="fade-up" data-aos-delay="400">
+                        <div class="phase-icon">04</div>
+                        <h3>Training & Handover</h3>
+                        <p>Operator training, documentation handover, and technical support ensuring successful operational transition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Categories -->
+    <section class="testing-protocols">
+        <div class="testing-container">
+            <div class="protocols-header" data-aos="fade-up">
+                <h2>Equipment Testing Categories</h2>
+                <p>
+                    Specialized testing protocols for different categories of oil spill response 
+                    and environmental protection equipment ensuring comprehensive validation.
+                </p>
+            </div>
+            
+            <div class="protocols-grid">
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="protocol-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Skimmer Systems</h4>
+                    <p>Comprehensive testing of oil recovery skimmers including disc brush drum systems, Komara units, and specialized recovery equipment.</p>
+                </div>
+                
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="protocol-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Containment Booms</h4>
+                    <p>Testing and deployment verification of containment boom systems including offshore, nearshore, and permanent installations.</p>
+                </div>
+                
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="protocol-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Transfer Systems</h4>
+                    <p>Performance testing of transfer pumps, storage systems, and oil recovery transfer equipment for operational efficiency.</p>
+                </div>
+                
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="protocol-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Support Equipment</h4>
+                    <p>Testing of power systems, generators, and support equipment ensuring reliable operation during emergency response.</p>
+                </div>
+                
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="protocol-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4>Dispersant Systems</h4>
+                    <p>Testing and calibration of dispersant spray systems with Afedo nozzles for controlled chemical dispersant application.</p>
+                </div>
+                
+                <div class="protocol-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="protocol-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Storage Systems</h4>
+                    <p>Verification of temporary storage solutions including fast tanks and containerized recovery systems for collected oil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Performance -->
+    <section class="compliance-dashboard">
+        <div class="testing-container">
+            <div class="compliance-header" data-aos="fade-up">
+                <h2>Service Performance & Portfolio</h2>
+                <p>Proven track record of successful equipment testing, commissioning, and training services for Nigeria's oil and gas sector.</p>
+            </div>
+            
+            <div class="compliance-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="compliance-button active" onclick="showCompliance('testing')">Testing Services</button>
+                <button class="compliance-button" onclick="showCompliance('commissioning')">Commissioning</button>
+                <button class="compliance-button" onclick="showCompliance('training')">Training Programs</button>
+            </div>
+            
+            <div id="testing" class="compliance-content active">
+                <div class="compliance-metrics">
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="widget-value">15+</div>
+                        <div class="widget-label">Years Experience</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="widget-value">200+</div>
+                        <div class="widget-label">Equipment Tested</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="widget-value">DESMI</div>
+                        <div class="widget-label">Certified Partner</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="widget-value">Major IOCs</div>
+                        <div class="widget-label">Trusted Clients</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="commissioning" class="compliance-content">
+                <div class="compliance-metrics">
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="widget-value">NLNG</div>
+                        <div class="widget-label">Major Projects</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="widget-value">Shell</div>
+                        <div class="widget-label">SPDC & SNEPCo</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="widget-value">NAOC</div>
+                        <div class="widget-label">Multiple Installations</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="widget-value">Professional</div>
+                        <div class="widget-label">Installation Team</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="training" class="compliance-content">
+                <div class="compliance-metrics">
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="widget-value">Equipment</div>
+                        <div class="widget-label">Handling Training</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="widget-value">Deployment</div>
+                        <div class="widget-label">Recovery Skills</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="widget-value">OSR</div>
+                        <div class="widget-label">Training Programs</div>
+                    </div>
+                    <div class="compliance-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="widget-value">Practical</div>
+                        <div class="widget-label">Hands-on Training</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="testing-cta-section">
+        <div class="testing-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Commission Your OSR Equipment?</h2>
+                <p>
+                    Partner with Nigeria's trusted equipment testing and commissioning specialists for 
+                    comprehensive validation services ensuring optimal performance and operational readiness.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Testing Process
+                    </a>
+                    <a href="#validation" class="cta-action cta-secondary">
+                        <i class="fas fa-file-download"></i>
+                        View Our Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/testing-commissioning.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

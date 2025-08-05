@@ -1,0 +1,290 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Blog Management - Axflo{% endblock %}
+
+{% block content %}  
+
+
+   <link rel="stylesheet" href="{% static 'axflo_app/css/admin_blog.css' %}"> 
+    <div class="admin-blog-container">
+        <!-- Header Section -->
+        <div class="admin-blog-header">
+            <h1><i class="fas fa-tags"></i> Blog Categories</h1>
+            <p>Organize your content with categories</p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Stats Cards -->
+        <div class="blog-stats">
+            <div class="stat-card">
+                <div class="stat-number">{{ total_categories }}</div>
+                <div class="stat-label">Total Categories</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="admin-actions">
+            <div></div>
+            <a href="{% url 'axflo_app:admin_blog' %}" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Blog Management
+            </a>
+        </div>
+
+        <!-- Create New Category Form -->
+        <div class="blog-form">
+            <h3 style="margin: 0 0 20px 0; color: var(--text-primary);">
+                <i class="fas fa-plus"></i> Create New Category
+            </h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-row two-columns">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Category Name *</label>
+                        <input type="text" id="name" name="name" class="form-input" 
+                               placeholder="Enter category name..." required>
+                        <div class="form-help">The display name for this category</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="form-label">Description</label>
+                        <input type="text" id="description" name="description" class="form-input" 
+                               placeholder="Brief description...">
+                        <div class="form-help">Optional description for this category</div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-plus"></i> Create Category
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Categories List -->
+        <div class="blog-table-container">
+            {% if categories %}
+            <table class="blog-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Slug</th>
+                        <th>Description</th>
+                        <th>Articles</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 12px; height: 12px; background: var(--primary-gold); border-radius: 50%;"></div>
+                                <strong>{{ category.name }}</strong>
+                            </div>
+                        </td>
+                        <td>
+                            <code style="background: var(--bg-grey); padding: 2px 6px; border-radius: 3px; font-size: 0.85rem;">
+                                {{ category.slug }}
+                            </code>
+                        </td>
+                        <td>{{ category.description|default:"No description" }}</td>
+                        <td>
+                            <span class="status-badge status-published">
+                                {{ category.newsarticle_set.count }} articles
+                            </span>
+                        </td>
+                        <td>
+                            <div class="table-actions">
+                                <button onclick="editCategory({{ category.id }}, '{{ category.name|escapejs }}', '{{ category.description|escapejs }}')" 
+                                        class="btn-sm btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                {% if category.newsarticle_set.count == 0 %}
+                                <button onclick="deleteCategory({{ category.id }}, '{{ category.name|escapejs }}')" 
+                                        class="btn-sm btn-delete">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                                {% else %}
+                                <span class="btn-sm" style="background: #6c757d; cursor: not-allowed;" title="Cannot delete category with articles">
+                                    <i class="fas fa-lock"></i> In Use
+                                </span>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <h3 class="empty-title">No Categories Found</h3>
+                <p class="empty-text">
+                    You haven't created any blog categories yet. Categories help organize your content and make it easier for readers to find related articles.
+                </p>
+                <button onclick="document.getElementById('name').focus()" class="btn-primary">
+                    <i class="fas fa-plus"></i> Create Your First Category
+                </button>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Mobile Card Layout -->
+        <div class="mobile-blog-cards">
+            {% for category in categories %}
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <div>
+                        <h4 class="blog-card-title">{{ category.name }}</h4>
+                        <div class="blog-card-meta">
+                            <code>{{ category.slug }}</code>
+                            • {{ category.newsarticle_set.count }} articles
+                        </div>
+                    </div>
+                </div>
+                {% if category.description %}
+                <p>{{ category.description }}</p>
+                {% endif %}
+                <div class="blog-card-actions">
+                    <button onclick="editCategory({{ category.id }}, '{{ category.name|escapejs }}', '{{ category.description|escapejs }}')" 
+                            class="btn-sm btn-edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    {% if category.newsarticle_set.count == 0 %}
+                    <button onclick="deleteCategory({{ category.id }}, '{{ category.name|escapejs }}')" 
+                            class="btn-sm btn-delete">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if categories.has_other_pages %}
+        <div class="pagination-container">
+            {% if categories.has_previous %}
+            <a href="?page=1" class="pagination-link">
+                <i class="fas fa-angle-double-left"></i>
+            </a>
+            <a href="?page={{ categories.previous_page_number }}" class="pagination-link">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            {% endif %}
+            
+            <span class="pagination-link active">
+                Page {{ categories.number }} of {{ categories.paginator.num_pages }}
+            </span>
+            
+            {% if categories.has_next %}
+            <a href="?page={{ categories.next_page_number }}" class="pagination-link">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            <a href="?page={{ categories.paginator.num_pages }}" class="pagination-link">
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Edit Category Modal (Simple Implementation) -->
+    <script>
+        let editingCategoryId = null;
+
+        function editCategory(id, name, description) {
+            editingCategoryId = id;
+            
+            // Simple prompt-based edit (you could enhance this with a proper modal)
+            const newName = prompt('Edit category name:', name);
+            if (newName === null) return; // User cancelled
+            
+            const newDescription = prompt('Edit category description:', description || '');
+            if (newDescription === null) return; // User cancelled
+            
+            // Create a form and submit it
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.style.display = 'none';
+            
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrfmiddlewaretoken';
+            csrfInput.value = csrfToken;
+            
+            const nameInput = document.createElement('input');
+            nameInput.type = 'hidden';
+            nameInput.name = 'name';
+            nameInput.value = newName.trim();
+            
+            const descInput = document.createElement('input');
+            descInput.type = 'hidden';
+            descInput.name = 'description';
+            descInput.value = newDescription.trim();
+            
+            const editInput = document.createElement('input');
+            editInput.type = 'hidden';
+            editInput.name = 'edit_id';
+            editInput.value = id;
+            
+            form.appendChild(csrfInput);
+            form.appendChild(nameInput);
+            form.appendChild(descInput);
+            form.appendChild(editInput);
+            
+            document.body.appendChild(form);
+            form.submit();
+        }
+
+        function deleteCategory(id, name) {
+            if (confirm(`Are you sure you want to delete the category "${name}"? This action cannot be undone.`)) {
+                // Create a form and submit it
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.style.display = 'none';
+                
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                const csrfInput = document.createElement('input');
+                csrfInput.type = 'hidden';
+                csrfInput.name = 'csrfmiddlewaretoken';
+                csrfInput.value = csrfToken;
+                
+                const deleteInput = document.createElement('input');
+                deleteInput.type = 'hidden';
+                deleteInput.name = 'delete_id';
+                deleteInput.value = id;
+                
+                form.appendChild(csrfInput);
+                form.appendChild(deleteInput);
+                
+                document.body.appendChild(form);
+                form.submit();
+            }
+        }
+
+        // Auto-focus on form after creation
+        document.addEventListener('DOMContentLoaded', function() {
+            // If there are no categories, auto-focus the name field
+            {% if not categories %}
+            document.getElementById('name').focus();
+            {% endif %}
+        });
+    </script>
+
+
+{% endblock %}
+

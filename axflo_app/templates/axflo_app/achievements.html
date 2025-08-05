@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Achievements & Portfolio - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/achievements.css' %}">
+
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+
+<!-- Hero Section -->
+<section class="achievements-hero">
+    <div class="hero-background">
+        <div class="floating-elements"></div>
+    </div>
+    <div class="container">
+        <div class="hero-content" data-aos="fade-up">
+            <h1 class="hero-title">Our Achievements & Success Stories</h1>
+            <p class="hero-subtitle">
+                Celebrating milestones, recognitions, and successful projects that showcase 
+                our commitment to environmental excellence and innovation.
+            </p>
+        </div>
+        
+        <!-- Stats Overview -->
+        <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-target="{{ total_achievements }}">0</h3>
+                    <p class="stat-label">Awards & Recognitions</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-target="{{ completed_projects }}">0</h3>
+                    <p class="stat-label">Completed Projects</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-target="{{ environmental_impact }}">0</h3>
+                    <p class="stat-label">Tons CO₂ Prevented</p>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-content">
+                    <h3 class="stat-number" data-target="{{ countries_served }}">0</h3>
+                    <p class="stat-label">Countries Served</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filter Navigation -->
+<section class="filter-section">
+    <div class="container">
+        <div class="filter-tabs" data-aos="fade-up">
+            <button class="filter-btn active" data-filter="all">
+                <i class="fas fa-th-large"></i>
+                <span>All</span>
+            </button>
+            <button class="filter-btn" data-filter="achievements">
+                <i class="fas fa-award"></i>
+                <span>Achievements</span>
+            </button>
+            <button class="filter-btn" data-filter="portfolio">
+                <i class="fas fa-briefcase"></i>
+                <span>Project Portfolio</span>
+            </button>
+            <button class="filter-btn" data-filter="milestones">
+                <i class="fas fa-flag"></i>
+                <span>Milestones</span>
+            </button>
+        </div>
+        
+        <!-- Search and Sort -->
+        <div class="controls-section" data-aos="fade-up" data-aos-delay="100">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search achievements, projects...">
+            </div>
+            <div class="sort-dropdown">
+                <select id="sortSelect">
+                    <option value="date-desc">Latest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="name-asc">Name A-Z</option>
+                    <option value="name-desc">Name Z-A</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Achievements -->
+{% if featured_achievements %}
+<section class="featured-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Featured Achievements</h2>
+            <p class="section-subtitle">Our most significant accomplishments and recognitions</p>
+        </div>
+        
+        <div class="featured-grid">
+            {% for achievement in featured_achievements %}
+            <div class="featured-card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                <div class="featured-image">
+                    {% if achievement.featured_image %}
+                    <img src="{{ achievement.featured_image.url }}" alt="{{ achievement.title }}">
+                    {% else %}
+                    <div class="placeholder-image">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    {% endif %}
+                    <div class="achievement-badge">
+                        <span class="badge {{ achievement.achievement_type|lower }}">{{ achievement.get_achievement_type_display }}</span>
+                    </div>
+                </div>
+                
+                <div class="featured-content">
+                    <div class="achievement-meta">
+                        <span class="category" style="color: {{ achievement.category.color }}">
+                            <i class="fas {{ achievement.category.icon }}"></i>
+                            {{ achievement.category.name }}
+                        </span>
+                        <span class="date">{{ achievement.achievement_date|date:"M Y" }}</span>
+                    </div>
+                    
+                    <h3 class="achievement-title">{{ achievement.title }}</h3>
+                    <p class="achievement-description">{{ achievement.short_description|default:achievement.description|truncatewords:25 }}</p>
+                    
+                    {% if achievement.impact_metrics %}
+                    <div class="impact-metrics">
+                        {% for key, value in achievement.impact_metrics.items %}
+                        <div class="metric">
+                            <span class="metric-value">{{ value }}</span>
+                            <span class="metric-label">{{ key|title }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="card-actions">
+                        {% if achievement.external_link %}
+                        <a href="{{ achievement.external_link }}" target="_blank" class="btn-link">
+                            <i class="fas fa-external-link-alt"></i>
+                            View Details
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Main Content Grid -->
+<section class="content-section">
+    <div class="container">
+        <!-- Achievement Cards -->
+        <div class="achievements-grid" id="achievementsGrid">
+            {% for achievement in achievements %}
+            <div class="achievement-card" data-category="achievements" data-type="{{ achievement.achievement_type|lower }}" data-date="{{ achievement.achievement_date|date:'Y-m-d' }}" data-name="{{ achievement.title|lower }}">
+                <div class="card-image">
+                    {% if achievement.featured_image %}
+                    <img src="{{ achievement.featured_image.url }}" alt="{{ achievement.title }}">
+                    {% else %}
+                    <div class="placeholder-image">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    {% endif %}
+                    <div class="card-overlay">
+                        <div class="overlay-content">
+                            <button class="btn-view" onclick="openAchievementModal({{ achievement.id }})">
+                                <i class="fas fa-eye"></i>
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="category-tag" style="background-color: {{ achievement.category.color }}">
+                            <i class="fas {{ achievement.category.icon }}"></i>
+                            {{ achievement.category.name }}
+                        </span>
+                        <span class="achievement-type">{{ achievement.get_achievement_type_display }}</span>
+                    </div>
+                    
+                    <h3 class="card-title">{{ achievement.title }}</h3>
+                    <p class="card-description">{{ achievement.short_description|default:achievement.description|truncatewords:20 }}</p>
+                    
+                    <div class="card-footer">
+                        <span class="achievement-date">
+                            <i class="fas fa-calendar-alt"></i>
+                            {{ achievement.achievement_date|date:"M d, Y" }}
+                        </span>
+                        {% if achievement.external_link %}
+                        <a href="{{ achievement.external_link }}" target="_blank" class="external-link">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <!-- Portfolio Cards -->
+            {% for project in portfolio_projects %}
+            <div class="portfolio-card" data-category="portfolio" data-type="{{ project.project_type|lower }}" data-date="{{ project.completion_date|date:'Y-m-d' }}" data-name="{{ project.title|lower }}">
+                <div class="card-image">
+                    {% if project.featured_image %}
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                    {% else %}
+                    <div class="placeholder-image">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    {% endif %}
+                    <div class="project-status {{ project.status|lower }}">
+                        {{ project.get_status_display }}
+                    </div>
+                    <div class="card-overlay">
+                        <div class="overlay-content">
+                            <button class="btn-view" onclick="openPortfolioModal({{ project.id }})">
+                                <i class="fas fa-eye"></i>
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-content">
+                    <div class="card-header">
+                        <span class="project-type">{{ project.get_project_type_display }}</span>
+                        <span class="project-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            {{ project.location }}
+                        </span>
+                    </div>
+                    
+                    <h3 class="card-title">{{ project.title }}</h3>
+                    <p class="card-client">Client: {{ project.client }}</p>
+                    <p class="card-description">{{ project.brief_description|truncatewords:20 }}</p>
+                    
+                    {% if project.key_statistics %}
+                    <div class="project-stats">
+                        {% for key, value in project.key_statistics.items %}
+                        <div class="stat-item">
+                            <span class="stat-value">{{ value }}</span>
+                            <span class="stat-label">{{ key|title }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="card-footer">
+                        <span class="project-duration">
+                            <i class="fas fa-clock"></i>
+                            {% if project.duration_months %}{{ project.duration_months }} months{% else %}{{ project.start_date|date:"M Y" }} - {{ project.completion_date|date:"M Y" }}{% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <!-- Milestone Cards -->
+            {% for milestone in milestones %}
+            <div class="milestone-card" data-category="milestones" data-date="{{ milestone.milestone_date|date:'Y-m-d' }}" data-name="{{ milestone.title|lower }}">
+                <div class="milestone-year">
+                    <span class="year">{{ milestone.milestone_year }}</span>
+                </div>
+                
+                <div class="milestone-content">
+                    <div class="milestone-icon">
+                        <i class="fas {{ milestone.icon|default:'fa-flag' }}"></i>
+                    </div>
+                    
+                    <div class="milestone-info">
+                        <h3 class="milestone-title">{{ milestone.title }}</h3>
+                        <p class="milestone-description">{{ milestone.description|truncatewords:25 }}</p>
+                        <span class="milestone-date">{{ milestone.milestone_date|date:"F Y" }}</span>
+                    </div>
+                </div>
+                
+                {% if milestone.image %}
+                <div class="milestone-image">
+                    <img src="{{ milestone.image.url }}" alt="{{ milestone.title }}">
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Load More Button -->
+        <div class="load-more-section" data-aos="fade-up">
+            <button id="loadMoreBtn" class="btn-load-more" style="display: none;">
+                <span>Load More</span>
+                <i class="fas fa-chevron-down"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Timeline Section -->
+<section class="timeline-section">
+    <div class="container">
+        <div class="section-header" data-aos="fade-up">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Key milestones that shaped our success</p>
+        </div>
+        
+        <div class="timeline" data-aos="fade-up" data-aos-delay="200">
+            {% for milestone in featured_milestones %}
+            <div class="timeline-item">
+                <div class="timeline-marker">
+                    <i class="fas {{ milestone.icon|default:'fa-star' }}"></i>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-year">{{ milestone.milestone_year }}</div>
+                    <h3 class="timeline-title">{{ milestone.title }}</h3>
+                    <p class="timeline-description">{{ milestone.description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Achievement Modal -->
+<div id="achievementModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle"></h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="modalContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Portfolio Modal -->
+<div id="portfolioModal" class="modal">
+    <div class="modal-content portfolio-modal">
+        <div class="modal-header">
+            <h2 id="portfolioModalTitle"></h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="portfolioModalContent"></div>
+        </div>
+    </div>
+</div>
+
+{% include 'axflo_app/includes/footer.html' %}
+<!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/achievements.js' %}"></script>
+<script src="{% static 'axflo_app/js/main.js' %}"></script>
+<script>
+// Pass data to JavaScript
+window.achievementsData = {
+    achievements: {{ achievements_json|safe }},
+    portfolio: {{ portfolio_json|safe }},
+    milestones: {{ milestones_json|safe }}
+};
+
+
+</script>
+{% endblock %}

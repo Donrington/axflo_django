@@ -1,0 +1,176 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Testing - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/testing.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+<!-- Services Section for Homepage -->
+<section class="services-section" id="services">
+    <!-- Animated Background -->
+    <div class="services-bg-pattern">
+        <div class="pattern-element"></div>
+        <div class="pattern-element"></div>
+        <div class="pattern-element"></div>
+    </div>
+
+    <div class="services-container">
+        <!-- Section Header -->
+        <div class="services-header fade-in">
+            <div class="header-badge">What We Do</div>
+            <h2 class="section-title">
+                Comprehensive Energy & Environmental Solutions
+            </h2>
+            <p class="section-subtitle">
+                Industry-leading expertise across three core service areas, delivering innovative solutions for Nigeria's energy sector
+            </p>
+        </div>
+
+        <!-- Services Categories -->
+        <div class="services-categories">
+            
+            <!-- EPC Contracting -->
+            <div class="category-section fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="category-title">EPC Contracting</h3>
+                    <p class="category-desc">End-to-end engineering, procurement, and construction excellence</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h4>Engineering & Consultancy</h4>
+                        <p>Comprehensive engineering solutions from conceptual design to detailed implementation</p>
+                        <a href="services.html#engineering-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4>Project Management</h4>
+                        <p>Expert project delivery with precision planning and flawless execution</p>
+                        <a href="services.html#project-mgmt-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offshore & Marine -->
+            <div class="category-section fade-in dark-variant">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3 class="category-title">Offshore & Marine</h3>
+                    <p class="category-desc">Specialized solutions for deepwater operations and marine logistics</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h4>Offshore Services</h4>
+                        <p>Complete offshore support for exploration and production operations</p>
+                        <a href="services.html#offshore-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Equipment Solutions</h4>
+                        <p>Premium equipment leasing with 24/7 technical support</p>
+                        <a href="services.html#equipment-hire-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environmental Services -->
+            <div class="category-section fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="category-title">Environmental Services</h3>
+                    <p class="category-desc">Protecting Nigeria's ecosystems with advanced environmental solutions</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Oil Spill Response</h4>
+                        <p>24/7 emergency response with cutting-edge containment technology</p>
+                        <a href="services.html#oil-spill-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h4>Waste Management</h4>
+                        <p>Sustainable solutions for a circular economy approach</p>
+                        <a href="services.html#waste-recycling-details" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="services-cta fade-in">
+            <a href="services.html" class="view-all-btn">
+                <span>View All Services</span>
+                <div class="btn-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+{% include 'axflo_app/includes/footer.html' %}
+    <script src="main.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"
+
+></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/testing.js' %}"></script>
+   <script src="{% static 'axflo_app/js/main.js' %}"></script>
+{% endblock %}

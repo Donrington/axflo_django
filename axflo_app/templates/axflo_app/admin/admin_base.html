@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ page_title|default:'Admin Dashboard' }} - Axflo{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'axflo_app/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'axflo_app/css/admin.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Epilogue:ital,wght@0,100..900;1,100&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Mobile overlay and menu button -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="main-layout">
+        <!-- Sidebar -->
+        {% include 'axflo_app/admin/components/admin_sidebar.html' %}
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            {% include 'axflo_app/admin/components/admin_header.html' %}
+
+            <!-- Messages -->
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Page Content -->
+            <div class="content-wrapper">
+                {% block content %}
+                <div class="dashboard-welcome">
+                    <h2>Welcome to Axflo Admin</h2>
+                    <p>Manage your website content and monitor system activities from this dashboard.</p>
+                </div>
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Set current page context if available
+        {% if current_page %}
+        window.currentPage = '{{ current_page }}';
+        {% endif %}
+    </script>
+    <script src="{% static 'axflo_app/js/admin.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

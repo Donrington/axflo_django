@@ -1,0 +1,401 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Oil-Spill-Response - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/oil-spill-response.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Oil Spill Response Hero Section -->
+    <section class="osr-hero">
+        <div class="response-backdrop"></div>
+        
+        <div class="response-waves">
+            <div class="emergency-wave"></div>
+            <div class="emergency-wave"></div>
+            <div class="emergency-wave"></div>
+            <div class="emergency-wave"></div>
+        </div>
+        
+        <div class="response-nodes">
+            <div class="response-node node-1">
+                <i class="fas fa-shield-alt"></i>
+                <div class="response-indicator"></div>
+            </div>
+            <div class="response-node node-2">
+                <i class="fas fa-life-ring"></i>
+                <div class="response-indicator"></div>
+            </div>
+            <div class="response-node node-3">
+                <i class="fas fa-anchor"></i>
+                <div class="response-indicator"></div>
+            </div>
+            <div class="response-node node-4">
+                <i class="fas fa-medical-kit"></i>
+                <div class="response-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="osr-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="emergency-badge">
+                <div class="emergency-icon"></div>
+                24/7 Emergency Response Since 2009
+            </div>
+            
+            <h1 class="osr-title">Oil Spill Response</h1>
+            
+            <p class="osr-subtitle">
+                Nigeria's premier oil spill response specialists providing 24/7 emergency capabilities with 
+                advanced DESMI containment and recovery systems for rapid spill mitigation across the Niger Delta, 
+                protecting marine ecosystems and coastal communities through proven response expertise.
+            </p>
+            
+            <a href="#osr-overview" class="osr-cta">
+                Emergency Response
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Oil Spill Response Overview -->
+    <section id="osr-overview" class="osr-overview">
+        <div class="osr-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Nigeria's Premier OSR Specialists</h2>
+                    <p>
+                        Axflo Oil & Gas Nigeria Limited stands as Nigeria's leading oil spill response specialist, 
+                        providing comprehensive emergency response capabilities with advanced DESMI containment and 
+                        recovery systems. Our 15+ years of expertise protect Nigeria's marine environment through 
+                        rapid response, proven technology, and dedicated emergency teams.
+                    </p>
+                    <p>
+                        From offshore platform emergencies to coastal spill incidents, our 24/7 response capabilities 
+                        ensure immediate deployment of containment booms, recovery skimmers, and specialized equipment. 
+                        Our partnership with DESMI Denmark provides access to world-class oil spill response 
+                        technology specifically designed for Nigeria's challenging marine conditions.
+                    </p>
+                    
+                    <div class="osr-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">24/7</span>
+                            <span class="metric-title">Emergency Response</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-letter">DESMI</span>
+                            <span class="metric-title">Technology Partner</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-letter">Niger Delta</span>
+                            <span class="metric-title">Coverage Area</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="osr-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                         <img src=" {% static 'axflo_app/images/axflo14.jpg' %}" alt="Oil Waste Recycling" loading="lazy">
+                        <p>Oil Spill Response</p>
+                        <small>Emergency protection & recovery</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oil Spill Response Services -->
+    <section class="osr-services">
+        <div class="osr-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Emergency Response Capabilities</h2>
+                <p>
+                    Comprehensive oil spill response services providing immediate emergency response 
+                    and environmental protection across Nigeria's oil and gas operations.
+                </p>
+            </div>
+            
+            <div class="osr-services-grid">
+                <!-- Emergency Response Teams -->
+                <div class="osr-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Emergency Response Teams</h3>
+                    </div>
+                    <p class="service-description">
+                        Highly trained emergency response teams providing immediate 24/7 oil spill response 
+                        capabilities across Nigeria's oil and gas operations. Our teams deploy rapidly to 
+                        contain spills, minimize environmental impact, and coordinate recovery operations.
+                    </p>
+                    <ul class="service-features">
+                        <li>24/7 Emergency Response</li>
+                        <li>Rapid Deployment Teams</li>
+                        <li>Trained Response Personnel</li>
+                        <li>Emergency Coordination</li>
+                        <li>Multi-Location Coverage</li>
+                        <li>Incident Command System</li>
+                        <li>Safety Protocol Implementation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Advanced Containment Systems -->
+                <div class="osr-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h3>Advanced Containment Systems</h3>
+                    </div>
+                    <p class="service-description">
+                        State-of-the-art DESMI containment boom systems designed for Nigeria's marine 
+                        conditions providing immediate spill containment and preventing further spread 
+                        of oil into sensitive marine and coastal environments.
+                    </p>
+                    <ul class="service-features">
+                        <li>DESMI Containment Booms</li>
+                        <li>Offshore Boom Systems</li>
+                        <li>Nearshore Protection</li>
+                        <li>Permanent Installations</li>
+                        <li>Rapid Deployment Booms</li>
+                        <li>Specialized Marine Conditions</li>
+                        <li>Multi-Tier Containment</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Recovery Operations -->
+                <div class="osr-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h3>Recovery Operations</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive oil recovery operations using advanced DESMI skimmer systems 
+                        including disc skimmers, brush skimmers, and specialized recovery equipment 
+                        for maximum oil recovery and environmental protection.
+                    </p>
+                    <ul class="service-features">
+                        <li>DESMI Oil Skimmers</li>
+                        <li>Disc & Brush Recovery</li>
+                        <li>Komara Recovery Units</li>
+                        <li>Oil-Water Separation</li>
+                        <li>Temporary Storage Systems</li>
+                        <li>Transfer & Transport</li>
+                        <li>Recovery Optimization</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Dispersant Application -->
+                <div class="osr-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h3>Dispersant Application</h3>
+                    </div>
+                    <p class="service-description">
+                        Controlled chemical dispersant application using specialized Afedo nozzle 
+                        systems for effective oil spill treatment in offshore environments where 
+                        mechanical recovery is not feasible or effective.
+                    </p>
+                    <ul class="service-features">
+                        <li>Afedo Nozzle Systems</li>
+                        <li>Controlled Application</li>
+                        <li>Offshore Dispersant Ops</li>
+                        <li>Environmental Assessment</li>
+                        <li>Regulatory Compliance</li>
+                        <li>Effectiveness Monitoring</li>
+                        <li>Strategic Application</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Response Process -->
+    <section class="response-process">
+        <div class="osr-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Emergency Response Process</h2>
+                <p>
+                    Systematic emergency response protocol ensuring rapid deployment and effective 
+                    oil spill containment and recovery operations.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Alert & Mobilization</h3>
+                    <p>Immediate emergency response activation with rapid team deployment and equipment mobilization to spill location.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>Assessment & Containment</h3>
+                    <p>Rapid spill assessment and immediate deployment of containment booms to prevent further oil spread.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Recovery & Treatment</h3>
+                    <p>Deployment of recovery skimmers and treatment systems for maximum oil recovery and environmental protection.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Cleanup & Restoration</h3>
+                    <p>Complete cleanup operations and environmental restoration ensuring full ecosystem recovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OSR Equipment & Technology -->
+    <section class="osr-equipment">
+        <div class="osr-container">
+            <div class="equipment-header" data-aos="fade-up">
+                <h2>OSR Equipment & Technology</h2>
+                <p>
+                    Advanced DESMI oil spill response equipment and technology specifically 
+                    designed for Nigeria's challenging marine and coastal environments.
+                </p>
+            </div>
+            
+            <div class="equipment-grid">
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="equipment-icon">
+                        <i class="fas fa-life-ring"></i>
+                    </div>
+                    <h4>Containment Booms</h4>
+                    <p>DESMI offshore and nearshore containment boom systems designed for Nigerian marine conditions providing immediate spill containment.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="equipment-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Recovery Skimmers</h4>
+                    <p>Advanced DESMI disc and brush skimmer systems including Komara recovery units for maximum oil recovery efficiency.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="equipment-icon">
+                        <i class="fas fa-pump-soap"></i>
+                    </div>
+                    <h4>Transfer Systems</h4>
+                    <p>High-capacity pumps and transfer systems for moving recovered oil to temporary storage and transport vessels.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="equipment-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h4>Storage Solutions</h4>
+                    <p>Temporary storage systems including fast tanks and containerized solutions for recovered oil and contaminated materials.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="equipment-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h4>Dispersant Systems</h4>
+                    <p>Specialized Afedo nozzle systems for controlled chemical dispersant application in offshore spill response operations.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="equipment-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4>Marine Support</h4>
+                    <p>Dedicated response vessels and marine support equipment for deploying and operating OSR equipment in Nigerian waters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="osr-cta-section">
+        <div class="osr-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Emergency Oil Spill Response</h2>
+                <p>
+                    When every minute counts, trust Nigeria's premier oil spill response specialists 
+                    for immediate emergency response and environmental protection.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Emergency Hotline
+                    </a>
+                    <a href="#capabilities" class="cta-action cta-secondary">
+                        <i class="fas fa-shield-alt"></i>
+                        View Capabilities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/oil-spill-response.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

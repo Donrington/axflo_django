@@ -1,0 +1,522 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Construction-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/construction-services.css' %}">
+{% endblock %}
+
+{% block content %}
+ {% include 'axflo_app/includes/navbar.html' %}
+    <!-- Construction Services Hero Section -->
+    <section class="construction-hero">
+        <div class="construction-backdrop"></div>
+        
+        <div class="construction-elements">
+            <div class="construction-tool tool-1">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div class="construction-tool tool-2">
+                <i class="fas fa-water"></i>
+            </div>
+            <div class="construction-tool tool-3">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div class="construction-tool tool-4">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="construction-tool tool-5">
+                <i class="fas fa-recycle"></i>
+            </div>
+        </div>
+        
+        <div class="construction-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="construction-badge">
+                <div class="construction-indicator"></div>
+                Environmental Infrastructure Excellence Since 2009
+            </div>
+            
+            <h1 class="construction-title">Environmental Construction Services</h1>
+            
+            <p class="construction-subtitle">
+                Specialized construction of environmental infrastructure and oil spill response facilities 
+                delivering critical environmental protection projects on time and within budget while 
+                maintaining the highest safety and environmental standards across Nigeria.
+            </p>
+            
+            <a href="#construction-overview" class="construction-cta">
+                Explore Our Projects
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Construction Overview -->
+    <section id="construction-overview" class="construction-overview">
+        <div class="construction-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Environmental Infrastructure Construction</h2>
+                    <p>
+                        Axflo's Construction Services division specializes in environmental infrastructure 
+                        and oil spill response facility construction. Our comprehensive approach combines 
+                        environmental expertise with proven construction methodologies to deliver critical 
+                        environmental protection infrastructure projects.
+                    </p>
+                    <p>
+                        From water treatment facilities to waste management systems and oil spill response 
+                        infrastructure, our experienced construction teams execute projects with unwavering 
+                        commitment to environmental stewardship, safety, and quality while consistently 
+                        meeting demanding project schedules and regulatory requirements.
+                    </p>
+                    
+                    <div class="construction-stats">
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="100">
+                            <span class="stat-figure">50+</span>
+                            <span class="stat-text">Environmental Projects</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="200">
+                            <span class="stat-figure">100%</span>
+                            <span class="stat-text">Environmental Compliance</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-figure">98%</span>
+                            <span class="stat-text">On-Time Delivery</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-figure">15+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/axflo13.jpg' %}" alt="Environmental Construction Excellence" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Environmental Construction Excellence</p>
+                            <small>Advanced environmental infrastructure capabilities</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Construction Services Detailed -->
+    <section class="construction-services">
+        <div class="construction-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Environmental Construction Services</h2>
+                <p>
+                    Comprehensive environmental construction solutions encompassing every aspect of 
+                    environmental infrastructure development from design to commissioning.
+                </p>
+            </div>
+            
+            <div class="construction-grid">
+                <!-- Water Treatment Facilities -->
+                <div class="construction-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="construction-card-header">
+                        <div class="construction-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Water & Wastewater Treatment Facilities</h3>
+                    </div>
+                    <p class="construction-description">
+                        Construction of advanced water and wastewater treatment facilities including produced 
+                        water treatment systems, industrial wastewater treatment plants, and potable water 
+                        treatment facilities with adherence to environmental regulations and standards.
+                    </p>
+                    <ul class="construction-capabilities">
+                        <li>Produced Water Treatment Systems</li>
+                        <li>Industrial Wastewater Treatment Plants</li>
+                        <li>Oil-Water Separation Facilities</li>
+                        <li>Effluent Treatment Systems</li>
+                        <li>Water Recycling & Reuse Systems</li>
+                        <li>Sludge Treatment & Disposal</li>
+                        <li>Process Control & Monitoring Systems</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="construction-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Waste Management Infrastructure -->
+                <div class="construction-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="construction-card-header">
+                        <div class="construction-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>Waste Management Infrastructure</h3>
+                    </div>
+                    <p class="construction-description">
+                        Construction of comprehensive waste management facilities including solid waste 
+                        treatment systems, drilling waste management, and hazardous waste handling 
+                        facilities with environmental protection and regulatory compliance focus.
+                    </p>
+                    <ul class="construction-capabilities">
+                        <li>Cuttings Treatment Facilities</li>
+                        <li>Solid Waste Management Systems</li>
+                        <li>Waste Segregation & Storage Areas</li>
+                        <li>Hazmat Storage & Handling Facilities</li>
+                        <li>Waste Recycling Centers</li>
+                        <li>Thermal Treatment Systems</li>
+                        <li>Containment & Leachate Management</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="construction-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- OSR Infrastructure -->
+                <div class="construction-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="construction-card-header">
+                        <div class="construction-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h3>Oil Spill Response Infrastructure</h3>
+                    </div>
+                    <p class="construction-description">
+                        Construction of specialized oil spill response facilities including equipment storage 
+                        warehouses, emergency response centers, and marine response bases with rapid 
+                        deployment capabilities and 24/7 operational readiness.
+                    </p>
+                    <ul class="construction-capabilities">
+                        <li>OSR Equipment Storage Facilities</li>
+                        <li>Emergency Response Centers</li>
+                        <li>Marine Response Base Construction</li>
+                        <li>Equipment Deployment Infrastructure</li>
+                        <li>Training Facilities & Centers</li>
+                        <li>Communication & Command Centers</li>
+                        <li>Decontamination Facilities</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="construction-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Monitoring -->
+                <div class="construction-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="construction-card-header">
+                        <div class="construction-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h3>Environmental Monitoring Systems</h3>
+                    </div>
+                    <p class="construction-description">
+                        Construction and installation of environmental monitoring infrastructure including 
+                        air quality monitoring stations, water quality monitoring systems, and real-time 
+                        environmental data collection networks with remote monitoring capabilities.
+                    </p>
+                    <ul class="construction-capabilities">
+                        <li>Air Quality Monitoring Stations</li>
+                        <li>Water Quality Monitoring Systems</li>
+                        <li>Meteorological Monitoring Networks</li>
+                        <li>Remote Sensing Infrastructure</li>
+                        <li>Data Collection & Transmission Systems</li>
+                        <li>Environmental Alert Systems</li>
+                        <li>Compliance Monitoring Infrastructure</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="construction-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Execution Process -->
+    <section class="project-execution">
+        <div class="construction-container">
+            <div class="execution-header" data-aos="fade-up">
+                <h2>Environmental Project Execution Methodology</h2>
+                <p>
+                    A systematic approach ensuring environmental compliance, quality, and efficiency 
+                    throughout the construction lifecycle from planning to handover.
+                </p>
+            </div>
+            
+            <div class="execution-timeline">
+                <div class="execution-phase" data-aos="slide-right" data-aos-delay="100">
+                    <div class="phase-number">01</div>
+                    <div class="phase-details">
+                        <h3>Environmental Planning & Permitting</h3>
+                        <p>
+                            Comprehensive environmental assessment, permit applications, stakeholder 
+                            engagement, and environmental management plan development to ensure 
+                            regulatory compliance and community acceptance before construction begins.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="execution-phase" data-aos="slide-left" data-aos-delay="200">
+                    <div class="phase-number">02</div>
+                    <div class="phase-details">
+                        <h3>Site Preparation & Environmental Protection</h3>
+                        <p>
+                            Systematic site preparation with environmental protection measures including 
+                            erosion control, vegetation protection, waste management setup, and 
+                            environmental monitoring system establishment.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="execution-phase" data-aos="slide-right" data-aos-delay="300">
+                    <div class="phase-number">03</div>
+                    <div class="phase-details">
+                        <h3>Construction & Environmental Monitoring</h3>
+                        <p>
+                            Execution of construction activities with continuous environmental monitoring, 
+                            compliance verification, progress tracking, and adaptive management to 
+                            maintain environmental standards throughout construction.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="execution-phase" data-aos="slide-left" data-aos-delay="400">
+                    <div class="phase-number">04</div>
+                    <div class="phase-details">
+                        <h3>Testing, Commissioning & Environmental Restoration</h3>
+                        <p>
+                            Final testing and commissioning of environmental systems, site restoration, 
+                            environmental compliance verification, and successful handover with ongoing 
+                            environmental monitoring and support commitments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Standards -->
+    <section class="safety-quality">
+        <div class="construction-container">
+            <div class="safety-header" data-aos="fade-up">
+                <h2>Environmental & Quality Standards</h2>
+                <p>
+                    Unwavering commitment to environmental protection and quality standards ensuring 
+                    sustainable construction practices and long-term environmental stewardship.
+                </p>
+            </div>
+            
+            <div class="safety-grid">
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="safety-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Environmental Management</h4>
+                    <p>ISO 14001 certified environmental management systems ensuring sustainable construction practices.</p>
+                </div>
+                
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="safety-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Regulatory Compliance</h4>
+                    <p>Full compliance with Nigerian environmental regulations and international environmental standards.</p>
+                </div>
+                
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="safety-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h4>Waste Minimization</h4>
+                    <p>Comprehensive waste minimization and recycling programs throughout construction activities.</p>
+                </div>
+                
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="safety-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Water Protection</h4>
+                    <p>Advanced water protection measures and monitoring systems for groundwater and surface water.</p>
+                </div>
+                
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="safety-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Ecosystem Protection</h4>
+                    <p>Biodiversity conservation and ecosystem protection measures during construction activities.</p>
+                </div>
+                
+                <div class="safety-standard" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="safety-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Community Engagement</h4>
+                    <p>Active community engagement and social responsibility programs throughout project lifecycle.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Project Tracker -->
+    <section class="project-tracker">
+        <div class="construction-container">
+            <div class="tracker-header" data-aos="fade-up">
+                <h2>Environmental Project Portfolio</h2>
+                <p>Explore our diverse portfolio of successfully completed environmental construction projects across Nigeria.</p>
+            </div>
+            
+            <div class="tracker-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="tracker-button active" onclick="showTracker('onshore')">Water Treatment Facilities</button>
+                <button class="tracker-button" onclick="showTracker('offshore')">Waste Management Systems</button>
+                <button class="tracker-button" onclick="showTracker('facilities')">OSR Infrastructure</button>
+            </div>
+            
+            <div id="onshore" class="tracker-content active">
+                <div class="project-showcase">
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h4>Produced Water Treatment Plant</h4>
+                        <p>Construction of 50,000 bpd produced water treatment facility with oil-water separation and discharge systems.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h4>Industrial Wastewater Treatment</h4>
+                        <p>Design and construction of comprehensive industrial wastewater treatment system with advanced filtration.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h4>Water Recycling Facility</h4>
+                        <p>Construction of water recycling and reuse facility for industrial operations with 90% recovery rate.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="offshore" class="tracker-content">
+                <div class="project-showcase">
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h4>Drilling Waste Management Facility</h4>
+                        <p>Construction of comprehensive drilling waste management system with cuttings treatment and disposal.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-icon">
+                            <i class="fas fa-trash-alt"></i>
+                        </div>
+                        <h4>Solid Waste Management Center</h4>
+                        <p>Design and construction of integrated solid waste management center with segregation and recycling.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4>Hazardous Waste Storage Facility</h4>
+                        <p>Construction of secure hazardous waste storage and handling facility with containment systems.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="facilities" class="tracker-content">
+                <div class="project-showcase">
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <h4>OSR Equipment Storage Warehouse</h4>
+                        <p>Construction of climate-controlled warehouse for oil spill response equipment storage and maintenance.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h4>Emergency Response Center</h4>
+                        <p>Construction of 24/7 emergency response center with communication systems and equipment staging areas.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                    <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>OSR Training Facility</h4>
+                        <p>Construction of comprehensive oil spill response training facility with simulation capabilities.</p>
+                        <span class="project-status">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="construction-cta-section">
+        <div class="construction-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Build Your Environmental Infrastructure?</h2>
+                <p>
+                    Partner with Nigeria's leading environmental construction services provider for sustainable, 
+                    compliant, and high-quality environmental infrastructure projects.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Environmental Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/construction-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

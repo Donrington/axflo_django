@@ -1,0 +1,401 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Incident-Management - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/incident-management.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Incident Management Hero Section -->
+    <section class="incident-hero">
+        <div class="crisis-backdrop"></div>
+        
+        <div class="crisis-signals">
+            <div class="signal-wave"></div>
+            <div class="signal-wave"></div>
+            <div class="signal-wave"></div>
+            <div class="signal-wave"></div>
+        </div>
+        
+        <div class="incident-nodes">
+            <div class="incident-node node-1">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div class="incident-indicator"></div>
+            </div>
+            <div class="incident-node node-2">
+                <i class="fas fa-headset"></i>
+                <div class="incident-indicator"></div>
+            </div>
+            <div class="incident-node node-3">
+                <i class="fas fa-users-cog"></i>
+                <div class="incident-indicator"></div>
+            </div>
+            <div class="incident-node node-4">
+                <i class="fas fa-chart-bar"></i>
+                <div class="incident-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="incident-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="crisis-badge">
+                <div class="crisis-icon"></div>
+                Expert Crisis Management Since 2009
+            </div>
+            
+            <h1 class="incident-title">Incident Management</h1>
+            
+            <p class="incident-subtitle">
+                Expert environmental incident management services coordinating oil spill response efforts 
+                and ensuring effective crisis resolution across Nigeria's oil and gas operations through 
+                command center operations, multi-agency coordination, and comprehensive post-incident analysis.
+            </p>
+            
+            <a href="#incident-overview" class="incident-cta">
+                Crisis Management
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Incident Management Overview -->
+    <section id="incident-overview" class="incident-overview">
+        <div class="incident-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Expert Environmental Crisis Management</h2>
+                    <p>
+                        Axflo's Incident Management services provide expert coordination and leadership 
+                        during environmental emergencies and oil spill incidents. Our command center 
+                        operations ensure effective multi-agency coordination, resource optimization, 
+                        and strategic decision-making for rapid crisis resolution.
+                    </p>
+                    <p>
+                        From initial incident assessment through complete resolution, our experienced 
+                        incident management team coordinates all response activities, manages stakeholder 
+                        communications, and ensures compliance with regulatory requirements while 
+                        minimizing environmental impact and operational disruption.
+                    </p>
+                    
+                    <div class="incident-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">24/7</span>
+                            <span class="metric-title">Crisis Response</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-letter">Command</span>
+                            <span class="metric-title">Center Operations</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-letter">Multi-Agency</span>
+                            <span class="metric-title">Coordination</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="incident-visual" data-aos="slide-left" data-aos-duration="1000">
+                 <div class="visual-image">
+                          <img src=" {% static 'axflo_app/images/training3.webp' %}" alt="Emergency Preparedness and Incident Management" loading="lazy">
+                        <p>Incident Management</p>
+                        <small>Crisis coordination & resolution</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Incident Management Services -->
+    <section class="incident-services">
+        <div class="incident-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Crisis Management Capabilities</h2>
+                <p>
+                    Comprehensive incident management services ensuring effective coordination 
+                    and resolution of environmental emergencies and oil spill incidents.
+                </p>
+            </div>
+            
+            <div class="incident-services-grid">
+                <!-- Command Center Operations -->
+                <div class="incident-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3>Command Center Operations</h3>
+                    </div>
+                    <p class="service-description">
+                        State-of-the-art incident command center providing centralized coordination 
+                        and strategic oversight for environmental emergency response operations 
+                        ensuring effective resource deployment and decision-making.
+                    </p>
+                    <ul class="service-features">
+                        <li>Incident Command System (ICS)</li>
+                        <li>Real-time Monitoring</li>
+                        <li>Strategic Decision Support</li>
+                        <li>Resource Coordination</li>
+                        <li>Communication Management</li>
+                        <li>Situation Assessment</li>
+                        <li>Operational Planning</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Multi-agency Coordination -->
+                <div class="incident-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-users-cog"></i>
+                        </div>
+                        <h3>Multi-agency Coordination</h3>
+                    </div>
+                    <p class="service-description">
+                        Expert coordination of multiple agencies and stakeholders during environmental 
+                        emergencies ensuring unified response efforts, clear communication channels, 
+                        and effective collaboration for optimal incident resolution.
+                    </p>
+                    <ul class="service-features">
+                        <li>Stakeholder Coordination</li>
+                        <li>Unified Command Structure</li>
+                        <li>Inter-agency Communication</li>
+                        <li>Resource Sharing</li>
+                        <li>Joint Operations Planning</li>
+                        <li>Regulatory Liaison</li>
+                        <li>Community Relations</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Post-incident Analysis -->
+                <div class="incident-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Post-incident Analysis</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive post-incident analysis and evaluation providing detailed 
+                        assessment of response effectiveness, lessons learned, and recommendations 
+                        for improved future incident management and prevention strategies.
+                    </p>
+                    <ul class="service-features">
+                        <li>Response Effectiveness Analysis</li>
+                        <li>Timeline Reconstruction</li>
+                        <li>Lessons Learned Documentation</li>
+                        <li>Improvement Recommendations</li>
+                        <li>Regulatory Reporting</li>
+                        <li>Best Practices Development</li>
+                        <li>Knowledge Transfer</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Crisis Communication -->
+                <div class="incident-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-broadcast-tower"></i>
+                        </div>
+                        <h3>Crisis Communication</h3>
+                    </div>
+                    <p class="service-description">
+                        Strategic crisis communication management ensuring accurate information 
+                        dissemination to stakeholders, media, and regulatory bodies while 
+                        maintaining transparency and protecting organizational reputation.
+                    </p>
+                    <ul class="service-features">
+                        <li>Media Relations Management</li>
+                        <li>Stakeholder Communication</li>
+                        <li>Public Information Coordination</li>
+                        <li>Regulatory Reporting</li>
+                        <li>Community Engagement</li>
+                        <li>Message Development</li>
+                        <li>Reputation Protection</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Management Process -->
+    <section class="management-process">
+        <div class="incident-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Incident Management Process</h2>
+                <p>
+                    Systematic approach to incident management ensuring effective coordination 
+                    and resolution of environmental emergencies.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Incident Assessment</h3>
+                    <p>Rapid assessment and classification of incident severity with immediate command center activation and stakeholder notification.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>Response Coordination</h3>
+                    <p>Unified command establishment with multi-agency coordination and strategic resource deployment for effective response.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Operations Management</h3>
+                    <p>Continuous oversight of response operations with real-time monitoring, communication management, and tactical adjustments.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Resolution & Analysis</h3>
+                    <p>Incident closure procedures with comprehensive post-incident analysis, documentation, and improvement recommendations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Command Operations -->
+    <section class="command-operations">
+        <div class="incident-container">
+            <div class="operations-header" data-aos="fade-up">
+                <h2>Command Center Capabilities</h2>
+                <p>
+                    Advanced command and control capabilities ensuring effective incident 
+                    management and coordination for environmental emergency response.
+                </p>
+            </div>
+            
+            <div class="operations-grid">
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="command-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4>Incident Command System</h4>
+                    <p>Standardized incident command structure ensuring clear roles, responsibilities, and effective coordination during emergency response operations.</p>
+                </div>
+                
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="command-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h4>Real-time Monitoring</h4>
+                    <p>Advanced monitoring systems providing real-time situational awareness and incident tracking for informed decision-making.</p>
+                </div>
+                
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="command-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4>Communication Networks</h4>
+                    <p>Robust communication infrastructure ensuring reliable connectivity between all response teams and stakeholders during operations.</p>
+                </div>
+                
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="command-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Information Management</h4>
+                    <p>Comprehensive information management systems for data collection, analysis, and reporting throughout incident response operations.</p>
+                </div>
+                
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="command-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h4>Resource Tracking</h4>
+                    <p>Advanced resource management and tracking systems ensuring optimal deployment and utilization of personnel and equipment.</p>
+                </div>
+                
+                <div class="command-component" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="command-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h4>Documentation Systems</h4>
+                    <p>Comprehensive documentation and reporting systems ensuring complete incident records for analysis and regulatory compliance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="incident-cta-section">
+        <div class="incident-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Expert Crisis Management</h2>
+                <p>
+                    When crisis strikes, trust Nigeria's incident management specialists for 
+                    expert coordination and effective resolution of environmental emergencies.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Crisis Hotline
+                    </a>
+                    <a href="#command" class="cta-action cta-secondary">
+                        <i class="fas fa-desktop"></i>
+                        Command Center
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/incident-management.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

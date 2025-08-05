@@ -1,0 +1,534 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Project-Management - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/project-management.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Project Management Hero Section -->
+   <section class="project-hero">
+        <div class="project-backdrop"></div>
+        
+        <div class="project-elements">
+            <div class="project-diagram diagram-1">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="project-diagram diagram-2">
+                <i class="fas fa-tasks"></i>
+            </div>
+            <div class="project-diagram diagram-3">
+                <i class="fas fa-chart-gantt"></i>
+            </div>
+            <div class="project-diagram diagram-4">
+                <i class="fas fa-users-cog"></i>
+            </div>
+            <div class="project-diagram diagram-5">
+                <i class="fas fa-clipboard-check"></i>
+            </div>
+        </div>
+        
+        <div class="project-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="project-badge">
+                <div class="project-indicator"></div>
+                Reliable Project Delivery Since 2009
+            </div>
+            
+            <h1 class="project-title">Project Management Services</h1>
+            
+            <p class="project-subtitle">
+                Professional project management and coordination services for oil spill response, 
+                environmental remediation, and equipment installation projects across Nigeria's oil and gas sector.
+            </p>
+            
+            <a href="#project-overview" class="project-cta">
+                Explore Our Approach
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section id="project-overview" class="project-overview">
+        <div class="project-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Environmental Project Management</h2>
+                    <p>
+                        Axflo's Project Management services focus on the successful delivery of environmental 
+                        protection and remediation projects across Nigeria's oil and gas operations. Our 
+                        experienced project coordinators ensure efficient execution of oil spill response, 
+                        cleanup operations, equipment installations, and environmental restoration projects.
+                    </p>
+                    <p>
+                        From emergency spill response coordination to large-scale remediation projects, our 
+                        project management approach combines technical expertise with practical field experience 
+                        to deliver successful outcomes. We manage all aspects of project execution including 
+                        resource coordination, safety compliance, and stakeholder communication.
+                    </p>
+                    
+                    <div class="project-stats">
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="100">
+                            <span class="stat-figure">100+</span>
+                            <span class="stat-text">Projects Completed</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="200">
+                            <span class="stat-figure">15+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-figure">Major IOCs</span>
+                            <span class="stat-text">Trusted Clients</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-figure">24/7</span>
+                            <span class="stat-text">Project Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/axflo14.jpg' %}" alt="Project Coordination Excellence" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Project Coordination Excellence</p>
+                            <small>Environmental project management expertise</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Management Services Detailed -->
+    <section class="pm-services">
+        <div class="project-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Project Management Services</h2>
+                <p>
+                    Specialized project management for environmental protection, remediation, 
+                    and oil spill response projects ensuring safe and successful project delivery.
+                </p>
+            </div>
+            
+            <div class="pm-grid">
+                <!-- Oil Spill Response Project Management -->
+                <div class="pm-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pm-card-header">
+                        <div class="pm-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Oil Spill Response Project Coordination</h3>
+                    </div>
+                    <p class="pm-description">
+                        Comprehensive coordination of oil spill response projects including emergency deployment, 
+                        containment operations, recovery activities, and cleanup coordination ensuring rapid 
+                        response and effective incident management with proper safety protocols.
+                    </p>
+                    <ul class="pm-capabilities">
+                        <li>Emergency Response Coordination</li>
+                        <li>Equipment Deployment Management</li>
+                        <li>Response Team Mobilization</li>
+                        <li>Safety Protocol Implementation</li>
+                        <li>Stakeholder Communication</li>
+                        <li>Regulatory Compliance Management</li>
+                        <li>Incident Documentation & Reporting</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="pm-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Remediation Project Management -->
+                <div class="pm-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="pm-card-header">
+                        <div class="pm-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Environmental Remediation Projects</h3>
+                    </div>
+                    <p class="pm-description">
+                        Professional management of environmental remediation projects including site assessment, 
+                        cleanup planning, execution coordination, and restoration activities ensuring compliance 
+                        with environmental regulations and successful site restoration.
+                    </p>
+                    <ul class="pm-capabilities">
+                        <li>Site Assessment Coordination</li>
+                        <li>Remediation Planning & Strategy</li>
+                        <li>Cleanup Operation Management</li>
+                        <li>Environmental Monitoring</li>
+                        <li>Regulatory Approval Processes</li>
+                        <li>Progress Tracking & Reporting</li>
+                        <li>Site Restoration Oversight</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="pm-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Equipment Installation Projects -->
+                <div class="pm-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="pm-card-header">
+                        <div class="pm-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Equipment Installation & Commissioning</h3>
+                    </div>
+                    <p class="pm-description">
+                        Systematic management of equipment installation and commissioning projects including 
+                        planning, coordination, testing, and handover ensuring proper installation and 
+                        operational readiness of oil spill response and environmental protection equipment.
+                    </p>
+                    <ul class="pm-capabilities">
+                        <li>Installation Planning & Scheduling</li>
+                        <li>Equipment Delivery Coordination</li>
+                        <li>Technical Installation Oversight</li>
+                        <li>Testing & Commissioning</li>
+                        <li>Training Coordination</li>
+                        <li>Documentation & Handover</li>
+                        <li>Post-Installation Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="pm-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Maintenance Project Coordination -->
+                <div class="pm-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="pm-card-header">
+                        <div class="pm-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Maintenance Project Coordination</h3>
+                    </div>
+                    <p class="pm-description">
+                        Professional coordination of scheduled maintenance projects for oil spill response 
+                        equipment and environmental systems ensuring minimal downtime, optimal performance, 
+                        and continued operational readiness of critical protection systems.
+                    </p>
+                    <ul class="pm-capabilities">
+                        <li>Maintenance Planning & Scheduling</li>
+                        <li>Resource Allocation & Coordination</li>
+                        <li>Equipment Shutdown Management</li>
+                        <li>Quality Control & Verification</li>
+                        <li>Performance Testing</li>
+                        <li>Documentation & Certification</li>
+                        <li>Operational Readiness Verification</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="pm-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Execution Process -->
+    <section class="project-lifecycle">
+        <div class="project-container">
+            <div class="lifecycle-header" data-aos="fade-up">
+                <h2>Project Execution Process</h2>
+                <p>
+                    Systematic approach to environmental project delivery ensuring successful 
+                    outcomes through structured planning, execution, and monitoring.
+                </p>
+            </div>
+            
+            <div class="lifecycle-timeline">
+                <div class="lifecycle-phase" data-aos="slide-right" data-aos-delay="100">
+                    <div class="phase-number">01</div>
+                    <div class="phase-details">
+                        <h3>Project Assessment & Planning</h3>
+                        <p>
+                            Comprehensive project scoping including site assessment, requirement analysis, 
+                            resource planning, and risk evaluation to establish clear project objectives 
+                            and execution strategies for environmental protection projects.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lifecycle-phase" data-aos="slide-left" data-aos-delay="200">
+                    <div class="phase-number">02</div>
+                    <div class="phase-details">
+                        <h3>Resource Mobilization & Coordination</h3>
+                        <p>
+                            Systematic mobilization of personnel, equipment, and materials with proper 
+                            coordination of all project resources ensuring readiness for safe and 
+                            efficient project execution according to established timelines.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lifecycle-phase" data-aos="slide-right" data-aos-delay="300">
+                    <div class="phase-number">03</div>
+                    <div class="phase-details">
+                        <h3>Execution & Progress Monitoring</h3>
+                        <p>
+                            Active project execution with continuous monitoring of progress, safety 
+                            compliance, and quality standards while maintaining effective communication 
+                            with all stakeholders and ensuring adherence to project requirements.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lifecycle-phase" data-aos="slide-left" data-aos-delay="400">
+                    <div class="phase-number">04</div>
+                    <div class="phase-details">
+                        <h3>Quality Control & Verification</h3>
+                        <p>
+                            Comprehensive quality control processes including testing, verification, 
+                            and compliance confirmation ensuring all deliverables meet technical 
+                            specifications and regulatory requirements for successful project completion.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lifecycle-phase" data-aos="slide-right" data-aos-delay="500">
+                    <div class="phase-number">05</div>
+                    <div class="phase-details">
+                        <h3>Project Handover & Documentation</h3>
+                        <p>
+                            Systematic project closure including deliverable handover, comprehensive 
+                            documentation, training provision, and post-project support ensuring 
+                            smooth transition and continued operational success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Management Capabilities -->
+    <section class="pmo-framework">
+        <div class="project-container">
+            <div class="framework-header" data-aos="fade-up">
+                <h2>Project Management Capabilities</h2>
+                <p>
+                    Comprehensive project management capabilities ensuring successful delivery 
+                    of environmental protection and oil spill response projects.
+                </p>
+            </div>
+            
+            <div class="framework-grid">
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="framework-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h4>Project Planning</h4>
+                    <p>Comprehensive project planning including scope definition, resource allocation, and timeline development for environmental projects.</p>
+                </div>
+                
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="framework-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h4>Safety Management</h4>
+                    <p>Rigorous safety protocols and risk management ensuring zero-harm objectives and regulatory compliance throughout project execution.</p>
+                </div>
+                
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="framework-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4>Progress Monitoring</h4>
+                    <p>Real-time progress tracking and performance monitoring with regular reporting and stakeholder communication.</p>
+                </div>
+                
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="framework-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4>Team Coordination</h4>
+                    <p>Effective coordination of multidisciplinary teams including technical specialists, field personnel, and support staff.</p>
+                </div>
+                
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="framework-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Documentation Management</h4>
+                    <p>Comprehensive documentation and record keeping ensuring regulatory compliance and knowledge preservation.</p>
+                </div>
+                
+                <div class="framework-component" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="framework-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Resource Management</h4>
+                    <p>Efficient management of equipment, materials, and personnel resources ensuring optimal project performance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Portfolio -->
+    <section class="risk-management">
+        <div class="project-container">
+            <div class="risk-header" data-aos="fade-up">
+                <h2>Project Portfolio & Experience</h2>
+                <p>Proven track record of successful environmental project delivery across Nigeria's oil and gas operations.</p>
+            </div>
+            
+            <div class="risk-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="risk-button active" onclick="showRisk('response')">Spill Response</button>
+                <button class="risk-button" onclick="showRisk('remediation')">Remediation</button>
+                <button class="risk-button" onclick="showRisk('installation')">Equipment Projects</button>
+            </div>
+            
+            <div id="response" class="risk-content active">
+                <div class="risk-showcase">
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="risk-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4>Pipeline Spill Response</h4>
+                        <p>Coordination of emergency response operations for pipeline incidents including UPS-Rapele, Ogoda-Brass, and Tebidaba-Brass lines.</p>
+                        <span class="risk-status">Multiple Projects</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="risk-icon">
+                            <i class="fas fa-hard-hat"></i>
+                        </div>
+                        <h4>Offshore Containment</h4>
+                        <p>Management of offshore oil spill containment and recovery operations using advanced equipment and marine support.</p>
+                        <span class="risk-status">Successful</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="risk-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Emergency Deployment</h4>
+                        <p>Rapid deployment projects for emergency spill response ensuring immediate containment and minimized environmental impact.</p>
+                        <span class="risk-status">24/7 Ready</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="remediation" class="risk-content">
+                <div class="risk-showcase">
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="risk-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h4>Site Cleanup Projects</h4>
+                        <p>Management of hydrocarbon-impacted site cleanup projects across Rivers, Delta, and Bayelsa states.</p>
+                        <span class="risk-status">100+ Sites</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="risk-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h4>Soil Remediation</h4>
+                        <p>Comprehensive soil treatment and bioremediation projects restoring contaminated areas to environmental standards.</p>
+                        <span class="risk-status">Proven Results</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="risk-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Water Treatment</h4>
+                        <p>Management of groundwater and surface water treatment projects ensuring compliance with environmental regulations.</p>
+                        <span class="risk-status">Compliant</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="installation" class="risk-content">
+                <div class="risk-showcase">
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="risk-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>OSR Equipment Installation</h4>
+                        <p>Professional management of oil spill response equipment installations including skimmers, booms, and recovery systems.</p>
+                        <span class="risk-status">Expert Installation</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="risk-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Boom System Projects</h4>
+                        <p>Coordination of permanent Ro-Fence boom installations and temporary containment system deployments.</p>
+                        <span class="risk-status">Multiple Installations</span>
+                    </div>
+                    <div class="risk-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="risk-icon">
+                            <i class="fas fa-gavel"></i>
+                        </div>
+                        <h4>Commissioning Projects</h4>
+                        <p>Professional commissioning and testing of installed equipment ensuring operational readiness and compliance.</p>
+                        <span class="risk-status">Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="pm-cta-section">
+        <div class="project-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Manage Your Environmental Project?</h2>
+                <p>
+                    Partner with Nigeria's trusted environmental project management specialists for 
+                    reliable coordination and successful delivery of your oil spill response and remediation projects.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Project Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/project-management.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

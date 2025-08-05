@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .unsubscribe-container {
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 40px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 15px;
+        text-align: center;
+        color: white;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    
+    .unsubscribe-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+    
+    .unsubscribe-title {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+    
+    .unsubscribe-message {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+    
+    .unsubscribe-email {
+        background: rgba(255,255,255,0.1);
+        padding: 10px 20px;
+        border-radius: 25px;
+        display: inline-block;
+        margin-bottom: 30px;
+        font-weight: 500;
+    }
+    
+    .back-home-btn {
+        background: rgba(255,255,255,0.2);
+        color: white;
+        padding: 12px 30px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 25px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+        font-weight: 500;
+    }
+    
+    .back-home-btn:hover {
+        background: rgba(255,255,255,0.3);
+        border-color: rgba(255,255,255,0.5);
+        color: white;
+        text-decoration: none;
+    }
+    
+    .success {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    }
+    
+    .error {
+        background: linear-gradient(135deg, #fc466b 0%, #3f5efb 100%);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="unsubscribe-container {% if success %}success{% else %}error{% endif %}">
+    {% if success %}
+        <div class="unsubscribe-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1 class="unsubscribe-title">Unsubscribed Successfully!</h1>
+        <p class="unsubscribe-message">{{ message }}</p>
+        {% if email %}
+            <div class="unsubscribe-email">{{ email }}</div>
+        {% endif %}
+        <p class="unsubscribe-message">We're sorry to see you go. You can always subscribe again if you change your mind.</p>
+    {% else %}
+        <div class="unsubscribe-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h1 class="unsubscribe-title">Unsubscribe Failed</h1>
+        <p class="unsubscribe-message">{{ message }}</p>
+    {% endif %}
+    
+    <a href="{% url 'axflo_app:index' %}" class="back-home-btn">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>
+{% endblock %}

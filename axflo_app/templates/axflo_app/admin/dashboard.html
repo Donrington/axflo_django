@@ -1,0 +1,234 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard - Axflo{% endblock %}
+
+{% block content %}
+<!-- Dashboard Welcome -->
+<div class="dashboard-welcome">
+    <h2>Welcome back, {{ request.user.username }}!</h2>
+    <p>Here's what's happening with your admin dashboard.</p>
+</div>
+
+<!-- Stats Grid -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-number">{{ total_users|default:"0" }}</div>
+        <div class="stat-label">Total Users</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-user-shield"></i>
+        </div>
+        <div class="stat-number">{{ staff_users|default:"0" }}</div>
+        <div class="stat-label">Staff Users</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="stat-number">{{ superusers|default:"0" }}</div>
+        <div class="stat-label">Super Users</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-address-book"></i>
+        </div>
+        <div class="stat-number">{{ total_contacts|default:"0" }}</div>
+        <div class="stat-label">Contact Submissions</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-envelope"></i>
+        </div>
+        <div class="stat-number">{{ unread_contacts|default:"0" }}</div>
+        <div class="stat-label">Unread Messages</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-envelope-open"></i>
+        </div>
+        <div class="stat-number">{{ active_subscribers|default:"0" }}</div>
+        <div class="stat-label">Newsletter Subscribers</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-briefcase"></i>
+        </div>
+        <div class="stat-number">{{ total_jobs|default:"0" }}</div>
+        <div class="stat-label">Job Postings</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">
+            <i class="fas fa-newspaper"></i>
+        </div>
+        <div class="stat-number">{{ total_articles|default:"0" }}</div>
+        <div class="stat-label">Blog Articles</div>
+    </div>
+</div>
+
+<!-- Admin Actions -->
+<div class="admin-actions">
+    <div class="action-card">
+        <h3><i class="fas fa-address-book"></i> Contact Management</h3>
+        <p>Manage contact form submissions and inquiries from potential clients.</p>
+        <a href="/admin-contacts/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Contacts
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-briefcase"></i> Career Portal</h3>
+        <p>Manage job postings, review applications, and track hiring progress.</p>
+        <a href="/admin-careers/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Careers
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-users"></i> User Management</h3>
+        <p>View and manage user accounts, permissions, and access levels.</p>
+        <a href="/admin-users/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Users
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-envelope-open"></i> Newsletter Management</h3>
+        <p>Manage newsletter subscribers, create newsletters, and view analytics.</p>
+        <a href="/admin-subscribers/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Newsletter
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-newspaper"></i> Blog Management</h3>
+        <p>Create, edit, and manage blog articles. Control what content appears on your media page.</p>
+        <a href="{% url 'axflo_app:admin_blog' %}" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Blog
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-cogs"></i> Django Admin</h3>
+        <p>Access the full Django admin interface for advanced management.</p>
+        <a href="/admin/" class="action-btn" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            Open Django Admin
+        </a>
+    </div>
+
+    <div class="action-card">
+        <h3><i class="fas fa-globe"></i> View Website</h3>
+        <p>Preview your live website and see how visitors experience it.</p>
+        <a href="/" class="action-btn" target="_blank">
+            <i class="fas fa-external-link-alt"></i>
+            View Website
+        </a>
+    </div>
+</div>
+
+<!-- Recent Activity Section -->
+{% if recent_contacts %}
+<div class="action-card" style="grid-column: 1 / -1; margin-top: 2rem;">
+    <h3><i class="fas fa-clock"></i> Recent Contact Submissions</h3>
+    <div style="margin-top: 1rem;">
+        {% for contact in recent_contacts %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <div>
+                <strong style="color: var(--text-primary);">{{ contact.name }}</strong>
+                <span style="color: var(--text-secondary); margin-left: 0.5rem;">- {{ contact.inquiry_type.name }}</span>
+            </div>
+            <div style="text-align: right;">
+                <div style="color: var(--text-tertiary); font-size: 0.85rem;">{{ contact.date|date:"M d, Y" }}</div>
+                <span class="status-badge {% if contact.read %}read{% else %}unread{% endif %}" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">
+                    {% if contact.read %}Read{% else %}New{% endif %}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="/admin-contacts/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            View All Contacts
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% if recent_subscribers %}
+<div class="action-card" style="grid-column: 1 / -1; margin-top: 2rem;">
+    <h3><i class="fas fa-envelope-open"></i> Recent Newsletter Subscribers</h3>
+    <div style="margin-top: 1rem;">
+        {% for subscriber in recent_subscribers %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <div>
+                <strong style="color: var(--text-primary);">{{ subscriber.email }}</strong>
+                {% if subscriber.first_name or subscriber.last_name %}
+                    <span style="color: var(--text-secondary); margin-left: 0.5rem;">- {{ subscriber.first_name }} {{ subscriber.last_name }}</span>
+                {% endif %}
+            </div>
+            <div style="text-align: right;">
+                <div style="color: var(--text-tertiary); font-size: 0.85rem;">{{ subscriber.subscription_date|date:"M d, Y" }}</div>
+                <span class="status-badge {% if subscriber.active_status %}active{% else %}inactive{% endif %}" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">
+                    {% if subscriber.active_status %}Active{% else %}Inactive{% endif %}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="/admin-subscribers/" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            View All Subscribers
+        </a>
+    </div>
+</div>
+{% endif %}
+
+{% if recent_articles %}
+<div class="action-card" style="grid-column: 1 / -1; margin-top: 2rem;">
+    <h3><i class="fas fa-newspaper"></i> Recent Blog Articles</h3>
+    <div style="margin-top: 1rem;">
+        {% for article in recent_articles %}
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <div>
+                <strong style="color: var(--text-primary);">{{ article.title|truncatechars:50 }}</strong>
+                {% if article.category %}
+                    <span style="color: var(--text-secondary); margin-left: 0.5rem;">- {{ article.category.name }}</span>
+                {% endif %}
+            </div>
+            <div style="text-align: right;">
+                <div style="color: var(--text-tertiary); font-size: 0.85rem;">{{ article.created_at|date:"M d, Y" }}</div>
+                <span class="status-badge {% if article.status == 'PUBLISHED' %}published{% elif article.status == 'DRAFT' %}draft{% else %}archived{% endif %}" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">
+                    {{ article.get_status_display }}
+                </span>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 1rem;">
+        <a href="{% url 'axflo_app:admin_blog' %}" class="action-btn">
+            <i class="fas fa-arrow-right"></i>
+            Manage Blog Articles
+        </a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'dashboard';
+</script>
+{% endblock %}

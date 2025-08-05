@@ -1,0 +1,367 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Media Center - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/media.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+
+    <!-- Media Header Section -->
+    <section class="about-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Media Center
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">Latest News & Updates</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+                Stay informed with the latest developments in environmental protection, oil spill response 
+                innovations, and Axflo's commitment to safeguarding Nigeria's environment through cutting-edge 
+                technology and sustainable practices.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#news-section" class="cta-button">
+                Explore Latest News
+                <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    
+
+    <!-- Dynamic Blog Section -->
+    <section class="news-section" id="news-section">
+        <!-- Search Bar -->
+        <div style="text-align: center; margin-bottom: 60px; max-width: 1400px; margin-left: auto; margin-right: auto; padding: 0 20px;">
+            <form method="GET" action="{% url 'axflo_app:media' %}" style="display: flex; justify-content: center; width: 100%;">
+                <input type="text" name="search" value="{{ search_query|default:'' }}" 
+                       class="blog-search" placeholder="Search articles...">
+                <button type="submit" style="display: none;"></button>
+            </form>
+        </div>
+        
+        <div class="blog-container">
+
+            <!-- Main Content -->
+            <div class="blog-main">
+                {% if articles %}
+                    <div class="blog-articles-grid">
+                        {% for article in articles %}
+                        <article class="blog-article" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:100 }}">
+                            {% if article.get_image_url %}
+                            <img src="{{ article.get_image_url }}" alt="{{ article.image_alt|default:article.title }}" class="blog-image">
+                            {% else %}
+                            <div style="height: 250px; background: linear-gradient(135deg, var(--primary-gold), var(--primary-blue)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-newspaper" style="font-size: 3rem;"></i>
+                            </div>
+                            {% endif %}
+                            
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    {% if article.category %}
+                                    <span class="blog-category">{{ article.category.name }}</span>
+                                    {% endif %}
+                                    <span><i class="fas fa-calendar-alt"></i> {{ article.published_at|date:"M d, Y" }}</span>
+                                    <span><i class="fas fa-eye"></i> {{ article.view_count }} views</span>
+                                </div>
+                                
+                                <h2 class="blog-title">{{ article.title }}</h2>
+                                
+                                <p class="blog-excerpt">
+                                    {{ article.excerpt|default:article.content|truncatewords:30 }}
+                                </p>
+                                
+                                {% if article.tags %}
+                                <div class="blog-tags">
+                                    {% for tag in article.get_tag_list %}
+                                    <span class="blog-tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </div>
+                                {% endif %}
+                                
+                                <a href="{% url 'axflo_app:blog_detail' slug=article.slug %}" class="read-more">
+                                    Read More <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Pagination -->
+                    {% if articles.has_other_pages %}
+                    <div class="pagination">
+                        {% if articles.has_previous %}
+                        <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}">&laquo; First</a>
+                        <a href="?page={{ articles.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">&lsaquo; Previous</a>
+                        {% endif %}
+                        
+                        <span class="current">
+                            Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+                        </span>
+                        
+                        {% if articles.has_next %}
+                        <a href="?page={{ articles.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}">Next &rsaquo;</a>
+                        <a href="?page={{ articles.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}">Last &raquo;</a>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+                {% else %}
+                    <div class="no-articles">
+                        <div class="no-articles-icon">
+                            <i class="fas fa-newspaper"></i>
+                        </div>
+                        <h3>No Articles Found</h3>
+                        {% if search_query %}
+                        <p>No articles match your search for "{{ search_query }}". Try different keywords or <a href="{% url 'axflo_app:media' %}">view all articles</a>.</p>
+                        {% else %}
+                        <p>No blog articles have been published yet. Check back soon for the latest updates and news from Axflo.</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="blog-sidebar">
+                <!-- Featured Posts -->
+                {% if featured_articles %}
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Featured Posts</h3>
+                    {% for article in featured_articles %}
+                    <div class="featured-post">
+                        <h4 class="featured-title">{{ article.title }}</h4>
+                        <div class="featured-meta">
+                            {{ article.published_at|date:"M d, Y" }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <!-- Categories -->
+                {% if categories %}
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Categories</h3>
+                    <a href="{% url 'axflo_app:media' %}" class="category-link {% if not current_category %}active{% endif %}">
+                        All Articles ({{ total_articles }})
+                    </a>
+                    {% for category in categories %}
+                    <a href="?category={{ category.slug }}" class="category-link {% if current_category == category.slug %}active{% endif %}">
+                        {{ category.name }} ({{ category.newsarticle_set.count }})
+                    </a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                
+                <!-- Recent Posts -->
+                {% if recent_articles %}
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    {% for article in recent_articles %}
+                    <div class="featured-post">
+                        <h4 class="featured-title">{{ article.title|truncatewords:8 }}</h4>
+                        <div class="featured-meta">
+                            {{ article.published_at|date:"M d, Y" }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid" data-aos="fade-up">
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Environmental Projects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Response</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Response Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <h2 class="newsletter-title">Stay Updated</h2>
+                <p class="newsletter-subtitle">
+                    Subscribe to our newsletter for the latest updates on environmental protection innovations, 
+                    industry insights, and Axflo's commitment to sustainable practices.
+                </p>
+                <form id="media-newsletter-form" class="newsletter-form" method="post">
+                    {% csrf_token %}
+                    <input type="email" id="media-newsletter-email" name="email" class="newsletter-input" placeholder="Enter your email address" required>
+                    <input type="hidden" name="first_name" value="">
+                    <input type="hidden" name="last_name" value="">
+                    <button type="submit" id="media-newsletter-btn" class="newsletter-btn">Subscribe</button>
+                </form>
+                <div id="media-newsletter-message" class="newsletter-message" style="display: none;"></div>
+            </div>
+        </div>
+    </section>
+
+{% include 'axflo_app/includes/footer.html' %}
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/media.js' %}"></script>
+<script src="{% static 'axflo_app/js/main.js' %}"></script>
+<script>
+// Media page newsletter form handler
+document.addEventListener('DOMContentLoaded', function() {
+    const mediaNewsletterForm = document.getElementById('media-newsletter-form');
+    const mediaNewsletterBtn = document.getElementById('media-newsletter-btn');
+    const mediaNewsletterMessage = document.getElementById('media-newsletter-message');
+    
+    if (mediaNewsletterForm) {
+        mediaNewsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(mediaNewsletterForm);
+            
+            // Show loading state
+            mediaNewsletterBtn.disabled = true;
+            mediaNewsletterBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            mediaNewsletterMessage.style.display = 'none';
+            
+            // Submit form
+            fetch("{% url 'axflo_app:newsletter_subscribe' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show message
+                mediaNewsletterMessage.style.display = 'block';
+                mediaNewsletterMessage.innerHTML = data.message;
+                mediaNewsletterMessage.className = 'newsletter-message ' + (data.success ? 'success' : 'error');
+                
+                if (data.success) {
+                    mediaNewsletterForm.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        mediaNewsletterMessage.style.display = 'none';
+                    }, 5000);
+                }
+            })
+            .catch(error => {
+                mediaNewsletterMessage.style.display = 'block';
+                mediaNewsletterMessage.innerHTML = 'An error occurred. Please try again later.';
+                mediaNewsletterMessage.className = 'newsletter-message error';
+            })
+            .finally(() => {
+                // Reset button
+                mediaNewsletterBtn.disabled = false;
+                mediaNewsletterBtn.innerHTML = 'Subscribe';
+            });
+        });
+    }
+    
+    // Blog search functionality
+    const blogSearch = document.querySelector('.blog-search');
+    if (blogSearch) {
+        blogSearch.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.closest('form').submit();
+            }
+        });
+    }
+});
+
+// Track article views
+function trackView(articleId) {
+    fetch(`/admin-blog-view/${articleId}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({})
+    }).catch(error => {
+        console.log('View tracking failed:', error);
+    });
+}
+</script>
+<style>
+.newsletter-message {
+    margin-top: 15px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.newsletter-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.newsletter-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.newsletter-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+</style>
+{% endblock %}

@@ -1,0 +1,36 @@
+<header class="main-header">
+    <div class="header-left">
+        <h1 class="page-title">
+            <i class="fas {{ page_icon|default:'fa-chart-bar' }} page-icon"></i>
+            {{ page_title|default:'Dashboard' }}
+        </h1>
+        {% if page_subtitle %}
+            <p class="page-subtitle">{{ page_subtitle }}</p>
+        {% endif %}
+    </div>
+    <div class="header-right">
+        {% if header_actions %}
+            <div class="header-actions">
+                {{ header_actions }}
+            </div>
+        {% endif %}
+        <div class="user-info">
+            <span class="user-name">{{ request.user.username|default:'Admin' }}</span>
+            <div class="user-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+        <button class="theme-toggle" id="themeToggle2">
+            <i class="fas fa-moon"></i>
+        </button>
+
+    
+        <nav class="admin-nav">
+          
+            <a href="/admin-users/" class="current">Users</a>
+            <a href="/" target="_blank">View Site</a>
+            <a href="/admin-logout/" class="logout-btn">Logout</a>
+        </nav>
+    </div>
+  
+</header>

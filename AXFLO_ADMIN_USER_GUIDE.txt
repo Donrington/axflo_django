@@ -1,0 +1,874 @@
+================================================================
+                    AXFLO ADMIN DASHBOARD USER GUIDE
+                         Complete Operating Manual
+================================================================
+
+TABLE OF CONTENTS:
+1. Getting Started
+2. Profile Management
+3. Contact Management
+4. Newsletter & Subscriber Management
+5. Career & Job Management
+6. Blog Management
+7. Achievements & Portfolio Management
+8. Content Management
+9. Security & Best Practices
+10. Troubleshooting & Support
+
+================================================================
+1. GETTING STARTED
+================================================================
+
+1.1 ACCESSING THE ADMIN DASHBOARD
+-------------------------------
+1. Open your web browser
+2. Go to: https://axflo.com/admin-login/
+3. Enter your username and password
+4. Click "Login" button
+
+✅ SUCCESSFUL LOGIN: You'll be redirected to the main dashboard
+❌ LOGIN FAILED: Check your credentials or contact IT support
+
+1.2 UNDERSTANDING THE INTERFACE
+------------------------------
+The admin dashboard has several key areas:
+
+📊 MAIN DASHBOARD:
+- Overview statistics and recent activity
+- Quick access buttons to main functions
+- System notifications and alerts
+
+🔧 SIDEBAR NAVIGATION:
+- Main: Dashboard, Users
+- Content Management: Contacts, Newsletters, Careers, Blog
+- Achievements & Portfolio: Projects, Milestones, Categories
+- Profile Management: Your personal account settings
+- System: Django Admin, Website View, Logout
+
+1.3 NAVIGATION TIPS
+------------------
+- Click on any sidebar item to navigate
+- Use the search function to find specific content
+- Look for the active page highlight in the sidebar
+- Always save your work before navigating to another page
+
+================================================================
+2. PROFILE MANAGEMENT
+================================================================
+
+2.1 VIEWING YOUR PROFILE
+------------------------
+1. Click "Profile Management" in the sidebar
+2. Click "My Profile"
+
+WHAT YOU'LL SEE:
+- Your profile picture (avatar)
+- Personal information (name, email, username)
+- Account details (join date, last login, permissions)
+- Quick action buttons
+
+📋 PROFILE STATISTICS DISPLAYED:
+- Member For: How long you've been registered
+- Last Login: When you last accessed the system
+- Account Status: Active/Inactive status
+
+2.2 EDITING YOUR PROFILE
+------------------------
+1. Go to Profile Management → "Edit Profile"
+2. Update the following fields:
+
+📝 EDITABLE FIELDS:
+- Username: Your login identifier (must be unique)
+- First Name: Your first name
+- Last Name: Your last name  
+- Email Address: Contact email for notifications
+
+EXAMPLE UPDATE:
+Before: 
+- Username: admin
+- First Name: (empty)
+- Email: (empty)
+
+After:
+- Username: john_admin
+- First Name: John
+- Email: john@axflo.com
+
+3. Click "Save Changes"
+4. Confirm the update when prompted
+
+⚠️ IMPORTANT NOTES:
+- Username must be unique across all users
+- Email format must be valid (example@domain.com)
+- Changes take effect immediately
+- You'll remain logged in after updates
+
+2.3 CHANGING YOUR PASSWORD
+-------------------------
+1. Go to Profile Management → "Change Password"
+2. Fill in the required fields:
+
+🔐 PASSWORD FORM:
+- Current Password: Your existing password
+- New Password: Your desired new password
+- Confirm New Password: Re-enter new password
+
+PASSWORD REQUIREMENTS:
+✅ At least 8 characters long
+✅ Mix of letters, numbers, and symbols
+✅ Avoid common words or personal information
+✅ Don't reuse passwords from other accounts
+
+EXAMPLE STRONG PASSWORD:
+❌ Weak: password123
+✅ Strong: Ax$fl0!2024@dmin
+
+3. Watch the password strength indicator
+4. Click "Change Password"
+5. You'll remain logged in after the change
+
+2.4 ACCOUNT DELETION (CAUTION!)
+------------------------------
+⚠️ WARNING: This action is PERMANENT and IRREVERSIBLE!
+
+Only use this if you need to completely remove your account:
+
+1. Go to Profile Management → "Delete Account"
+2. Read all warnings carefully
+3. Type "DELETE_MY_ACCOUNT" exactly as shown
+4. Wait for the 5-second countdown
+5. Confirm deletion
+
+WHAT HAPPENS:
+- Your account is permanently deleted
+- All your data is removed
+- You're immediately logged out
+- Cannot be undone - create new account if needed
+
+================================================================
+3. CONTACT MANAGEMENT
+================================================================
+
+3.1 VIEWING CONTACT SUBMISSIONS
+-------------------------------
+1. Click "Contact Management" in the sidebar
+2. You'll see a list of all contact form submissions
+
+📋 CONTACT LIST SHOWS:
+- Name of person who contacted
+- Email address
+- Company name
+- Inquiry type (General, Support, Sales, etc.)
+- Date submitted
+- Read/Unread status
+- Action buttons
+
+EXAMPLE CONTACT ENTRY:
+Name: Sarah Johnson
+Email: sarah@techcorp.com
+Company: TechCorp Industries
+Type: Partnership Inquiry
+Date: March 15, 2024
+Status: ✗ Unread
+
+3.2 READING CONTACT DETAILS
+---------------------------
+1. Click on any contact name or "View Details"
+2. You'll see the complete message:
+
+📄 CONTACT DETAILS PAGE:
+- Full contact information
+- Complete message text
+- Inquiry category
+- Submission timestamp
+- Response history (if any)
+
+EXAMPLE FULL MESSAGE:
+"Hi, I'm interested in your offshore marine services 
+for our upcoming North Sea project. Could we schedule 
+a meeting to discuss our requirements? We need support 
+for 6 months starting in June 2024."
+
+3.3 RESPONDING TO CONTACTS
+-------------------------
+1. Open the contact detail page
+2. Scroll to the "Response" section
+3. Type your response in the text area
+4. Click "Send Response"
+
+RESPONSE EXAMPLE:
+"Dear Sarah,
+
+Thank you for your interest in our offshore marine services. 
+I'd be happy to discuss your North Sea project requirements.
+
+Our offshore marine team has extensive experience in the 
+North Sea region. We can certainly provide 6-month support 
+starting in June 2024.
+
+I'll have our project manager, Mike Thompson, contact you 
+within 2 business days to schedule a detailed discussion.
+
+Best regards,
+John Admin
+Axflo Oil & Gas"
+
+3.4 MANAGING CONTACT STATUS
+--------------------------
+📬 MARKING AS READ:
+- Automatically marked as read when you view details
+- Manually mark multiple as read using bulk actions
+
+🗑️ DELETING CONTACTS:
+- Click "Delete" on individual contacts
+- Use "Bulk Delete" for multiple selections
+- Deleted contacts cannot be recovered
+
+BULK OPERATIONS:
+1. Check boxes next to contacts you want to manage
+2. Select action from dropdown (Mark as Read, Delete)
+3. Click "Apply" to execute
+
+================================================================
+4. NEWSLETTER & SUBSCRIBER MANAGEMENT
+================================================================
+
+4.1 MANAGING SUBSCRIBERS
+------------------------
+1. Go to "Newsletter Subscriptions" in the sidebar
+2. View all newsletter subscribers
+
+👥 SUBSCRIBER LIST INCLUDES:
+- Email address
+- Full name (if provided)
+- Subscription date
+- Active/Inactive status
+- Subscription categories
+- Action buttons
+
+EXAMPLE SUBSCRIBER:
+Email: marketing@oilfield.com
+Name: Maria Rodriguez
+Date: Feb 20, 2024
+Status: ✓ Active
+Interests: Project Updates, Safety News
+
+4.2 ADDING NEW SUBSCRIBERS
+--------------------------
+1. Click "Add New Subscriber"
+2. Fill in the form:
+
+📝 SUBSCRIBER FORM:
+- Email Address: Required, must be valid
+- First Name: Optional
+- Last Name: Optional
+- Subscription Categories: Select interests
+- Status: Active/Inactive
+
+EXAMPLE NEW SUBSCRIBER:
+Email: operations@deepwater.com
+First Name: Robert
+Last Name: Chen
+Categories: ✓ Technical Updates ✓ Company News
+Status: Active
+
+3. Click "Save Subscriber"
+
+4.3 MANAGING NEWSLETTER CATEGORIES
+----------------------------------
+Categories help organize newsletter content:
+
+COMMON CATEGORIES:
+- Company News: General updates and announcements
+- Project Updates: Ongoing project information
+- Safety News: Safety protocols and incidents
+- Technical Updates: Equipment and technology news
+- Industry Insights: Market trends and analysis
+
+TO ADD NEW CATEGORY:
+1. Go to Newsletter management
+2. Click "Manage Categories"
+3. Enter category name and description
+4. Save new category
+
+4.4 CREATING NEWSLETTERS
+-----------------------
+1. Click "Create Newsletter"
+2. Fill in the newsletter details:
+
+📧 NEWSLETTER FORM:
+- Title: Engaging subject line
+- Content: Full newsletter body (HTML supported)
+- Categories: Select target audience
+- Send Date: Schedule or send immediately
+- Recipients: Based on selected categories
+
+NEWSLETTER TITLE EXAMPLES:
+✅ Good: "Axflo Monthly Digest - March 2024: New North Sea Project Launched"
+❌ Poor: "Newsletter"
+
+CONTENT TIPS:
+- Start with a compelling introduction
+- Use headings to organize sections
+- Include images and links where appropriate
+- End with contact information
+- Keep it concise but informative
+
+4.5 SENDING NEWSLETTERS
+----------------------
+IMMEDIATE SENDING:
+1. Create newsletter
+2. Select "Send Now"
+3. Confirm recipient count
+4. Click "Send Newsletter"
+
+SCHEDULED SENDING:
+1. Create newsletter
+2. Set future send date/time
+3. Save as draft
+4. Newsletter will send automatically
+
+📊 TRACKING RESULTS:
+- Delivery count
+- Open rates (if tracking enabled)
+- Click-through rates
+- Bounce reports
+
+================================================================
+5. CAREER & JOB MANAGEMENT
+================================================================
+
+5.1 VIEWING JOB POSTINGS
+------------------------
+1. Go to "Career Portal" in the sidebar
+2. See all current job listings
+
+💼 JOB LISTING SHOWS:
+- Job title
+- Department
+- Employment type (Full-time, Contract, etc.)
+- Status (Active, Closed, Draft)
+- Posted date
+- Closing date
+- Number of applications
+
+EXAMPLE JOB LISTING:
+Title: Senior Offshore Engineer
+Department: Engineering
+Type: Full-time Permanent
+Status: ✓ Active
+Posted: March 1, 2024
+Closing: April 15, 2024
+Applications: 12
+
+5.2 CREATING NEW JOB POSTINGS
+-----------------------------
+1. Click "Create New Job"
+2. Fill in all job details:
+
+📝 JOB POSTING FORM:
+- Job Title: Clear, specific title
+- Department: Engineering, Operations, Admin, etc.
+- Location: City, country, or "Remote"
+- Employment Type: Full-time, Part-time, Contract
+- Description: Detailed job overview
+- Requirements: Skills, experience, qualifications
+- Salary Range: Optional but recommended
+- Closing Date: Application deadline
+
+EXAMPLE JOB POSTING:
+
+Title: "Senior Pipeline Engineer - North Sea Operations"
+
+Department: Engineering
+
+Location: Aberdeen, Scotland
+
+Employment Type: Full-time Permanent
+
+Description:
+"Join our North Sea operations team as a Senior Pipeline Engineer. 
+You'll be responsible for designing, maintaining, and optimizing 
+pipeline systems across our offshore facilities. This role offers 
+excellent career development opportunities in a dynamic environment."
+
+Requirements:
+- Bachelor's degree in Petroleum or Mechanical Engineering
+- 5+ years offshore pipeline experience
+- OPITO safety certifications
+- Experience with ASME B31.4 and B31.8 standards
+- Willingness to work offshore rotations (2 weeks on/2 weeks off)
+
+Salary Range: £65,000 - £85,000 + offshore allowances
+
+3. Set status to "Active" to publish immediately
+4. Click "Save Job Posting"
+
+5.3 MANAGING JOB APPLICATIONS
+----------------------------
+1. Go to "Job Applications" in the sidebar
+2. View all received applications
+
+📄 APPLICATION LIST SHOWS:
+- Applicant name
+- Applied position
+- Email address
+- Application date
+- Status (New, Reviewed, Interview, Rejected, Hired)
+- Resume download link
+
+EXAMPLE APPLICATION:
+Name: Emma Wilson
+Position: Senior Pipeline Engineer
+Email: emma.wilson@engineer.com
+Date: March 10, 2024
+Status: New
+Resume: ✓ Download Available
+
+5.4 REVIEWING APPLICATIONS
+-------------------------
+1. Click on applicant name to view details
+2. Review complete application:
+
+👤 APPLICATION DETAILS:
+- Personal information
+- Cover letter
+- Resume/CV download
+- Application responses
+- Contact details
+
+APPLICATION REVIEW PROCESS:
+1. Download and review resume
+2. Read cover letter carefully
+3. Check qualifications against requirements
+4. Update application status:
+   - New → Reviewed (after initial review)
+   - Reviewed → Interview (if qualified)
+   - Interview → Hired (if successful)
+   - Any status → Rejected (if not suitable)
+
+5.5 UPDATING APPLICATION STATUS
+------------------------------
+Status options and when to use them:
+
+📊 STATUS MEANINGS:
+- New: Just received, not yet reviewed
+- Reviewed: Reviewed but no decision yet
+- Interview: Invited for interview
+- Hired: Successful candidate
+- Rejected: Not suitable for position
+
+TO UPDATE STATUS:
+1. Open application details
+2. Select new status from dropdown
+3. Add notes (optional but recommended)
+4. Click "Update Status"
+
+EXAMPLE STATUS UPDATE:
+Status: New → Interview
+Notes: "Strong technical background, meets all requirements. 
+Schedule for technical interview next week."
+
+================================================================
+6. BLOG MANAGEMENT
+================================================================
+
+6.1 VIEWING BLOG POSTS
+----------------------
+1. Go to "Blog Management" in the sidebar
+2. See all blog articles
+
+📰 BLOG LIST SHOWS:
+- Article title
+- Author
+- Category
+- Publication date
+- Status (Published, Draft, Archived)
+- View count
+- Action buttons
+
+6.2 CREATING NEW BLOG POSTS
+---------------------------
+1. Click "Create New Post"
+2. Fill in article details:
+
+📝 BLOG POST FORM:
+- Title: Engaging, SEO-friendly title
+- Category: Select appropriate category
+- Content: Full article content
+- Featured Image: Optional header image
+- Tags: SEO keywords
+- Status: Draft or Published
+- Publication Date: Schedule or publish now
+
+EXAMPLE BLOG POST:
+
+Title: "New Safety Protocols Enhance Offshore Operations"
+
+Category: Safety & Compliance
+
+Content:
+"At Axflo Oil & Gas, safety remains our top priority across 
+all operations. This month, we're implementing enhanced safety 
+protocols for our offshore platforms...
+
+[Include detailed content about safety measures, benefits, 
+implementation timeline, and impact on operations]
+
+Our commitment to safety excellence continues to drive 
+innovation in our operational procedures..."
+
+Tags: offshore safety, protocols, operations, compliance
+
+Status: Published
+
+6.3 MANAGING BLOG CATEGORIES
+----------------------------
+Categories help organize blog content:
+
+COMMON BLOG CATEGORIES:
+- Company News: Updates and announcements
+- Safety & Compliance: Safety procedures and regulations
+- Technical Insights: Engineering and technical articles
+- Project Spotlights: Featured project case studies
+- Industry Trends: Market analysis and predictions
+- Environmental: Sustainability and environmental initiatives
+
+TO ADD NEW CATEGORY:
+1. Go to Blog Management
+2. Click "Manage Categories"
+3. Enter category name and description
+4. Choose category color/icon
+5. Save category
+
+6.4 EDITING EXISTING POSTS
+--------------------------
+1. Find the post in the blog list
+2. Click "Edit" button
+3. Make necessary changes
+4. Update publication status if needed
+5. Click "Update Post"
+
+COMMON EDITS:
+- Fix typos or grammar
+- Update information
+- Add new images
+- Change categories
+- Update publication date
+
+================================================================
+7. ACHIEVEMENTS & PORTFOLIO MANAGEMENT
+================================================================
+
+7.1 MANAGING ACHIEVEMENTS
+-------------------------
+1. Go to "Achievements" in the sidebar
+2. View all company achievements
+
+🏆 ACHIEVEMENT LIST SHOWS:
+- Achievement title
+- Category (Award, Certification, Milestone, etc.)
+- Achievement date
+- Status (Active, Featured, Archived)
+- View count
+- Featured image
+
+EXAMPLE ACHIEVEMENT:
+Title: "ISO 45001 Safety Management Certification"
+Category: Certification
+Date: January 15, 2024
+Status: ✓ Featured
+Views: 247
+
+7.2 ADDING NEW ACHIEVEMENTS
+--------------------------
+1. Click "Add New Achievement"
+2. Complete the achievement form:
+
+🎯 ACHIEVEMENT FORM:
+- Title: Clear, descriptive title
+- Category: Award, Certification, Milestone, etc.
+- Achievement Date: When it was achieved
+- Description: Detailed explanation
+- Impact Metrics: Quantifiable benefits
+- Featured Image: Optional image
+- External Link: Related website/document
+- Status: Active, Featured, or Archived
+
+EXAMPLE NEW ACHIEVEMENT:
+
+Title: "Best Offshore Contractor 2024 - North Sea Region"
+
+Category: Industry Award
+
+Date: March 20, 2024
+
+Description:
+"Axflo Oil & Gas has been recognized as the 'Best Offshore 
+Contractor 2024' for the North Sea region by the Offshore 
+Technology Conference. This award acknowledges our commitment 
+to operational excellence, safety standards, and environmental 
+responsibility."
+
+Impact Metrics:
+- 99.8% safety record maintained
+- 15% reduction in operational costs
+- Zero environmental incidents
+- 95% client satisfaction rating
+
+Status: Featured
+
+7.3 MANAGING PROJECT PORTFOLIO
+------------------------------
+1. Go to "Project Portfolio" in the sidebar
+2. View all company projects
+
+🏗️ PROJECT LIST SHOWS:
+- Project name
+- Client
+- Project type
+- Location
+- Status (Completed, In Progress, Planned)
+- Completion date
+- Featured status
+
+7.4 ADDING NEW PROJECTS
+-----------------------
+1. Click "Add New Project"
+2. Fill in project details:
+
+📋 PROJECT FORM:
+- Project Name: Descriptive title
+- Client: Client company name
+- Location: Project location
+- Project Type: Installation, Maintenance, Construction, etc.
+- Description: Project overview
+- Challenge: Problems solved
+- Solution: How we addressed challenges
+- Results: Outcomes and benefits
+- Timeline: Start and completion dates
+- Project Value: Optional
+- Images: Before/after photos
+- Status: Completed, In Progress, Planned
+
+EXAMPLE PROJECT:
+
+Name: "North Sea Platform Alpha Maintenance Campaign"
+
+Client: North Sea Energy Ltd.
+
+Location: North Sea, 120km off Aberdeen
+
+Type: Maintenance & Inspection
+
+Description:
+"Comprehensive maintenance campaign for Platform Alpha including 
+structural inspections, equipment servicing, and safety system 
+upgrades. Project completed on schedule with zero incidents."
+
+Challenge:
+"Platform had been operating for 15 years with deferred 
+maintenance items. Weather windows were limited, requiring 
+efficient execution."
+
+Solution:
+"Deployed specialized maintenance team with pre-fabricated 
+components. Used predictive maintenance techniques to optimize 
+work schedules."
+
+Results:
+- 100% maintenance items completed
+- Extended platform life by 10 years
+- Improved operational efficiency by 12%
+- Zero safety incidents
+
+Timeline: February 1 - March 30, 2024
+
+Status: Completed
+
+7.5 MANAGING COMPANY MILESTONES
+------------------------------
+1. Go to "Company Milestones"
+2. View chronological company history
+
+📅 MILESTONE MANAGEMENT:
+- Add founding dates
+- Major contract wins
+- Expansion milestones
+- Safety achievements
+- Technology implementations
+
+EXAMPLE MILESTONE:
+Title: "Founded Axflo Oil & Gas"
+Date: January 15, 1995
+Description: "Company established with focus on North Sea operations"
+Icon: 🏢 Building
+
+================================================================
+8. CONTENT MANAGEMENT
+================================================================
+
+8.1 UPDATING PAGE CONTENT
+-------------------------
+Some pages have editable content sections:
+
+📝 EDITABLE CONTENT:
+- Homepage sections
+- About page content
+- Service descriptions
+- Contact information
+- Company information
+
+TO UPDATE CONTENT:
+1. Navigate to the specific content section
+2. Click "Edit" button
+3. Make changes in the text editor
+4. Preview changes
+5. Save updates
+
+8.2 MANAGING SERVICE DESCRIPTIONS
+---------------------------------
+1. Go to Content Management
+2. Select "Service Descriptions"
+3. Edit existing services or add new ones
+
+SERVICE DESCRIPTION EXAMPLE:
+Service: "Offshore Installation Services"
+Description: "Complete offshore installation solutions including 
+platform installation, pipeline connections, and equipment 
+commissioning."
+Features:
+- Heavy lift capabilities up to 5,000 tons
+- 24/7 project management
+- Full HSE compliance
+- Post-installation support
+
+================================================================
+9. SECURITY & BEST PRACTICES
+================================================================
+
+9.1 PASSWORD SECURITY
+---------------------
+🔐 PASSWORD REQUIREMENTS:
+- Minimum 8 characters
+- Mix of uppercase and lowercase letters
+- Include numbers and special characters
+- Avoid dictionary words
+- Don't reuse old passwords
+
+STRONG PASSWORD EXAMPLES:
+✅ Ax$fl0_2024!Admin
+✅ OffSh0re#Mgr@2024
+❌ password123
+❌ axflo2024
+
+9.2 SESSION SECURITY
+--------------------
+🛡️ SECURITY PRACTICES:
+- Always log out when finished
+- Don't share login credentials
+- Use private/incognito browsing on shared computers
+- Clear browser data after use on public computers
+- Report suspicious activity immediately
+
+9.3 DATA HANDLING
+-----------------
+📊 DATA GUIDELINES:
+- Keep contact information confidential
+- Don't share subscriber lists
+- Verify information before publishing
+- Back up important content regularly
+- Follow GDPR compliance for EU contacts
+
+9.4 CONTENT GUIDELINES
+----------------------
+✅ CONTENT BEST PRACTICES:
+- Use professional language
+- Check spelling and grammar
+- Verify facts and figures
+- Include relevant images
+- Maintain consistent brand voice
+- Update outdated information promptly
+
+================================================================
+10. TROUBLESHOOTING & SUPPORT
+================================================================
+
+10.1 COMMON ISSUES & SOLUTIONS
+------------------------------
+
+ISSUE: Can't log in
+SOLUTION: 
+- Check username and password spelling
+- Ensure caps lock is off
+- Try clearing browser cache
+- Contact IT support if problem persists
+
+ISSUE: Page won't load
+SOLUTION:
+- Refresh the page (F5 or Ctrl+R)
+- Check internet connection
+- Try different browser
+- Clear browser cache and cookies
+
+ISSUE: Changes not saving  
+SOLUTION:
+- Ensure all required fields are filled
+- Check for error messages
+- Try refreshing and re-entering data
+- Contact support if issue continues
+
+ISSUE: Can't upload images
+SOLUTION:
+- Check file size (should be under 10MB)
+- Use supported formats (JPG, PNG, GIF)
+- Try different browser
+- Clear browser cache
+
+10.2 GETTING HELP
+-----------------
+📞 SUPPORT CONTACTS:
+- IT Support: it-support@axflo.com
+- Admin Issues: admin-help@axflo.com
+- Content Questions: content@axflo.com
+- Training Requests: training@axflo.com
+
+📚 ADDITIONAL RESOURCES:
+- Video tutorials: Available in admin dashboard
+- FAQ section: Check help menu
+- User forum: Share tips with other admins
+- Training sessions: Monthly group training available
+
+10.3 REPORTING ISSUES
+--------------------
+When reporting problems, include:
+- What you were trying to do
+- What happened instead
+- Error messages (screenshot if possible)
+- Browser and version
+- Time when issue occurred
+
+EXAMPLE ISSUE REPORT:
+"I was trying to create a new blog post titled 'Safety Update March 2024'. When I clicked 'Save Post', I got an error message saying 'Title already exists'. However, I checked the blog list and don't see any post with this title. This happened at 2:30 PM on March 15, 2024. I'm using Chrome version 122 on Windows 11."
+
+================================================================
+CONCLUSION
+================================================================
+
+This guide covers all major functions of the Axflo Admin Dashboard. 
+Remember to:
+
+✅ Always save your work
+✅ Log out when finished
+✅ Keep login credentials secure
+✅ Contact support when needed
+✅ Regular training keeps skills current
+
+For additional help or training requests, contact the IT support team.
+
+Last Updated: March 2024
+Version: 2.0
+
+================================================================
+                        END OF USER GUIDE
+================================================================

@@ -1,0 +1,575 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Project Portfolio Management - Axflo{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/admin_portfolio.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-portfolio-container">
+    <!-- Header Section -->
+    <div class="admin-portfolio-header">
+        <h1><i class="fas fa-project-diagram"></i> Project Portfolio Management</h1>
+        <p>Showcase completed projects, case studies, and client success stories</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="portfolio-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_projects }}</div>
+                <div class="stat-label">Total Projects</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ featured_projects }}</div>
+                <div class="stat-label">Featured</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ completed_projects }}</div>
+                <div class="stat-label">Completed</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">${{ total_value|floatformat:0 }}M</div>
+                <div class="stat-label">Total Value</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="admin-actions">
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="openProjectModal()">
+                <i class="fas fa-plus"></i> Add New Project
+            </button>
+            <button class="btn-secondary" onclick="exportProjects()">
+                <i class="fas fa-download"></i> Export Portfolio
+            </button>
+            <button class="btn-secondary" onclick="importProjects()">
+                <i class="fas fa-upload"></i> Import Projects
+            </button>
+        </div>
+        <a href="/admindashboard/" class="btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Filters -->
+    <div class="portfolio-filters">
+        <form method="GET" class="filters-form">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="search">Search</label>
+                    <input type="text" id="search" name="search" value="{{ search_query }}" 
+                           placeholder="Search projects, clients..." class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="project_type">Project Type</label>
+                    <select id="project_type" name="project_type" class="filter-select">
+                        <option value="all" {% if type_filter == 'all' %}selected{% endif %}>All Types</option>
+                        <option value="OIL_SPILL" {% if type_filter == 'OIL_SPILL' %}selected{% endif %}>Oil Spill Response</option>
+                        <option value="WATER_TREATMENT" {% if type_filter == 'WATER_TREATMENT' %}selected{% endif %}>Water Treatment</option>
+                        <option value="ENVIRONMENTAL" {% if type_filter == 'ENVIRONMENTAL' %}selected{% endif %}>Environmental Cleanup</option>
+                        <option value="MARINE" {% if type_filter == 'MARINE' %}selected{% endif %}>Marine Services</option>
+                        <option value="CONSULTANCY" {% if type_filter == 'CONSULTANCY' %}selected{% endif %}>Environmental Consultancy</option>
+                        <option value="TRAINING" {% if type_filter == 'TRAINING' %}selected{% endif %}>Training Program</option>
+                        <option value="TECHNOLOGY" {% if type_filter == 'TECHNOLOGY' %}selected{% endif %}>Technology Implementation</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" class="filter-select">
+                        <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                        <option value="FEATURED" {% if status_filter == 'FEATURED' %}selected{% endif %}>Featured</option>
+                        <option value="STANDARD" {% if status_filter == 'STANDARD' %}selected{% endif %}>Standard</option>
+                        <option value="ARCHIVED" {% if status_filter == 'ARCHIVED' %}selected{% endif %}>Archived</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="year">Year</label>
+                    <select id="year" name="year" class="filter-select">
+                        <option value="all" {% if year_filter == 'all' %}selected{% endif %}>All Years</option>
+                        {% for year in available_years %}
+                        <option value="{{ year }}" {% if year_filter == year|stringformat:"s" %}selected{% endif %}>{{ year }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button type="submit" class="btn-filter">
+                        <i class="fas fa-search"></i> Filter
+                    </button>
+                    <a href="?" class="btn-clear">
+                        <i class="fas fa-times"></i> Clear
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Portfolio Grid/List Toggle -->
+    <div class="view-toggle">
+        <button class="view-btn active" data-view="grid" onclick="toggleView('grid')">
+            <i class="fas fa-th-large"></i> Grid
+        </button>
+        <button class="view-btn" data-view="list" onclick="toggleView('list')">
+            <i class="fas fa-list"></i> List
+        </button>
+    </div>
+
+    <!-- Projects Display -->
+    <div class="projects-container">
+        {% if projects %}
+        <!-- Grid View -->
+        <div id="gridView" class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card" data-id="{{ project.id }}">
+                <div class="project-image">
+                    {% if project.featured_image %}
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                    {% else %}
+                    <div class="image-placeholder">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    {% endif %}
+                    <div class="project-overlay">
+                        <div class="overlay-actions">
+                            <button class="btn-action" onclick="viewProject({{ project.id }})" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn-action" onclick="editProject({{ project.id }})" title="Edit">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-action btn-danger" onclick="deleteProject({{ project.id }})" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-badges">
+                        <span class="status-badge status-{{ project.status|lower }}">{{ project.get_status_display }}</span>
+                        {% if project.featured_on_homepage %}
+                        <span class="featured-badge"><i class="fas fa-star"></i></span>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <div class="project-content">
+                    <div class="project-meta">
+                        <span class="project-type">{{ project.get_project_type_display }}</span>
+                        <span class="project-location">
+                            <i class="fas fa-map-marker-alt"></i> {{ project.location }}
+                        </span>
+                    </div>
+                    
+                    <h3 class="project-title">{{ project.title }}</h3>
+                    <p class="project-client">{{ project.client }}</p>
+                    <p class="project-description">{{ project.brief_description|truncatewords:15 }}</p>
+                    
+                    <div class="project-footer">
+                        <div class="project-dates">
+                            {% if project.completion_date %}
+                            <span>{{ project.completion_date|date:"M Y" }}</span>
+                            {% else %}
+                            <span>{{ project.start_date|date:"M Y" }} - Ongoing</span>
+                            {% endif %}
+                        </div>
+                        <div class="project-views">
+                            <i class="fas fa-eye"></i> {{ project.view_count|default:0 }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- List View -->
+        <div id="listView" class="projects-list" style="display: none;">
+            <div class="list-header">
+                <div class="bulk-actions">
+                    <input type="checkbox" id="selectAllList" onchange="toggleSelectAllList()">
+                    <button class="btn-bulk" onclick="bulkAction('feature')">Feature</button>
+                    <button class="btn-bulk" onclick="bulkAction('archive')">Archive</button>
+                    <button class="btn-bulk btn-danger" onclick="bulkAction('delete')">Delete</button>
+                </div>
+            </div>
+            
+            {% for project in projects %}
+            <div class="project-list-item" data-id="{{ project.id }}">
+                <div class="list-checkbox">
+                    <input type="checkbox" class="project-checkbox" value="{{ project.id }}">
+                </div>
+                
+                <div class="list-image">
+                    {% if project.featured_image %}
+                    <img src="{{ project.featured_image.url }}" alt="{{ project.title }}">
+                    {% else %}
+                    <div class="image-placeholder-small">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="list-content">
+                    <div class="list-main">
+                        <h4 class="list-title">{{ project.title }}</h4>
+                        <p class="list-client">{{ project.client }}</p>
+                        <p class="list-description">{{ project.brief_description|truncatewords:20 }}</p>
+                    </div>
+                    
+                    <div class="list-meta">
+                        <span class="list-type">{{ project.get_project_type_display }}</span>
+                        <span class="list-location">{{ project.location }}</span>
+                        <span class="list-date">
+                            {% if project.completion_date %}{{ project.completion_date|date:"M Y" }}{% else %}Ongoing{% endif %}
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="list-status">
+                    <span class="status-badge status-{{ project.status|lower }}">{{ project.get_status_display }}</span>
+                    {% if project.featured_on_homepage %}
+                    <span class="featured-badge"><i class="fas fa-star"></i> Featured</span>
+                    {% endif %}
+                </div>
+                
+                <div class="list-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-eye"></i>
+                        <span>{{ project.view_count|default:0 }}</span>
+                    </div>
+                    {% if project.project_value %}
+                    <div class="stat-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>${{ project.project_value|floatformat:0 }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="list-actions">
+                    <button class="btn-action" onclick="viewProject({{ project.id }})" title="View">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="btn-action" onclick="editProject({{ project.id }})" title="Edit">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <div class="toggle-featured">
+                        <input type="checkbox" class="toggle-switch" 
+                               {% if project.featured_on_homepage %}checked{% endif %}
+                               onchange="toggleProjectFeatured({{ project.id }}, this)">
+                        <span class="toggle-slider"></span>
+                    </div>
+                    <button class="btn-action btn-danger" onclick="deleteProject({{ project.id }})" title="Delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <div class="pagination-info">
+                Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ paginator.count }} projects
+            </div>
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                <a href="?page=1{{ request.GET.urlencode }}" class="page-link">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}{{ request.GET.urlencode }}" class="page-link">Previous</a>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <span class="page-link current">{{ num }}</span>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}{{ request.GET.urlencode }}" class="page-link">{{ num }}</a>
+                {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{{ request.GET.urlencode }}" class="page-link">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{{ request.GET.urlencode }}" class="page-link">Last &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3>No Projects Found</h3>
+            <p>{% if search_query or type_filter != 'all' or status_filter != 'all' %}
+                No projects match your current filters. Try adjusting your search criteria.
+            {% else %}
+                Start building your project portfolio by adding your first project.
+            {% endif %}</p>
+            {% if not search_query and type_filter == 'all' and status_filter == 'all' %}
+            <button class="btn-primary" onclick="openProjectModal()">
+                <i class="fas fa-plus"></i> Add First Project
+            </button>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Project Modal -->
+<div id="projectModal" class="modal modal-large">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="projectModalTitle">Add New Project</h2>
+            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="projectForm" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" id="projectId" name="project_id">
+                
+                <div class="form-tabs">
+                    <button type="button" class="tab-btn active" onclick="switchTab('basic')">Basic Info</button>
+                    <button type="button" class="tab-btn" onclick="switchTab('details')">Project Details</button>
+                    <button type="button" class="tab-btn" onclick="switchTab('media')">Media & Images</button>
+                    <button type="button" class="tab-btn" onclick="switchTab('metrics')">Metrics & SEO</button>
+                </div>
+
+                <!-- Basic Info Tab -->
+                <div id="basicTab" class="tab-content active">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="project_title">Project Title *</label>
+                            <input type="text" id="project_title" name="title" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="client">Client *</label>
+                            <input type="text" id="client" name="client" required class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="project_type_select">Project Type *</label>
+                            <select id="project_type_select" name="project_type" required class="form-select">
+                                <option value="">Select Type</option>
+                                <option value="OIL_SPILL">Oil Spill Response</option>
+                                <option value="WATER_TREATMENT">Water Treatment</option>
+                                <option value="ENVIRONMENTAL">Environmental Cleanup</option>
+                                <option value="MARINE">Marine Services</option>
+                                <option value="CONSULTANCY">Environmental Consultancy</option>
+                                <option value="TRAINING">Training Program</option>
+                                <option value="TECHNOLOGY">Technology Implementation</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="brief_description">Brief Description *</label>
+                        <textarea id="brief_description" name="brief_description" rows="3" required class="form-textarea"
+                                  placeholder="Short description for portfolio grid (300 characters max)"></textarea>
+                        <small class="form-help">Used in portfolio cards and listings</small>
+                    </div>
+                </div>
+
+                <!-- Details Tab -->
+                <div id="detailsTab" class="tab-content">
+                    <div class="form-group">
+                        <label for="detailed_description">Detailed Description</label>
+                        <textarea id="detailed_description" name="detailed_description" rows="6" class="form-textarea"
+                                  placeholder="Comprehensive project description"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="challenge">Challenge</label>
+                        <textarea id="challenge" name="challenge" rows="4" class="form-textarea"
+                                  placeholder="What challenges did this project address?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="solution">Solution</label>
+                        <textarea id="solution" name="solution" rows="4" class="form-textarea"
+                                  placeholder="How did Axflo solve the challenges?"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="results">Results</label>
+                        <textarea id="results" name="results" rows="4" class="form-textarea"
+                                  placeholder="What were the measurable outcomes?"></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="start_date">Start Date *</label>
+                            <input type="date" id="start_date" name="start_date" required class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="completion_date">Completion Date</label>
+                            <input type="date" id="completion_date" name="completion_date" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="duration_months">Duration (Months)</label>
+                            <input type="number" id="duration_months" name="duration_months" class="form-input" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="project_value">Project Value ($)</label>
+                            <input type="number" id="project_value" name="project_value" class="form-input" step="0.01">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media Tab -->
+                <div id="mediaTab" class="tab-content">
+                    <div class="form-group">
+                        <label for="featured_image_project">Featured Image</label>
+                        <div class="image-upload">
+                            <input type="file" id="featured_image_project" name="featured_image" accept="image/*" class="file-input">
+                            <div class="image-preview" id="projectImagePreview">
+                                <i class="fas fa-image"></i>
+                                <span>Click to upload or drag image here</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="before_image">Before Image</label>
+                            <div class="image-upload">
+                                <input type="file" id="before_image" name="before_image" accept="image/*" class="file-input">
+                                <div class="image-preview" id="beforeImagePreview">
+                                    <i class="fas fa-image"></i>
+                                    <span>Before image</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="after_image">After Image</label>
+                            <div class="image-upload">
+                                <input type="file" id="after_image" name="after_image" accept="image/*" class="file-input">
+                                <div class="image-preview" id="afterImagePreview">
+                                    <i class="fas fa-image"></i>
+                                    <span>After image</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gallery_images">Gallery Images (JSON)</label>
+                        <textarea id="gallery_images" name="gallery_images" rows="3" class="form-textarea"
+                                  placeholder='["image1.jpg", "image2.jpg"]'></textarea>
+                        <small class="form-help">JSON array of additional image URLs</small>
+                    </div>
+                </div>
+
+                <!-- Metrics Tab -->
+                <div id="metricsTab" class="tab-content">
+                    <div class="form-group">
+                        <label for="environmental_impact">Environmental Impact (JSON)</label>
+                        <textarea id="environmental_impact" name="environmental_impact" rows="4" class="form-textarea"
+                                  placeholder='{"co2_prevented": 1000, "waste_recycled": 500}'></textarea>
+                        <small class="form-help">Environmental metrics achieved</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="key_statistics">Key Statistics (JSON)</label>
+                        <textarea id="key_statistics" name="key_statistics" rows="4" class="form-textarea"
+                                  placeholder='{"area_cleaned": "50 hectares", "time_saved": "30%"}'></textarea>
+                        <small class="form-help">Key project statistics and metrics</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="meta_description">SEO Meta Description</label>
+                        <textarea id="meta_description" name="meta_description" rows="2" class="form-textarea"
+                                  placeholder="SEO description for search engines (160 characters max)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tags">Tags</label>
+                        <input type="text" id="tags" name="tags" class="form-input"
+                               placeholder="oil spill, environmental, cleanup (comma-separated)">
+                        <small class="form-help">Comma-separated tags for filtering and SEO</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="project_status">Status</label>
+                            <select id="project_status" name="status" class="form-select">
+                                <option value="STANDARD">Standard</option>
+                                <option value="FEATURED">Featured</option>
+                                <option value="ARCHIVED">Archived</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="display_order_project">Display Order</label>
+                            <input type="number" id="display_order_project" name="display_order" class="form-input" value="0">
+                        </div>
+                    </div>
+
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="featured_on_homepage" name="featured_on_homepage" class="checkbox-input">
+                        <label for="featured_on_homepage" class="checkbox-label">
+                            <span class="checkbox-mark"></span>
+                            Feature on homepage
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeProjectModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Project
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- View Project Modal -->
+<div id="viewProjectModal" class="modal modal-large">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="viewProjectModalTitle">Project Details</h2>
+            <span class="modal-close" onclick="closeViewProjectModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="viewProjectModalContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/admin_portfolio.js' %}"></script>
+<script>
+// Pass data to JavaScript
+window.portfolioData = {};
+</script>
+{% endblock %}

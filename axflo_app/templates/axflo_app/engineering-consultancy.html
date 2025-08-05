@@ -1,0 +1,474 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Engineering-Consultancy - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/engineering-consultancy.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Hero Section -->
+    <section class="engineering-hero">
+        <div class="hero-background"></div>
+        
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">
+                <div class="badge-icon"></div>
+                Environmental Consultancy Excellence Since 2009
+            </div>
+            
+            <h1 class="hero-title">Engineering & Environmental Consultancy</h1>
+            
+            <p class="hero-subtitle">
+                Specialized environmental consulting and engineering solutions from oil spill response planning 
+                to environmental impact assessments, leveraging industry expertise and proven methodologies 
+                to deliver comprehensive environmental protection services.
+            </p>
+            
+            <a href="#overview" class="hero-cta">
+                Explore Our Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section id="overview" class="service-overview">
+        <div class="engineering-container">
+            <div class="overview-content">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Leading Environmental Consultancy Solutions</h2>
+                    <p>
+                        At Axflo Oil & Gas Nigeria Limited, our Engineering & Consultancy division represents 
+                        specialized expertise in environmental protection and oil spill response consulting. 
+                        We combine 15+ years of industry experience with cutting-edge environmental technologies 
+                        to deliver innovative solutions that ensure environmental compliance and operational sustainability.
+                    </p>
+                    <p>
+                        From environmental impact assessments through detailed oil spill response planning and 
+                        implementation, our multidisciplinary team of environmental engineers, consultants, and 
+                        technical specialists work collaboratively to protect Nigeria's marine and terrestrial 
+                        environments while ensuring regulatory compliance and best practices.
+                    </p>
+                    
+                    <div class="overview-stats">
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Environmental Projects</span>
+                        </div>
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                            <span class="stat-number">15+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Major IOC Clients</span>
+                        </div>
+                        <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-number">24/7</span>
+                            <span class="stat-label">Emergency Consultation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/axflo28.jpg' %}" alt="Environmental Consultancy Excellence" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Environmental Consultancy Excellence</p>
+                            <small>Advanced environmental protection methodologies</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Services -->
+    <section class="services-detailed">
+        <div class="engineering-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Our Core Consultancy Services</h2>
+                <p>
+                    Comprehensive environmental consulting solutions tailored to meet the unique challenges 
+                    of Nigeria's oil and gas industry, delivered with precision and environmental stewardship.
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Environmental Impact Assessment -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Environmental Impact Assessment (EIA)</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive Environmental Impact Assessments that evaluate potential environmental effects 
+                        of proposed oil and gas projects, ensuring regulatory compliance and sustainable development 
+                        practices throughout project lifecycle.
+                    </p>
+                    <ul class="service-features">
+                        <li>Baseline Environmental Studies</li>
+                        <li>Impact Prediction & Assessment</li>
+                        <li>Mitigation Measures Development</li>
+                        <li>Environmental Management Plans</li>
+                        <li>Regulatory Compliance Review</li>
+                        <li>Stakeholder Engagement Programs</li>
+                        <li>Environmental Monitoring Protocols</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-cta">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Oil Spill Response Planning -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h3>Oil Spill Response Planning & Preparedness</h3>
+                    </div>
+                    <p class="service-description">
+                        Specialized oil spill response planning and preparedness consulting ensuring optimal response 
+                        capability for Tier 1 and Tier 2 incidents through comprehensive contingency planning and 
+                        emergency response optimization.
+                    </p>
+                    <ul class="service-features">
+                        <li>Oil Spill Contingency Plan Development</li>
+                        <li>Risk Assessment & Vulnerability Studies</li>
+                        <li>Response Strategy Optimization</li>
+                        <li>Equipment Deployment Planning</li>
+                        <li>Emergency Response Training Design</li>
+                        <li>Regulatory Compliance Audits</li>
+                        <li>Response Capability Assessments</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-cta">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Soil & Groundwater Assessment -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <h3>Soil & Groundwater Assessment</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive soil and groundwater contamination assessments providing detailed analysis 
+                        of environmental conditions and development of effective remediation strategies for 
+                        hydrocarbon-impacted sites.
+                    </p>
+                    <ul class="service-features">
+                        <li>Site Characterization Studies</li>
+                        <li>Contamination Assessment & Mapping</li>
+                        <li>Groundwater Monitoring Programs</li>
+                        <li>Risk Assessment & Modeling</li>
+                        <li>Remediation Strategy Development</li>
+                        <li>Regulatory Compliance Support</li>
+                        <li>Long-term Monitoring Plans</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-cta">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Compliance -->
+                <div class="service-detail-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3>Environmental Compliance & Auditing</h3>
+                    </div>
+                    <p class="service-description">
+                        Environmental compliance consulting and auditing services ensuring adherence to Nigerian 
+                        environmental regulations and international standards through systematic assessment and 
+                        continuous improvement programs.
+                    </p>
+                    <ul class="service-features">
+                        <li>Environmental Compliance Audits</li>
+                        <li>Regulatory Gap Analysis</li>
+                        <li>Permit Application Support</li>
+                        <li>Waste Management Planning</li>
+                        <li>Environmental Management Systems</li>
+                        <li>Sustainability Reporting</li>
+                        <li>Best Practices Implementation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-cta">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultancy Process -->
+    <section class="engineering-process">
+        <div class="engineering-container">
+            <div class="section-header2" data-aos="fade-up">
+                <h2>Our Environmental Consultancy Process</h2>
+                <p>
+                    A systematic approach that ensures quality, compliance, and environmental excellence 
+                    in every project phase from assessment to implementation.
+                </p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step" data-aos="slide-right" data-aos-delay="100">
+                    <div class="process-number">01</div>
+                    <div class="process-content">
+                        <h3>Environmental Assessment</h3>
+                        <p>
+                            Comprehensive environmental baseline studies, site assessments, and stakeholder 
+                            consultations to establish current conditions and regulatory requirements.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="slide-left" data-aos-delay="200">
+                    <div class="process-number">02</div>
+                    <div class="process-content">
+                        <h3>Impact Analysis & Planning</h3>
+                        <p>
+                            Detailed impact analysis, risk assessment, and development of comprehensive 
+                            environmental management and response planning strategies.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="slide-right" data-aos-delay="300">
+                    <div class="process-number">03</div>
+                    <div class="process-content">
+                        <h3>Solution Development</h3>
+                        <p>
+                            Development of tailored environmental solutions, mitigation measures, and 
+                            comprehensive implementation plans with regulatory compliance focus.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="process-step" data-aos="slide-left" data-aos-delay="400">
+                    <div class="process-number">04</div>
+                    <div class="process-content">
+                        <h3>Implementation & Monitoring</h3>
+                        <p>
+                            Ongoing implementation support, performance monitoring, and continuous improvement 
+                            to ensure long-term environmental protection and compliance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="technologies-section">
+        <div class="engineering-container">
+            <div class="section-header2" data-aos="fade-up">
+                <h2>Advanced Environmental Technologies & Methods</h2>
+                <p>
+                    Leveraging industry-leading environmental assessment tools and cutting-edge technologies 
+                    to deliver superior environmental consulting solutions.
+                </p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="tech-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h4>Remote Sensing & GIS</h4>
+                    <p>Advanced satellite monitoring and GIS mapping for environmental assessment and monitoring.</p>
+                </div>
+                
+                <div class="tech-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="tech-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Environmental Modeling</h4>
+                    <p>Comprehensive environmental impact modeling and dispersion analysis using specialized software.</p>
+                </div>
+                
+                <div class="tech-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="tech-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h4>Laboratory Analysis</h4>
+                    <p>Advanced analytical capabilities for soil, water, and air quality assessment and monitoring.</p>
+                </div>
+                
+                <div class="tech-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="tech-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Field Monitoring Systems</h4>
+                    <p>Real-time environmental monitoring using portable instruments and IoT sensor networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Showcase -->
+    <section class="interactive-showcase">
+        <div class="engineering-container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Project Portfolio</h2>
+                <p>Explore our portfolio of successful environmental consulting projects across Nigeria's energy sector.</p>
+            </div>
+            
+            <div class="showcase-tabs" data-aos="fade-up" data-aos-delay="200">
+                <button class="tab-button active" onclick="showTab('upstream')">Environmental Impact Assessments</button>
+                <button class="tab-button" onclick="showTab('midstream')">Oil Spill Response Planning</button>
+                <button class="tab-button" onclick="showTab('downstream')">Site Remediation Projects</button>
+            </div>
+            
+            <div id="upstream" class="tab-content active">
+                <div class="project-gallery">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-overlay">
+                            <h4>Offshore Platform EIA</h4>
+                            <p>Comprehensive environmental impact assessment for offshore drilling platform</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-overlay">
+                            <h4>Pipeline Route Assessment</h4>
+                            <p>Environmental assessment and impact mitigation for 150km pipeline project</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-overlay">
+                            <h4>Gas Processing Facility EIA</h4>
+                            <p>Environmental impact assessment for onshore gas processing facility</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="midstream" class="tab-content">
+                <div class="project-gallery">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-overlay">
+                            <h4>Marine Terminal OSR Plan</h4>
+                            <p>Comprehensive oil spill contingency planning for marine loading terminal</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-overlay">
+                            <h4>Offshore Platform Response Plan</h4>
+                            <p>Oil spill response strategy development for offshore production platform</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-overlay">
+                            <h4>Pipeline Spill Response Plan</h4>
+                            <p>Emergency response planning for trans-Niger Delta pipeline system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="downstream" class="tab-content">
+                <div class="project-gallery">
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="project-overlay">
+                            <h4>Hydrocarbon Site Remediation</h4>
+                            <p>Site assessment and remediation planning for contaminated industrial site</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-overlay">
+                            <h4>Groundwater Remediation</h4>
+                            <p>Groundwater contamination assessment and remediation strategy development</p>
+                        </div>
+                    </div>
+                    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-overlay">
+                            <h4>Wetland Restoration Project</h4>
+                            <p>Environmental restoration and monitoring of impacted mangrove ecosystem</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="engineering-cta">
+        <div class="engineering-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Start Your Environmental Consulting Project?</h2>
+                <p>
+                    Partner with Nigeria's leading environmental consultancy for innovative solutions 
+                    that ensure environmental protection, regulatory compliance, and sustainable operations.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Consultants
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-download"></i>
+                        Download Capabilities
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/engineering-consultancy.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

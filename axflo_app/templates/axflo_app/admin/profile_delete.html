@@ -1,0 +1,479 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Delete Account - Axflo Admin{% endblock %}
+
+{% block extra_css %}
+    <style>
+        .delete-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        .delete-header {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3) 0%, rgba(200, 35, 51, 0.3) 100%);
+            color: var(--text-primary);
+            padding: 30px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            box-shadow: var(--shadow-primary);
+            backdrop-filter: blur(var(--blur-amount));
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        .delete-header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+            color: var(--text-primary);
+        }
+
+        .delete-header p {
+            margin: 10px 0 0 0;
+            color: var(--text-secondary);
+        }
+
+        .delete-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 0 0 12px 12px;
+            box-shadow: var(--shadow-primary);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .warning-section {
+            background: rgba(255, 193, 7, 0.2);
+            border: 1px solid rgba(255, 193, 7, 0.4);
+            border-left: 4px solid var(--primary-gold-light);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .warning-section h4 {
+            color: var(--primary-gold-light);
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .warning-section h4 i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .warning-list {
+            margin: 0;
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .warning-list li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .danger-section {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.4);
+            border-left: 4px solid #ff6b6b;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .danger-section h4 {
+            color: #ff6b6b;
+            margin: 0 0 15px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .danger-section h4 i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .danger-section p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .account-info {
+            background: var(--bg-glass);
+            border: 1px solid var(--border-glass);
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .account-info h4 {
+            color: var(--text-primary);
+            margin: 0 0 15px 0;
+            font-size: 16px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .info-value {
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+
+        .confirmation-section {
+            background: rgba(255, 107, 107, 0.1);
+            border: 2px solid #ff6b6b;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            backdrop-filter: blur(var(--blur-amount));
+        }
+
+        .confirmation-section h4 {
+            color: #ff6b6b;
+            margin: 0 0 15px 0;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #721c24;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #dc3545;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #c82333;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+        }
+
+        .form-help {
+            font-size: 12px;
+            color: #721c24;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .countdown {
+            font-weight: bold;
+            color: #dc3545;
+        }
+
+        @media (max-width: 768px) {
+            .form-actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="delete-container">
+        <!-- Header -->
+        <div class="delete-header">
+            <h1><i class="fas fa-exclamation-triangle"></i> Delete Account</h1>
+            <p>Permanently remove your account and all associated data</p>
+        </div>
+
+        <!-- Content -->
+        <div class="delete-content">
+            <!-- Warning Section -->
+            <div class="warning-section">
+                <h4><i class="fas fa-exclamation-triangle"></i> Important Warning</h4>
+                <ul class="warning-list">
+                    <li><strong>This action cannot be undone.</strong> Once deleted, your account and all data will be permanently removed.</li>
+                    <li>You will lose access to all admin features and functionality.</li>
+                    <li>Any content or data associated with your account will be deleted.</li>
+                    <li>You will be immediately logged out and cannot log back in with this account.</li>
+                </ul>
+            </div>
+
+            <!-- Danger Section -->
+            <div class="danger-section">
+                <h4><i class="fas fa-skull-crossbones"></i> Data Loss Warning</h4>
+                <p>
+                    Deleting your account will permanently remove all your personal data, preferences, and any content 
+                    you have created. This includes your profile information, settings, and any associated records. 
+                    <strong>There is no way to recover this information once the account is deleted.</strong>
+                </p>
+            </div>
+
+            <!-- Account Information -->
+            <div class="account-info">
+                <h4><i class="fas fa-user"></i> Account to be Deleted</h4>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Username:</span>
+                        <span class="info-value">{{ user_profile.username }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Full Name:</span>
+                        <span class="info-value">{{ user_profile.get_full_name|default:"Not set" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value">{{ user_profile.email|default:"Not set" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Account Type:</span>
+                        <span class="info-value">
+                            {% if user_profile.is_superuser %}
+                                Administrator
+                            {% elif user_profile.is_staff %}
+                                Staff Member
+                            {% else %}
+                                Regular User
+                            {% endif %}
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Member Since:</span>
+                        <span class="info-value">{{ user_profile.date_joined|date:"F d, Y" }}</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Last Login:</span>
+                        <span class="info-value">
+                            {% if user_profile.last_login %}
+                                {{ user_profile.last_login|date:"F d, Y - g:i A" }}
+                            {% else %}
+                                Never
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirmation Section -->
+            <div class="confirmation-section">
+                <h4><i class="fas fa-shield-alt"></i> Confirmation Required</h4>
+                
+                <form method="post" id="deleteForm">
+                    {% csrf_token %}
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="confirm_delete">
+                            Type "DELETE_MY_ACCOUNT" to confirm account deletion:
+                        </label>
+                        <input 
+                            type="text" 
+                            class="form-control" 
+                            id="confirm_delete" 
+                            name="confirm_delete" 
+                            required
+                            autocomplete="off"
+                        >
+                        <div class="form-help">
+                            This confirmation is required to prevent accidental account deletion.
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-danger" id="deleteBtn" disabled>
+                            <i class="fas fa-trash-alt"></i>
+                            <span id="deleteButtonText">Delete My Account</span>
+                        </button>
+                        
+                        <a href="/admin-profile-view/" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i>
+                            Cancel & Go Back
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for form validation and safety -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const confirmInput = document.getElementById('confirm_delete');
+            const deleteBtn = document.getElementById('deleteBtn');
+            const deleteForm = document.getElementById('deleteForm');
+            const deleteButtonText = document.getElementById('deleteButtonText');
+
+            // Enable delete button only when correct text is entered
+            confirmInput.addEventListener('input', function() {
+                const value = this.value.trim();
+                if (value === 'DELETE_MY_ACCOUNT') {
+                    deleteBtn.disabled = false;
+                    deleteBtn.style.background = '#dc3545';
+                    this.style.borderColor = '#dc3545';
+                } else {
+                    deleteBtn.disabled = true;
+                    deleteBtn.style.background = '#6c757d';
+                    this.style.borderColor = value ? '#ffc107' : '#dc3545';
+                }
+            });
+
+            // Form submission with additional confirmations
+            deleteForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const confirmText = confirmInput.value.trim();
+                if (confirmText !== 'DELETE_MY_ACCOUNT') {
+                    alert('Please type "DELETE_MY_ACCOUNT" exactly as shown to confirm.');
+                    confirmInput.focus();
+                    return false;
+                }
+
+                // First confirmation
+                if (!confirm('⚠️ FINAL WARNING ⚠️\n\nAre you absolutely sure you want to delete your account?\n\nThis action is PERMANENT and IRREVERSIBLE!\n\nClick OK to proceed with deletion, or Cancel to abort.')) {
+                    return false;
+                }
+
+                // Second confirmation with countdown
+                let countdown = 5;
+                deleteBtn.disabled = true;
+                deleteButtonText.innerHTML = `Deleting in <span class="countdown">${countdown}</span> seconds...`;
+                
+                const countdownInterval = setInterval(() => {
+                    countdown--;
+                    if (countdown > 0) {
+                        deleteButtonText.innerHTML = `Deleting in <span class="countdown">${countdown}</span> seconds...`;
+                    } else {
+                        clearInterval(countdownInterval);
+                        deleteButtonText.textContent = 'Deleting Account...';
+                        
+                        // Submit the form
+                        const formData = new FormData(deleteForm);
+                        fetch(deleteForm.action || window.location.href, {
+                            method: 'POST',
+                            body: formData,
+                            headers: {
+                                'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                            }
+                        }).then(response => {
+                            if (response.ok) {
+                                window.location.href = '/admin-login/';
+                            } else {
+                                alert('Error deleting account. Please try again.');
+                                deleteBtn.disabled = false;
+                                deleteButtonText.textContent = 'Delete My Account';
+                            }
+                        }).catch(error => {
+                            alert('Error deleting account. Please try again.');
+                            deleteBtn.disabled = false;
+                            deleteButtonText.textContent = 'Delete My Account';
+                        });
+                    }
+                }, 1000);
+
+                return false;
+            });
+
+            // Prevent accidental page navigation
+            window.addEventListener('beforeunload', function(e) {
+                const confirmValue = confirmInput.value.trim();
+                if (confirmValue && confirmValue !== 'DELETE_MY_ACCOUNT') {
+                    e.preventDefault();
+                    e.returnValue = '';
+                }
+            });
+        });
+    </script>
+{% endblock %}

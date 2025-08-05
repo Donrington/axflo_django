@@ -1,0 +1,435 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Achievements Management - Axflo{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/admin_achievements.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-achievements-container">
+    <!-- Header Section -->
+    <div class="admin-achievements-header">
+        <h1><i class="fas fa-trophy"></i> Achievements Management</h1>
+        <p>Manage company achievements, awards, certifications, and recognitions</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="achievements-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_achievements }}</div>
+                <div class="stat-label">Total Achievements</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ featured_achievements }}</div>
+                <div class="stat-label">Featured</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-award"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ awards_count }}</div>
+                <div class="stat-label">Awards</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-certificate"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ certifications_count }}</div>
+                <div class="stat-label">Certifications</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="admin-actions">
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="openAchievementModal()">
+                <i class="fas fa-plus"></i> Add New Achievement
+            </button>
+            <a href="/admin-achievement-categories/" class="btn-secondary">
+                <i class="fas fa-tags"></i> Manage Categories
+            </a>
+            <button class="btn-secondary" onclick="exportAchievements()">
+                <i class="fas fa-download"></i> Export Data
+            </button>
+        </div>
+        <a href="/admindashboard/" class="btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Filters -->
+    <div class="achievements-filters">
+        <form method="GET" class="filters-form">
+            <div class="filters-row">
+                <div class="filter-group">
+                    <label for="search">Search</label>
+                    <input type="text" id="search" name="search" value="{{ search_query }}" 
+                           placeholder="Search achievements..." class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label for="type">Type</label>
+                    <select id="type" name="type" class="filter-select">
+                        <option value="all" {% if type_filter == 'all' %}selected{% endif %}>All Types</option>
+                        <option value="AWARD" {% if type_filter == 'AWARD' %}selected{% endif %}>Awards</option>
+                        <option value="CERTIFICATION" {% if type_filter == 'CERTIFICATION' %}selected{% endif %}>Certifications</option>
+                        <option value="MILESTONE" {% if type_filter == 'MILESTONE' %}selected{% endif %}>Milestones</option>
+                        <option value="RECOGNITION" {% if type_filter == 'RECOGNITION' %}selected{% endif %}>Recognition</option>
+                        <option value="PROJECT_SUCCESS" {% if type_filter == 'PROJECT_SUCCESS' %}selected{% endif %}>Project Success</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="status">Status</label>
+                    <select id="status" name="status" class="filter-select">
+                        <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                        <option value="ACTIVE" {% if status_filter == 'ACTIVE' %}selected{% endif %}>Active</option>
+                        <option value="ARCHIVED" {% if status_filter == 'ARCHIVED' %}selected{% endif %}>Archived</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category" class="filter-select">
+                        <option value="all" {% if category_filter == 'all' %}selected{% endif %}>All Categories</option>
+                        {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category_filter == category.id|stringformat:"s" %}selected{% endif %}>
+                            {{ category.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="filter-actions">
+                    <button type="submit" class="btn-filter">
+                        <i class="fas fa-search"></i> Filter
+                    </button>
+                    <a href="?" class="btn-clear">
+                        <i class="fas fa-times"></i> Clear
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Achievements Table -->
+    <div class="achievements-table-container">
+        <div class="table-header">
+            <h3>Achievements List</h3>
+            <div class="table-actions">
+                <button class="btn-bulk" onclick="bulkAction('feature')">
+                    <i class="fas fa-star"></i> Feature Selected
+                </button>
+                <button class="btn-bulk" onclick="bulkAction('archive')">
+                    <i class="fas fa-archive"></i> Archive Selected
+                </button>
+                <button class="btn-bulk btn-danger" onclick="bulkAction('delete')">
+                    <i class="fas fa-trash"></i> Delete Selected
+                </button>
+            </div>
+        </div>
+
+        {% if achievements %}
+        <div class="table-responsive">
+            <table class="achievements-table">
+                <thead>
+                    <tr>
+                        <th>
+                            <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                        </th>
+                        <th>Image</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Featured</th>
+                        <th>Views</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for achievement in achievements %}
+                    <tr class="achievement-row" data-id="{{ achievement.id }}">
+                        <td>
+                            <input type="checkbox" class="achievement-checkbox" value="{{ achievement.id }}">
+                        </td>
+                        <td>
+                            <div class="achievement-image">
+                                {% if achievement.featured_image %}
+                                <img src="{{ achievement.featured_image.url }}" alt="{{ achievement.title }}">
+                                {% else %}
+                                <div class="image-placeholder">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="achievement-title">
+                                <h4>{{ achievement.title }}</h4>
+                                <p>{{ achievement.short_description|truncatewords:10 }}</p>
+                            </div>
+                        </td>
+                        <td>
+                            <span class="type-badge type-{{ achievement.achievement_type|lower }}">
+                                {{ achievement.get_achievement_type_display }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="category-info">
+                                <span class="category-color" style="background-color: {{ achievement.category.color }}"></span>
+                                {{ achievement.category.name }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="date-info">
+                                {{ achievement.achievement_date|date:"M d, Y" }}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="status-badge status-{{ achievement.status|lower }}">
+                                {{ achievement.get_status_display }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="featured-toggle">
+                                <input type="checkbox" class="toggle-switch" 
+                                       {% if achievement.featured %}checked{% endif %}
+                                       onchange="toggleFeatured({{ achievement.id }}, this)">
+                                <span class="toggle-slider"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="view-count">
+                                <i class="fas fa-eye"></i>
+                                {{ achievement.view_count|default:0 }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-action btn-edit" onclick="editAchievement({{ achievement.id }})" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action btn-view" onclick="viewAchievement({{ achievement.id }})" title="View">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                {% if achievement.external_link %}
+                                <a href="{{ achievement.external_link }}" target="_blank" class="btn-action btn-link" title="External Link">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                {% endif %}
+                                <button class="btn-action btn-delete" onclick="deleteAchievement({{ achievement.id }})" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="pagination-container">
+            <div class="pagination-info">
+                Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ paginator.count }} results
+            </div>
+            <div class="pagination">
+                {% if page_obj.has_previous %}
+                <a href="?page=1{{ request.GET.urlencode }}" class="page-link">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}{{ request.GET.urlencode }}" class="page-link">Previous</a>
+                {% endif %}
+                
+                {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <span class="page-link current">{{ num }}</span>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <a href="?page={{ num }}{{ request.GET.urlencode }}" class="page-link">{{ num }}</a>
+                {% endif %}
+                {% endfor %}
+                
+                {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}{{ request.GET.urlencode }}" class="page-link">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}{{ request.GET.urlencode }}" class="page-link">Last &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h3>No Achievements Found</h3>
+            <p>{% if search_query or type_filter != 'all' or status_filter != 'all' or category_filter != 'all' %}
+                No achievements match your current filters. Try adjusting your search criteria.
+            {% else %}
+                Start building your achievements portfolio by creating your first achievement.
+            {% endif %}</p>
+            {% if not search_query and type_filter == 'all' and status_filter == 'all' and category_filter == 'all' %}
+            <button class="btn-primary" onclick="openAchievementModal()">
+                <i class="fas fa-plus"></i> Create First Achievement
+            </button>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Achievement Modal -->
+<div id="achievementModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Add New Achievement</h2>
+            <span class="modal-close" onclick="closeAchievementModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="achievementForm" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="hidden" id="achievementId" name="achievement_id">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="title">Title *</label>
+                        <input type="text" id="title" name="title" required class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="achievement_type">Type *</label>
+                        <select id="achievement_type" name="achievement_type" required class="form-select">
+                            <option value="">Select Type</option>
+                            <option value="AWARD">Award</option>
+                            <option value="CERTIFICATION">Certification</option>
+                            <option value="MILESTONE">Milestone</option>
+                            <option value="RECOGNITION">Recognition</option>
+                            <option value="PROJECT_SUCCESS">Project Success</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required class="form-select">
+                            <option value="">Select Category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}" data-color="{{ category.color }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="achievement_date">Achievement Date *</label>
+                        <input type="date" id="achievement_date" name="achievement_date" required class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="short_description">Short Description</label>
+                    <textarea id="short_description" name="short_description" rows="2" class="form-textarea" 
+                              placeholder="Brief description for cards (300 characters max)"></textarea>
+                    <small class="form-help">Used in card previews and listings</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Full Description *</label>
+                    <textarea id="description" name="description" rows="5" required class="form-textarea"
+                              placeholder="Detailed description of the achievement"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="featured_image">Featured Image</label>
+                    <div class="image-upload">
+                        <input type="file" id="featured_image" name="featured_image" accept="image/*" class="file-input">
+                        <div class="image-preview" id="imagePreview">
+                            <i class="fas fa-image"></i>
+                            <span>Click to upload or drag image here</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="external_link">External Link</label>
+                    <input type="url" id="external_link" name="external_link" class="form-input"
+                           placeholder="https://example.com/news-article">
+                    <small class="form-help">Link to news article or external recognition</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="impact_metrics">Impact Metrics (JSON)</label>
+                    <textarea id="impact_metrics" name="impact_metrics" rows="3" class="form-textarea"
+                              placeholder='{"cost_saved": 500000, "co2_reduced": 1000}'></textarea>
+                    <small class="form-help">Key performance metrics in JSON format</small>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" class="form-select">
+                            <option value="ACTIVE">Active</option>
+                            <option value="ARCHIVED">Archived</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="display_order">Display Order</label>
+                        <input type="number" id="display_order" name="display_order" class="form-input" value="0">
+                    </div>
+                </div>
+
+                <div class="form-checkbox">
+                    <input type="checkbox" id="featured" name="featured" class="checkbox-input">
+                    <label for="featured" class="checkbox-label">
+                        <span class="checkbox-mark"></span>
+                        Feature this achievement
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeAchievementModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Achievement
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- View Achievement Modal -->
+<div id="viewAchievementModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="viewModalTitle">Achievement Details</h2>
+            <span class="modal-close" onclick="closeViewModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="viewModalContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/admin_achievements.js' %}"></script>
+<script>
+// Pass data to JavaScript
+window.achievementData = {
+    categories: {{ categories_json|safe }}
+};
+</script>
+{% endblock %}

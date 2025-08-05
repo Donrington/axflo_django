@@ -1,0 +1,528 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Offshore-Marine-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/offshore-marine-services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Marine Hero Section -->
+   <section class="marine-hero">
+        <div class="ocean-backdrop"></div>
+        
+        <div class="wave-container">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        
+        <div class="marine-elements">
+            <div class="marine-vessel vessel-1">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div class="marine-vessel vessel-2">
+                <i class="fas fa-anchor"></i>
+            </div>
+            <div class="marine-vessel vessel-3">
+                <i class="fas fa-water"></i>
+            </div>
+            <div class="marine-vessel vessel-4">
+                <i class="fas fa-compass"></i>
+            </div>
+            <div class="marine-vessel vessel-5">
+                <i class="fas fa-life-ring"></i>
+            </div>
+            <div class="marine-vessel vessel-6">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+        </div>
+        
+        <div class="marine-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="marine-badge">
+                <div class="marine-indicator"></div>
+                Oil Spill Response Excellence Since 2009
+            </div>
+            
+            <h1 class="marine-title">Marine Support Services</h1>
+            
+            <p class="marine-subtitle">
+                Comprehensive marine logistics and oil spill response services supporting Nigeria's offshore 
+                and nearshore operations with proven environmental solutions and specialized marine equipment.
+            </p>
+            
+            <a href="#marine-overview" class="marine-cta">
+                Explore Our Capabilities
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Marine Overview -->
+    <section id="marine-overview" class="marine-overview">
+        <div class="marine-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Marine Environmental & Support Services</h2>
+                    <p>
+                        Axflo's Marine Support Services division provides essential environmental and logistics 
+                        support for Nigeria's oil and gas offshore operations. Our comprehensive marine solutions 
+                        combine proven oil spill response capabilities with reliable marine logistics to deliver 
+                        effective environmental protection and operational support services.
+                    </p>
+                    <p>
+                        From oil spill containment and recovery to marine equipment supply and maintenance, our 
+                        experienced teams provide round-the-clock support for offshore and nearshore operations. 
+                        We maintain strategic partnerships with international suppliers DESMI and Darcy Spillcare 
+                        to ensure access to world-class marine environmental protection equipment.
+                    </p>
+                    
+                    <div class="marine-stats">
+                        <div class="stat-hexagon" data-aos="fade-up" data-aos-delay="100">
+                            <span class="stat-figure">15+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                        <div class="stat-hexagon" data-aos="fade-up" data-aos-delay="200">
+                            <span class="stat-figure">100+</span>
+                            <span class="stat-text">Response Projects</span>
+                        </div>
+                        <div class="stat-hexagon" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-figure">24/7</span>
+                            <span class="stat-text">Emergency Response</span>
+                        </div>
+                        <div class="stat-hexagon" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-figure">Tier 1&2</span>
+                            <span class="stat-text">Spill Response</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                      <img src="{% static 'axflo_app/oilactivities/marinesupport.png' %}" alt="OSR Equipment Installation" loading="lazy">
+                        <p>Marine Environmental Services</p>
+                        <small>Oil spill response & marine support</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marine Services -->
+    <section class="marine-services">
+        <div class="marine-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Marine Support Services</h2>
+                <p>
+                    Comprehensive marine environmental services covering oil spill response, containment, 
+                    recovery, and marine logistics for safe and compliant offshore operations.
+                </p>
+            </div>
+            
+            <div class="marine-deck">
+                <!-- Oil Spill Response & Recovery -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="100">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3>Oil Spill Response & Recovery</h3>
+                    </div>
+                    <p class="marine-description">
+                        Comprehensive oil spill response services providing rapid containment, recovery, and 
+                        cleanup operations for offshore, nearshore, and coastal environments with proven 
+                        equipment and experienced response teams for Tier 1 and Tier 2 spill incidents.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Emergency Spill Response</li>
+                        <li>Oil Containment & Recovery</li>
+                        <li>Marine Boom Deployment</li>
+                        <li>Skimming Operations</li>
+                        <li>Shoreline Cleanup</li>
+                        <li>Equipment Mobilization</li>
+                        <li>Response Team Coordination</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Marine Equipment Supply & Maintenance -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="200">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Marine Equipment Supply & Maintenance</h3>
+                    </div>
+                    <p class="marine-description">
+                        Professional supply and maintenance of marine environmental equipment including 
+                        oil spill response equipment, containment booms, skimmers, and support systems 
+                        with partnerships from leading manufacturers DESMI and Darcy Spillcare.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>OSR Equipment Supply</li>
+                        <li>Boom & Skimmer Systems</li>
+                        <li>Equipment Maintenance</li>
+                        <li>Equipment Commissioning</li>
+                        <li>Spare Parts Supply</li>
+                        <li>Technical Support</li>
+                        <li>Equipment Hire Services</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Marine Logistics & Support -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="300">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-anchor"></i>
+                        </div>
+                        <h3>Marine Logistics & Support</h3>
+                    </div>
+                    <p class="marine-description">
+                        Reliable marine logistics services supporting offshore operations including equipment 
+                        transportation, supply coordination, and project logistics management ensuring efficient 
+                        delivery of materials and services to offshore and remote locations.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Equipment Transportation</li>
+                        <li>Supply Chain Management</li>
+                        <li>Project Logistics</li>
+                        <li>Vessel Coordination</li>
+                        <li>Port Services</li>
+                        <li>Cargo Handling</li>
+                        <li>Procurement Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Remediation -->
+                <div class="service-card-marine" data-aos="fade-up" data-aos-delay="400">
+                    <div class="marine-card-header">
+                        <div class="marine-service-icon">
+                            <i class="fas fa-oil-well"></i>
+                        </div>
+                        <h3>Environmental Remediation</h3>
+                    </div>
+                    <p class="marine-description">
+                        Specialized environmental remediation services for hydrocarbon-impacted areas including 
+                        soil treatment, groundwater remediation, and site restoration with proven bioremediation 
+                        techniques and environmental compliance expertise.
+                    </p>
+                    <ul class="marine-capabilities">
+                        <li>Soil Remediation</li>
+                        <li>Groundwater Treatment</li>
+                        <li>Site Assessment</li>
+                        <li>Bioremediation</li>
+                        <li>Environmental Monitoring</li>
+                        <li>Waste Management</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="marine-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Areas -->
+    <section class="deepwater-operations">
+        <div class="marine-container">
+            <div class="deepwater-header" data-aos="fade-up">
+                <h2>Service Coverage Areas</h2>
+                <p>
+                    Strategic service coverage across Nigeria's key oil and gas operational areas 
+                    ensuring rapid response and comprehensive support capabilities.
+                </p>
+            </div>
+            
+            <div class="depth-layers">
+                <div class="depth-layer" data-aos="slide-right" data-aos-delay="100">
+                    <div class="depth-indicator">Rivers State</div>
+                    <div class="depth-content">
+                        <h3>Port Harcourt Operations</h3>
+                        <p>
+                            Primary operational base in Port Harcourt providing comprehensive coverage for 
+                            Rivers State offshore and onshore facilities with immediate response capabilities 
+                            and full equipment deployment from our main facility.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="depth-layer" data-aos="slide-left" data-aos-delay="200">
+                    <div class="depth-indicator">Bayelsa State</div>
+                    <div class="depth-content">
+                        <h3>Niger Delta Coverage</h3>
+                        <p>
+                            Extensive experience in Bayelsa State operations including swamp areas, creeks, 
+                            and offshore platforms with specialized equipment and local knowledge for 
+                            challenging environmental conditions.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="depth-layer" data-aos="slide-right" data-aos-delay="300">
+                    <div class="depth-indicator">Delta State</div>
+                    <div class="depth-content">
+                        <h3>Delta Operations</h3>
+                        <p>
+                            Proven track record in Delta State with multiple successful remediation and 
+                            response projects covering pipeline corridors, flow stations, and production 
+                            facilities across various terrain types.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="depth-layer" data-aos="slide-left" data-aos-delay="400">
+                    <div class="depth-indicator">Lagos</div>
+                    <div class="depth-content">
+                        <h3>Lagos Support Office</h3>
+                        <p>
+                            Strategic Lagos office providing administrative support, client liaison, and 
+                            procurement coordination for nationwide operations with enhanced project 
+                            management and logistics capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment & Technology -->
+    <section class="subsea-technology">
+        <div class="marine-container">
+            <div class="technology-header" data-aos="fade-up">
+                <h2>Equipment & Technology Partners</h2>
+                <p>
+                    World-class oil spill response equipment and environmental technologies through 
+                    strategic partnerships with leading international manufacturers.
+                </p>
+            </div>
+            
+            <div class="subsea-grid">
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h4>DESMI Equipment</h4>
+                    <p>Partnership with DESMI Ro-Clean Denmark providing advanced oil spill response equipment including skimmers and recovery systems.</p>
+                </div>
+                
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h4>Darcy Spillcare</h4>
+                    <p>Strategic alliance with Darcy Spillcare Manufacture UK for specialized containment booms and spill response materials.</p>
+                </div>
+                
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h4>Containment Systems</h4>
+                    <p>Advanced boom deployment systems including permanent Ro-Fence installations and portable containment solutions.</p>
+                </div>
+                
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Recovery Equipment</h4>
+                    <p>Professional oil recovery systems including Komara skimmers, transfer pumps, and specialized collection equipment.</p>
+                </div>
+                
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-compass"></i>
+                    </div>
+                    <h4>Support Vessels</h4>
+                    <p>Marine support vessels and equipment for deployment, recovery operations, and personnel transportation in various water conditions.</p>
+                </div>
+                
+                <div class="subsea-tech-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="subsea-tech-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety Systems</h4>
+                    <p>Comprehensive safety equipment and protocols ensuring safe operations and emergency response capabilities for all marine activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Portfolio -->
+    <section class="marine-dashboard">
+        <div class="marine-container">
+            <div class="dashboard-header" data-aos="fade-up">
+                <h2>Client Portfolio & Experience</h2>
+                <p>Trusted by major oil and gas companies across Nigeria with proven track record of successful project delivery and emergency response.</p>
+            </div>
+            
+            <div class="dashboard-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="dashboard-button active" onclick="showDashboard('clients')">Major Clients</button>
+                <button class="dashboard-button" onclick="showDashboard('projects')">Project Types</button>
+                <button class="dashboard-button" onclick="showDashboard('response')">Response Capability</button>
+            </div>
+            
+            <div id="clients" class="dashboard-content active">
+                <div class="dashboard-showcase">
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h4>Shell Companies</h4>
+                        <p>SPDC, SNEPCo - Comprehensive spill response services including equipment supply and emergency response support.</p>
+                        <span class="dashboard-metric">Multiple Contracts</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>NAOC & Agip</h4>
+                        <p>Nigeria Agip Oil Company - Oil spill containment, recovery operations, and equipment maintenance services.</p>
+                        <span class="dashboard-metric">Long-term Partnership</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h4>International Partners</h4>
+                        <p>ExxonMobil, Total E&P, Heritage Energy - Specialized environmental services and equipment supply solutions.</p>
+                        <span class="dashboard-metric">Proven Delivery</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="projects" class="dashboard-content">
+                <div class="dashboard-showcase">
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <h4>Pipeline Spill Response</h4>
+                        <p>Rapid response and cleanup for pipeline incidents including 24" UPS-Rapele, Ogoda-Brass, and Tebidaba-Brass lines.</p>
+                        <span class="dashboard-metric">100+ Projects</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h4>Site Remediation</h4>
+                        <p>Comprehensive cleanup and remediation of hydrocarbon-impacted sites across Rivers, Delta, and Bayelsa states.</p>
+                        <span class="dashboard-metric">Proven Results</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4>Equipment Installation</h4>
+                        <p>Professional installation and commissioning of oil spill response equipment including permanent boom systems.</p>
+                        <span class="dashboard-metric">Expert Installation</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="response" class="dashboard-content">
+                <div class="dashboard-showcase">
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-life-ring"></i>
+                        </div>
+                        <h4>Emergency Response</h4>
+                        <p>24/7 emergency spill response capability with rapid deployment teams and pre-positioned equipment across operational areas.</p>
+                        <span class="dashboard-metric">24/7 Available</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h4>Equipment Readiness</h4>
+                        <p>Comprehensive inventory of response equipment maintained in optimal condition with regular testing and certification.</p>
+                        <span class="dashboard-metric">Ready to Deploy</span>
+                    </div>
+                    <div class="dashboard-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="dashboard-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Trained Personnel</h4>
+                        <p>Experienced response teams with proper safety certifications and extensive field experience in Nigerian environments.</p>
+                        <span class="dashboard-metric">Certified Teams</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="marine-cta-section">
+        <div class="marine-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready for Reliable Marine Environmental Support?</h2>
+                <p>
+                    Partner with Nigeria's trusted marine environmental services provider for 
+                    comprehensive oil spill response and marine support solutions.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Team
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Our Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/offshore-marine-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

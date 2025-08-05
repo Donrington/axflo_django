@@ -1,0 +1,353 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Environmental-Technologies - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/environmental-technologies.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Technology Hero Section -->
+    <section class="technology-hero">
+        <div class="technology-backdrop"></div>
+        
+        <div class="technology-elements">
+            <div class="tech-element tech-1">
+                <i class="fas fa-microscope"></i>
+            </div>
+            <div class="tech-element tech-2">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+            <div class="tech-element tech-3">
+                <i class="fas fa-microchip"></i>
+            </div>
+            <div class="tech-element tech-4">
+                <i class="fas fa-desktop"></i>
+            </div>
+            <div class="tech-element tech-5">
+                <i class="fas fa-chart-line"></i>
+            </div>
+        </div>
+        
+        <div class="technology-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="technology-title">Environmental Technologies</h1>
+            <p class="technology-subtitle">Cutting-edge environmental technologies for monitoring, assessment, and remediation of impacted sites across Nigeria's industrial sectors</p>
+            
+            <div class="cta-buttons">
+                <a href="#technologies" class="cta-primary">
+                    <i class="fas fa-microscope"></i>
+                    Explore Technologies
+                </a>
+                <a href="{% url 'axflo_app:contact' %}" class="cta-secondary">
+                    <i class="fas fa-phone"></i>
+                    Get Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <!-- Technology Categories -->
+    <section class="technology-categories" id="technologies">
+        <div class="container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2>Oil Spill Response & Environmental Solutions</h2>
+                <p>Advanced oil spill response equipment and environmental remediation technologies for comprehensive site management</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Oil Spill Response Equipment</h3>
+                    <p>Comprehensive oil spill response solutions including containment booms, skimmers, and recovery systems for offshore and nearshore operations.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> Offshore containment booms</li>
+                        <li><i class="fas fa-check"></i> Oil recovery skimmers</li>
+                        <li><i class="fas fa-check"></i> Dispersant spray systems</li>
+                        <li><i class="fas fa-check"></i> Emergency response equipment</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Equipment Maintenance & Commissioning</h3>
+                    <p>Professional maintenance, installation, and commissioning services for oil spill response equipment and environmental systems.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> OSR equipment maintenance</li>
+                        <li><i class="fas fa-check"></i> System commissioning</li>
+                        <li><i class="fas fa-check"></i> Equipment testing</li>
+                        <li><i class="fas fa-check"></i> Performance optimization</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Environmental Remediation</h3>
+                    <p>Comprehensive environmental cleanup and remediation services for hydrocarbon-impacted areas and contaminated sites.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> Hydrocarbon cleanup</li>
+                        <li><i class="fas fa-check"></i> Soil remediation</li>
+                        <li><i class="fas fa-check"></i> Site restoration</li>
+                        <li><i class="fas fa-check"></i> Environmental assessment</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>Oil & Gas Equipment Supply</h3>
+                    <p>Supply of valves, fittings, flanges, and specialized equipment for oil and gas operations in various materials and specifications.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> Valves & fittings supply</li>
+                        <li><i class="fas fa-check"></i> Carbon & stainless steel</li>
+                        <li><i class="fas fa-check"></i> Chrome & nickel alloys</li>
+                        <li><i class="fas fa-check"></i> Expedited delivery</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Training & Consultancy</h3>
+                    <p>Professional training programs and consultancy services for oil spill response, equipment handling, and environmental management.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> OSR training programs</li>
+                        <li><i class="fas fa-check"></i> Equipment handling</li>
+                        <li><i class="fas fa-check"></i> Deployment techniques</li>
+                        <li><i class="fas fa-check"></i> Environmental consultancy</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="tech-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="tech-card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Water Treatment & Waste Management</h3>
+                    <p>Advanced water and wastewater treatment solutions, waste recycling, and environmental management services for industrial operations.</p>
+                    <ul class="tech-features">
+                        <li><i class="fas fa-check"></i> Water treatment systems</li>
+                        <li><i class="fas fa-check"></i> Waste recycling</li>
+                        <li><i class="fas fa-check"></i> Solid control systems</li>
+                        <li><i class="fas fa-check"></i> Waste stream treatment</li>
+                    </ul>
+                    <a href="#" class="tech-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Innovation Stats -->
+    <section class="technology-innovation">
+        <div class="container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2 style="color: white;">Industry Experience & Impact</h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Leading oil spill response and environmental solutions across Nigeria's oil and gas sector</p>
+            </div>
+
+            <div class="innovation-stats">
+                <div class="innovation-stat" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="innovation-stat" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">48+</div>
+                    <div class="stat-label">Years Combined Team Experience</div>
+                </div>
+                <div class="innovation-stat" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Major IOC Clients</div>
+                </div>
+                <div class="innovation-stat" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Response</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Gallery -->
+    <section class="equipment-gallery">
+        <div class="container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2>Equipment & Operations Gallery</h2>
+                <p>Our oil spill response equipment and environmental remediation operations in action</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/images/dispersant.jpg' %}" alt="Oil Spill Response Equipment">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Oil Spill Containment Booms</h4>
+                        <p>Advanced containment boom systems for offshore and nearshore oil spill response operations.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/images/hydrocarbon1.jpg' %}" alt="Environmental Remediation">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Hydrocarbon Site Remediation</h4>
+                        <p>Professional cleanup and remediation of hydrocarbon-impacted areas and contaminated sites.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/images/axflo23.jpg' %}" alt="Equipment Maintenance">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Equipment Maintenance Services</h4>
+                        <p>Comprehensive maintenance and servicing of oil spill response and environmental equipment.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/oilactivities/engine.jpg' %}" alt="Oil and Gas Equipment">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Oil & Gas Equipment Supply</h4>
+                        <p>Supply of high-quality valves, fittings, and specialized equipment for oil and gas operations.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/images/training2.webp' %}" alt="Training Programs">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Professional Training Programs</h4>
+                        <p>Specialized training in oil spill response techniques and environmental management practices.</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="600">
+                    <div class="gallery-image">
+                        <img src="{% static 'axflo_app/images/watertreatment2.avif' %}" alt="Water Treatment">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-content">
+                        <h4>Water Treatment Solutions</h4>
+                        <p>Advanced water and wastewater treatment systems for industrial and environmental applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Showcase -->
+    <section class="technology-showcase">
+        <div class="container">
+            <div class="showcase-grid">
+                <div class="showcase-content" data-aos="fade-right">
+                    <h3>Industry Leadership & Excellence</h3>
+                    <p>Axflo Oil & Gas Limited combines over 48 years of combined industry experience with strategic partnerships from leading international manufacturers like DESMI and Darcy Spillcare. We deliver proven oil spill response and environmental solutions for Nigeria's most challenging projects in the oil and gas sector.</p>
+                    
+                    <ul class="showcase-features">
+                        <li><i class="fas fa-check"></i> 15+ Years Industry Experience</li>
+                        <li><i class="fas fa-check"></i> International Technology Partners</li>
+                        <li><i class="fas fa-check"></i> Tier 1 & 2 Spill Response Capability</li>
+                        <li><i class="fas fa-check"></i> Major IOC Client Base</li>
+                        <li><i class="fas fa-check"></i> Comprehensive Equipment Inventory</li>
+                    </ul>
+
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-primary">
+                        <i class="fas fa-envelope"></i>
+                        Request Consultation
+                    </a>
+                </div>
+
+                <div class="showcase-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Axflo Oil Spill Response Technology">
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/environmental-technologies.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

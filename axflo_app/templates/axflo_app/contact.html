@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+            <div class="geometric-shape shape-4"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Get In Touch
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">Contact Us</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+                Ready to transform your energy solutions? Let's discuss how we can bring innovation and excellence to your next project.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Main Section -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-wrapper">
+                
+                <!-- Contact Information Cards -->
+                <div class="contact-info">
+                    <div class="info-grid">
+                        
+                        <!-- Address Card -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Our Location</h3>
+                                <p>123 Energy Plaza<br>Lagos, Nigeria</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phone Card -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Call Us</h3>
+                                <p>+234 (0) 123 456 789<br>+234 (0) 987 654 321</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Card -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email Us</h3>
+                                <p>info@axflo.com<br>contact@axflo.com</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Business Hours Card -->
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Business Hours</h3>
+                                <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <div class="form-container">
+                        <div class="form-header">
+                            <h2>Send us a Message</h2>
+                            <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                        </div>
+                        
+                        <!-- Success/Error Messages -->
+                        <div id="form-messages" class="form-messages" style="display: none;">
+                            <div class="message-content">
+                                <i class="message-icon"></i>
+                                <span class="message-text"></span>
+                            </div>
+                        </div>
+                        
+                        <form id="contactForm" class="contact-form" method="post">
+                            {% csrf_token %}
+                            
+                            <div class="form-grid">
+                                <!-- Name Field -->
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-user input-icon"></i>
+                                        <input type="text" id="name" name="name" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Email Field -->
+                                <div class="form-group">
+                                    <label for="email">Email Address *</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                </div>
+                                
+                                <!-- Company Field -->
+                                <div class="form-group">
+                                    <label for="company">Company/Organization</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-building input-icon"></i>
+                                        <input type="text" id="company" name="company">
+                                    </div>
+                                </div>
+                                
+                                <!-- Phone Field -->
+                                <div class="form-group">
+                                    <label for="phone">Phone Number</label>
+                                    <div class="input-wrapper">
+                                        <i class="fas fa-phone input-icon"></i>
+                                        <input type="tel" id="phone" name="phone">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Inquiry Type -->
+                            <div class="form-group full-width">
+                                <label for="inquiry_type">Inquiry Type *</label>
+                                <div class="select-wrapper">
+                                    <i class="fas fa-list-ul input-icon"></i>
+                                    <select id="inquiry_type" name="inquiry_type" required>
+                                        <option value="">Select an inquiry type</option>
+                                        {% for category in inquiry_categories %}
+                                            <option value="{{ category.id }}">{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <!-- Message Field -->
+                            <div class="form-group full-width">
+                                <label for="message">Message *</label>
+                                <div class="textarea-wrapper">
+                                    <i class="fas fa-comment-dots input-icon"></i>
+                                    <textarea id="message" name="message" rows="6" placeholder="Tell us about your project or inquiry..." required></textarea>
+                                </div>
+                            </div>
+                            
+                            <!-- Submit Button -->
+                            <div class="form-group full-width">
+                                <button type="submit" class="submit-btn">
+                                    <span class="btn-text">Send Message</span>
+                                    <span class="btn-loading" style="display: none;">
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        Sending...
+                                    </span>
+                                    <i class="fas fa-paper-plane btn-icon"></i>
+                                </button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/contact.js' %}"></script>
+    <script src="{% static 'axflo_app/js/main.js' %}"></script>
+{% endblock %}

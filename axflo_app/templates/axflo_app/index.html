@@ -1,0 +1,1223 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+    
+  <header class="header">
+        <nav class="nav">
+                <div class="nav__brand">
+                <!-- Light logo for transparent background -->
+                <img src="{% static 'axflo_app/logo/AOGLogoWhite2.png' %}" alt="Light Logo" class="logo-light">
+                <!-- Dark logo for white background -->
+                <img src="{% static 'axflo_app/logo/AOGLogoBlack2.png' %}" alt="Dark Logo" class="logo-dark">
+            </div>
+      <ul class="nav__links">
+                <li><a href="{% url 'axflo_app:index' %}">Home</a></li>
+                
+                <!-- About Us Dropdown -->
+                <li class="dropdown">
+                    <a href="{% url 'axflo_app:about' %}">
+                        About Us
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                                 <a href="{% url 'axflo_app:about' %}#our-company">Our Company</a>
+        <a href="{% url 'axflo_app:about' %}#board-directors">Board of Directors</a>
+        <a href="{% url 'axflo_app:about' %}#about">Company Overview</a>
+        <a href="{% url 'axflo_app:about' %}#hse">Health Safety and Environment</a>
+        <a href="{% url 'axflo_app:about' %}#our-people">Our People</a>
+        <a href="{% url 'axflo_app:about' %}#milestones">Major Milestones</a>
+        <a href="{% url 'axflo_app:about' %}#services">Our Services</a>
+        <a href="{% url 'axflo_app:about' %}#technology">Technology Partners</a>
+        <a href="{% url 'axflo_app:about' %}#leadership">Leadership & Innovation</a>
+        <a href="{% url 'axflo_app:contact' %}">Contact Us</a>
+                </li>
+                
+                <!-- Services Mega Dropdown -->
+                <li class="dropdown mega-dropdown">
+                    <a href="{% url 'axflo_app:services' %}">
+                        Services
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <h4>EPC Contracting</h4>
+                                <ul>
+                                    <li><a href="{% url 'axflo_app:engineering_consultancy' %}">Engineering & Consultancy</a></li>
+                                    <li><a href="{% url 'axflo_app:procurement_logistics' %}">Procurement & Logistics</a></li>
+                                    <li><a href="{% url 'axflo_app:construction_services' %}">Construction Services</a></li>
+                                    <li><a href="{% url 'axflo_app:installation_services' %}">Installation Services</a></li>
+                                    <li><a href="{% url 'axflo_app:testing_commissioning' %}">Testing & Commissioning</a></li>
+                                    <li><a href="{% url 'axflo_app:project_management' %}">Project Management</a></li>
+                                    <li><a href="{% url 'axflo_app:plant_operation_facility_management' %}">Plant Operation & Facility Management</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-section">
+                                <h4>Offshore & Marine</h4>
+                                <ul>
+                                    <li><a href="{% url 'axflo_app:offshore_marine_services' %}">Offshore Services</a></li>
+                                    <li><a href="{% url 'axflo_app:marine_support_services' %}">Marine Support</a></li>
+                                    <li><a href="{% url 'axflo_app:offshore_accommodation_services' %}">Offshore Accommodation</a></li>
+                                    <li><a href="{% url 'axflo_app:equipment_hire_services' %}">Equipment Hire</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-section">
+                                <h4>Environmental Services</h4>
+                                <ul>
+                                    <li><a href="{% url 'axflo_app:environmental_technologies' %}">Environmental Technologies</a></li>
+                                    <li><a href="{% url 'axflo_app:water_wastewater_treatment' %}">Water & Wastewater Treatment</a></li>
+                                    <li><a href="{% url 'axflo_app:waste_recycling' %}">Waste and Recycling</a></li>
+                                    <li><a href="{% url 'axflo_app:renewable_energy' %}">Renewable Energy</a></li>
+                                    <li><a href="{% url 'axflo_app:oil_spill_response' %}">Oil Spill Response</a></li>
+                                    <li><a href="{% url 'axflo_app:preparedness_planning' %}">Preparedness</a></li>
+                                    <li><a href="{% url 'axflo_app:incident_management' %}">Incident Management</a></li>
+                                    <li><a href="{% url 'axflo_app:training_programs' %}">Training</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li><a href="{% url 'axflo_app:achievements' %}">Projects</a></li>
+                
+                <!-- QHSE Dropdown -->
+                   <li class="dropdown">
+                <a href="{% url 'axflo_app:qshe' %}">
+                    QHSE
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{% url 'axflo_app:qshe' %}#policies">Policies</a>
+                    <a href="{% url 'axflo_app:qshe' %}#certifications">Certifications</a>
+                    <a href="{% url 'axflo_app:qshe' %}#safety-standards">Safety Standards</a>
+                </div>
+            </li>
+                
+                <li><a href="{% url 'axflo_app:careers' %}">Careers</a></li>
+                <li><a href="{% url 'axflo_app:media' %}">Media Centre</a></li>
+                <li><a href="{% url 'axflo_app:csr' %}">CSR</a></li>
+            </ul>
+            
+            <div class="nav__action">
+                   <a href="{% url 'axflo_app:contact' %}">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+        <!-- Mobile Toggle Button -->
+    <div class="toggle-btn" onclick="toggleNav()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+
+
+    <!-- Mobile Slide Modal -->
+    <div class="mobile-nav">
+        <div class="mobile-nav__header">
+            <img src="{% static 'axflo_app/logo/AOGLogoWhite2.png' %}" alt="Axflo logo">
+        </div>
+        <ul class="mobile-nav__links">
+            <li><a href="{% url 'axflo_app:index' %}"><i class="fas fa-home"></i>Home</a></li>
+            
+            <li>
+                <a href="{% url 'axflo_app:about' %}" onclick="toggleMobileDropdown(event, 'about-dropdown')">
+                    <i class="fas fa-users"></i>About Us
+                    <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+                </a>
+                <div class="mobile-dropdown" id="about-dropdown">
+                                     <a href="{% url 'axflo_app:about' %}#our-company">Our Company</a>
+        <a href="{% url 'axflo_app:about' %}#board-directors">Board of Directors</a>
+        <a href="{% url 'axflo_app:about' %}#about">Company Overview</a>
+        <a href="{% url 'axflo_app:about' %}#hse">Health Safety and Environment</a>
+        <a href="{% url 'axflo_app:about' %}#our-people">Our People</a>
+        <a href="{% url 'axflo_app:about' %}#milestones">Major Milestones</a>
+        <a href="{% url 'axflo_app:about' %}#services">Our Services</a>
+        <a href="{% url 'axflo_app:about' %}#technology">Technology Partners</a>
+        <a href="{% url 'axflo_app:about' %}#leadership">Leadership & Innovation</a>
+        <a href="{% url 'axflo_app:contact' %}">Contact Us</a>
+                </div>
+            </li>
+            
+            <li>
+                <a href="{% url 'axflo_app:services' %}" onclick="toggleMobileDropdown(event, 'services-dropdown')">
+                    <i class="fas fa-cogs"></i>Services
+                    <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+                </a>
+                <div class="mobile-dropdown" id="services-dropdown">
+                    <a href="{% url 'axflo_app:services' %}#epc">EPC Contracting</a>
+                    <a href="{% url 'axflo_app:engineering_consultancy' %}">Engineering & Consultancy</a>
+                    <a href="{% url 'axflo_app:procurement_logistics' %}">Procurement & Logistics</a>
+                    <a href="{% url 'axflo_app:construction_services' %}">Construction Services</a>
+                    <a href="{% url 'axflo_app:offshore_marine_services' %}">Offshore Services</a>
+                    <a href="{% url 'axflo_app:marine_support_services' %}">Marine Support</a>
+                    <a href="{% url 'axflo_app:offshore_accommodation_services' %}">Offshore Accommodation</a>
+                    <a href="{% url 'axflo_app:environmental_technologies' %}">Environmental Technologies</a>
+                    <a href="{% url 'axflo_app:water_wastewater_treatment' %}">Water Treatment</a>
+                    <a href="{% url 'axflo_app:oil_spill_response' %}">Oil Spill Response</a>
+                    <a href="{% url 'axflo_app:equipment_hire_services' %}">Equipment Hire</a>
+                </div>
+            </li>
+            
+            <li><a href="{% url 'axflo_app:achievements' %}"><i class="fas fa-project-diagram"></i>Projects</a></li>
+            
+            <li>
+                <a href="{% url 'axflo_app:csr' %}" onclick="toggleMobileDropdown(event, 'qhse-dropdown')">
+                    <i class="fas fa-shield-alt"></i>QHSE
+                    <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
+                </a>
+                <div class="mobile-dropdown" id="qhse-dropdown">
+                    <a href="{% url 'axflo_app:qshe' %}#policies">Policies</a>
+                    <a href="{% url 'axflo_app:qshe' %}#certifications">Certifications</a>
+                    <a href="{% url 'axflo_app:qshe' %}#safety-standards">Safety Standards</a>
+                </div>
+            </li>
+            
+            <li><a href="{% url 'axflo_app:careers' %}"><i class="fas fa-briefcase"></i>Careers</a></li>
+            <li><a href="{% url 'axflo_app:media' %}"><i class="fas fa-newspaper"></i>Media Centre</a></li>
+            <li><a href="{% url 'axflo_app:csr' %}"><i class="fas fa-envelope"></i>CSR</a></li>
+        </ul>
+        <div class="mobile-nav__action">
+            <a href="{% url 'axflo_app:contact' %}">
+                <i class="fas fa-envelope"></i>
+                Contact
+            </a>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" onclick="toggleNav()"></div>
+    
+ <section class="hero-section">
+        <!-- Geometric accents -->
+        <div class="geometric-accent circle-1"></div>
+        <div class="geometric-accent square-1"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <div class="line">
+                    <span>H</span><span>a</span><span>r</span><span>n</span><span>e</span><span>s</span><span>s</span>
+
+                </div>
+                <div class="line ">
+                    <span>E</span><span>n</span><span>e</span><span>r</span><span>g</span><span>y</span><span>.</span> 
+                </div>
+                <div class="line">
+                    <span>D</span><span>r</span><span>i</span><span>v</span><span>e</span> <br>
+                    <span class="accent-word">I</span><span class="accent-word">n</span><span class="accent-word">n</span><span class="accent-word">o</span><span class="accent-word">v</span><span class="accent-word">a</span><span class="accent-word">t</span><span class="accent-word">i</span><span class="accent-word">o</span><span class="accent-word">n</span><span>.</span>
+                </div>
+            </h1>
+            
+            <p class="hero-subtitle">
+                Axflo Oil & Gas is redefining Industy solutions by leveraging cutting-edge technologies and sustainable practices to empower     Companies and communities.
+            </p>
+            
+            <div class="cta-group">
+                <button class="cta-button" onclick="document.querySelector('#learn-more')?.scrollIntoView({behavior: 'smooth'})">
+                    Explore Solutions
+                </button>
+                <a href="{% url 'axflo_app:about' %}" class="secondary-cta">
+                    Our Story
+                    <span class="arrow-icon">→</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="highlight-cards">
+            <div class="highlight-card">
+                <h3 class="card-title" >Sustainability</h3>
+                <p class="card-description">
+                    Our commitment to a sustainable future drives innovative Industry solutions that protect the planet and empower communities.
+                </p>
+                <a href="#sustainability" class="learn-more-link">
+                    Learn More <span class="arrow-icon">→</span>
+                </a>
+            </div>
+            
+            <div class="highlight-card">
+                <h3 class="card-title">Empowering Growth</h3>
+                <p class="card-description">
+                    We deliver reliable and efficient energy solutions, fostering progress for industry and businesses.
+                </p>
+                <a href="#growth" class="learn-more-link">
+                    Learn More <span class="arrow-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+<section class="section-layout">
+        <div class="background-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+        <div class="grid-overlay"></div>
+        
+        <div class="container">
+            <!-- First Content Section -->
+            <div class="content-section">
+                <div class="text-content" id="sustainability">
+                    <h2>
+                        <span>I</span><span>n</span><span>n</span><span>o</span><span>v</span><span>a</span><span>t</span><span>i</span><span>n</span><span>g</span>
+                        <br>
+                        <span>S</span><span>u</span><span>s</span><span>t</span><span>a</span><span>i</span><span>n</span><span>a</span><span>b</span><span>i</span><span>l</span><span>i</span><span>t</span><span>y</span>
+                        <br>
+                        <span>f</span><span>o</span><span>r</span> <span>t</span><span>h</span><span>e</span> <span>F</span><span>u</span><span>t</span><span>u</span><span>r</span><span>e</span>
+                    </h2>
+                    <p>
+                        At Axflo, we embrace advanced technologies to lead the charge in sustainable energy transformation. Through Carbon Capture, Utilization, and Storage (CCUS) and a commitment to renewable energy, we are building a cleaner, greener future. Join us in revolutionizing the energy sector for a sustainable tomorrow.
+                    </p>
+                    <div class="button-group">
+                        <a href="#" class="btn-primary">Watch Video</a>
+                        <a href="#" class="btn-secondary">Learn more →</a>
+                    </div>
+                </div>
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="{% static 'axflo_app/images/crew3.jpg' %}" alt="Sustainability Team" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Content Section -->
+            <div class="content-section reverse">
+                <div class="image-content">
+                    <div class="image-wrapper">
+                        <img src="{% static 'axflo_app/images/axflo13.jpg' %}" alt="Social Impact" loading="lazy">
+                    </div>
+                </div>
+                <div class="text-content" id="growth">
+                    <h2>
+                        <span>C</span><span>o</span><span>m</span><span>m</span><span>i</span><span>t</span><span>t</span><span>e</span><span>d</span>
+                        <span>t</span><span>o</span>
+                        <br>
+                        <span>G</span><span>r</span><span>o</span><span>w</span><span>t</span><span>h</span>
+                        <span>t</span><span>h</span><span>r</span><span>o</span><span>u</span><span>g</span><span>h</span>
+                        <br>
+                        <span>S</span><span>o</span><span>c</span><span>i</span><span>a</span><span>l</span> <span>I</span><span>m</span><span>p</span><span>a</span><span>c</span><span>t</span>
+                    </h2>
+                    <p>
+                        At Axflo, we prioritize the growth of our communities through strategic investments in youth empowerment, education, and social initiatives. Our commitment to corporate social responsibility drives us to create opportunities, foster innovation, and build a legacy of progress for future generations.
+                    </p>
+                    <div class="button-group">
+                        <a href="#" class="btn-primary">Learn more →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    
+ <!-- Wave Divider -->
+    <!-- <div style="overflow: hidden; margin-bottom:-4px;" >
+        <svg preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" style="fill: #141414; width: 136%; height: 197px; transform: rotate(180deg);" =>
+            <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" />
+        </svg>
+    </div> -->
+
+    <!-- Enhanced News Section -->
+    <section class="news-section" id="news">
+        <!-- Enhanced Background Animation -->
+        <div class="background-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+
+        <div class="news-container">
+            <!-- Enhanced Header -->
+            <div class="news-header">
+                <div>
+                    <h2>News & Insights</h2>
+                </div>
+                <div class="news-header-meta">
+                    <p class="news-header-subtitle">Stay updated with our latest developments, industry insights, and company milestones</p>
+                    <a href="#" class="view-all-btn">
+                        View All Releases
+                        <span class="arrow">→</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Enhanced News Content -->
+            <div class="news-content">
+                <!-- Enhanced Main News -->
+                <div class="main-news">
+                    <img src="{% static 'axflo_app/images/plan1.jpg' %}" alt="Low-Carbon Project" class="main-news-image" loading="lazy">
+                    <div class="main-news-content">
+                        <span class="main-news-date">June 07, 2025</span>
+                        <h3 class="main-news-title">Low-Carbon LNG Growth Project Launches in Al Ruwais Industrial City</h3>
+                        <p class="main-news-excerpt">Axflo's innovative LNG growth project reinforces its commitment to driving a sustainable energy future, delivering efficient and eco-friendly solutions that set new industry standards.</p>
+                    </div>
+                </div>
+
+                <!-- Enhanced News List -->
+                <div class="news-list">
+                    <div class="news-item">
+                        <span class="news-item-date">March 29, 2025</span>
+                        <h4 class="news-item-title">Axflo Commits $2.4 Billion to Revolutionize Onshore Water Supply</h4>
+                        <p class="news-item-excerpt">Innovative water supply solutions set to enhance sustainability in industrial operations across multiple sectors.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                    
+                    <div class="news-item">
+                        <span class="news-item-date">Feburary 07, 2025</span>
+                        <h4 class="news-item-title">Axflo Designs Cutting-Edge Remotely Operated Marine Supply Vessels</h4>
+                        <p class="news-item-excerpt">Setting new benchmarks in maritime technology with autonomous vessel innovation and advanced navigation systems.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                    
+                    <div class="news-item">
+                        <span class="news-item-date">January  07, 2025</span>
+                        <h4 class="news-item-title">Axflo Strengthens Global Reach with Five Next-Gen LNG Carriers</h4>
+                        <p class="news-item-excerpt">Enhancing energy logistics with efficiency, reliability, and advanced shipping solutions for global markets.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- <div style="overflow: hidden;">
+    <svg
+      preserveAspectRatio="none"
+      viewBox="0 0 1200 120"
+      xmlns="http://www.w3.org/2000/svg"
+      style="fill: #201f1f; width: 136%; height: 197px;" 
+    >
+      <path d="M321.39 56.44c58-10.79 114.16-30.13 172-41.86 82.39-16.72 168.19-17.73 250.45-.39C823.78 31 906.67 72 985.66 92.83c70.05 18.48 146.53 26.09 214.34 3V0H0v27.35a600.21 600.21 0 00321.39 29.09z" />
+    </svg>
+  </div> -->
+
+ <section class="job-postings" id="careers">
+        <!-- Animated Particles Background -->
+        <div class="background-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- Header Section -->
+        <div class="careers-header">
+            <span class="section-label">Join Our Team</span>
+            <h2>Careers & Opportunities</h2>
+            <p class="careers-subtitle">
+                At Axflo Oil & Gas, we are empowering talent to shape the future of sustainable energy. 
+                Explore opportunities to join our mission of innovation and excellence.
+            </p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Team Members</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">25+</div>
+                <div class="stat-label">Countries</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Years Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Employee Satisfaction</div>
+            </div>
+        </div>
+
+        <!-- Job Listings -->
+        {% if has_jobs %}
+        <div class="job-grid">
+            {% for job in job_postings %}
+                <div class="job-card" style="--delay: {{ job.animation_delay }}s">
+                    <div class="job-header">
+                        <div class="job-icon">
+                            {% if 'renewable' in job.title.lower or 'energy' in job.title.lower %}⚡
+                            {% elif 'maritime' in job.title.lower or 'marine' in job.title.lower or 'ship' in job.title.lower %}🚢
+                            {% elif 'environmental' in job.title.lower or 'sustainability' in job.title.lower %}🌍
+                            {% elif 'carbon' in job.title.lower or 'engineer' in job.title.lower %}⚗️
+                            {% elif 'data' in job.title.lower or 'analyst' in job.title.lower %}📊
+                            {% elif 'safety' in job.title.lower or 'hse' in job.title.lower %}🔒
+                            {% elif 'technology' in job.department.lower or 'tech' in job.department.lower %}💻
+                            {% elif 'engineering' in job.department.lower %}⚙️
+                            {% elif 'operations' in job.department.lower %}🔧
+                            {% elif 'management' in job.title.lower or 'manager' in job.title.lower %}👔
+                            {% else %}💼{% endif %}
+                        </div>
+                        <div class="job-title-group">
+                            <h3 class="job-title">{{ job.title }}</h3>
+                            <div class="job-department">{{ job.department }}</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        {{ job.description|truncatewords:25 }}
+                    </p>
+                    {% if job.requirements_list %}
+                    <div class="job-requirements">
+                        <h4>Key Requirements:</h4>
+                        <div class="requirements-list">
+                            {% for requirement in job.requirements_list %}
+                                <span class="requirement-tag">{{ requirement }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="job-footer">
+                        <span class="job-type">{{ job.get_employment_type_display }}</span>
+                        <a href="{% url 'axflo_app:careers' %}#job-{{ job.id }}" class="apply-btn">Apply Now</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="no-jobs-message">
+            <h3>No Current Openings</h3>
+            <p>We're not actively hiring at the moment, but we're always interested in exceptional talent. Please check back soon or submit your resume for future opportunities.</p>
+        </div>
+        {% endif %}
+
+        <!-- CTA Section -->
+        <div class="careers-cta">
+            <h3 class="cta-title">Don't See Your Perfect Role?</h3>
+            <p class="cta-description">
+                We're always looking for exceptional talent to join our team. 
+                Send us your resume and let's explore how you can contribute to our mission.
+            </p>
+            <a href="{% url 'axflo_app:careers' %}#ctaSection" class="cta-btn">Submit Your Resume</a>
+        </div>
+    </section>
+
+
+ <!-- Enhanced Values Section -->
+    <section class="values-section">
+        <!-- Background Elements -->
+        <div class="background-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="geometric-bg">
+            <div class="geo-shape"></div>
+            <div class="geo-shape"></div>
+            <div class="geo-shape"></div>
+        </div>
+
+        <div class="values-container">
+            <!-- Enhanced Header -->
+            <div class="values-header">
+                <h2>
+                    <span>O</span><span>u</span><span>r</span>
+                    <span></span>
+                    <span>C</span><span>o</span><span>r</span><span>e</span>
+                    <span></span>
+                    <span>V</span><span>a</span><span>l</span><span>u</span><span>e</span><span>s</span>
+                </h2>
+                <p class="values-subtitle">
+                    Guiding principles that define our commitment to excellence, integrity, and sustainable innovation in the energy sector.
+                </p>
+            </div>
+
+            <!-- Enhanced Values Grid -->
+            <div class="values-grid">
+                <!-- Enhanced Value Cards -->
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="value-title">Collaboration</h3>
+                        <p class="value-description">
+                            We believe in the transformative power of strategic partnerships. By fostering meaningful relationships with clients, industry peers, and stakeholders, we create synergistic solutions that drive collective success in shaping a sustainable energy future.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 class="value-title">Efficiency</h3>
+                        <p class="value-description">
+                            Operational excellence through intelligent resource optimization defines our approach. We leverage cutting-edge technologies and streamlined processes to maximize output while minimizing waste, ensuring sustainable energy solutions that deliver exceptional value.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="value-title">Innovation</h3>
+                        <p class="value-description">
+                            Innovation is the cornerstone of our identity at Axflo. We continuously push the boundaries of technological advancement, pioneering breakthrough solutions that revolutionize industry standards and create new possibilities in energy sector development.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-shield"></i>
+                        </div>
+                        <h3 class="value-title">Integrity</h3>
+                        <p class="value-description">
+                            Our foundation rests on unwavering ethical standards and transparent practices. We build enduring trust through honest communication, accountability, and respect in every interaction, ensuring that our operations reflect the highest moral principles.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="value-title">Reliability</h3>
+                        <p class="value-description">
+                            Dependability forms the bedrock of our client relationships. We consistently deliver superior results through rigorous quality assurance, proven methodologies, and unwavering commitment to meeting and exceeding expectations in every project we undertake.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="card-content">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="value-title">Sustainability</h3>
+                        <p class="value-description">
+                            Environmental stewardship drives our vision for tomorrow. We are dedicated to developing eco-conscious solutions that protect our planet while meeting today's energy demands, creating a legacy of responsible innovation for future generations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Achievements Section -->
+    <section class="achievements-section" id="achievements">
+        <!-- Enhanced SVG Curves -->
+        <svg class="curve-top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#1a1a1a" fill-opacity="1" d="M0,160L80,176C160,192,320,224,480,240C640,256,800,256,960,240C1120,224,1280,192,1360,176L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+        </svg>
+
+        <!-- Enhanced Background Elements -->
+        <div class="background-elements">
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="grid-pattern"></div>
+        </div>
+
+        <div class="container">
+            <!-- Enhanced Section Header -->
+            <div class="achievements-header">
+                <h2>
+                    Innovative Solutions<br>
+                    & Achievements
+                </h2>
+                <p>Celebrating Axflo Oil & Gas' remarkable projects, cutting-edge innovations, and strategic collaborations driving sustainable excellence in the energy sector.</p>
+            </div>
+
+            <!-- Enhanced Achievements Grid -->
+            <div class="achievements-grid">
+                <!-- Achievement Card 1 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge"></div>
+                    <div class="achievement-image">
+                        <img src="{% static 'axflo_app/images/Hydrocarbon-spill-kits.jpg' %}" alt="Hydrocarbon Cleanup Operations" loading="lazy">
+                    </div>
+                    <div class="achievement-card-content">
+                        <h3>Hydrocarbon Cleanup Excellence</h3>
+                        <p>Successfully remediated hydrocarbon-impacted sites along critical pipeline infrastructure in strategic collaboration with Heritage Energy, demonstrating our commitment to environmental restoration.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card 2 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge"></div>
+                    <div class="achievement-image">
+                        <img src="{% static 'axflo_app/oilactivities/oil13.jpg' %}" alt="Advanced Waste Management Systems" loading="lazy">
+                    </div>
+                    <div class="achievement-card-content">
+                        <h3>Advanced Waste Management</h3>
+                        <p>Pioneered innovative waste treatment solutions utilizing cutting-edge technology to ensure sustainable operations while maintaining the highest environmental standards across all facilities.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card 3 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge"></div>
+                    <div class="achievement-image">
+                        <img src="{% static 'axflo_app/images/permoilboom2.jpg' %}" alt="Permanent Boom Installation" loading="lazy">
+                    </div>
+                    <div class="achievement-card-content">
+                        <h3>Permanent Boom Installation</h3>
+                        <p>Strategically deployed advanced Ro-Fence boom systems at multiple flow stations, significantly enhancing oil spill containment capabilities and rapid response recovery operations.</p>
+                    </div>
+                </div>
+
+                <!-- Achievement Card 4 -->
+                <div class="achievement-card">
+                    <div class="achievement-badge"></div>
+                    <div class="achievement-image">
+                        <img src="{% static 'axflo_app/images/marineops.webp' %}" alt="Marine Operations Optimization" loading="lazy">
+                    </div>
+                    <div class="achievement-card-content">
+                        <h3>Marine Operations Optimization</h3>
+                        <p>Revolutionized maritime logistics efficiency through the integration of state-of-the-art remotely operated marine vessels, setting new industry benchmarks for operational excellence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced SVG Bottom Curve -->
+        <svg class="curve-bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#050505" fill-opacity="1" d="M0,96L80,117.3C160,139,320,181,480,176C640,171,800,117,960,122.7C1120,128,1280,192,1360,224L1440,256L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        </svg>
+    </section>
+
+
+
+
+
+
+
+    <section class="services-section">
+        <div class="background-circles">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+
+            <div class="services-bg-pattern">
+        <div class="pattern-element"></div>
+        <div class="pattern-element"></div>
+        <div class="pattern-element"></div>
+    </div>
+
+
+        <!-- Services Header -->
+     
+    <div class="services-container">
+        <!-- Section Header -->
+        <div class="services-header fade-in">
+            <div class="header-badge">What We Do</div>
+            <!-- <h2 class="section-title">
+                Comprehensive Energy & Environmental Solutions
+            </h2> -->
+               <div class="services-header" id="services">
+            <h2 class="animated-heading">
+                <span>K</span><span>e</span><span>y</span>
+                <span> </span>
+                <span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span>
+            </h2>
+        </div>
+
+            <p class="section-subtitle">
+                Industry-leading expertise across three core service areas, delivering innovative solutions for Nigeria's energy sector
+            </p>
+        </div>
+
+        <!-- Services Categories -->
+        <div class="services-categories">
+            
+            <!-- EPC Contracting -->
+            <div class="category-section fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="category-title">EPC Contracting</h3>
+                    <p class="category-desc">End-to-end engineering, procurement, and construction excellence</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h4>Engineering & Consultancy</h4>
+                        <p>Comprehensive engineering solutions from conceptual design to detailed implementation</p>
+                        <a href="{% url 'axflo_app:engineering_consultancy' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h4>Project Management</h4>
+                        <p>Expert project delivery with precision planning and flawless execution</p>
+                        <a href="{% url 'axflo_app:project_management' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Offshore & Marine -->
+            <div class="category-section fade-in dark-variant">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3 class="category-title">Offshore & Marine</h3>
+                    <p class="category-desc">Specialized solutions for deepwater operations and marine logistics</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <h4>Offshore Services</h4>
+                        <p>Complete offshore support for exploration and production operations</p>
+                        <a href="{% url 'axflo_app:offshore_marine_services' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Equipment Solutions</h4>
+                        <p>Premium equipment leasing with 24/7 technical support</p>
+                        <a href="{% url 'axflo_app:equipment_hire_services' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environmental Services -->
+            <div class="category-section fade-in">
+                <div class="category-header">
+                    <div class="category-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="category-title">Environmental Services</h3>
+                    <p class="category-desc">Protecting Nigeria's ecosystems with advanced environmental solutions</p>
+                </div>
+                
+                <div class="services-row">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Oil Spill Response</h4>
+                        <p>24/7 emergency response with cutting-edge containment technology</p>
+                        <a href="{% url 'axflo_app:oil_spill_response' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h4>Waste Management</h4>
+                        <p>Sustainable solutions for a circular economy approach</p>
+                        <a href="{% url 'axflo_app:waste_recycling' %}" class="service-link">
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="services-cta fade-in">
+            <a href="{% url 'axflo_app:services' %}" class="view-all-btn">
+                <span>View All Services</span>
+                <div class="btn-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    </section>
+
+
+
+     <section class="certifications-section">
+        <!-- Floating Background Icons -->
+        <div class="floating-icon">🏆</div>
+        <div class="floating-icon">🎖️</div>
+        <div class="floating-icon">⭐</div>
+
+        <div class="certifications-container">
+            <!-- Left Side: Content -->
+            <div class="certifications-content">
+                <div class="section-badge">
+                    Quality Assured
+                </div>
+                
+                <h2>
+                    Our <span class="highlight">Certifications</span><br>
+                    Excellence
+                </h2>
+                
+                <p>
+                    We are committed to maintaining the highest standards of quality and environmental responsibility. Our internationally recognized certifications demonstrate our dedication to excellence in service delivery and sustainable business practices.
+                </p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">2</div>
+                        <div class="stat-label">ISO Standards</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Compliance</div>
+                    </div>
+                </div>
+
+                <div class="learn-more-btn">
+                    <a href="{% url 'axflo_app:qshe' %}#certifications">
+                        Learn More About Our Quality Policy
+                    </a>
+                </div>
+            </div>
+
+            <!-- Right Side: Certifications Showcase -->
+            <div class="certifications-showcase">
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-logo">ISO</div>
+                        <div class="cert-status">Active</div>
+                    </div>
+                    <div class="cert-title">ISO 9001:2015</div>
+                    <div class="cert-description">
+                        Quality Management Systems certification ensuring consistent quality in our products and services through systematic process management and continuous improvement.
+                    </div>
+                     <div class="cert-details">
+                        <div class="cert-date">Valid Until 2027</div>
+                        <a href="certificates/ISO9001.pdf" class="download-btn">Download Certificate</a>
+                    </div>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-logo">ISO</div>
+                        <div class="cert-status">Active</div>
+                    </div>
+                    <div class="cert-title">ISO 14001:2015</div>
+                    <div class="cert-description">
+                        Environmental Management Systems certification demonstrating our commitment to reducing environmental impact and promoting sustainable business practices.
+                    </div>
+                    <div class="cert-details">
+                        <div class="cert-date">Valid Until 2027</div>
+                        <a href="certificates/ISO14001.pdf" class="download-btn">Download Certificate</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+
+<section class="trusted-section" id="clients">
+    <!-- Parallax Background Circles -->
+       <div class="background-elements" aria-hidden="true">
+            <div class="grid-overlay"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+            <div class="floating-orb"></div>
+        </div>
+
+        <h2 class="trusted-title">
+            <span>T</span><span>r</span><span>u</span><span>s</span><span>t</span><span>e</span><span>d</span>
+            <span> </span><span>b</span><span>y</span>
+            <span> </span><span>V</span><span>i</span><span>s</span><span>i</span><span>o</span><span>n</span><span>a</span><span>r</span><span>i</span><span>e</span><span>s</span>
+        </h2>
+        
+        <p class="trusted-subtitle">
+            Empowering forward-thinking brands with sustainable innovation and cutting-edge solutions that drive meaningful impact across industries
+        </p>
+
+
+    <div class="logos-container" data-aos="fade-up" data-aos-delay="400">
+        <div class="logos-slider">
+            <!-- Example Logos: Replace with actual brand images -->
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/addax-1.png' %}" alt="Addax Petroleum" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/agip-3-logo-png-transparent.png' %}" alt="Agip" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/Chevron_Corporation-Logo.png' %}" alt="Chevron" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/indorama3.png' %}" alt="Chevron" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/samdus_trans.png' %}" alt="Samdus" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/mobil-logo-png-transparent.png' %}" alt="Mobil" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/NNPC-Logo.png' %}" alt="NNPC" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/shell-logo-png-transparent.png' %}" alt="Shell" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/TotalEnergies_logo.svg.webp' %}" alt="Total energies" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/desmi1.png' %}" alt="DESMI" class="logo-img">
+            </div>
+
+            <!-- Duplicate logos for seamless infinite scroll -->
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/addax-1.png' %}" alt="Addax Petroleum" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/agip-3-logo-png-transparent.png' %}" alt="Agip" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/Chevron_Corporation-Logo.png' %}" alt="Chevron" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/indorama3.png' %}" alt="Chevron" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/samdus_trans.png' %}" alt="Samdus" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/mobil-logo-png-transparent.png' %}" alt="Mobil" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/NNPC-Logo.png' %}" alt="NNPC" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/shell-logo-png-transparent.png' %}" alt="Shell" class="logo-img">
+            </div>
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/TotalEnergies_logo.svg.webp' %}" alt="Total energies" class="logo-img">
+            </div>
+
+            <div class="logo-item">
+                <img src="{% static 'axflo_app/partners/desmi1.png' %}" alt="DESMI" class="logo-img">
+            </div>
+        </div>
+    </div>
+</section>
+ <section class="contact-section" id="contact">
+        <!-- Floating Background Shapes -->
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+
+        <!-- Enhanced Map Marker -->
+        <div class="map-marker" title="Corporate Head Office - Port Harcourt, Nigeria">
+            <div class="marker-pulse"></div>
+            <div class="marker-dot"></div>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="contact-container">
+            <!-- Enhanced Header -->
+            <div class="contact-header">
+                <h2>Contact Us</h2>
+                <p class="contact-subtitle">Connect with our team of professionals and discover how we can help transform your business</p>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="contact-content">
+                <!-- Location & Contact Information -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="card-title">Corporate Head Office</h3>
+                    </div>
+                    
+                    <div class="location-info">
+                        <div class="address">
+                            48 Wogu Street, D/Line<br>
+                            Port Harcourt, Rivers State<br>
+                            Nigeria
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <span>Tel: +234-84-79 77 49</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-fax"></i>
+                            <span>Fax: +234-1-460 2108</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@axfloo.com">info@axfloo.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Team -->
+                <div class="contact-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="card-title">Leadership Team</h3>
+                    </div>
+                    
+                    <div class="management-grid">
+                        <div class="manager-card">
+                            <div class="manager-name">Donald T Brown</div>
+                            <div class="manager-title">Managing Director/CEO</div>
+                            <div class="manager-contact">
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+234 (0) 803 471 6831</span>
+                                </div>
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:Donald.Brown@axfloo.com">Donald.Brown@axfloo.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="manager-card">
+                            <div class="manager-name">Rosemary Iguodala (Mrs)</div>
+                            <div class="manager-title">Head, Human Resources & Admin</div>
+                            <div class="manager-contact">
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+234 (0) 803 340 3095</span>
+                                </div>
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:rosemary.iguodala@axfloo.com">rosemary.iguodala@axfloo.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="manager-card">
+                            <div class="manager-name">Jennifer Ifeoma Uzorka</div>
+                            <div class="manager-title">Finance Officer</div>
+                            <div class="manager-contact">
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+234 (0) 810 681 4161</span>
+                                </div>
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:jennifer.uzorka@axfloo.com">jennifer.uzorka@axfloo.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="manager-card">
+                            <div class="manager-name">Ephraim N Ishaka</div>
+                            <div class="manager-title">Operations Manager</div>
+                            <div class="manager-contact">
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+234 (0) 806 418 1561</span>
+                                </div>
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:Ephraim.ishaka@axfloo.com">Ephraim.ishaka@axfloo.com</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="manager-card">
+                            <div class="manager-name">Chidi Amadi</div>
+                            <div class="manager-title">Director</div>
+                            <div class="manager-contact">
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>+234 (0) 803 310 2037</span>
+                                </div>
+                                <div class="manager-contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <a href="mailto:Chidi.Amadi@axfloo.com">Chidi.Amadi@axfloo.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Load AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    {% include 'axflo_app/includes/footer.html' %}
+    <!-- Load Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+    
+    <!-- Load AOS JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Load your JS files -->
+    <script src="{% static 'axflo_app/js/main.js' %}"></script>
+    <script src="{% static 'axflo_app/js/index.js' %}"></script>
+    <script src="{% static 'axflo_app/js/observe.js' %}"></script>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

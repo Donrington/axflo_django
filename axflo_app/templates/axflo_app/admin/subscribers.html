@@ -1,0 +1,279 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Newsletter Subscribers - Axflo Admin{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'axflo_app/css/admin_subscribers.css' %}">
+{% endblock %}
+
+{% block content %}
+
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 class="page-title">
+                        <i class="fas fa-envelope page-icon"></i>
+                        Newsletter Subscribers
+                    </h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <span class="user-name">{{ request.user.username }}</span>
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Messages -->
+            {% if messages %}
+                <div class="messages-container">
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <!-- Content -->
+            <div class="content-wrapper">
+                <!-- Stats Cards -->
+                <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 2rem;">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-envelope-open"></i>
+                        </div>
+                        <div class="stat-number">{{ total_subscribers }}</div>
+                        <div class="stat-label">Total Subscribers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-number">{{ active_subscribers }}</div>
+                        <div class="stat-label">Active Subscribers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-pause-circle"></i>
+                        </div>
+                        <div class="stat-number">{{ inactive_subscribers }}</div>
+                        <div class="stat-label">Inactive Subscribers</div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-container">
+                    <form method="get" class="filters-form">
+                        <div class="filter-group">
+                            <label for="status">Status</label>
+                            <select name="status" id="status">
+                                <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                                <option value="active" {% if status_filter == 'active' %}selected{% endif %}>Active</option>
+                                <option value="inactive" {% if status_filter == 'inactive' %}selected{% endif %}>Inactive</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="search">Search</label>
+                            <input type="text" name="search" id="search" placeholder="Email, name..." value="{{ search_query }}">
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> Filter
+                            </button>
+                            <a href="/admin-subscribers/" class="btn btn-secondary">
+                                <i class="fas fa-refresh"></i> Reset
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Subscribers Table -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Newsletter Subscribers</h3>
+                        <div class="table-actions">
+                            <a href="/admin-newsletters/" class="btn btn-primary">
+                                <i class="fas fa-newspaper"></i> Manage Newsletters
+                            </a>
+                        </div>
+                    </div>
+                    
+                    {% if subscribers %}
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Subscription Date</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for subscriber in subscribers %}
+                                        <tr>
+                                            <td>
+                                                <div class="subscriber-email">
+                                                    <i class="fas fa-envelope"></i>
+                                                    {{ subscriber.email }}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                {% if subscriber.first_name or subscriber.last_name %}
+                                                    {{ subscriber.first_name }} {{ subscriber.last_name }}
+                                                {% else %}
+                                                    <span class="text-muted">No name provided</span>
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                <div>{{ subscriber.subscription_date|date:"M d, Y" }}</div>
+                                                <small class="text-muted">{{ subscriber.subscription_date|date:"H:i" }}</small>
+                                            </td>
+                                            <td>
+                                                <span class="status-badge {% if subscriber.active_status %}active{% else %}inactive{% endif %}">
+                                                    {% if subscriber.active_status %}Active{% else %}Inactive{% endif %}
+                                                </span>
+                                            </td>
+                                            <td>
+                                                <div class="action-buttons">
+                                                    <button class="btn btn-sm btn-secondary" onclick="toggleSubscriberStatus({{ subscriber.id }})" title="Toggle Status">
+                                                        <i class="fas {% if subscriber.active_status %}fa-pause{% else %}fa-play{% endif %}"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger" onclick="deleteSubscriber({{ subscriber.id }}, '{{ subscriber.email }}')" title="Delete">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination -->
+                        {% if subscribers.has_other_pages %}
+                            <div class="pagination-container">
+                                <div class="pagination">
+                                    {% if subscribers.has_previous %}
+                                        <a href="?page=1{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-link">First</a>
+                                        <a href="?page={{ subscribers.previous_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-link">Previous</a>
+                                    {% endif %}
+                                    
+                                    <span class="page-info">
+                                        Page {{ subscribers.number }} of {{ subscribers.paginator.num_pages }}
+                                    </span>
+                                    
+                                    {% if subscribers.has_next %}
+                                        <a href="?page={{ subscribers.next_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-link">Next</a>
+                                        <a href="?page={{ subscribers.paginator.num_pages }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-link">Last</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="empty-state">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <h3>No Subscribers Found</h3>
+                            <p>
+                                {% if search_query or status_filter != 'all' %}
+                                    No subscribers match your current filters.
+                                {% else %}
+                                    No newsletter subscribers yet. Subscribers will appear here once people start signing up.
+                                {% endif %}
+                            </p>
+                            {% if search_query or status_filter != 'all' %}
+                                <a href="/admin-subscribers/" class="btn btn-primary">View All Subscribers</a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Sidebar toggle
+        document.getElementById('sidebarToggle').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        });
+
+        // Toggle subscriber status
+        function toggleSubscriberStatus(subscriberId) {
+            if (confirm('Are you sure you want to toggle this subscriber\'s status?')) {
+                fetch(`/admin-subscriber/${subscriberId}/toggle-status/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error toggling subscriber status');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error toggling subscriber status');
+                });
+            }
+        }
+
+        // Delete subscriber
+        function deleteSubscriber(subscriberId, email) {
+            if (confirm(`Are you sure you want to delete subscriber "${email}"? This action cannot be undone.`)) {
+                fetch(`/admin-subscriber/${subscriberId}/delete/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        location.reload();
+                    } else {
+                        alert('Error deleting subscriber');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error deleting subscriber');
+                });
+            }
+        }
+
+        // Get CSRF token
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    </script>
+
+{% endblock%}

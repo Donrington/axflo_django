@@ -1,0 +1,633 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Newsletter Categories - Axflo Admin{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'axflo_app/css/admin_newsletter_categories.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="categories-management-container">
+        <!-- Header Section -->
+        <div class="categories-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><i class="fas fa-tags"></i> Newsletter Categories</h1>
+                    <p>Organize your newsletters and subscriber preferences with categories</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/admin-newsletters/" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Newsletters
+                    </a>
+                    <button class="btn btn-primary" data-action="create-category">
+                        <i class="fas fa-plus"></i> Add Category
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-tags"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ total_categories }}</div>
+                    <div class="stat-label">Total Categories</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ active_subscribers }}</div>
+                    <div class="stat-label">Active Subscribers</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ newsletters_sent }}</div>
+                    <div class="stat-label">Newsletters Sent</div>
+                </div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+                <div class="stat-content">
+                    <div class="stat-number">{{ most_popular_category }}</div>
+                    <div class="stat-label">Most Popular</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="filters-section">
+            <div class="search-filters">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search categories..." id="searchInput">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="statusFilter" class="filter-select">
+                        <option value="">All Status</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                
+                <button class="btn btn-outline" id="clearFilters">
+                    <i class="fas fa-times"></i> Clear
+                </button>
+            </div>
+        </div>
+
+        <!-- Categories List -->
+        <div class="categories-section">
+            <div class="section-header">
+                <h2><i class="fas fa-list"></i> Categories List</h2>
+                <div class="view-options">
+                    <button class="view-btn active" data-view="grid">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" data-view="list">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="categories-grid" id="categoriesGrid">
+                {% for category in categories %}
+                    <div class="category-card" data-status="{{ category.status|default:'active' }}">
+                        <div class="category-header">
+                            <div class="category-color" style="background-color: {{ category.color|default:'#d6a019' }}"></div>
+                            <div class="category-status status-{{ category.status|default:'active' }}">
+                                {{ category.get_status_display|default:'Active' }}
+                            </div>
+                        </div>
+                        
+                        <div class="category-content">
+                            <div class="category-icon">
+                                <i class="{{ category.icon|default:'fas fa-tag' }}"></i>
+                            </div>
+                            
+                            <h3 class="category-name">{{ category.name }}</h3>
+                            
+                            <p class="category-description">
+                                {{ category.description|default:"No description provided"|truncatewords:15 }}
+                            </p>
+                            
+                            <div class="category-stats">
+                                <div class="stat-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>{{ category.subscriber_count|default:0 }} Subscribers</span>
+                                </div>
+                                <div class="stat-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>{{ category.newsletter_count|default:0 }} Newsletters</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="category-actions">
+                            <button class="action-btn btn-edit" data-category="{{ category.id }}">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            
+                            <button class="action-btn btn-subscribers" data-category="{{ category.id }}">
+                                <i class="fas fa-users"></i> Subscribers
+                            </button>
+                            
+                            <button class="action-btn btn-delete" data-category="{{ category.id }}">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="empty-state">
+                        <div class="empty-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <h3>No Categories Found</h3>
+                        <p>Create your first newsletter category to organize your content and subscribers.</p>
+                        <button class="btn btn-primary" data-action="create-category">
+                            <i class="fas fa-plus"></i> Create First Category
+                        </button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Default Categories Section -->
+        <div class="default-categories-section">
+            <div class="section-header">
+                <h2><i class="fas fa-star"></i> Suggested Categories</h2>
+                <p class="section-description">Quick setup with commonly used newsletter categories</p>
+            </div>
+            
+            <div class="default-categories-grid">
+                <div class="default-category" data-category="company-news">
+                    <div class="default-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h4>Company News</h4>
+                    <p>Updates, announcements, and company milestones</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+                
+                <div class="default-category" data-category="project-updates">
+                    <div class="default-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h4>Project Updates</h4>
+                    <p>Progress reports and project milestones</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+                
+                <div class="default-category" data-category="safety-alerts">
+                    <div class="default-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety Alerts</h4>
+                    <p>Safety protocols, incidents, and compliance updates</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+                
+                <div class="default-category" data-category="technical-insights">
+                    <div class="default-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Technical Insights</h4>
+                    <p>Engineering updates and technical developments</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+                
+                <div class="default-category" data-category="industry-news">
+                    <div class="default-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4>Industry News</h4>
+                    <p>Market trends and industry developments</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+                
+                <div class="default-category" data-category="environmental">
+                    <div class="default-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h4>Environmental</h4>
+                    <p>Sustainability initiatives and environmental impact</p>
+                    <button class="btn btn-outline btn-add-default">Add Category</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Category Modal -->
+    <div id="categoryModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle"><i class="fas fa-plus"></i> Create Category</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <form id="categoryForm" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="categoryName">Category Name *</label>
+                        <input type="text" id="categoryName" name="name" class="form-control" required>
+                        <div class="form-help">Short, descriptive name for the category</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryDescription">Description</label>
+                        <textarea id="categoryDescription" name="description" class="form-control" rows="3"></textarea>
+                        <div class="form-help">Detailed description of what this category covers</div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="categoryIcon">Icon</label>
+                            <select id="categoryIcon" name="icon" class="form-control">
+                                <option value="fas fa-tag">Tag</option>
+                                <option value="fas fa-building">Building</option>
+                                <option value="fas fa-project-diagram">Project</option>
+                                <option value="fas fa-shield-alt">Shield</option>
+                                <option value="fas fa-cogs">Cogs</option>
+                                <option value="fas fa-industry">Industry</option>
+                                <option value="fas fa-leaf">Leaf</option>
+                                <option value="fas fa-chart-line">Chart</option>
+                                <option value="fas fa-newspaper">Newspaper</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoryColor">Color</label>
+                            <input type="color" id="categoryColor" name="color" class="form-control color-input" value="#d6a019">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="categoryStatus">Status</label>
+                        <select id="categoryStatus" name="status" class="form-control">
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    
+                    <div class="category-preview">
+                        <h4>Preview</h4>
+                        <div class="preview-card">
+                            <div class="preview-color"></div>
+                            <div class="preview-icon">
+                                <i class="fas fa-tag"></i>
+                            </div>
+                            <div class="preview-text">
+                                <div class="preview-name">Category Name</div>
+                                <div class="preview-desc">Category description will appear here</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary modal-cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Category</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Subscribers Modal -->
+    <div id="subscribersModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-users"></i> Category Subscribers</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="subscribersContent">
+                    <!-- Subscribers list will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-cancel">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal elements
+            const categoryModal = document.getElementById('categoryModal');
+            const subscribersModal = document.getElementById('subscribersModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const categoryForm = document.getElementById('categoryForm');
+            
+            // Form elements
+            const categoryName = document.getElementById('categoryName');
+            const categoryDescription = document.getElementById('categoryDescription');
+            const categoryIcon = document.getElementById('categoryIcon');
+            const categoryColor = document.getElementById('categoryColor');
+            
+            // Preview elements
+            const previewColor = document.querySelector('.preview-color');
+            const previewIcon = document.querySelector('.preview-icon i');
+            const previewName = document.querySelector('.preview-name');
+            const previewDesc = document.querySelector('.preview-desc');
+            
+            // Search and filter
+            const searchInput = document.getElementById('searchInput');
+            const statusFilter = document.getElementById('statusFilter');
+            const clearFilters = document.getElementById('clearFilters');
+            
+            // View toggle
+            const viewBtns = document.querySelectorAll('.view-btn');
+            const categoriesGrid = document.getElementById('categoriesGrid');
+            
+            // Create category buttons
+            const createBtns = document.querySelectorAll('[data-action="create-category"]');
+            const editBtns = document.querySelectorAll('.btn-edit');
+            const deleteBtns = document.querySelectorAll('.btn-delete');
+            const subscriberBtns = document.querySelectorAll('.btn-subscribers');
+            const addDefaultBtns = document.querySelectorAll('.btn-add-default');
+            
+            // Modal functionality
+            createBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    modalTitle.innerHTML = '<i class="fas fa-plus"></i> Create Category';
+                    categoryForm.reset();
+                    updatePreview();
+                    categoryModal.style.display = 'flex';
+                });
+            });
+            
+            editBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const categoryId = btn.dataset.category;
+                    modalTitle.innerHTML = '<i class="fas fa-edit"></i> Edit Category';
+                    // Load category data here
+                    categoryModal.style.display = 'flex';
+                });
+            });
+            
+            subscriberBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const categoryId = btn.dataset.category;
+                    // Load subscribers for this category
+                    subscribersModal.style.display = 'flex';
+                });
+            });
+            
+            deleteBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const categoryId = btn.dataset.category;
+                    const categoryName = btn.closest('.category-card').querySelector('.category-name').textContent;
+                    
+                    if (confirm(`Are you sure you want to delete the category "${categoryName}"? This action cannot be undone.`)) {
+                        // Show loading state
+                        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+                        btn.disabled = true;
+                        
+                        fetch(`/admin-newsletter-category-delete/${categoryId}/`, {
+                            method: 'POST',
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRFToken': getCookie('csrftoken')
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.success) {
+                                // Remove category card with animation
+                                const card = btn.closest('.category-card');
+                                card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                                card.style.opacity = '0';
+                                card.style.transform = 'scale(0.9)';
+                                
+                                setTimeout(() => {
+                                    card.remove();
+                                    // Show success message
+                                    showNotification(data.message, 'success');
+                                }, 300);
+                            } else {
+                                showNotification(data.message || 'Error deleting category', 'error');
+                                // Reset button
+                                btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+                                btn.disabled = false;
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            showNotification('Error deleting category', 'error');
+                            // Reset button
+                            btn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+                            btn.disabled = false;
+                        });
+                    }
+                });
+            });
+            
+            // Add default categories
+            addDefaultBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const categoryType = btn.closest('.default-category').dataset.category;
+                    const defaultCategories = {
+                        'company-news': {
+                            name: 'Company News',
+                            description: 'Updates, announcements, and company milestones',
+                            icon: 'fas fa-building',
+                            color: '#d6a019'
+                        },
+                        'project-updates': {
+                            name: 'Project Updates',
+                            description: 'Progress reports and project milestones',
+                            icon: 'fas fa-project-diagram',
+                            color: '#17a2b8'
+                        },
+                        'safety-alerts': {
+                            name: 'Safety Alerts',
+                            description: 'Safety protocols, incidents, and compliance updates',
+                            icon: 'fas fa-shield-alt',
+                            color: '#28a745'
+                        },
+                        'technical-insights': {
+                            name: 'Technical Insights',
+                            description: 'Engineering updates and technical developments',
+                            icon: 'fas fa-cogs',
+                            color: '#6f42c1'
+                        },
+                        'industry-news': {
+                            name: 'Industry News',
+                            description: 'Market trends and industry developments',
+                            icon: 'fas fa-industry',
+                            color: '#fd7e14'
+                        },
+                        'environmental': {
+                            name: 'Environmental',
+                            description: 'Sustainability initiatives and environmental impact',
+                            icon: 'fas fa-leaf',
+                            color: '#20c997'
+                        }
+                    };
+                    
+                    const category = defaultCategories[categoryType];
+                    if (category) {
+                        categoryName.value = category.name;
+                        categoryDescription.value = category.description;
+                        categoryIcon.value = category.icon;
+                        categoryColor.value = category.color;
+                        updatePreview();
+                        modalTitle.innerHTML = '<i class="fas fa-plus"></i> Add Default Category';
+                        categoryModal.style.display = 'flex';
+                    }
+                });
+            });
+            
+            // Close modals
+            document.querySelectorAll('.modal-close, .modal-cancel').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryModal.style.display = 'none';
+                    subscribersModal.style.display = 'none';
+                });
+            });
+            
+            // Preview update
+            function updatePreview() {
+                previewColor.style.backgroundColor = categoryColor.value;
+                previewIcon.className = categoryIcon.value;
+                previewName.textContent = categoryName.value || 'Category Name';
+                previewDesc.textContent = categoryDescription.value || 'Category description will appear here';
+            }
+            
+            // Update preview on input change
+            categoryName.addEventListener('input', updatePreview);
+            categoryDescription.addEventListener('input', updatePreview);
+            categoryIcon.addEventListener('change', updatePreview);
+            categoryColor.addEventListener('change', updatePreview);
+            
+            // View toggle
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const view = btn.dataset.view;
+                    categoriesGrid.className = view === 'list' ? 'categories-list' : 'categories-grid';
+                });
+            });
+            
+            // Search and filter
+            function filterCategories() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const statusValue = statusFilter.value;
+                
+                document.querySelectorAll('.category-card').forEach(card => {
+                    const name = card.querySelector('.category-name').textContent.toLowerCase();
+                    const description = card.querySelector('.category-description').textContent.toLowerCase();
+                    const cardStatus = card.dataset.status;
+                    
+                    const matchesSearch = name.includes(searchTerm) || description.includes(searchTerm);
+                    const matchesStatus = !statusValue || cardStatus === statusValue;
+                    
+                    card.style.display = matchesSearch && matchesStatus ? 'block' : 'none';
+                });
+            }
+            
+            searchInput.addEventListener('input', filterCategories);
+            statusFilter.addEventListener('change', filterCategories);
+            
+            clearFilters.addEventListener('click', () => {
+                searchInput.value = '';
+                statusFilter.value = '';
+                filterCategories();
+            });
+            
+            // Helper functions
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            
+            function showNotification(message, type = 'info') {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <div class="notification-content">
+                        <i class="fas ${type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-triangle' : 'fa-info-circle'}"></i>
+                        <span>${message}</span>
+                    </div>
+                    <button class="notification-close">&times;</button>
+                `;
+                
+                // Style the notification
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--card-bg);
+                    border: 1px solid var(--card-border);
+                    border-radius: 8px;
+                    padding: 15px 20px;
+                    box-shadow: var(--shadow-primary);
+                    backdrop-filter: blur(var(--blur-amount));
+                    z-index: 10000;
+                    max-width: 400px;
+                    color: var(--text-primary);
+                    transform: translateX(100%);
+                    transition: transform 0.3s ease;
+                `;
+                
+                // Color based on type
+                if (type === 'success') {
+                    notification.style.borderColor = '#22c55e';
+                } else if (type === 'error') {
+                    notification.style.borderColor = '#ef4444';
+                }
+                
+                document.body.appendChild(notification);
+                
+                // Animate in
+                setTimeout(() => {
+                    notification.style.transform = 'translateX(0)';
+                }, 10);
+                
+                // Close functionality
+                const closeBtn = notification.querySelector('.notification-close');
+                closeBtn.addEventListener('click', () => {
+                    notification.style.transform = 'translateX(100%)';
+                    setTimeout(() => notification.remove(), 300);
+                });
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.transform = 'translateX(100%)';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
+        });
+    </script>
+{% endblock %}

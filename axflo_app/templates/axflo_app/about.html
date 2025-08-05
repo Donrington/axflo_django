@@ -1,0 +1,880 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+<style>
+.newsletter-message {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.newsletter-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.newsletter-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.newsletter-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+</style>
+
+    <section class="about-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Leading Energy Solutions
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">About Axflo</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+                Pioneering transformative energy solutions through relentless innovation, sustainability, and meaningful community impact.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#mission" class="cta-button">
+                Explore Our Mission
+                <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+  
+
+<!-- Our Company Section -->
+<section class="section" id="our-company">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Our Company</h2>
+            <p class="section-subtitle">A legacy of excellence in environmental engineering and oil spill response since 2009</p>
+        </div>
+        
+        <div class="company-content">
+            <div class="company-grid animate-on-scroll">
+                <div class="company-main">
+                    <div class="glass-panel">
+                        <h3>Who We Are</h3>
+                        <p>Axflo Oil & Gas Limited is a wholly Nigerian-owned environmental consultancy and services company, incorporated in November 2009. We stand as Nigeria's premier provider of integrated spill-response, remediation, and environmental engineering services.</p>
+                        <p>With over 48 years of combined industry experience, our team delivers proven solutions for oil spill response and remediation across all environments - offshore, nearshore, shoreline, swamp, and land areas.</p>
+                        
+                        <div class="company-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">15+</div>
+                                <div class="stat-label">Years of Excellence</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">48+</div>
+                                <div class="stat-label">Years Combined Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">100%</div>
+                                <div class="stat-label">Nigerian Owned</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="company-sidebar">
+                    <div class="vision-mission-card animate-on-scroll">
+                        <div class="vm-item">
+                            <div class="vm-icon">
+                                <i class="fas fa-eye"></i>
+                            </div>
+                            <h4>Our Vision</h4>
+                            <p>To be the company that provides and exceeds the level of services our customers demand, renowned for extraordinary customer satisfaction.</p>
+                        </div>
+                        
+                        <div class="vm-item">
+                            <div class="vm-icon">
+                                <i class="fas fa-bullseye"></i>
+                            </div>
+                            <h4>Our Mission</h4>
+                            <p>To provide internationally acceptable quality of services to the Nigerian Oil and Gas Industry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Board of Directors Section -->
+<section class="section board-section" id="board-directors">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Board of Directors</h2>
+            <p class="section-subtitle">Visionary leadership driving sustainable innovation in Nigeria's energy sector</p>
+        </div>
+        
+        <div class="board-grid">
+            <div class="board-member-card featured animate-on-scroll">
+                <div class="member-image">
+                    <div class="image-placeholder">
+                        
+                        <img src="../../static/axflo_app/people/ceo.jpg" alt="" class="memberimg">
+                    </div>
+                    <div class="member-overlay">
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:donald.brown@axfloo.com"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="member-info">
+                    <h3>Dr. Donald T. Brown</h3>
+                    <span class="position">Managing Director/CEO</span>
+                    <p class="bio">A distinguished leader with a PhD in Development Economics, Dr. Brown brings over 20 years of executive-level experience in the oil & gas industry. An alumnus of the prestigious Lagos Business School, he has been instrumental in positioning Axflo as Nigeria's leading environmental services provider.</p>
+                    <div class="member-achievements">
+                        <span class="achievement-badge">20+ Years Experience</span>
+                        <span class="achievement-badge">PhD Economics</span>
+                        <span class="achievement-badge">LBS Alumni</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Add more board members as needed -->
+        </div>
+    </div>
+</section>
+
+<!-- Health Safety and Environment Section -->
+<section class="section hse-section" id="hse">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Health, Safety & Environment</h2>
+            <p class="section-subtitle">Committed to zero harm through world-class HSE standards and practices</p>
+        </div>
+        
+        <div class="hse-content">
+            <div class="hse-commitment animate-on-scroll">
+                <div class="commitment-card">
+                    <div class="commitment-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Our HSE Commitment</h3>
+                    <p>At Axflo Oil & Gas Limited, HSE is not just a priority - it's a core value embedded in everything we do. We maintain a proactive safety culture that protects our people, preserves the environment, and ensures operational excellence.</p>
+                </div>
+            </div>
+            
+            <div class="hse-metrics">
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">LTI in 2024</div>
+                    <p>Lost Time Incidents</p>
+                </div>
+                
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="metric-value">ISO 14001</div>
+                    <div class="metric-label">Certified</div>
+                    <p>Environmental Management</p>
+                </div>
+                
+                <div class="metric-card animate-on-scroll">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-value">100%</div>
+                    <div class="metric-label">HSE Trained</div>
+                    <p>All Staff Certified</p>
+                </div>
+            </div>
+            
+            <div class="hse-policies animate-on-scroll">
+                <h3>Our Policies</h3>
+                <div class="policy-grid">
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Zero Harm Policy</span>
+                    </div>
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Environmental Protection</span>
+                    </div>
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Continuous Risk Assessment</span>
+                    </div>
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Emergency Response Readiness</span>
+                    </div>
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Stakeholder Safety</span>
+                    </div>
+                    <div class="policy-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Regulatory Compliance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our People Section -->
+<section class="section people-section" id="our-people">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Our People</h2>
+            <p class="section-subtitle">Meet the dedicated professionals powering Nigeria's environmental excellence</p>
+        </div>
+        
+        <div class="people-showcase">
+            <div class="team-stats animate-on-scroll">
+                <div class="glass-panel team-overview">
+                    <h3>Our Team Excellence</h3>
+                    <p>At Axflo, we believe our people are our greatest asset. Our team comprises industry-leading professionals with specialized expertise in environmental engineering, oil spill response, and remediation technologies.</p>
+                    
+                    <div class="team-metrics">
+                        <div class="team-metric">
+                            <span class="metric-number">150+</span>
+                            <span class="metric-desc">Skilled Professionals</span>
+                        </div>
+                        <div class="team-metric">
+                            <span class="metric-number">95%</span>
+                            <span class="metric-desc">Staff Retention Rate</span>
+                        </div>
+                        <div class="team-metric">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-desc">HSE Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="key-personnel-grid">
+                <div class="personnel-card animate-on-scroll">
+                    <div class="personnel-header">
+                        <div class="personnel-image">
+                            <img src="../../static/axflo_app/people/rosemary.jpg" alt="Rosemary Iguodala" class="personnelimg">
+                        </div>
+                        <h4>Rosemary Iguodala</h4>
+                        <span>HR/Admin Manager</span>
+                    </div>
+                    <p>LLB, BL, MBA holder with 20+ years in the oil & gas industry, driving organizational excellence and talent development.</p>
+                </div>
+                
+           
+                
+                <div class="personnel-card animate-on-scroll">
+                    <div class="personnel-header">
+                        <div class="personnel-image">
+                            <img src="../../static/axflo_app/people/basil.jpg" alt="Basil Edeh" class="personnelimg">
+                        </div>
+                        <h4>Basil Edeh</h4>
+                        <span>HSE Officer</span>
+                    </div>
+                    <p>Dedicated safety professional committed to maintaining the highest health, safety, and environmental standards across all operations.</p>
+                </div>
+                
+                <div class="personnel-card animate-on-scroll">
+                    <div class="personnel-header">
+                        <div class="personnel-image">
+                            <img src="../../static/axflo_app/people/ishaka.jpg" alt="Ephraim Ishaka" class="personnelimg">
+                        </div>
+                        <h4>Ephraim Ishaka</h4>
+                        <span>Operation Lead</span>
+                    </div>
+                    <p>Experienced operations leader driving excellence in project execution and operational efficiency with proven expertise in the energy sector.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Major Milestones Section -->
+<section class="section milestones-section" id="milestones">
+    <div class="container">
+        <div class="section-header animate-on-scroll">
+            <h2 class="section-title">Major Milestones</h2>
+            <p class="section-subtitle">Charting our journey of growth, innovation, and industry leadership</p>
+        </div>
+        
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+            
+            <div class="timeline-item left animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2009</h3>
+                    <h4>Company Incorporation</h4>
+                    <p>Axflo Oil & Gas Limited established as a wholly Nigerian-owned environmental services company.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2015</h3>
+                    <h4>ISO Certifications</h4>
+                    <p>Achieved ISO 9001:2015 Quality Management and ISO 14001:2015 Environmental Management certifications.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item left animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2018</h3>
+                    <h4>Strategic Partnerships</h4>
+                    <p>Formed alliances with DESMI Denmark and Darcy Spillcare UK, bringing world-class technology to Nigeria.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2022</h3>
+                    <h4>Industry Recognition</h4>
+                    <p>Received Africa Energy Environmental Innovation Prize for outstanding contribution to environmental protection.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item left animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2023</h3>
+                    <h4>Nigerian Environmental Excellence Award</h4>
+                    <p>Recognized as Nigeria's leading environmental services provider with 2,400+ hectares remediated.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item right animate-on-scroll">
+                <div class="timeline-marker"></div>
+                <div class="timeline-content glass-panel">
+                    <h3>2024</h3>
+                    <h4>Expansion & Innovation</h4>
+                    <p>Launch of AI-powered emergency response systems and expansion of Tier-1 response capabilities nationwide.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+ 
+
+    <!-- Company Overview -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Redefining Environmental Engineering</h2>
+                <p class="section-subtitle">Since 2009, Axflo Oil & Gas Limited has been Nigeria's premier provider of integrated spill-response, remediation, and environmental engineering services.</p>
+            </div>
+            
+            <div class="tech-specs animate-on-scroll">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary-gold);">Technical Specifications</h3>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-value">250 bar</div>
+                        <div class="spec-label">Hydraulic Power Rating</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">1,200m</div>
+                        <div class="spec-label">Containment Boom Fleet</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">45 m³/h</div>
+                        <div class="spec-label">DBD-5 Skimmer Capacity</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">92%</div>
+                        <div class="spec-label">TPH Recovery Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Advanced Capabilities</h2>
+                <p class="section-subtitle">Cutting-edge technology solutions for comprehensive environmental protection and energy infrastructure resilience.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title">Emergency Response Systems</h3>
+                        <p class="card-description">AI-powered 24/7 Emergency Response Centre synchronizes satellite imagery, UAV reconnaissance, and real-time E&P data feeds to predict spill trajectories and optimize deployment logistics with zero-delay mobilization protocols.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="card-title">Hydraulic Power Engineering</h3>
+                        <p class="card-description">Proprietary 250-bar rated hydraulic power packs with load-bank testing, thermodynamic profiling, and digital twin modeling for offshore cranes, boom reels, and subsea tooling applications.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3 class="card-title">Advanced Containment Technology</h3>
+                        <p class="card-description">Komara-20 brush skimmers achieving >95% recovery efficiency, coupled with Ro-Fence permanent booms delivering Category-5 storm resilience and IoT-enabled predictive maintenance.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="card-title">Ecosystem Restoration</h3>
+                        <p class="card-description">Geo-referenced mangrove restoration with rhizophora propagation and bioremediation protocols achieving >95% flora survival rates in previously hydrocarbon-impacted estuaries.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h3 class="card-title">Terminal Protection Networks</h3>
+                        <p class="card-description">End-to-end containment strategy for NAOC Brass & Bonny terminals featuring predictive risk matrices, pre-booming systems, and IMIST-certified response crews.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card animate-on-scroll">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="card-title">Multi-Agency Command</h3>
+                        <p class="card-description">Tactical command centers with aerial dispersion modeling and optimized skimmer operations achieving ≥92% TPH recovery within the critical first 72 hours of incident response.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="section" id="technology">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Technology Leadership</h2>
+                <p class="section-subtitle">Partnering with global innovators including DESMI, Darcy Spillcare, and IPPG to deliver Tier-1 and Tier-2 readiness across all operational theatres.</p>
+            </div>
+
+            <div class="tech-specs animate-on-scroll">
+                <h3 style="font-size: 2rem; margin-bottom: 2rem; color: var(--primary-gold);">Operational Excellence Metrics</h3>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <div class="spec-value">ISO 9001:2015</div>
+                        <div class="spec-label">Quality Management</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">ISO 14001:2015</div>
+                        <div class="spec-label">Environmental Standards</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">DPR Licensed</div>
+                        <div class="spec-label">Regulatory Compliance</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-value">25 Years</div>
+                        <div class="spec-label">HD-XR Boom Service Life</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Leadership & Innovation Section -->
+    <section class="section" id="leadership">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Leadership in Environmental Innovation</h2>
+                <p class="section-subtitle">Driving sustainable transformation across Nigeria's energy sector through pioneering research, strategic partnerships, and unwavering commitment to environmental stewardship.</p>
+            </div>
+
+            <div class="leadership-grid">
+                <!-- <div class="leadership-card animate-on-scroll">
+                    <div class="leadership-content">
+                        <div class="leadership-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <h3>R&D Excellence</h3>
+                        <p>Our dedicated Research & Development facility collaborates with leading universities and international research institutes to advance next-generation bioremediation technologies. Current projects include AI-enhanced oil fingerprinting, autonomous containment drones, and carbon-negative restoration protocols.</p>
+                        <div class="achievement-stats">
+                            <span class="stat">15+ Patents Filed</span>
+                            <span class="stat">8 University Partnerships</span>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="leadership-card animate-on-scroll">
+                    <div class="leadership-content">
+                        <div class="leadership-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <h3>Regional Impact</h3>
+                        <p>Since 2009, we've successfully remediated over 2,400 hectares of impacted wetlands across the Niger Delta, restoring critical biodiversity corridors and supporting 180+ fishing communities. Our community-centric approach ensures sustainable livelihoods while achieving measurable environmental outcomes.</p>
+                        <div class="achievement-stats">
+                            <span class="stat">2,400+ Hectares Restored</span>
+                            <span class="stat">180+ Communities Supported</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="leadership-card animate-on-scroll">
+                    <div class="leadership-content">
+                        <div class="leadership-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Industry Recognition</h3>
+                        <p>Recipient of the Nigerian Environmental Excellence Award (2023), Africa Energy Environmental Innovation Prize (2022), and certified as a Tier-1 Emergency Response Provider by the International Association of Oil & Gas Producers. Our commitment to excellence sets industry benchmarks.</p>
+                        <div class="achievement-stats">
+                            <span class="stat">12+ Industry Awards</span>
+                            <span class="stat">Tier-1 IOGP Certified</span>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- Mission Statement Banner -->
+            <div class="mission-banner animate-on-scroll">
+                
+                <div class="mission-content">
+                    <h3>Our Commitment to Nigeria's Energy Future</h3>
+                    <p>"At Axflo, we believe that environmental protection and energy development are not competing interests, but complementary forces that drive sustainable prosperity. Every project we undertake strengthens Nigeria's position as a responsible energy leader while safeguarding our natural heritage for future generations."</p>
+                    <div class="signature">
+                        <strong>— Axflo Leadership Team</strong>
+                    </div>
+                </div>
+                <div class="mission-visual">
+                    <div class="floating-elements">
+                        <div class="element element-1"></div>
+                        <div class="element element-2"></div>
+                        <div class="element element-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Ready to Safeguard Your Assets?</h2>
+                <p class="section-subtitle">Connect with Axflo's engineering team to design a bespoke spill-response, remediation, or waste-management solution for your field operations.</p>
+                <a href="mailto:info@axfloo.com" class="cta-button" style="margin-top: 2rem;">
+                    <i class="fas fa-envelope"></i>
+                    Start Your Project
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+    
+
+
+  
+
+
+    <footer class="footer-section">
+        <div class="footer-container">
+            <!-- Enhanced Footer Branding -->
+            <div class="footer-brand">
+                <img src="../../static/axflo_app/logo/AOGLogoWhite2.png" alt="Axflo Logo" class="footer-logo">
+                <p>Empowering businesses with innovative solutions and cutting-edge technology. We transform ideas into powerful digital experiences that drive growth and success.</p>
+                
+                <div class="company-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Clients</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Footer Links -->
+            <div class="footer-links footer_display">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{% url 'axflo_app:index' %}">Home</a></li>
+                    <li><a href="{% url 'axflo_app:about' %}">About Us</a></li>
+                    <li><a href="{% url 'axflo_app:services' %}">Services</a></li>
+                    <li><a href="{% url 'axflo_app:achievements' %}">Portfolio</a></li>
+                    <li><a href="{% url 'axflo_app:csr' %}">CSR</a></li>
+                    <li><a href="{% url 'axflo_app:careers' %}">Careers</a></li>
+                </ul>
+            </div>
+
+            <!-- Enhanced Social Media & Newsletter -->
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+
+                <div class="newsletter-signup">
+                    <h4>Stay Updated</h4>
+                    <form id="about-newsletter-form" class="newsletter-form" method="post">
+                        {% csrf_token %}
+                        <input type="email" id="about-newsletter-email" name="email" placeholder="Enter your email" aria-label="Email address" required>
+                        <input type="hidden" name="first_name" value="">
+                        <input type="hidden" name="last_name" value="">
+                        <button type="submit" id="about-newsletter-btn">Subscribe</button>
+                    </form>
+                    <div id="about-newsletter-message" class="newsletter-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Footer Bottom -->
+        <div class="footer-bottom">
+            <p>&copy; 2025 Axflo. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ultra Modern Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <button class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+            <svg class="progress-ring">
+                <circle class="progress-ring-circle" cx="30" cy="30" r="28"></circle>
+            </svg>
+            <svg viewBox="0 0 384 512" class="back-to-top-icon">
+                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+            </svg>
+        </button>
+    </div>
+  
+    <!-- AOS Script (Optional) -->
+
+    <!-- Load AOS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    
+    <!-- Load Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+    
+    <!-- Load AOS JS first -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Load your JS files after dependencies -->
+    <script src="{% static 'axflo_app/js/main.js' %}"></script>
+    <script src="{% static 'axflo_app/js/about.js' %}"></script>  
+
+<script>
+     // Enhanced Back to Top functionality with progress indicator
+        const backToTopBtn = document.getElementById('backToTop');
+        const progressRing = document.querySelector('.progress-ring-circle');
+        const circumference = 2 * Math.PI * 28; // radius = 28
+
+        progressRing.style.strokeDasharray = circumference;
+        progressRing.style.strokeDashoffset = circumference;
+
+        function updateScrollProgress() {
+            const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollCurrent = window.pageYOffset;
+            const scrollPercentage = scrollCurrent / scrollTotal;
+            
+            const offset = circumference - (scrollPercentage * circumference);
+            progressRing.style.strokeDashoffset = offset;
+
+            // Show/hide button based on scroll position
+            if (scrollCurrent > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+// Get CSRF token from cookies
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const aboutNewsletterForm = document.getElementById('about-newsletter-form');
+    const aboutNewsletterBtn = document.getElementById('about-newsletter-btn');
+    const aboutNewsletterMessage = document.getElementById('about-newsletter-message');
+    const aboutNewsletterEmail = document.getElementById('about-newsletter-email');
+    
+    if (aboutNewsletterForm) {
+        aboutNewsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get email value and validate
+            const emailValue = aboutNewsletterEmail.value.trim();
+            if (!emailValue) {
+                aboutNewsletterMessage.style.display = 'block';
+                aboutNewsletterMessage.innerHTML = 'Please enter your email address.';
+                aboutNewsletterMessage.className = 'newsletter-message error';
+                return;
+            }
+            
+            // Get form data
+            const formData = new FormData(aboutNewsletterForm);
+            
+            // Debug: log form data
+            console.log('Email value:', emailValue);
+            console.log('Form data entries:');
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+            
+            // Show loading state
+            aboutNewsletterBtn.disabled = true;
+            aboutNewsletterBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            aboutNewsletterMessage.style.display = 'none';
+            
+            // Submit form
+            fetch("{% url 'axflo_app:newsletter_subscribe' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(response => {
+                console.log('Response status:', response.status);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                // Show message
+                aboutNewsletterMessage.style.display = 'block';
+                aboutNewsletterMessage.innerHTML = data.message;
+                aboutNewsletterMessage.className = 'newsletter-message ' + (data.success ? 'success' : 'error');
+                
+                if (data.success) {
+                    aboutNewsletterForm.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        aboutNewsletterMessage.style.display = 'none';
+                    }, 5000);
+                }
+            })
+            .catch(error => {
+                console.error('Newsletter subscription error:', error);
+                aboutNewsletterMessage.style.display = 'block';
+                aboutNewsletterMessage.innerHTML = 'An error occurred. Please try again later.';
+                aboutNewsletterMessage.className = 'newsletter-message error';
+            })
+            .finally(() => {
+                // Reset button
+                aboutNewsletterBtn.disabled = false;
+                aboutNewsletterBtn.innerHTML = 'Subscribe';
+            });
+        });
+    }
+});
+</script>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

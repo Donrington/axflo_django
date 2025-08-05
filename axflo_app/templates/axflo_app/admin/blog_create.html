@@ -1,0 +1,233 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Create Blog Post- Axflo{% endblock %}
+
+{% block content %}
+   <link rel="stylesheet" href="{% static 'axflo_app/css/admin_blog.css' %}">
+    <div class="admin-blog-container">
+        <!-- Header Section -->
+        <div class="admin-blog-header">
+            <h1><i class="fas fa-plus"></i> Create New Blog Post</h1>
+            <p>Create engaging content for your audience</p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="admin-actions">
+            <div></div>
+            <a href="{% url 'axflo_app:admin_blog' %}" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Blog List
+            </a>
+        </div>
+
+        <!-- Blog Creation Form -->
+        <div class="blog-form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Title and Status Row -->
+                <div class="form-row two-columns">
+                    <div class="form-group">
+                        <label for="title" class="form-label">Title *</label>
+                        <input type="text" id="title" name="title" class="form-input" 
+                               placeholder="Enter blog post title..." required>
+                        <div class="form-help">This will be the main heading of your blog post</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-select">
+                            {% for status_code, status_name in status_choices %}
+                            <option value="{{ status_code }}" {% if status_code == 'DRAFT' %}selected{% endif %}>
+                                {{ status_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-help">Published posts will be visible on the website</div>
+                    </div>
+                </div>
+
+                <!-- Category and Tags Row -->
+                <div class="form-row two-columns">
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="">No Category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}">{{ category.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-help">Choose a category to organize your content</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags" class="form-label">Tags</label>
+                        <input type="text" id="tags" name="tags" class="form-input" 
+                               placeholder="tag1, tag2, tag3...">
+                        <div class="form-help">Comma-separated tags for better categorization</div>
+                    </div>
+                </div>
+
+                <!-- Excerpt -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="excerpt" class="form-label">Excerpt</label>
+                        <textarea id="excerpt" name="excerpt" class="form-textarea" 
+                                  placeholder="Brief description of your blog post..."></textarea>
+                        <div class="form-help">A short preview that will be shown in blog listings (max 300 characters)</div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="content" class="form-label">Content *</label>
+                        <textarea id="content" name="content" class="form-textarea" 
+                                  style="min-height: 300px;" placeholder="Write your blog post content here..." required></textarea>
+                        <div class="form-help">The main content of your blog post. You can use HTML tags for formatting.</div>
+                    </div>
+                </div>
+
+                <!-- Image Upload Section -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Featured Image</label>
+                        
+                        <!-- File Upload -->
+                        <div class="image-upload-section">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h4>Upload Image File</h4>
+                            <input type="file" id="image" name="image" accept="image/*" class="form-input">
+                            <div class="form-help">Upload an image file (JPG, PNG, GIF - max 5MB)</div>
+                        </div>
+
+                        <!-- OR Divider -->
+                        <div style="text-align: center; margin: 20px 0; position: relative;">
+                            <hr style="border: 1px solid var(--border-color);">
+                            <span style="background: white; padding: 0 15px; color: var(--text-secondary); position: absolute; top: -12px; left: 50%; transform: translateX(-50%);">OR</span>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="form-group">
+                            <label for="image_url" class="form-label">Image URL</label>
+                            <input type="url" id="image_url" name="image_url" class="form-input" 
+                                   placeholder="https://example.com/image.jpg">
+                            <div class="form-help">Provide a direct link to an image</div>
+                        </div>
+
+                        <!-- Image Alt Text -->
+                        <div class="form-group">
+                            <label for="image_alt" class="form-label">Image Alt Text</label>
+                            <input type="text" id="image_alt" name="image_alt" class="form-input" 
+                                   placeholder="Describe the image for accessibility...">
+                            <div class="form-help">Alternative text for screen readers and SEO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Section -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="meta_description" class="form-label">Meta Description</label>
+                        <textarea id="meta_description" name="meta_description" class="form-textarea" 
+                                  style="min-height: 80px;" placeholder="SEO meta description..."></textarea>
+                        <div class="form-help">Brief description for search engines (max 160 characters)</div>
+                    </div>
+                </div>
+
+                <!-- Featured Checkbox -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="featured" name="featured" class="checkbox-input">
+                    <label for="featured" class="checkbox-label">
+                        <i class="fas fa-star" style="color: var(--primary-gold); margin-right: 5px;"></i>
+                        Feature this post
+                    </label>
+                </div>
+                <div class="form-help" style="margin-top: 5px;">Featured posts may appear prominently on the website</div>
+
+                <!-- Form Actions -->
+                <div class="form-row" style="margin-top: 40px;">
+                    <div style="display: flex; gap: 15px; justify-content: flex-start;">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Create Blog Post
+                        </button>
+                        <a href="{% url 'axflo_app:admin_blog' %}" class="btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Auto-generate excerpt from content if not provided
+        document.getElementById('content').addEventListener('blur', function() {
+            const excerptField = document.getElementById('excerpt');
+            if (!excerptField.value.trim() && this.value.trim()) {
+                // Remove HTML tags and get first 200 characters
+                const text = this.value.replace(/<[^>]*>/g, '').trim();
+                excerptField.value = text.substring(0, 200) + (text.length > 200 ? '...' : '');
+            }
+        });
+
+        // Character counter for excerpt
+        const excerptField = document.getElementById('excerpt');
+        const excerptHelp = excerptField.nextElementSibling;
+        excerptField.addEventListener('input', function() {
+            const length = this.value.length;
+            const maxLength = 300;
+            excerptHelp.textContent = `Brief description (${length}/${maxLength} characters)`;
+            if (length > maxLength) {
+                excerptHelp.style.color = '#dc3545';
+            } else {
+                excerptHelp.style.color = '';
+            }
+        });
+
+        // Character counter for meta description
+        const metaField = document.getElementById('meta_description');
+        const metaHelp = metaField.nextElementSibling;
+        metaField.addEventListener('input', function() {
+            const length = this.value.length;
+            const maxLength = 160;
+            metaHelp.textContent = `SEO meta description (${length}/${maxLength} characters)`;
+            if (length > maxLength) {
+                metaHelp.style.color = '#dc3545';
+            } else {
+                metaHelp.style.color = '';
+            }
+        });
+
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const title = document.getElementById('title').value.trim();
+            const content = document.getElementById('content').value.trim();
+            
+            if (!title || !content) {
+                e.preventDefault();
+                alert('Please fill in all required fields (Title and Content).');
+                return false;
+            }
+            
+            // Add loading state
+            const submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<div class="spinner"></div> Creating...';
+            submitBtn.disabled = true;
+        });
+    </script>
+
+
+{% endblock %}
+

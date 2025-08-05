@@ -1,0 +1,500 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Careers - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/careers.css' %}">
+<link rel="stylesheet" href="{% static 'axflo_app/css/base.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include 'axflo_app/includes/navbar.html' %}
+    <section class="about-hero">
+        <!-- Dynamic Background -->
+        <div class="hero-background"></div>
+        
+        <!-- Animated Grid -->
+        <div class="grid-overlay"></div>
+        
+        <!-- Floating Geometric Elements -->
+        <div class="geometric-elements">
+            <div class="geometric-shape shape-1"></div>
+            <div class="geometric-shape shape-2"></div>
+            <div class="geometric-shape shape-3"></div>
+        </div>
+        
+        <!-- Glass Accent -->
+        <div class="glass-accent"></div>
+        
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <!-- Status Badge -->
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                Join Our Team
+            </div>
+            
+            <!-- Hero Title -->
+            <h1 class="hero-title">Careers at Axflo</h1>
+            
+            <!-- Hero Subtitle -->
+            <p class="hero-subtitle">
+                Build your career with Nigeria's leading environmental protection company. Join our mission to create sustainable energy solutions and make a lasting impact on our planet.
+            </p>
+            
+            <!-- CTA Button -->
+            <a href="#careers" class="cta-button">
+                View Open Positions
+                <svg class="cta-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Career Introduction Section -->
+    <section class="career-intro">
+        <div class="container">
+            <div class="intro-content" data-aos="fade-up">
+                <span class="section-label">Career Opportunities</span>
+                <h1 class="intro-title">Shape the Future of Environmental Protection</h1>
+                <p class="intro-subtitle">
+                    Join Axflo Oil & Gas Nigeria Ltd, where environmental stewardship meets cutting-edge technology. 
+                    Be part of a team dedicated to protecting Nigeria's environment through innovative oil spill response, 
+                    water treatment, and sustainable energy solutions.
+                </p>
+                
+                <div class="intro-stats">
+                    <div class="intro-stat" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label2">Years of Excellence</div>
+                    </div>
+                    <div class="intro-stat" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label2">Environmental Projects</div>
+                    </div>
+                    <div class="intro-stat" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label2">Client Satisfaction</div>
+                    </div>
+                    <div class="intro-stat" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label2">Emergency Response</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Us Section -->
+    <section class="why-join">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="section-label">Why Choose Axflo</span>
+                <h2 class="intro-title">Why Join Our Mission</h2>
+                <p class="intro-subtitle">
+                    Discover the benefits and opportunities that make Axflo the ideal place to build your career 
+                    in environmental protection and sustainable technology.
+                </p>
+            </div>
+
+            <div class="why-join-grid">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-globe-americas"></i></span>
+                        <h3 class="benefit-title">Environmental Impact</h3>
+                        <p class="benefit-description">
+                            Make a real difference in protecting Nigeria's environment. Your work directly contributes 
+                            to oil spill prevention, water treatment, and sustainable energy solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-rocket"></i></span>
+                        <h3 class="benefit-title">Cutting-Edge Technology</h3>
+                        <p class="benefit-description">
+                            Work with the latest environmental technologies, including DESMI systems, advanced 
+                            monitoring equipment, and innovative treatment solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-chart-line"></i></span>
+                        <h3 class="benefit-title">Professional Growth</h3>
+                        <p class="benefit-description">
+                            Accelerate your career with comprehensive training programs, international certifications, 
+                            and opportunities to work on complex environmental projects.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-handshake"></i></span>
+                        <h3 class="benefit-title">Collaborative Culture</h3>
+                        <p class="benefit-description">
+                            Join a diverse team of environmental experts, engineers, and specialists working together 
+                            to solve complex environmental challenges.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-money-bill-wave"></i></span>
+                        <h3 class="benefit-title">Competitive Benefits</h3>
+                        <p class="benefit-description">
+                            Enjoy competitive salaries, comprehensive health coverage, performance bonuses, 
+                            and professional development funding.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="benefit-content">
+                        <span class="benefit-icon"><i class="fas fa-bolt"></i></span>
+                        <h3 class="benefit-title">Innovation Focus</h3>
+                        <p class="benefit-description">
+                            Be part of groundbreaking research and development in environmental protection, 
+                            renewable energy, and sustainable technologies.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Paths Section -->
+    <section class="career-paths">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="section-label">Career Paths</span>
+                <h2 class="intro-title2">Explore Your Career Journey</h2>
+                <p class="intro-subtitle2">
+                    Discover diverse career paths within our organization, from environmental engineering 
+                    to emergency response and sustainable technology development.
+                </p>
+            </div>
+
+            <div class="paths-grid">
+                <div class="path-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="path-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="path-title">Emergency Response</h3>
+                    <p class="path-description">
+                        Lead critical oil spill response operations and environmental emergency management.
+                    </p>
+                    <ul class="path-roles">
+                        <li>Oil Spill Response Coordinator</li>
+                        <li>Emergency Response Manager</li>
+                        <li>Incident Command Specialist</li>
+                        <li>Environmental Emergency Analyst</li>
+                    </ul>
+                </div>
+
+                <div class="path-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="path-icon"><i class="fas fa-flask"></i></div>
+                    <h3 class="path-title">Environmental Engineering</h3>
+                    <p class="path-description">
+                        Design and implement innovative solutions for water treatment and environmental protection.
+                    </p>
+                    <ul class="path-roles">
+                        <li>Water Treatment Engineer</li>
+                        <li>Environmental Compliance Specialist</li>
+                        <li>Process Design Engineer</li>
+                        <li>Environmental Systems Analyst</li>
+                    </ul>
+                </div>
+
+                <div class="path-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="path-icon"><i class="fas fa-microscope"></i></div>
+                    <h3 class="path-title">Research & Development</h3>
+                    <p class="path-description">
+                        Pioneer new technologies and methodologies for environmental protection and monitoring.
+                    </p>
+                    <ul class="path-roles">
+                        <li>Environmental Research Scientist</li>
+                        <li>Technology Development Manager</li>
+                        <li>Innovation Specialist</li>
+                        <li>R&D Project Leader</li>
+                    </ul>
+                </div>
+
+                <div class="path-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="path-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="path-title">Training & Development</h3>
+                    <p class="path-description">
+                        Develop expertise and train the next generation of environmental protection professionals.
+                    </p>
+                    <ul class="path-roles">
+                        <li>HSE Training Coordinator</li>
+                        <li>Technical Training Specialist</li>
+                        <li>Certification Program Manager</li>
+                        <li>Professional Development Lead</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="text-center" data-aos="fade-up">
+                <span class="section-label">Employee Stories</span>
+                <h2 class="intro-title">Hear From Our Team</h2>
+                <p class="intro-subtitle">
+                    Discover what our employees say about their experience working at Axflo and building 
+                    careers in environmental protection.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <p class="testimonial-quote">
+                        Leading operations at Axflo has been incredibly rewarding. The company's commitment to 
+                        excellence and safety standards has allowed me to manage complex projects while ensuring 
+                        optimal outcomes for our clients and the environment.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">EI</div>
+                        <div class="author-info">
+                            <h4>Ephraim Ishaka</h4>
+                            <p>Operation Lead</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <p class="testimonial-quote">
+                        Building a strong team culture at Axflo has been one of my greatest achievements. The 
+                        company's focus on employee development and creating an inclusive workplace makes 
+                        every day meaningful and impactful.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RI</div>
+                        <div class="author-info">
+                            <h4>Rosemary Iguodala</h4>
+                            <p>HR/Admin Manager</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <p class="testimonial-quote">
+                        Working in HSE at Axflo means being part of something bigger. Every safety protocol we 
+                        implement and every training session we conduct directly contributes to protecting lives 
+                        and preserving our environment for future generations.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">BE</div>
+                        <div class="author-info">
+                            <h4>Basil Edeh</h4>
+                            <p>HSE Officer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Job Postings Section -->
+    <section class="job-postings" id="careers">
+        <!-- Animated Particles Background -->
+        <div class="background-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <div class="container">
+            <!-- Header Section -->
+            <div class="careers-header" data-aos="fade-up">
+                <span class="section-label">Open Positions</span>
+                <h2 class="intro-title">Current Opportunities</h2>
+                <p class="careers-subtitle">
+                    At Axflo Oil & Gas, we are empowering talent to shape the future of environmental protection. 
+                    Explore opportunities to join our mission of innovation and excellence.
+                </p>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-card">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label2">Team Members</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label2">Nigerian States</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label2">Years Experience</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label2">Employee Satisfaction</div>
+                </div>
+            </div>
+
+            <!-- Job Listings -->
+            {% if has_jobs %}
+            <div class="job-grid">
+                {% for job in job_postings %}
+                <div class="job-card" style="--delay: {{ forloop.counter0|floatformat:1 }}s">
+                    <div class="job-header">
+                        <div class="job-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="job-title-group">
+                            <h3 class="job-title">{{ job.title }}</h3>
+                            <div class="job-department">{{ job.department }}</div>
+                        </div>
+                    </div>
+                    <p class="job-description">
+                        {{ job.description|truncatewords:30 }}
+                    </p>
+                    <div class="job-requirements">
+                        <h4>Key Requirements:</h4>
+                        <div class="requirements-list">
+                            {% for requirement in job.requirements_list %}
+                            <span class="requirement-tag">{{ requirement|title }}</span>
+                            {% empty %}
+                            <span class="requirement-tag">See job description</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">{{ job.get_employment_type_display }}</span>
+                        <button class="apply-btn" onclick="openModal('{{ job.title }}', {{ job.id }})">Apply Now</button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div style="text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 20px; margin: 40px 0;">
+                <div style="font-size: 4rem; color: #6c757d; margin-bottom: 20px;">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2 style="color: #343a40; font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 2px;">
+                    NO ACTIVE JOB VACANCIES
+                </h2>
+                <p style="color: #6c757d; font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px;">
+                    We currently don't have any open positions, but we're always looking for talented individuals to join our team. 
+                    Please check back soon or submit your resume for future opportunities.
+                </p>
+              
+            </div>
+            {% endif %}
+
+            <!-- CTA Section -->
+            <div class="careers-cta" data-aos="fade-up" id="ctaSection">
+                <h3 class="cta-title">Don't See Your Perfect Role?</h3>
+                <p class="cta-description">
+                    We're always looking for exceptional talent to join our environmental protection mission. 
+                    Send us your resume and let's explore how you can contribute to our team.
+                </p>
+                <button class="cta-btn" onclick="openModal('General Application')">Submit Your Resume</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Modal -->
+    <div id="applicationModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Apply for Position</h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="applicationForm" method="post" onsubmit="submitApplication(event)">
+                    {% csrf_token %}
+                    <input type="hidden" id="jobId" name="job_id" value="">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="experience">Years of Experience *</label>
+                        <select id="experience" name="experience" required>
+                            <option value="">Select Experience Level</option>
+                            <option value="0-2">0-2 years</option>
+                            <option value="3-5">3-5 years</option>
+                            <option value="6-10">6-10 years</option>
+                            <option value="10+">10+ years</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="education">Highest Education *</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select Education Level</option>
+                            <option value="bachelor">Bachelor's Degree</option>
+                            <option value="master">Master's Degree</option>
+                            <option value="phd">PhD</option>
+                            <option value="professional">Professional Certification</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="coverLetter">Cover Letter *</label>
+                        <textarea id="coverLetter" name="coverLetter" placeholder="Tell us why you're interested in this position and how your experience aligns with our environmental protection mission..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF only) *</label>
+                        <div class="file-upload">
+                            <input type="file" id="resume" name="resume" accept=".pdf" required>
+                            <label for="resume" class="file-upload-label">
+                                <i class="fas fa-file-pdf"></i> Click to upload your resume (PDF format)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio/Additional Documents (Optional)</label>
+                        <div class="file-upload">
+                            <input type="file" id="portfolio" name="portfolio" accept=".pdf,.doc,.docx" multiple>
+                            <label for="portfolio" class="file-upload-label">
+                                <i class="fas fa-paperclip"></i> Upload additional documents (Optional)
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% include 'axflo_app/includes/footer.html' %}
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'axflo_app/js/careers.js' %}"></script>
+   <script src="{% static 'axflo_app/js/main.js' %}"></script>
+{% endblock %}

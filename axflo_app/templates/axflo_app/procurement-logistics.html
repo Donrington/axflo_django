@@ -1,0 +1,530 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Procurement-Logistics - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/procurement-logistics.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+ <!-- Procurement & Logistics Hero Section -->
+    <section class="procurement-hero">
+        <div class="supply-chain-background"></div>
+        
+        <div class="logistics-network">
+            <div class="network-node node-1">
+                <i class="fas fa-industry"></i>
+            </div>
+            <div class="network-node node-2">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div class="network-node node-3">
+                <i class="fas fa-warehouse"></i>
+            </div>
+            <div class="network-node node-4">
+                <i class="fas fa-truck"></i>
+            </div>
+        </div>
+        
+        <div class="logistics-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="supply-badge">
+                <div class="supply-indicator"></div>
+                Reliable Procurement Services Since 2009
+            </div>
+            
+            <h1 class="logistics-title">Procurement & Logistics Services</h1>
+            
+            <p class="logistics-subtitle">
+                Professional procurement and supply services for oil spill response equipment, environmental 
+                systems, and industrial supplies supporting Nigeria's oil and gas operations.
+            </p>
+            
+            <a href="#supply-overview" class="logistics-cta">
+                Explore Our Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Supply Chain Overview -->
+    <section id="supply-overview" class="supply-overview">
+        <div class="procurement-container">
+            <div class="supply-content">
+                <div class="supply-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Strategic Procurement & Supply Services</h2>
+                    <p>
+                        Axflo's Procurement & Logistics division provides essential supply services supporting 
+                        Nigeria's environmental protection and oil & gas operations. Our procurement solutions 
+                        combine reliable sourcing, quality assurance, and efficient logistics to deliver 
+                        specialized equipment and materials when and where they're needed.
+                    </p>
+                    <p>
+                        Through strategic partnerships with international manufacturers like DESMI and Darcy 
+                        Spillcare, combined with our local knowledge and established vendor relationships, 
+                        we ensure reliable supply of oil spill response equipment, valves, fittings, and 
+                        essential operational materials.
+                    </p>
+                    
+                    <div class="supply-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-value">15+</span>
+                            <span class="metric-description">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-description">Trusted Suppliers</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-value">Nigeria</span>
+                            <span class="metric-description">Coverage Area</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-value">24/7</span>
+                            <span class="metric-description">Emergency Supply</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="supply-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/logisticsoil.jpg' %}" alt="Nigerian Supply Network" loading="lazy">
+                        <div class="image-overlay">
+                            <p>Nigerian Supply Network</p>
+                            <small>Strategic partnerships & local expertise</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Procurement Services Detailed -->
+    <section class="procurement-services">
+        <div class="procurement-container">
+            <div class="procurement-header" data-aos="fade-up">
+                <h2>Core Procurement Services</h2>
+                <p>
+                    Specialized procurement solutions for environmental protection equipment, 
+                    industrial supplies, and operational materials for Nigeria's oil & gas sector.
+                </p>
+            </div>
+            
+            <div class="procurement-grid">
+                <!-- OSR Equipment Procurement -->
+                <div class="procurement-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="procurement-card-header">
+                        <div class="procurement-icon">
+                            <i class="fas fa-search-dollar"></i>
+                        </div>
+                        <h3>OSR Equipment Procurement</h3>
+                    </div>
+                    <p class="procurement-description">
+                        Specialized procurement of oil spill response equipment including skimmers, containment 
+                        booms, transfer pumps, and absorbent materials through partnerships with leading 
+                        international manufacturers.
+                    </p>
+                    <ul class="procurement-capabilities">
+                        <li>DESMI Equipment Sourcing</li>
+                        <li>Darcy Spillcare Products</li>
+                        <li>Skimmer Systems & Components</li>
+                        <li>Containment Boom Systems</li>
+                        <li>Absorbent Materials Supply</li>
+                        <li>Transfer Pumps & Accessories</li>
+                        <li>Emergency Spill Kits</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="procurement-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Valves & Fittings Supply -->
+                <div class="procurement-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="procurement-card-header">
+                        <div class="procurement-icon">
+                            <i class="fas fa-boxes"></i>
+                        </div>
+                        <h3>Valves, Fittings & Flanges</h3>
+                    </div>
+                    <p class="procurement-description">
+                        Comprehensive supply of industrial valves, butt weld fittings, tubes, flanges, and 
+                        accessories in various materials including carbon steel, stainless steel, and 
+                        specialty alloys for oil & gas applications.
+                    </p>
+                    <ul class="procurement-capabilities">
+                        <li>Industrial Valve Supply</li>
+                        <li>Butt Weld Fittings</li>
+                        <li>Flanges & Accessories</li>
+                        <li>Stainless Steel Tubes</li>
+                        <li>Carbon Steel Components</li>
+                        <li>Specialty Alloy Materials</li>
+                        <li>Custom Size Requirements</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="procurement-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Equipment Commissioning Support -->
+                <div class="procurement-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="procurement-card-header">
+                        <div class="procurement-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Equipment & Materials Sourcing</h3>
+                    </div>
+                    <p class="procurement-description">
+                        Professional sourcing of specialized equipment and materials for environmental 
+                        projects, remediation activities, and operational support with quality assurance 
+                        and compliance verification.
+                    </p>
+                    <ul class="procurement-capabilities">
+                        <li>Remediation Equipment</li>
+                        <li>Environmental Monitoring Tools</li>
+                        <li>Safety Equipment & PPE</li>
+                        <li>Laboratory Supplies</li>
+                        <li>Construction Materials</li>
+                        <li>Quality Verification</li>
+                        <li>Compliance Documentation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="procurement-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Logistics & Delivery -->
+                <div class="procurement-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="procurement-card-header">
+                        <div class="procurement-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Logistics & Distribution</h3>
+                    </div>
+                    <p class="procurement-description">
+                        Reliable logistics and distribution services ensuring timely delivery of equipment 
+                        and materials to project sites across Nigeria with proper handling and 
+                        documentation for sensitive environmental equipment.
+                    </p>
+                    <ul class="procurement-capabilities">
+                        <li>Equipment Transportation</li>
+                        <li>Site Delivery Coordination</li>
+                        <li>Warehouse Management</li>
+                        <li>Emergency Deployment</li>
+                        <li>Proper Handling Procedures</li>
+                        <li>Documentation & Tracking</li>
+                        <li>Installation Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="procurement-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Supply Chain Process -->
+    <section class="supply-chain-process">
+        <div class="procurement-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Our Procurement Process</h2>
+                <p>
+                    Systematic approach ensuring reliable sourcing, quality verification, 
+                    and timely delivery of specialized equipment and materials.
+                </p>
+            </div>
+            
+            <div class="supply-timeline">
+                <div class="timeline-step" data-aos="slide-right" data-aos-delay="100">
+                    <div class="step-indicator">01</div>
+                    <div class="step-content">
+                        <h3>Requirements Assessment</h3>
+                        <p>
+                            Detailed evaluation of project requirements, technical specifications, and 
+                            delivery schedules to identify optimal sourcing strategies and supply options 
+                            from our established vendor network.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-aos="slide-left" data-aos-delay="200">
+                    <div class="step-indicator">02</div>
+                    <div class="step-content">
+                        <h3>Vendor Selection & Sourcing</h3>
+                        <p>
+                            Leveraging our partnerships with DESMI, Darcy Spillcare, and other trusted 
+                            suppliers to source quality equipment and materials at competitive prices 
+                            with verified specifications.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-aos="slide-right" data-aos-delay="300">
+                    <div class="step-indicator">03</div>
+                    <div class="step-content">
+                        <h3>Quality Verification</h3>
+                        <p>
+                            Comprehensive quality checks including documentation verification, compliance 
+                            confirmation, and pre-delivery inspection to ensure all items meet project 
+                            specifications and industry standards.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="timeline-step" data-aos="slide-left" data-aos-delay="400">
+                    <div class="step-indicator">04</div>
+                    <div class="step-content">
+                        <h3>Delivery & Support</h3>
+                        <p>
+                            Coordinated delivery to project sites with proper handling, installation 
+                            support where needed, and ongoing technical assistance to ensure successful 
+                            implementation and operation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="vendor-network">
+        <div class="procurement-container">
+            <div class="network-header" data-aos="fade-up">
+                <h2>Product Categories & Supply Network</h2>
+                <p>
+                    Specialized procurement across key product categories supporting environmental 
+                    protection and oil & gas operations throughout Nigeria.
+                </p>
+            </div>
+            
+            <div class="vendor-grid">
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="vendor-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>OSR Equipment</h4>
+                    <p>Oil spill response equipment including skimmers, booms, pumps, and recovery systems from DESMI and Darcy Spillcare.</p>
+                </div>
+                
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="vendor-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h4>Valves & Fittings</h4>
+                    <p>Industrial valves, butt weld fittings, flanges, and tubes in carbon steel, stainless steel, and specialty alloys.</p>
+                </div>
+                
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="vendor-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h4>Environmental Equipment</h4>
+                    <p>Environmental monitoring equipment, remediation tools, and compliance systems for environmental projects.</p>
+                </div>
+                
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="vendor-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety Equipment</h4>
+                    <p>Personal protective equipment, safety systems, and emergency response equipment for oil & gas operations.</p>
+                </div>
+                
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="vendor-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4>Chemicals & Materials</h4>
+                    <p>Environmental chemicals, dispersants, absorbent materials, and specialized consumables for spill response.</p>
+                </div>
+                
+                <div class="vendor-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="vendor-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h4>Support Materials</h4>
+                    <p>General construction materials, maintenance supplies, and operational support items for project execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Performance -->
+    <section class="logistics-dashboard">
+        <div class="procurement-container">
+            <div class="dashboard-header" data-aos="fade-up">
+                <h2>Service Performance & Capabilities</h2>
+                <p>Proven track record of reliable procurement and logistics support for Nigeria's oil & gas sector.</p>
+            </div>
+            
+            <div class="dashboard-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="control-button active" onclick="showDashboard('performance')">Service Performance</button>
+                <button class="control-button" onclick="showDashboard('network')">Supply Network</button>
+                <button class="control-button" onclick="showDashboard('partnerships')">Key Partnerships</button>
+            </div>
+            
+            <div id="performance" class="dashboard-content active">
+                <div class="dashboard-metrics">
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="widget-value">15+</div>
+                        <div class="widget-label">Years Experience</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="widget-value">Competitive</div>
+                        <div class="widget-label">Pricing</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="widget-value">Quality</div>
+                        <div class="widget-label">Assured Products</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="widget-value">Major IOCs</div>
+                        <div class="widget-label">Trusted Clients</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="network" class="dashboard-content">
+                <div class="dashboard-metrics">
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <div class="widget-value">Nigeria</div>
+                        <div class="widget-label">Primary Market</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-warehouse"></i>
+                        </div>
+                        <div class="widget-value">Port Harcourt</div>
+                        <div class="widget-label">Main Warehouse</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <div class="widget-value">Nationwide</div>
+                        <div class="widget-label">Delivery Coverage</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="widget-value">Emergency</div>
+                        <div class="widget-label">Rapid Response</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="partnerships" class="dashboard-content">
+                <div class="dashboard-metrics">
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="widget-value">DESMI</div>
+                        <div class="widget-label">Denmark Partner</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <div class="widget-value">Darcy</div>
+                        <div class="widget-label">UK Spillcare</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="widget-value">IPPG</div>
+                        <div class="widget-label">USA Piping</div>
+                    </div>
+                    <div class="metric-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="widget-value">Ayles Fernie</div>
+                        <div class="widget-label">UK Partner</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="procurement-cta">
+        <div class="procurement-container">
+            <div class="cta-wrapper" data-aos="fade-up">
+                <h2>Ready to Optimize Your Procurement?</h2>
+                <p>
+                    Partner with Nigeria's trusted procurement specialist for reliable sourcing 
+                    of OSR equipment, industrial supplies, and operational materials.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Team
+                    </a>
+                    <a href="#rfq" class="cta-action cta-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        Request Quote
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/procurement-logistics.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

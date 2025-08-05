@@ -1,0 +1,281 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Edit Blog Post - Axflo{% endblock %}
+
+{% block content %}
+   <link rel="stylesheet" href="{% static 'axflo_app/css/admin_blog.css' %}">
+    <div class="admin-blog-container">
+        <!-- Header Section -->
+        <div class="admin-blog-header">
+            <h1><i class="fas fa-edit"></i> Edit Blog Post</h1>
+            <p>Update your blog post content and settings</p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="admin-actions">
+            <div>
+                {% if article.get_image_url %}
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="{{ article.get_image_url }}" alt="{{ article.image_alt|default:article.title }}" 
+                         style="width: 40px; height: 40px; border-radius: 4px; object-fit: cover;">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Current featured image</span>
+                </div>
+                {% endif %}
+            </div>
+            <a href="{% url 'axflo_app:admin_blog' %}" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Blog List
+            </a>
+        </div>
+
+        <!-- Blog Edit Form -->
+        <div class="blog-form">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Title and Status Row -->
+                <div class="form-row two-columns">
+                    <div class="form-group">
+                        <label for="title" class="form-label">Title *</label>
+                        <input type="text" id="title" name="title" class="form-input" 
+                               value="{{ article.title }}" placeholder="Enter blog post title..." required>
+                        <div class="form-help">This will be the main heading of your blog post</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="status" class="form-label">Status</label>
+                        <select id="status" name="status" class="form-select">
+                            {% for status_code, status_name in status_choices %}
+                            <option value="{{ status_code }}" {% if article.status == status_code %}selected{% endif %}>
+                                {{ status_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-help">Published posts will be visible on the website</div>
+                    </div>
+                </div>
+
+                <!-- Category and Tags Row -->
+                <div class="form-row two-columns">
+                    <div class="form-group">
+                        <label for="category" class="form-label">Category</label>
+                        <select id="category" name="category" class="form-select">
+                            <option value="">No Category</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}" {% if article.category.id == category.id %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <div class="form-help">Choose a category to organize your content</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags" class="form-label">Tags</label>
+                        <input type="text" id="tags" name="tags" class="form-input" 
+                               value="{{ article.tags }}" placeholder="tag1, tag2, tag3...">
+                        <div class="form-help">Comma-separated tags for better categorization</div>
+                    </div>
+                </div>
+
+                <!-- Excerpt -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="excerpt" class="form-label">Excerpt</label>
+                        <textarea id="excerpt" name="excerpt" class="form-textarea" 
+                                  placeholder="Brief description of your blog post...">{{ article.excerpt }}</textarea>
+                        <div class="form-help">A short preview that will be shown in blog listings (max 300 characters)</div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="content" class="form-label">Content *</label>
+                        <textarea id="content" name="content" class="form-textarea" 
+                                  style="min-height: 300px;" placeholder="Write your blog post content here..." required>{{ article.content }}</textarea>
+                        <div class="form-help">The main content of your blog post. You can use HTML tags for formatting.</div>
+                    </div>
+                </div>
+
+                <!-- Image Upload Section -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Featured Image</label>
+                        
+                        <!-- Current Image Display -->
+                        {% if article.get_image_url %}
+                        <div style="margin-bottom: 20px; padding: 15px; border: 1px solid var(--border-color); border-radius: var(--border-radius);">
+                            <p style="margin: 0 0 10px 0; font-weight: 600; color: var(--text-primary);">Current Image:</p>
+                            <img src="{{ article.get_image_url }}" alt="{{ article.image_alt|default:article.title }}" 
+                                 style="max-width: 300px; max-height: 200px; border-radius: var(--border-radius); object-fit: cover;">
+                        </div>
+                        {% endif %}
+                        
+                        <!-- File Upload -->
+                        <div class="image-upload-section">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h4>Upload New Image</h4>
+                            <input type="file" id="image" name="image" accept="image/*" class="form-input">
+                            <div class="form-help">Upload a new image file (JPG, PNG, GIF - max 5MB) to replace the current one</div>
+                        </div>
+
+                        <!-- OR Divider -->
+                        <div style="text-align: center; margin: 20px 0; position: relative;">
+                            <hr style="border: 1px solid var(--border-color);">
+                            <span style="background: white; padding: 0 15px; color: var(--text-secondary); position: absolute; top: -12px; left: 50%; transform: translateX(-50%);">OR</span>
+                        </div>
+
+                        <!-- Image URL -->
+                        <div class="form-group">
+                            <label for="image_url" class="form-label">Image URL</label>
+                            <input type="url" id="image_url" name="image_url" class="form-input" 
+                                   value="{{ article.image_url }}" placeholder="https://example.com/image.jpg">
+                            <div class="form-help">Provide a direct link to an image</div>
+                        </div>
+
+                        <!-- Image Alt Text -->
+                        <div class="form-group">
+                            <label for="image_alt" class="form-label">Image Alt Text</label>
+                            <input type="text" id="image_alt" name="image_alt" class="form-input" 
+                                   value="{{ article.image_alt }}" placeholder="Describe the image for accessibility...">
+                            <div class="form-help">Alternative text for screen readers and SEO</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SEO Section -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="meta_description" class="form-label">Meta Description</label>
+                        <textarea id="meta_description" name="meta_description" class="form-textarea" 
+                                  style="min-height: 80px;" placeholder="SEO meta description...">{{ article.meta_description }}</textarea>
+                        <div class="form-help">Brief description for search engines (max 160 characters)</div>
+                    </div>
+                </div>
+
+                <!-- Featured Checkbox -->
+                <div class="checkbox-group">
+                    <input type="checkbox" id="featured" name="featured" class="checkbox-input" {% if article.featured %}checked{% endif %}>
+                    <label for="featured" class="checkbox-label">
+                        <i class="fas fa-star" style="color: var(--primary-gold); margin-right: 5px;"></i>
+                        Feature this post
+                    </label>
+                </div>
+                <div class="form-help" style="margin-top: 5px;">Featured posts may appear prominently on the website</div>
+
+                <!-- Article Stats -->
+                <div style="margin: 30px 0; padding: 20px; background: var(--bg-grey); border-radius: var(--border-radius);">
+                    <h4 style="margin: 0 0 15px 0; color: var(--text-primary);">Article Statistics</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                        <div>
+                            <strong>Created:</strong><br>
+                            <span style="color: var(--text-secondary);">{{ article.created_at|date:"M d, Y \a\t g:i A" }}</span>
+                        </div>
+                        <div>
+                            <strong>Last Updated:</strong><br>
+                            <span style="color: var(--text-secondary);">{{ article.updated_at|date:"M d, Y \a\t g:i A" }}</span>
+                        </div>
+                        <div>
+                            <strong>Views:</strong><br>
+                            <span style="color: var(--text-secondary);">{{ article.view_count }}</span>
+                        </div>
+                        {% if article.published_at %}
+                        <div>
+                            <strong>Published:</strong><br>
+                            <span style="color: var(--text-secondary);">{{ article.published_at|date:"M d, Y \a\t g:i A" }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-row" style="margin-top: 40px;">
+                    <div style="display: flex; gap: 15px; justify-content: flex-start;">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i> Update Blog Post
+                        </button>
+                        <a href="{% url 'axflo_app:admin_blog' %}" class="btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+                        {% if article.status == 'PUBLISHED' %}
+                        <a href="{% url 'axflo_app:media' %}?search={{ article.title }}" target="_blank" class="btn-secondary">
+                            <i class="fas fa-external-link-alt"></i> View on Website
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Character counter for excerpt
+        const excerptField = document.getElementById('excerpt');
+        const excerptHelp = excerptField.nextElementSibling;
+        
+        function updateExcerptCounter() {
+            const length = excerptField.value.length;
+            const maxLength = 300;
+            excerptHelp.textContent = `Brief description (${length}/${maxLength} characters)`;
+            if (length > maxLength) {
+                excerptHelp.style.color = '#dc3545';
+            } else {
+                excerptHelp.style.color = '';
+            }
+        }
+        
+        excerptField.addEventListener('input', updateExcerptCounter);
+        updateExcerptCounter(); // Initialize counter
+
+        // Character counter for meta description
+        const metaField = document.getElementById('meta_description');
+        const metaHelp = metaField.nextElementSibling;
+        
+        function updateMetaCounter() {
+            const length = metaField.value.length;
+            const maxLength = 160;
+            metaHelp.textContent = `SEO meta description (${length}/${maxLength} characters)`;
+            if (length > maxLength) {
+                metaHelp.style.color = '#dc3545';
+            } else {
+                metaHelp.style.color = '';
+            }
+        }
+        
+        metaField.addEventListener('input', updateMetaCounter);
+        updateMetaCounter(); // Initialize counter
+
+        // Form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            const title = document.getElementById('title').value.trim();
+            const content = document.getElementById('content').value.trim();
+            
+            if (!title || !content) {
+                e.preventDefault();
+                alert('Please fill in all required fields (Title and Content).');
+                return false;
+            }
+            
+            // Add loading state
+            const submitBtn = document.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<div class="spinner"></div> Updating...';
+            submitBtn.disabled = true;
+        });
+    </script>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,522 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Plant-Operation-Facility-Management - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/plant-operation-facility-management.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Plant Operations Hero Section -->
+<section class="plant-hero">
+        <div class="plant-backdrop"></div>
+        
+        <div class="plant-elements">
+            <div class="plant-facility facility-1">
+                <i class="fas fa-industry"></i>
+            </div>
+            <div class="plant-facility facility-2">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="plant-facility facility-3">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="plant-facility facility-4">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="plant-facility facility-5">
+                <i class="fas fa-wrench"></i>
+            </div>
+            <div class="plant-facility facility-6">
+                <i class="fas fa-microchip"></i>
+            </div>
+        </div>
+        
+        <div class="plant-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="plant-badge">
+                <div class="plant-indicator"></div>
+                Equipment Management Excellence Since 2009
+            </div>
+            
+            <h1 class="plant-title">Equipment Management & Facility Support</h1>
+            
+            <p class="plant-subtitle">
+                Professional equipment maintenance and facility support services ensuring optimal performance 
+                of oil spill response equipment and environmental systems across Nigeria's oil and gas operations.
+            </p>
+            
+            <a href="#plant-overview" class="plant-cta">
+                Explore Our Services
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Plant Overview -->
+    <section id="plant-overview" class="plant-overview">
+        <div class="plant-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Equipment Management & Support Services</h2>
+                    <p>
+                        Axflo's Equipment Management & Facility Support division provides essential maintenance 
+                        and support services for oil spill response equipment, environmental systems, and 
+                        operational facilities. Our comprehensive approach ensures equipment readiness, 
+                        operational reliability, and compliance with environmental standards.
+                    </p>
+                    <p>
+                        From routine equipment maintenance to emergency repair services, our experienced 
+                        technicians provide professional support that keeps critical environmental protection 
+                        systems operational. We specialize in OSR equipment, marine systems, and facility 
+                        maintenance with partnerships from leading manufacturers DESMI and Darcy Spillcare.
+                    </p>
+                    
+                    <div class="plant-stats">
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="100">
+                            <span class="stat-figure">15+</span>
+                            <span class="stat-text">Years Experience</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="200">
+                            <span class="stat-figure">200+</span>
+                            <span class="stat-text">Equipment Units</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="300">
+                            <span class="stat-figure">24/7</span>
+                            <span class="stat-text">Emergency Support</span>
+                        </div>
+                        <div class="stat-block" data-aos="fade-up" data-aos-delay="400">
+                            <span class="stat-figure">95%</span>
+                            <span class="stat-text">Equipment Readiness</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                               <img src="{% static 'axflo_app/images/axflo23.jpg' %}" alt="OSR Equipment Installation" loading="lazy">
+                        <p>Equipment Management</p>
+                        <small>OSR equipment maintenance & support</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operations Services Detailed -->
+    <section class="operations-services">
+        <div class="plant-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Core Equipment & Facility Services</h2>
+                <p>
+                    Professional maintenance and support services for oil spill response equipment, 
+                    environmental systems, and operational facilities ensuring readiness and compliance.
+                </p>
+            </div>
+            
+            <div class="operations-grid">
+                <!-- OSR Equipment Maintenance -->
+                <div class="operations-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="operations-card-header">
+                        <div class="operations-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>OSR Equipment Maintenance</h3>
+                    </div>
+                    <p class="operations-description">
+                        Comprehensive maintenance services for oil spill response equipment including skimmers, 
+                        containment booms, transfer pumps, and dispersant systems ensuring optimal performance 
+                        and immediate readiness for emergency deployment when needed.
+                    </p>
+                    <ul class="operations-capabilities">
+                        <li>Skimmer Systems Maintenance</li>
+                        <li>Boom Inspection & Repair</li>
+                        <li>Pump & Engine Servicing</li>
+                        <li>Equipment Testing & Certification</li>
+                        <li>Parts Replacement & Upgrades</li>
+                        <li>Performance Optimization</li>
+                        <li>Maintenance Documentation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="operations-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Equipment Commissioning -->
+                <div class="operations-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="operations-card-header">
+                        <div class="operations-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3>Equipment Commissioning & Testing</h3>
+                    </div>
+                    <p class="operations-description">
+                        Professional commissioning services for new oil spill response equipment installations 
+                        including performance testing, operational verification, and staff training to ensure 
+                        equipment meets specifications and operational requirements.
+                    </p>
+                    <ul class="operations-capabilities">
+                        <li>New Equipment Installation</li>
+                        <li>System Integration Testing</li>
+                        <li>Performance Verification</li>
+                        <li>Operational Training</li>
+                        <li>Compliance Certification</li>
+                        <li>Documentation & Handover</li>
+                        <li>Warranty Support</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="operations-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Warehouse & Storage Management -->
+                <div class="operations-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="operations-card-header">
+                        <div class="operations-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3>Warehouse & Storage Management</h3>
+                    </div>
+                    <p class="operations-description">
+                        Professional warehouse and storage facility management for oil spill response equipment, 
+                        absorbent materials, and environmental supplies ensuring proper storage conditions, 
+                        inventory control, and rapid deployment capabilities.
+                    </p>
+                    <ul class="operations-capabilities">
+                        <li>Equipment Storage Management</li>
+                        <li>Inventory Control Systems</li>
+                        <li>Climate-Controlled Storage</li>
+                        <li>Stock Rotation & Quality Control</li>
+                        <li>Emergency Deployment Readiness</li>
+                        <li>Supply Chain Coordination</li>
+                        <li>Documentation & Tracking</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="operations-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Emergency Response Support -->
+                <div class="operations-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="operations-card-header">
+                        <div class="operations-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3>Emergency Response Support</h3>
+                    </div>
+                    <p class="operations-description">
+                        Round-the-clock emergency response support services including rapid equipment deployment, 
+                        field repair services, and technical assistance ensuring immediate response capability 
+                        for oil spill incidents and environmental emergencies.
+                    </p>
+                    <ul class="operations-capabilities">
+                        <li>24/7 Emergency Response</li>
+                        <li>Rapid Equipment Deployment</li>
+                        <li>Field Repair Services</li>
+                        <li>Technical Support</li>
+                        <li>Emergency Parts Supply</li>
+                        <li>On-Site Technical Assistance</li>
+                        <li>Equipment Recovery & Cleanup</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="operations-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Management Process -->
+    <section class="asset-performance">
+        <div class="plant-container">
+            <div class="performance-header" data-aos="fade-up">
+                <h2>Equipment Management Process</h2>
+                <p>
+                    Systematic approach to equipment management ensuring optimal performance, 
+                    reliability, and readiness for emergency deployment when needed.
+                </p>
+            </div>
+            
+            <div class="performance-timeline">
+                <div class="performance-phase" data-aos="slide-right" data-aos-delay="100">
+                    <div class="phase-number">01</div>
+                    <div class="phase-details">
+                        <h3>Equipment Assessment</h3>
+                        <p>
+                            Comprehensive evaluation of equipment condition, performance status, and operational 
+                            readiness using systematic inspection procedures, testing protocols, and condition 
+                            monitoring to establish maintenance requirements and performance baselines.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="performance-phase" data-aos="slide-left" data-aos-delay="200">
+                    <div class="phase-number">02</div>
+                    <div class="phase-details">
+                        <h3>Maintenance Planning</h3>
+                        <p>
+                            Development of comprehensive maintenance schedules based on manufacturer guidelines, 
+                            operational requirements, and regulatory compliance needs to ensure equipment 
+                            reliability and immediate readiness for emergency deployment.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="performance-phase" data-aos="slide-right" data-aos-delay="300">
+                    <div class="phase-number">03</div>
+                    <div class="phase-details">
+                        <h3>Maintenance Execution</h3>
+                        <p>
+                            Professional execution of scheduled maintenance activities, repairs, and upgrades 
+                            by qualified technicians using proper tools, genuine parts, and established 
+                            procedures to maintain equipment performance and reliability.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="performance-phase" data-aos="slide-left" data-aos-delay="400">
+                    <div class="phase-number">04</div>
+                    <div class="phase-details">
+                        <h3>Performance Monitoring</h3>
+                        <p>
+                            Continuous monitoring of equipment performance, maintenance effectiveness, and 
+                            operational readiness through regular testing, documentation, and performance 
+                            tracking to ensure sustained reliability and compliance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="maintenance-excellence">
+        <div class="plant-container">
+            <div class="excellence-header" data-aos="fade-up">
+                <h2>Equipment Management Capabilities</h2>
+                <p>
+                    Comprehensive equipment management approach ensuring reliability, 
+                    readiness, and optimal performance of critical environmental protection systems.
+                </p>
+            </div>
+            
+            <div class="excellence-grid">
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="excellence-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4>Scheduled Maintenance</h4>
+                    <p>Systematic maintenance programs following manufacturer guidelines and regulatory requirements for optimal equipment performance.</p>
+                </div>
+                
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="excellence-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h4>Equipment Testing</h4>
+                    <p>Regular testing and performance verification ensuring equipment readiness and compliance with operational specifications.</p>
+                </div>
+                
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="excellence-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Maintenance Records</h4>
+                    <p>Comprehensive maintenance documentation and record keeping ensuring regulatory compliance and performance tracking.</p>
+                </div>
+                
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="excellence-icon">
+                        <i class="fas fa-user-cog"></i>
+                    </div>
+                    <h4>Trained Technicians</h4>
+                    <p>Qualified maintenance technicians with specialized training in OSR equipment and environmental systems maintenance.</p>
+                </div>
+                
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="excellence-icon">
+                        <i class="fas fa-warehouse"></i>
+                    </div>
+                    <h4>Parts Inventory</h4>
+                    <p>Strategic spare parts inventory management ensuring availability of critical components for emergency repairs and maintenance.</p>
+                </div>
+                
+                <div class="excellence-component" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="excellence-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4>Performance Tracking</h4>
+                    <p>Equipment performance monitoring and reporting systems providing insights into reliability and maintenance effectiveness.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Portfolio -->
+    <section class="digital-operations">
+        <div class="plant-container">
+            <div class="digital-header" data-aos="fade-up">
+                <h2>Equipment Portfolio & Services</h2>
+                <p>Comprehensive management services for diverse oil spill response equipment and environmental protection systems.</p>
+            </div>
+            
+            <div class="digital-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="digital-button active" onclick="showDigital('containment')">Containment Equipment</button>
+                <button class="digital-button" onclick="showDigital('recovery')">Recovery Systems</button>
+                <button class="digital-button" onclick="showDigital('support')">Support Equipment</button>
+            </div>
+            
+            <div id="containment" class="digital-content active">
+                <div class="digital-showcase">
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="digital-icon">
+                            <i class="fas fa-tv"></i>
+                        </div>
+                        <h4>Containment Booms</h4>
+                        <p>Professional maintenance of offshore, nearshore, and river containment booms including Ro-Fence permanent installations.</p>
+                        <span class="digital-metric">Multiple Types</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="digital-icon">
+                            <i class="fas fa-satellite-dish"></i>
+                        </div>
+                        <h4>Absorbent Materials</h4>
+                        <p>Inventory management and quality control for oil absorbent booms, pads, rolls, and specialized netted boom systems.</p>
+                        <span class="digital-metric">Large Inventory</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="digital-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h4>Spill Kits</h4>
+                        <p>Maintenance and restocking of emergency spill kits for immediate response to small-scale hydrocarbon incidents.</p>
+                        <span class="digital-metric">Ready to Deploy</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="recovery" class="digital-content">
+                <div class="digital-showcase">
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="digital-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Skimmer Systems</h4>
+                        <p>Professional maintenance of disc brush drum skimmers, Komara 20 systems, and specialized oil recovery equipment.</p>
+                        <span class="digital-metric">Multiple Units</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="digital-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h4>Transfer Pumps</h4>
+                        <p>Maintenance and testing of PD 75 transfer pumps and other oil transfer systems for recovery operations.</p>
+                        <span class="digital-metric">High Performance</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="digital-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Fast Tanks</h4>
+                        <p>Professional maintenance of temporary storage systems including fast tanks for recovered oil containment.</p>
+                        <span class="digital-metric">Various Capacities</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="support" class="digital-content">
+                <div class="digital-showcase">
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="digital-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h4>Power Systems</h4>
+                        <p>Maintenance of power packs, generators, and hydraulic systems supporting OSR equipment operations in remote locations.</p>
+                        <span class="digital-metric">Reliable Power</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="digital-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4>Dispersant Systems</h4>
+                        <p>Professional servicing of dispersant spray systems with Afedo nozzles for controlled chemical dispersant application.</p>
+                        <span class="digital-metric">Precision Application</span>
+                    </div>
+                    <div class="digital-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="digital-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Support Vessels</h4>
+                        <p>Maintenance coordination for marine support vessels and equipment deployment systems for offshore operations.</p>
+                        <span class="digital-metric">Marine Ready</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="plant-cta-section">
+        <div class="plant-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Ensure Equipment Readiness?</h2>
+                <p>
+                    Partner with Nigeria's trusted equipment management specialists for 
+                    comprehensive maintenance and support services that keep your environmental protection systems ready.
+                </p>
+                <div class="cta-buttons">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-btn cta-btn-primary">
+                        <i class="fas fa-phone"></i>
+                        Contact Our Team
+                    </a>
+                    <a href="#portfolio" class="cta-btn cta-btn-secondary">
+                        <i class="fas fa-file-alt"></i>
+                        View Equipment Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/plant-operation-facility-management.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

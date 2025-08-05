@@ -1,0 +1,483 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Edit Newsletter - Axflo Admin{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'axflo_app/css/admin_newsletter_create.css' %}">
+    <!-- Rich Text Editor -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="newsletter-create-container">
+        <!-- Header Section -->
+        <div class="create-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><i class="fas fa-edit"></i> Edit Newsletter</h1>
+                    <p>Update your newsletter content and settings</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/admin-newsletters/" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Newsletters
+                    </a>
+                    <button type="button" class="btn btn-outline" id="previewBtn">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Newsletter Edit Form -->
+        <form method="post" id="newsletterForm" class="newsletter-form">
+            {% csrf_token %}
+            
+            <div class="form-layout">
+                <!-- Left Column - Main Content -->
+                <div class="main-content">
+                    <!-- Basic Information Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-info-circle"></i> Basic Information</h2>
+                            <p>Update the basic details of your newsletter</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="title" class="form-label">Newsletter Title *</label>
+                            <input type="text" id="title" name="title" class="form-control" 
+                                   value="{{ newsletter.title }}" 
+                                   placeholder="Enter newsletter title (this will be the email subject)" required>
+                            <div class="form-help">This will be used as the email subject line</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="template" class="form-label">Newsletter Template</label>
+                            <select id="template" name="template" class="form-control">
+                                <option value="basic">Basic Newsletter</option>
+                                <option value="announcement">Company Announcement</option>
+                                <option value="project_update">Project Update</option>
+                                <option value="safety_alert">Safety Alert</option>
+                                <option value="technical_insight">Technical Insight</option>
+                            </select>
+                            <div class="form-help">Choose a template that matches your content type</div>
+                        </div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h2><i class="fas fa-edit"></i> Newsletter Content</h2>
+                            <p>Update your newsletter content with rich text formatting</p>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="content" class="form-label">Content *</label>
+                            <textarea id="content" name="content" class="form-control rich-editor" 
+                                      placeholder="Write your newsletter content here..." required>{{ newsletter.content }}</textarea>
+                            <div class="form-help">Use the rich text editor to format your content with headings, lists, links, and images</div>
+                        </div>
+
+                        <!-- Content Templates -->
+                        <div class="content-templates">
+                            <h3>Content Templates</h3>
+                            <div class="template-grid">
+                                <div class="template-card" data-template="company-news">
+                                    <div class="template-icon">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <h4>Company News</h4>
+                                    <p>Updates and announcements</p>
+                                    <button type="button" class="btn btn-outline btn-sm load-template">Use Template</button>
+                                </div>
+                                
+                                <div class="template-card" data-template="project-update">
+                                    <div class="template-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <h4>Project Update</h4>
+                                    <p>Progress reports and milestones</p>
+                                    <button type="button" class="btn btn-outline btn-sm load-template">Use Template</button>
+                                </div>
+                                
+                                <div class="template-card" data-template="safety-alert">
+                                    <div class="template-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <h4>Safety Alert</h4>
+                                    <p>Important safety information</p>
+                                    <button type="button" class="btn btn-outline btn-sm load-template">Use Template</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Settings -->
+                <div class="sidebar-content">
+                    <!-- Recipients Section -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-users"></i> Recipients</h3>
+                            <p>Choose who will receive this newsletter</p>
+                        </div>
+                        
+                        <div class="recipients-info">
+                            <div class="recipient-count">
+                                <span class="count-number" id="recipientCount">{{ newsletter.recipient_count|default:0 }}</span>
+                                <span class="count-label">Subscribers</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Target Categories</label>
+                            <div class="categories-list">
+                                {% for category in categories %}
+                                    <label class="category-checkbox">
+                                        <input type="checkbox" name="categories" value="{{ category.id }}" 
+                                               data-subscribers="{{ category.subscriber_count|default:0 }}"
+                                               {% if category in selected_categories %}checked{% endif %}>
+                                        <span class="checkbox-custom"></span>
+                                        <span class="category-info">
+                                            <span class="category-name">{{ category.name }}</span>
+                                            <span class="category-count">{{ category.subscriber_count|default:0 }} subscribers</span>
+                                        </span>
+                                    </label>
+                                {% empty %}
+                                    <div class="no-categories">
+                                        <p>No categories available.</p>
+                                        <a href="/admin-newsletter-categories/" class="btn btn-outline btn-sm">
+                                            <i class="fas fa-plus"></i> Create Categories
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="form-help">Select categories to target specific subscriber groups</div>
+                        </div>
+                    </div>
+
+                    <!-- Sending Options -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-paper-plane"></i> Sending Options</h3>
+                            <p>Choose when to send your newsletter</p>
+                        </div>
+                        
+                        <div class="sending-options">
+                            <label class="option-radio">
+                                <input type="radio" name="send_option" value="draft" checked>
+                                <span class="radio-custom"></span>
+                                <span class="option-info">
+                                    <span class="option-title">Save as Draft</span>
+                                    <span class="option-desc">Save without sending, review later</span>
+                                </span>
+                            </label>
+                            
+                            <label class="option-radio">
+                                <input type="radio" name="send_option" value="immediate">
+                                <span class="radio-custom"></span>
+                                <span class="option-info">
+                                    <span class="option-title">Send Immediately</span>
+                                    <span class="option-desc">Send to all selected subscribers now</span>
+                                </span>
+                            </label>
+                            
+                            <label class="option-radio">
+                                <input type="radio" name="send_option" value="scheduled">
+                                <span class="radio-custom"></span>
+                                <span class="option-info">
+                                    <span class="option-title">Schedule for Later</span>
+                                    <span class="option-desc">Set a specific date and time</span>
+                                </span>
+                            </label>
+                        </div>
+                        
+                        <div class="schedule-options" id="scheduleOptions" style="display: none;">
+                            <div class="form-group">
+                                <label for="send_date" class="form-label">Send Date</label>
+                                <input type="date" id="send_date" name="send_date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="send_time" class="form-label">Send Time</label>
+                                <input type="time" id="send_time" name="send_time" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Options -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-cog"></i> Additional Options</h3>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="send_test" id="sendTest">
+                                <span class="checkbox-custom"></span>
+                                <span>Send test email to myself first</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="track_opens" id="trackOpens" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Track email opens</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="checkbox-option">
+                                <input type="checkbox" name="track_clicks" id="trackClicks" checked>
+                                <span class="checkbox-custom"></span>
+                                <span>Track link clicks</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <div class="action-group">
+                    <button type="button" class="btn btn-secondary" id="saveDraftBtn">
+                        <i class="fas fa-save"></i> Save as Draft
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="updateNewsletterBtn">
+                        <i class="fas fa-save"></i> Update Newsletter
+                    </button>
+                </div>
+                
+                <div class="action-info">
+                    <p>Your newsletter will be updated based on the sending option selected above.</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3><i class="fas fa-eye"></i> Newsletter Preview</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-container">
+                    <div class="email-preview">
+                        <div class="email-header">
+                            <div class="email-subject" id="previewSubject">{{ newsletter.title }}</div>
+                            <div class="email-from">From: Axflo Oil & Gas</div>
+                        </div>
+                        <div class="email-content" id="previewContent">
+                            {{ newsletter.content|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal-cancel">Close Preview</button>
+                <button type="button" class="btn btn-primary" id="previewUpdateBtn">Looks Good - Update Newsletter</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rich text editor initialization
+            let editor;
+            ClassicEditor
+                .create(document.querySelector('#content'), {
+                    toolbar: [
+                        'heading', '|',
+                        'bold', 'italic', 'link', '|',
+                        'bulletedList', 'numberedList', '|',
+                        'outdent', 'indent', '|',
+                        'blockQuote', 'insertTable', '|',
+                        'undo', 'redo'
+                    ],
+                    heading: {
+                        options: [
+                            { model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph' },
+                            { model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1' },
+                            { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
+                            { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
+                        ]
+                    }
+                })
+                .then(newEditor => {
+                    editor = newEditor;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+
+            // Elements
+            const categoryCheckboxes = document.querySelectorAll('input[name="categories"]');
+            const recipientCount = document.getElementById('recipientCount');
+            const sendOptions = document.querySelectorAll('input[name="send_option"]');
+            const scheduleOptions = document.getElementById('scheduleOptions');
+            const previewBtn = document.getElementById('previewBtn');
+            const previewModal = document.getElementById('previewModal');
+            const saveDraftBtn = document.getElementById('saveDraftBtn');
+            const updateNewsletterBtn = document.getElementById('updateNewsletterBtn');
+            const newsletterForm = document.getElementById('newsletterForm');
+
+            // Template content
+            const templates = {
+                'company-news': `
+                    <h1>Company News Update</h1>
+                    <p>Dear Valued Subscribers,</p>
+                    <p>We're excited to share the latest updates from Axflo Oil & Gas...</p>
+                    <h2>What's New</h2>
+                    <ul>
+                        <li>Recent achievements and milestones</li>
+                        <li>New project announcements</li>
+                        <li>Team updates and recognitions</li>
+                    </ul>
+                    <p>Best regards,<br>The Axflo Team</p>
+                `,
+                'project-update': `
+                    <h1>Project Progress Update</h1>
+                    <p>Dear Stakeholders,</p>
+                    <p>Here's the latest progress report on our ongoing projects...</p>
+                    <h2>Current Projects</h2>
+                    <h3>Project Alpha - North Sea Installation</h3>
+                    <p>Status: On track<br>Completion: 85%<br>Next milestone: Equipment testing</p>
+                    <h3>Project Beta - Pipeline Maintenance</h3>
+                    <p>Status: Ahead of schedule<br>Completion: 92%<br>Expected finish: Next month</p>
+                    <p>For more details, please contact our project management team.</p>
+                `,
+                'safety-alert': `
+                    <h1>⚠️ Important Safety Alert</h1>
+                    <p><strong>ATTENTION ALL PERSONNEL</strong></p>
+                    <p>This is an important safety notification regarding...</p>
+                    <h2>Immediate Actions Required</h2>
+                    <ol>
+                        <li>Review updated safety protocols</li>
+                        <li>Attend mandatory safety briefing</li>
+                        <li>Update emergency contact information</li>
+                    </ol>
+                    <p><strong>Compliance deadline:</strong> [Insert date]</p>
+                    <p>For questions, contact the Safety Department immediately.</p>
+                `
+            };
+
+            // Update recipient count
+            function updateRecipientCount() {
+                let totalRecipients = 0;
+                categoryCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        totalRecipients += parseInt(checkbox.dataset.subscribers) || 0;
+                    }
+                });
+                recipientCount.textContent = totalRecipients;
+            }
+
+            // Category checkbox change handler
+            categoryCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateRecipientCount);
+            });
+
+            // Send option change handler
+            sendOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    if (this.value === 'scheduled') {
+                        scheduleOptions.style.display = 'block';
+                    } else {
+                        scheduleOptions.style.display = 'none';
+                    }
+                });
+            });
+
+            // Template loading
+            document.querySelectorAll('.load-template').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const templateType = this.closest('.template-card').dataset.template;
+                    if (templates[templateType] && editor) {
+                        if (confirm('This will replace the current content. Are you sure?')) {
+                            editor.setData(templates[templateType]);
+                            // Scroll to editor
+                            document.querySelector('.rich-editor').scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // Preview functionality
+            previewBtn.addEventListener('click', function() {
+                const title = document.getElementById('title').value;
+                const content = editor ? editor.getData() : document.getElementById('content').value;
+                
+                document.getElementById('previewSubject').textContent = title || 'Newsletter Subject';
+                document.getElementById('previewContent').innerHTML = content || 'Newsletter content will appear here...';
+                
+                previewModal.style.display = 'flex';
+            });
+
+            // Modal close
+            document.querySelectorAll('.modal-close, .modal-cancel').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    previewModal.style.display = 'none';
+                });
+            });
+
+            // Save as draft
+            saveDraftBtn.addEventListener('click', function() {
+                document.querySelector('input[name="send_option"][value="draft"]').checked = true;
+                newsletterForm.submit();
+            });
+
+            // Form submission
+            newsletterForm.addEventListener('submit', function(e) {
+                // Update content from editor
+                if (editor) {
+                    document.getElementById('content').value = editor.getData();
+                }
+
+                // Set immediate sending flag
+                const sendOption = document.querySelector('input[name="send_option"]:checked').value;
+                if (sendOption === 'immediate') {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'send_immediately';
+                    input.value = 'on';
+                    this.appendChild(input);
+                }
+
+                // Validate required fields
+                const title = document.getElementById('title').value.trim();
+                const content = document.getElementById('content').value.trim();
+
+                if (!title) {
+                    e.preventDefault();
+                    alert('Please enter a newsletter title.');
+                    document.getElementById('title').focus();
+                    return;
+                }
+
+                if (!content) {
+                    e.preventDefault();
+                    alert('Please enter newsletter content.');
+                    return;
+                }
+
+                // Confirm sending if immediate
+                if (sendOption === 'immediate') {
+                    const recipientCount = document.getElementById('recipientCount').textContent;
+                    if (!confirm(`Are you sure you want to update and send this newsletter immediately to ${recipientCount} subscribers?`)) {
+                        e.preventDefault();
+                        return;
+                    }
+                }
+            });
+
+            // Initialize recipient count
+            updateRecipientCount();
+        });
+    </script>
+{% endblock %}

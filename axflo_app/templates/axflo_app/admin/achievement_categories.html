@@ -1,0 +1,334 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Achievement Categories - Axflo{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/admin_categories.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-categories-container">
+    <!-- Header Section -->
+    <div class="admin-categories-header">
+        <h1><i class="fas fa-tags"></i> Achievement Categories</h1>
+        <p>Organize achievements into categorized groups with custom colors and icons</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="categories-stats">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-tags"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_categories }}</div>
+                <div class="stat-label">Total Categories</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_achievements }}</div>
+                <div class="stat-label">Total Achievements</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-palette"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ categories_with_custom_colors }}</div>
+                <div class="stat-label">Custom Colors</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="admin-actions">
+        <div class="action-buttons">
+            <button class="btn-primary" onclick="openCategoryModal()">
+                <i class="fas fa-plus"></i> Add New Category
+            </button>
+            <button class="btn-secondary" onclick="reorderCategories()">
+                <i class="fas fa-sort"></i> Reorder Categories
+            </button>
+        </div>
+        <a href="/admin-achievements/" class="btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back to Achievements
+        </a>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="categories-grid">
+        {% for category in categories %}
+        <div class="category-card" data-id="{{ category.id }}">
+            <div class="category-header" style="background: linear-gradient(135deg, {{ category.color }}22 0%, {{ category.color }}44 100%);">
+                <div class="category-icon" style="background-color: {{ category.color }};">
+                    <i class="fas {{ category.icon|default:'fa-tag' }}"></i>
+                </div>
+                <div class="category-color-dot" style="background-color: {{ category.color }};"></div>
+            </div>
+            
+            <div class="category-content">
+                <h3 class="category-name">{{ category.name }}</h3>
+                <p class="category-description">{{ category.description|default:"No description provided"|truncatewords:15 }}</p>
+                
+                <div class="category-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">{{ category.achievements.count }}</span>
+                        <span class="stat-label">Achievements</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">{{ category.achievements|length }}</span>
+                        <span class="stat-label">Active</span>
+                    </div>
+                </div>
+                
+                <div class="category-preview">
+                    {% if category.achievements.all %}
+                    <div class="preview-achievements">
+                        {% for achievement in category.achievements.all|slice:":3" %}
+                        <div class="preview-achievement" title="{{ achievement.title }}">
+                            {% if achievement.featured_image %}
+                            <img src="{{ achievement.featured_image.url }}" alt="{{ achievement.title }}">
+                            {% else %}
+                            <div class="preview-placeholder">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                        {% if category.achievements.count > 3 %}
+                        <div class="preview-more">+{{ category.achievements.count|add:"-3" }}</div>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="no-achievements">
+                        <i class="fas fa-info-circle"></i>
+                        <span>No achievements yet</span>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="category-actions">
+                <button class="btn-action btn-edit" onclick="editCategory({{ category.id }})" title="Edit Category">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn-action btn-view" onclick="viewCategoryAchievements({{ category.id }})" title="View Achievements">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button class="btn-action btn-color" onclick="changeColor({{ category.id }})" title="Change Color">
+                    <i class="fas fa-palette"></i>
+                </button>
+                {% if category.achievements.count == 0 %}
+                <button class="btn-action btn-delete" onclick="deleteCategory({{ category.id }})" title="Delete Category">
+                    <i class="fas fa-trash"></i>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fas fa-tags"></i>
+            </div>
+            <h3>No Categories Found</h3>
+            <p>Create your first achievement category to start organizing your achievements.</p>
+            <button class="btn-primary" onclick="openCategoryModal()">
+                <i class="fas fa-plus"></i> Create First Category
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Category Usage Chart -->
+    {% if categories %}
+    <div class="usage-chart-container">
+        <h3>Category Usage Distribution</h3>
+        <div class="chart-wrapper">
+            <canvas id="categoryChart" width="400" height="200"></canvas>
+        </div>
+        <div class="chart-legend">
+            {% for category in categories %}
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: {{ category.color }};"></div>
+                <span class="legend-label">{{ category.name }} ({{ category.achievements.count }})</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Category Modal -->
+<div id="categoryModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="categoryModalTitle">Add New Category</h2>
+            <span class="modal-close" onclick="closeCategoryModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="categoryForm" method="POST">
+                {% csrf_token %}
+                <input type="hidden" id="categoryId" name="category_id">
+                
+                <div class="form-group">
+                    <label for="category_name">Category Name *</label>
+                    <input type="text" id="category_name" name="name" required class="form-input"
+                           placeholder="e.g., Environmental Excellence">
+                </div>
+
+                <div class="form-group">
+                    <label for="category_description">Description</label>
+                    <textarea id="category_description" name="description" rows="3" class="form-textarea"
+                              placeholder="Brief description of this category..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category_icon">Icon</label>
+                        <div class="icon-selector">
+                            <input type="text" id="category_icon" name="icon" class="form-input icon-input"
+                                   placeholder="fa-trophy" value="fa-trophy">
+                            <div class="icon-preview">
+                                <i class="fas fa-trophy" id="iconPreview"></i>
+                            </div>
+                        </div>
+                        <div class="icon-suggestions">
+                            <button type="button" class="icon-btn" data-icon="fa-trophy"><i class="fas fa-trophy"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-award"><i class="fas fa-award"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-medal"><i class="fas fa-medal"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-certificate"><i class="fas fa-certificate"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-star"><i class="fas fa-star"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-crown"><i class="fas fa-crown"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-gem"><i class="fas fa-gem"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-shield-alt"><i class="fas fa-shield-alt"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-leaf"><i class="fas fa-leaf"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-globe"><i class="fas fa-globe"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-recycle"><i class="fas fa-recycle"></i></button>
+                            <button type="button" class="icon-btn" data-icon="fa-water"><i class="fas fa-water"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="category_color">Color *</label>
+                        <div class="color-selector">
+                            <input type="color" id="category_color" name="color" class="color-input" value="#d6a019">
+                            <div class="color-preview" style="background-color: #d6a019;"></div>
+                        </div>
+                        <div class="color-presets">
+                            <button type="button" class="color-preset" data-color="#d6a019" style="background-color: #d6a019;" title="Axflo Gold"></button>
+                            <button type="button" class="color-preset" data-color="#ffcc00" style="background-color: #ffcc00;" title="Bright Gold"></button>
+                            <button type="button" class="color-preset" data-color="#4facfe" style="background-color: #4facfe;" title="Blue"></button>
+                            <button type="button" class="color-preset" data-color="#43a047" style="background-color: #43a047;" title="Green"></button>
+                            <button type="button" class="color-preset" data-color="#e53935" style="background-color: #e53935;" title="Red"></button>
+                            <button type="button" class="color-preset" data-color="#fb8c00" style="background-color: #fb8c00;" title="Orange"></button>
+                            <button type="button" class="color-preset" data-color="#8e24aa" style="background-color: #8e24aa;" title="Purple"></button>
+                            <button type="button" class="color-preset" data-color="#00acc1" style="background-color: #00acc1;" title="Cyan"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="color-icon-preview">
+                    <div class="preview-card">
+                        <div class="preview-header" style="background: linear-gradient(135deg, #d6a01922 0%, #d6a01944 100%);">
+                            <div class="preview-icon" style="background-color: #d6a019;">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                        </div>
+                        <div class="preview-content">
+                            <h4>Preview</h4>
+                            <p>This is how your category will look</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeCategoryModal()">Cancel</button>
+                    <button type="submit" class="btn-primary">
+                        <i class="fas fa-save"></i> Save Category
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- View Category Achievements Modal -->
+<div id="viewCategoryModal" class="modal modal-large">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="viewCategoryModalTitle">Category Achievements</h2>
+            <span class="modal-close" onclick="closeViewCategoryModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div id="viewCategoryModalContent">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Color Picker Modal -->
+<div id="colorPickerModal" class="modal">
+    <div class="modal-content modal-small">
+        <div class="modal-header">
+            <h2>Change Category Color</h2>
+            <span class="modal-close" onclick="closeColorPickerModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="color-picker-grid">
+                <!-- Color options will be populated by JavaScript -->
+            </div>
+            <div class="custom-color-section">
+                <label for="customColor">Custom Color:</label>
+                <input type="color" id="customColor" class="color-input">
+                <button class="btn-primary" onclick="applyCustomColor()">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'axflo_app/js/admin_categories.js' %}"></script>
+<script>
+// Pass data to JavaScript
+window.categoryData = {
+    categories: {{ categories_json|safe }}
+};
+
+// Initialize chart if categories exist
+{% if categories %}
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('categoryChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: [{% for category in categories %}'{{ category.name }}'{% if not forloop.last %},{% endif %}{% endfor %}],
+            datasets: [{
+                data: [{% for category in categories %}{{ category.achievements.count }}{% if not forloop.last %},{% endif %}{% endfor %}],
+                backgroundColor: [{% for category in categories %}'{{ category.color }}'{% if not forloop.last %},{% endif %}{% endfor %}],
+                borderWidth: 2,
+                borderColor: '#ffffff'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+});
+{% endif %}
+</script>
+{% endblock %}

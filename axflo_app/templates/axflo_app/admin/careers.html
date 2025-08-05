@@ -1,0 +1,551 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Career Management - Axflo{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --primary-gold: #d6a019;
+    --primary-gold-light: #ffcc00;
+    --bg-dark: #0a0a0a;
+    --bg-light: #fafafa;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --bg-glass-hover: rgba(255, 255, 255, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(26, 26, 26, 0.7);
+    --text-tertiary: rgba(26, 26, 26, 0.5);
+    --text-white: #ffffff;
+    --text-light-alpha: rgba(255, 255, 255, 0.9);
+    --text-light-secondary: rgba(255, 255, 255, 0.7);
+    --border-glass: rgba(214, 160, 25, 0.3);
+    --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --blur-amount: 20px;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(214, 160, 25, 0.15);
+}
+
+[data-theme="dark"] {
+    --bg-light: #111111;
+    --bg-dark: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --card-bg: rgba(20, 20, 20, 0.95);
+    --bg-glass: rgba(0, 0, 0, 0.3);
+    --bg-glass-hover: rgba(0, 0, 0, 0.5);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    background: var(--primary-gold);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-dark);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-primary);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--primary-gold-light);
+}
+
+/* Enhanced Delete Button */
+.career-action-btn.delete {
+    background: var(--error-color) !important;
+    color: white !important;
+    border: none;
+    transition: var(--transition-smooth);
+}
+
+.career-action-btn.delete:hover {
+    background: #dc2626 !important;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Responsive enhancements */
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .career-actions {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .career-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .career-table-wrapper {
+        overflow-x: auto;
+    }
+    
+    .career-table {
+        min-width: 600px;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="career-list-container">
+    {% csrf_token %}
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <div class="career-list-header">
+        <div class="career-list-title">
+            <h1><i class="fas fa-briefcase"></i> Career Management</h1>
+            <a href="/admin-career-create/" class="career-add-btn">
+                <i class="fas fa-plus-circle"></i>
+                Create Job Posting
+            </a>
+        </div>
+        <p class="career-list-subtitle">Manage job postings and track applications across your organization</p>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="career-stats">
+        <div class="career-stat-card">
+            <div class="career-stat-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="career-stat-number">{{ total_jobs }}</div>
+            <div class="career-stat-label">Total Jobs</div>
+        </div>
+        <div class="career-stat-card">
+            <div class="career-stat-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="career-stat-number">{{ active_jobs }}</div>
+            <div class="career-stat-label">Active Jobs</div>
+        </div>
+        <div class="career-stat-card">
+            <div class="career-stat-icon">
+                <i class="fas fa-pause-circle"></i>
+            </div>
+            <div class="career-stat-number">{{ inactive_jobs }}</div>
+            <div class="career-stat-label">Inactive Jobs</div>
+        </div>
+        <div class="career-stat-card">
+            <div class="career-stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="career-stat-number">{{ total_applications|default:"0" }}</div>
+            <div class="career-stat-label">Applications</div>
+        </div>
+    </div>
+
+    <!-- Job Table -->
+    <div class="career-table-container">
+        <div class="career-table-header">
+            <h2><i class="fas fa-list"></i> Job Postings</h2>
+            <div class="career-search-box">
+                <form method="get" class="career-filters">
+                    <select name="status" class="career-search-input" onchange="this.form.submit()" style="width: auto;">
+                        <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                        <option value="ACTIVE" {% if status_filter == 'ACTIVE' %}selected{% endif %}>Active</option>
+                        <option value="INACTIVE" {% if status_filter == 'INACTIVE' %}selected{% endif %}>Inactive</option>
+                        <option value="CLOSED" {% if status_filter == 'CLOSED' %}selected{% endif %}>Closed</option>
+                    </select>
+                    <input type="text" name="department" placeholder="Filter by department..." value="{{ department_filter }}" class="career-search-input" style="width: auto;">
+                    <input type="text" name="search" placeholder="Search jobs..." value="{{ search_query }}" class="career-search-input">
+                    <button type="submit" class="career-btn career-btn-secondary" style="padding: 0.75rem;">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="career-table-wrapper">
+            <table class="career-table">
+                <thead>
+                    <tr>
+                        <th>Job Title</th>
+                        <th>Department</th>
+                        <th>Type</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                        <th>Posted Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in jobs %}
+                    <tr class="career-row">
+                        <td>
+                            <div class="career-title-cell">{{ job.title }}</div>
+                            <div style="color: var(--text-tertiary); font-size: 0.85rem; margin-top: 0.25rem;">{{ job.description|truncatewords:10 }}</div>
+                        </td>
+                        <td>
+                            <span class="career-department-badge">{{ job.department }}</span>
+                        </td>
+                        <td>
+                            <span class="type-badge">{{ job.get_employment_type_display }}</span>
+                        </td>
+                        <td>{{ job.location }}</td>
+                        <td>
+                            <span class="career-status-badge {% if job.status == 'ACTIVE' %}active{% else %}inactive{% endif %}">
+                                {% if job.status == 'ACTIVE' %}
+                                    <i class="fas fa-circle"></i>
+                                {% else %}
+                                    <i class="fas fa-pause-circle"></i>
+                                {% endif %}
+                                {{ job.get_status_display }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="career-date">{{ job.posted_date|date:"M d, Y" }}</div>
+                        </td>
+                        <td>
+                            <div class="career-actions">
+                                <a href="/admin-career-edit/{{ job.id }}/" class="career-action-btn edit" title="Edit Job">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <button onclick="deleteJob({{ job.id }}, '{{ job.title|escapejs }}')" class="career-action-btn delete" title="Delete Job">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="7" style="text-align: center; padding: 3rem; color: var(--text-tertiary);">
+                            <div>
+                                <i class="fas fa-briefcase" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                                <div style="font-size: 1.1rem; margin-bottom: 0.5rem;">No job postings found</div>
+                                <div style="font-size: 0.9rem;">Create your first job posting to get started</div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        {% if jobs.has_other_pages %}
+        <div class="career-pagination">
+            <div class="career-pagination-info">
+                Showing {{ jobs.start_index|default:"0" }} to {{ jobs.end_index|default:"0" }} of {{ jobs.paginator.count|default:"0" }} results
+            </div>
+            <div class="career-pagination-controls">
+                {% if jobs.has_previous %}
+                    <a href="?page=1{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="career-page-btn" title="First Page">
+                        <i class="fas fa-angle-double-left"></i>
+                    </a>
+                    <a href="?page={{ jobs.previous_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="career-page-btn" title="Previous Page">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                {% endif %}
+
+                <span class="career-page-btn current">
+                    {{ jobs.number }}
+                </span>
+
+                {% if jobs.has_next %}
+                    <a href="?page={{ jobs.next_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="career-page-btn" title="Next Page">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                    <a href="?page={{ jobs.paginator.num_pages }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if department_filter %}&department={{ department_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="career-page-btn" title="Last Page">
+                        <i class="fas fa-angle-double-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'careers';
+    
+    // Theme Management
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = body.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    
+    // Initialize theme from localStorage
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const themeIcon = document.getElementById('theme-icon');
+        
+        document.body.setAttribute('data-theme', savedTheme);
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    
+    // Enhanced delete function with beautiful confirmation dialog
+    function deleteJob(jobId, jobTitle) {
+        showDeleteConfirmation(jobId, jobTitle);
+    }
+    
+    function showDeleteConfirmation(jobId, jobTitle) {
+        const confirmationHtml = `
+            <div class="delete-confirmation-overlay" style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 3000;
+                animation: fadeIn 0.3s ease;
+            ">
+                <div class="delete-confirmation-modal" style="
+                    background: var(--card-bg);
+                    border-radius: 20px;
+                    padding: 2rem;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    border: 1px solid var(--card-border);
+                    animation: slideUp 0.4s ease;
+                ">
+                    <div style="font-size: 3rem; color: var(--error-color); margin-bottom: 1rem;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+                        Delete Job Posting
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                        Are you sure you want to delete the job posting <strong>"${jobTitle}"</strong>?
+                        <br><br>
+                        <span style="color: var(--error-color); font-weight: 600;">This action cannot be undone.</span>
+                        All associated applications for this position will also be affected.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <button onclick="cancelDelete()" style="
+                            padding: 0.75rem 1.5rem;
+                            border: none;
+                            border-radius: 12px;
+                            background: var(--primary-gold);
+                            color: var(--bg-dark);
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: var(--transition-smooth);
+                        ">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button onclick="confirmDeleteJob(${jobId})" style="
+                            padding: 0.75rem 1.5rem;
+                            border: none;
+                            border-radius: 12px;
+                            background: var(--error-color);
+                            color: white;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: var(--transition-smooth);
+                        ">
+                            <i class="fas fa-trash"></i> Delete Job
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', confirmationHtml);
+    }
+    
+    function cancelDelete() {
+        const overlay = document.querySelector('.delete-confirmation-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+    
+    function confirmDeleteJob(jobId) {
+        // Remove confirmation dialog
+        cancelDelete();
+        
+        // Show loading message
+        showLoadingMessage('Deleting job posting...');
+        
+        fetch(`/admin-career-delete/${jobId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoadingMessage();
+            
+            if (data.success) {
+                showSuccessMessage(data.message || 'Job posting deleted successfully');
+                // Reload page after short delay
+                setTimeout(() => location.reload(), 1500);
+            } else {
+                showErrorMessage('Error deleting job posting: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            hideLoadingMessage();
+            console.error('Error:', error);
+            showErrorMessage('Network error while deleting job posting');
+        });
+    }
+    
+    function showLoadingMessage(message) {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'loadingMessage';
+        loadingDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        loadingDiv.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${message}`;
+        document.body.appendChild(loadingDiv);
+    }
+    
+    function hideLoadingMessage() {
+        const loadingMessage = document.getElementById('loadingMessage');
+        if (loadingMessage) {
+            loadingMessage.remove();
+        }
+    }
+    
+    function showSuccessMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        messageDiv.innerHTML = `<i class="fas fa-check"></i> ${message}`;
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 3000);
+    }
+    
+    function showErrorMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--error-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        messageDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 4000);
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            const deleteOverlay = document.querySelector('.delete-confirmation-overlay');
+            if (deleteOverlay) {
+                cancelDelete();
+            }
+        }
+    });
+    
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeTheme();
+    });
+</script>
+{% endblock %}

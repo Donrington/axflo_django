@@ -1,0 +1,179 @@
+{% load static %}
+
+<footer class="footer-section">
+    <div class="footer-container">
+        <!-- Enhanced Footer Branding -->
+        <div class="footer-brand">
+            <img src="../../static/axflo_app/logo/AOGLogoWhite2.png" alt="Axflo Logo" class="footer-logo">
+            <p>Empowering businesses with innovative solutions and cutting-edge technology. We transform ideas into powerful digital experiences that drive growth and success.</p>
+            
+            <div class="company-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Clients</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Years</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Footer Links -->
+        <div class="footer-links footer_display">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'axflo_app:index' %}">Home</a></li>
+                <li><a href="{% url 'axflo_app:about' %}">About Us</a></li>
+                <li><a href="{% url 'axflo_app:services' %}">Services</a></li>
+                <li><a href="{% url 'axflo_app:achievements' %}">Portfolio</a></li>
+                <li><a href="{% url 'axflo_app:csr' %}">CSR</a></li>
+                <li><a href="{% url 'axflo_app:careers' %}">Careers</a></li>
+            </ul>
+        </div>
+
+        <!-- Enhanced Social Media & Newsletter -->
+        <div class="footer-social">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            <div class="newsletter-signup">
+                <h4>Stay Updated</h4>
+                <form id="newsletter-form" class="newsletter-form" method="post">
+                    {% csrf_token %}
+                    <input type="email" id="newsletter-email" name="email" placeholder="Enter your email" aria-label="Email address" required>
+                    <input type="hidden" name="first_name" value="">
+                    <input type="hidden" name="last_name" value="">
+                    <button type="submit" id="newsletter-btn">Subscribe</button>
+                </form>
+                <div id="newsletter-message" class="newsletter-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enhanced Footer Bottom -->
+    <div class="footer-bottom">
+        <p>&copy; 2025 Axflo. All rights reserved.</p>
+        <div class="footer-legal">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Ultra Modern Back to Top Button -->
+<div class="back-to-top" id="backToTop">
+    <button class="back-to-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+        <svg class="progress-ring">
+            <circle class="progress-ring-circle" cx="30" cy="30" r="28"></circle>
+        </svg>
+        <svg viewBox="0 0 384 512" class="back-to-top-icon">
+            <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+        </svg>
+    </button>
+</div>
+
+<!-- Newsletter JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const newsletterForm = document.getElementById('newsletter-form');
+    const newsletterBtn = document.getElementById('newsletter-btn');
+    const newsletterMessage = document.getElementById('newsletter-message');
+    const newsletterEmail = document.getElementById('newsletter-email');
+    
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(newsletterForm);
+            
+            // Show loading state
+            newsletterBtn.disabled = true;
+            newsletterBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+            newsletterMessage.style.display = 'none';
+            
+            // Submit form
+            fetch("{% url 'axflo_app:newsletter_subscribe' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show message
+                newsletterMessage.style.display = 'block';
+                newsletterMessage.innerHTML = data.message;
+                newsletterMessage.className = 'newsletter-message ' + (data.success ? 'success' : 'error');
+                
+                if (data.success) {
+                    newsletterForm.reset();
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        newsletterMessage.style.display = 'none';
+                    }, 5000);
+                }
+            })
+            .catch(error => {
+                newsletterMessage.style.display = 'block';
+                newsletterMessage.innerHTML = 'An error occurred. Please try again later.';
+                newsletterMessage.className = 'newsletter-message error';
+            })
+            .finally(() => {
+                // Reset button
+                newsletterBtn.disabled = false;
+                newsletterBtn.innerHTML = 'Subscribe';
+            });
+        });
+    }
+});
+</script>
+
+<style>
+.newsletter-message {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.newsletter-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.newsletter-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.newsletter-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+</style>

@@ -1,0 +1,518 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Installation-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/installation-services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+   <!-- Installation Services Hero Section -->
+    <section class="installation-hero">
+        <div class="precision-backdrop"></div>
+        <div class="precision-grid"></div>
+        
+        <div class="installation-components">
+            <div class="precision-component component-1">
+                <i class="fas fa-ship"></i>
+            </div>
+            <div class="precision-component component-2">
+                <i class="fas fa-water"></i>
+            </div>
+            <div class="precision-component component-3">
+                <i class="fas fa-cogs"></i>
+            </div>
+            <div class="precision-component component-4">
+                <i class="fas fa-tools"></i>
+            </div>
+            <div class="precision-component component-5">
+                <i class="fas fa-life-ring"></i>
+            </div>
+            <div class="precision-component component-6">
+                <i class="fas fa-anchor"></i>
+            </div>
+        </div>
+        
+        <div class="installation-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="precision-badge">
+                <div class="precision-indicator"></div>
+                Oil Spill Response Equipment Installation Since 2009
+            </div>
+            
+            <h1 class="installation-title">Installation Services</h1>
+            
+            <p class="installation-subtitle">
+                Professional installation and commissioning of oil spill response equipment with rigorous 
+                quality control and deployment protocols, ensuring optimal performance and reliability 
+                for Nigeria's marine and environmental protection operations.
+            </p>
+            
+            <a href="#installation-overview" class="installation-cta">
+                Discover Our Expertise
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Installation Overview -->
+    <section id="installation-overview" class="installation-overview">
+        <div class="installation-container">
+            <div class="overview-grid">
+                <div class="overview-content" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>OSR Equipment Installation Excellence</h2>
+                    <p>
+                        Axflo's Installation Services division specializes in the professional installation 
+                        and commissioning of oil spill response equipment across Nigeria's oil and gas sector. 
+                        Our specialized teams combine 15+ years of OSR experience with proven installation 
+                        methodologies to ensure flawless deployment of critical environmental protection systems.
+                    </p>
+                    <p>
+                        From offshore containment boom systems to advanced oil recovery equipment, our installation 
+                        specialists deliver unmatched precision and reliability. Every project undergoes 
+                        rigorous quality assurance protocols, comprehensive testing procedures, and detailed 
+                        commissioning processes to guarantee optimal performance in emergency response scenarios.
+                    </p>
+                    
+                    <div class="precision-metrics">
+                        <div class="metric-precision" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-value">100%</span>
+                            <span class="metric-label">Installation Success</span>
+                        </div>
+                        <div class="metric-precision" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-value">50+</span>
+                            <span class="metric-label">Systems Installed</span>
+                        </div>
+                        <div class="metric-precision" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-value">24hrs</span>
+                            <span class="metric-label">Emergency Deployment</span>
+                        </div>
+                        <div class="metric-precision" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-value">10+</span>
+                            <span class="metric-label">Major IOC Clients</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="precision-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src="{% static 'axflo_app/images/axflo26.jpg' %}" alt="OSR Equipment Installation" loading="lazy">
+                        <div class="image-overlay">
+                            <p>OSR Equipment Installation</p>
+                            <small>Advanced deployment and commissioning capabilities</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Services Detailed -->
+    <section class="installation-services">
+        <div class="installation-container">
+            <div class="installation-header" data-aos="fade-up">
+                <h2>Core Installation Services</h2>
+                <p>
+                    Comprehensive installation solutions covering every aspect of OSR equipment deployment, 
+                    system commissioning, and performance optimization for critical oil spill response operations.
+                </p>
+            </div>
+            
+            <div class="installation-grid">
+                <!-- OSR Equipment Installation -->
+                <div class="installation-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="installation-card-header">
+                        <div class="installation-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <h3>OSR Equipment Installation</h3>
+                    </div>
+                    <p class="installation-description">
+                        Professional installation of oil spill response equipment including containment booms, 
+                        skimmers, and recovery systems with meticulous attention to deployment specifications, 
+                        anchoring systems, and operational readiness for emergency response scenarios.
+                    </p>
+                    <ul class="installation-features">
+                        <li>Offshore Boom System Installation</li>
+                        <li>Skimmer Deployment & Commissioning</li>
+                        <li>Permanent Boom Installation (Ro-Fence)</li>
+                        <li>Fast Tank Storage System Setup</li>
+                        <li>Dispersant Spray System Installation</li>
+                        <li>Power Pack & Pump Installation</li>
+                        <li>Mooring & Anchoring Systems</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="installation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Equipment Commissioning -->
+                <div class="installation-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="installation-card-header">
+                        <div class="installation-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Equipment Commissioning & Testing</h3>
+                    </div>
+                    <p class="installation-description">
+                        Comprehensive commissioning services ensuring all OSR equipment meets operational 
+                        specifications and performance requirements through systematic testing, calibration, 
+                        and validation procedures for optimal emergency response capability.
+                    </p>
+                    <ul class="installation-features">
+                        <li>System Performance Testing</li>
+                        <li>Equipment Functionality Verification</li>
+                        <li>Deployment Time Optimization</li>
+                        <li>Recovery Rate Validation</li>
+                        <li>Safety System Testing</li>
+                        <li>Communication System Setup</li>
+                        <li>Emergency Protocol Validation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="installation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Environmental Systems Setup -->
+                <div class="installation-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="installation-card-header">
+                        <div class="installation-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Environmental Systems Installation</h3>
+                    </div>
+                    <p class="installation-description">
+                        Installation of environmental monitoring and treatment systems including water treatment 
+                        facilities, waste management systems, and remediation equipment with focus on 
+                        environmental compliance and operational efficiency.
+                    </p>
+                    <ul class="installation-features">
+                        <li>Water Treatment System Setup</li>
+                        <li>Waste Separation Equipment Installation</li>
+                        <li>Environmental Monitoring Systems</li>
+                        <li>Remediation Equipment Deployment</li>
+                        <li>Solid Control System Installation</li>
+                        <li>Cuttings Treatment Systems</li>
+                        <li>Effluent Treatment Facilities</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="installation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Training & Support -->
+                <div class="installation-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="installation-card-header">
+                        <div class="installation-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <h3>Training & Technical Support</h3>
+                    </div>
+                    <p class="installation-description">
+                        Comprehensive training programs and ongoing technical support ensuring operational 
+                        teams are fully competent in equipment operation, maintenance procedures, and 
+                        emergency response protocols for installed systems.
+                    </p>
+                    <ul class="installation-features">
+                        <li>Equipment Operation Training</li>
+                        <li>Deployment & Recovery Procedures</li>
+                        <li>Maintenance Protocol Training</li>
+                        <li>Emergency Response Drills</li>
+                        <li>Competency Certification</li>
+                        <li>Ongoing Technical Support</li>
+                        <li>Performance Optimization Guidance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="installation-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Installation Process -->
+    <section class="system-integration">
+        <div class="installation-container">
+            <div class="integration-header" data-aos="fade-up">
+                <h2>OSR Equipment Installation Methodology</h2>
+                <p>
+                    A systematic approach ensuring successful deployment of oil spill response equipment 
+                    with proven installation protocols and comprehensive validation procedures.
+                </p>
+            </div>
+            
+            <div class="integration-flow">
+                <div class="flow-connector"></div>
+                <div class="integration-steps">
+                    <div class="integration-step" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number">01</div>
+                        <h3>Site Assessment</h3>
+                        <p>Comprehensive site survey, environmental conditions assessment, and installation planning for optimal equipment deployment.</p>
+                    </div>
+                    
+                    <div class="integration-step" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number">02</div>
+                        <h3>Equipment Installation</h3>
+                        <p>Professional installation with adherence to manufacturer specifications and environmental protection protocols.</p>
+                    </div>
+                    
+                    <div class="integration-step" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number">03</div>
+                        <h3>Commissioning</h3>
+                        <p>Systematic commissioning with performance testing, validation, and optimization for emergency response readiness.</p>
+                    </div>
+                    
+                    <div class="integration-step" data-aos="fade-up" data-aos-delay="400">
+                        <div class="step-number">04</div>
+                        <h3>Handover & Training</h3>
+                        <p>Documentation handover, operator training, and ongoing support for successful system operation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Equipment Installation Expertise -->
+    <section class="equipment-gallery">
+        <div class="installation-container">
+            <div class="gallery-header" data-aos="fade-up">
+                <h2>OSR Equipment Installation Expertise</h2>
+                <p>
+                    Specialized installation services across diverse oil spill response equipment 
+                    categories with proven expertise and industry-leading capabilities.
+                </p>
+            </div>
+            
+            <div class="equipment-categories">
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="equipment-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Containment Boom Systems</h4>
+                    <p>Offshore and nearshore containment boom installation including permanent Ro-Fence systems and rapid deployment configurations.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="equipment-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h4>Oil Recovery Equipment</h4>
+                    <p>Skimmer systems, recovery pumps, and oil-water separation equipment with performance optimization and commissioning.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="equipment-icon">
+                        <i class="fas fa-spray-can"></i>
+                    </div>
+                    <h4>Dispersant Systems</h4>
+                    <p>Dispersant spray systems with Afedo nozzles, power packs, and control systems for controlled chemical application.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="equipment-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Storage Systems</h4>
+                    <p>Fast tanks, temporary storage systems, and oil collection facilities with proper containment and safety features.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="equipment-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Safety & Monitoring</h4>
+                    <p>Safety equipment installation, monitoring systems, and emergency communication networks for response coordination.</p>
+                </div>
+                
+                <div class="equipment-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="equipment-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Support Equipment</h4>
+                    <p>Power generation, hydraulic systems, and auxiliary equipment installation for comprehensive OSR operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Verification Dashboard -->
+    <section class="performance-verification">
+        <div class="installation-container">
+            <div class="verification-header" data-aos="fade-up">
+                <h2>Installation Performance Dashboard</h2>
+                <p>Real-time monitoring and verification of OSR equipment installation performance metrics and quality indicators.</p>
+            </div>
+            
+            <div class="verification-controls" data-aos="fade-up" data-aos-delay="200">
+                <button class="verification-button active" onclick="showVerification('quality')">Installation Quality</button>
+                <button class="verification-button" onclick="showVerification('performance')">Performance KPIs</button>
+                <button class="verification-button" onclick="showVerification('compliance')">Compliance Status</button>
+            </div>
+            
+            <div id="quality" class="verification-content active">
+                <div class="verification-metrics">
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="widget-value">100%</div>
+                        <div class="widget-label">Installation Success Rate</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="widget-value">99%</div>
+                        <div class="widget-label">Quality Compliance</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <div class="widget-value">0%</div>
+                        <div class="widget-label">Equipment Failures</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="widget-value">95%</div>
+                        <div class="widget-label">Client Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="performance" class="verification-content">
+                <div class="verification-metrics">
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="widget-value">98%</div>
+                        <div class="widget-label">On-Time Completion</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="widget-value">105%</div>
+                        <div class="widget-label">Performance Target</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-ship"></i>
+                        </div>
+                        <div class="widget-value">50+</div>
+                        <div class="widget-label">Systems Installed</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="widget-value">25+</div>
+                        <div class="widget-label">Certified Technicians</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="compliance" class="verification-content">
+                <div class="verification-metrics">
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="100">
+                        <div class="widget-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="widget-value">100%</div>
+                        <div class="widget-label">Safety Compliance</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="200">
+                        <div class="widget-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="widget-value">100%</div>
+                        <div class="widget-label">Documentation</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="300">
+                        <div class="widget-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <div class="widget-value">100%</div>
+                        <div class="widget-label">Environmental</div>
+                    </div>
+                    <div class="verification-widget" data-aos="fade-up" data-aos-delay="400">
+                        <div class="widget-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <div class="widget-value">100%</div>
+                        <div class="widget-label">Regulatory</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="installation-cta-section">
+        <div class="installation-container">
+            <div class="cta-wrapper" data-aos="fade-up">
+                <h2>Ready for Professional OSR Equipment Installation?</h2>
+                <p>
+                    Partner with Nigeria's leading oil spill response equipment installation provider for 
+                    professional deployment, commissioning, and performance excellence that ensures 
+                    environmental protection readiness.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Installation
+                    </a>
+                    <a href="#technical" class="cta-action cta-secondary">
+                        <i class="fas fa-file-download"></i>
+                        Installation Specifications
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/installation-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

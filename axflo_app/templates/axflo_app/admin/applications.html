@@ -1,0 +1,1260 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Job Applications - Axflo{% endblock %}
+
+{% block extra_css %}
+<style>
+:root {
+    --primary-gold: #d6a019;
+    --primary-gold-light: #ffcc00;
+    --bg-dark: #0a0a0a;
+    --bg-light: #fafafa;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --bg-glass-hover: rgba(255, 255, 255, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(26, 26, 26, 0.7);
+    --text-tertiary: rgba(26, 26, 26, 0.5);
+    --text-white: #ffffff;
+    --text-light-alpha: rgba(255, 255, 255, 0.9);
+    --text-light-secondary: rgba(255, 255, 255, 0.7);
+    --border-glass: rgba(214, 160, 25, 0.3);
+    --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --blur-amount: 20px;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --success-color: #22c55e;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-border: rgba(214, 160, 25, 0.15);
+}
+
+[data-theme="dark"] {
+    --bg-light: #111111;
+    --bg-dark: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --card-bg: rgba(20, 20, 20, 0.95);
+    --bg-glass: rgba(0, 0, 0, 0.3);
+    --bg-glass-hover: rgba(0, 0, 0, 0.5);
+}
+
+.applications-container {
+    padding: 2rem;
+    background: var(--bg-light);
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, transparent 70%);
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.stat-card:hover::before {
+    opacity: 0.1;
+}
+
+.stat-icon {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.stat-content {
+    position: relative;
+    z-index: 2;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+/* Content Section */
+.content-section {
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-header h2 i {
+    color: var(--primary-gold);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Filters */
+.filters {
+    background: var(--bg-glass);
+    backdrop-filter: blur(var(--blur-amount));
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    align-items: end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-select, .filter-input {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-glass);
+    border-radius: 12px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.filter-select:focus, .filter-input:focus {
+    outline: none;
+    border-color: var(--primary-gold);
+    box-shadow: 0 0 0 3px rgba(214, 160, 25, 0.1);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+}
+
+.btn-secondary:hover {
+    background: var(--primary-gold-light);
+    transform: translateY(-2px);
+}
+
+/* Table Container */
+.table-container {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    margin-bottom: 2rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.data-table th {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    padding: 1.5rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.data-table td {
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+.data-table tr:hover {
+    background: var(--bg-glass);
+}
+
+.applicant-info strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* Status Badges */
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-info { background: var(--info-color); color: white; }
+.badge-warning { background: var(--warning-color); color: white; }
+.badge-primary { background: var(--primary-gold); color: var(--bg-dark); }
+.badge-secondary { background: var(--text-secondary); color: white; }
+.badge-success { background: var(--success-color); color: white; }
+.badge-danger { background: var(--error-color); color: white; }
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-sm {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    min-width: auto;
+}
+
+.btn-primary {
+    background: var(--info-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: var(--error-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+}
+
+.status-select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    min-width: 120px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 2% auto;
+    border-radius: 25px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    border: 1px solid var(--card-border);
+}
+
+.modal-header {
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    padding: 2rem;
+    border-radius: 25px 25px 0 0;
+    position: relative;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.close {
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+    color: var(--bg-dark);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.close:hover {
+    background: rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.application-detail {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.detail-section {
+    background: var(--bg-glass);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-glass);
+}
+
+.detail-section h3 {
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: start;
+}
+
+.detail-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.detail-value {
+    color: var(--text-primary);
+}
+
+.cover-letter-text {
+    background: var(--card-bg);
+    border: 1px solid var(--border-glass);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+/* Pagination */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 15px;
+    border: 1px solid var(--card-border);
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-gold);
+    color: var(--bg-dark);
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.page-btn:hover {
+    background: var(--primary-gold-light);
+    transform: translateY(-2px);
+}
+
+.page-info {
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .applications-container {
+        padding: 1rem;
+    }
+    
+    .content-section {
+        padding: 1.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    .filter-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card {
+        padding: 1.5rem;
+    }
+    
+    .data-table {
+        font-size: 0.9rem;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 1rem 0.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+    
+    .btn-sm {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+    }
+    
+    .modal-header {
+        padding: 1.5rem;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .detail-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .applications-container {
+        padding: 0.5rem;
+    }
+    
+    .content-section {
+        padding: 1rem;
+    }
+    
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .data-table {
+        min-width: 600px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .theme-toggle,
+    .filters,
+    .action-buttons {
+        display: none !important;
+    }
+    
+    .modal {
+        position: static !important;
+        background: white !important;
+    }
+    
+    .modal-content {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="applications-container">
+    {% csrf_token %}
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </button>
+
+    <!-- Messages -->
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    <i class="fas fa-info-circle"></i>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-file-alt"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ total_applications }}</div>
+                <div class="stat-label">Total Applications</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ new_applications }}</div>
+                <div class="stat-label">New Applications</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ applications.paginator.count }}</div>
+                <div class="stat-label">Filtered Results</div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-briefcase"></i>
+            </div>
+            <div class="stat-content">
+                <div class="stat-number">{{ jobs.count }}</div>
+                <div class="stat-label">Active Jobs</div>
+            </div>
+        </div>
+    </div>
+
+<!-- Applications Section -->
+<div class="content-section">
+    <div class="section-header">
+        <h2><i class="fas fa-file-alt"></i> Job Applications</h2>
+        <p class="section-subtitle">Manage and review job applications</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+        <form method="get" class="filter-form">
+            <div class="filter-group">
+                <select name="status" class="filter-select" onchange="this.form.submit()">
+                    <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                    {% for status_code, status_name in status_choices %}
+                    <option value="{{ status_code }}" {% if status_filter == status_code %}selected{% endif %}>
+                        {{ status_name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <select name="job" class="filter-select" onchange="this.form.submit()">
+                    <option value="all" {% if job_filter == 'all' %}selected{% endif %}>All Jobs</option>
+                    {% for job in jobs %}
+                    <option value="{{ job.id }}" {% if job_filter == job.id|stringformat:"s" %}selected{% endif %}>
+                        {{ job.title }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="filter-group">
+                <input type="text" name="search" placeholder="Search applicants..." value="{{ search_query }}" class="filter-input">
+                <button type="submit" class="btn btn-secondary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Applications Table -->
+    <div class="table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Applicant</th>
+                    <th>Job Position</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Applied Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for application in applications %}
+                <tr>
+                    <td>
+                        <div class="applicant-info">
+                            <strong>{{ application.first_name }} {{ application.last_name }}</strong>
+                        </div>
+                    </td>
+                    <td>{{ application.job_posting.title }}</td>
+                    <td>{{ application.email }}</td>
+                    <td>{{ application.phone }}</td>
+                    <td>
+                        <span class="badge {% if application.status == 'SUBMITTED' %}badge-info{% elif application.status == 'UNDER_REVIEW' %}badge-warning{% elif application.status == 'SHORTLISTED' %}badge-primary{% elif application.status == 'INTERVIEWED' %}badge-secondary{% elif application.status == 'ACCEPTED' %}badge-success{% else %}badge-danger{% endif %}">
+                            {{ application.get_status_display }}
+                        </span>
+                    </td>
+                    <td>{{ application.application_date|date:"M d, Y" }}</td>
+                    <td>
+                        <div class="action-buttons">
+                            <button onclick="viewApplication({{ application.id }})" class="btn btn-sm btn-primary" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <a href="{{ application.resume.url }}" target="_blank" class="btn btn-sm btn-secondary" title="Download Resume">
+                                <i class="fas fa-download"></i>
+                            </a>
+                            <button onclick="deleteApplication({{ application.id }}, '{{ application.first_name }} {{ application.last_name }}')" class="btn btn-sm" style="background: var(--error-color); color: white;" title="Delete Application">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <select onchange="updateStatus({{ application.id }}, this.value)" class="status-select">
+                                {% for status_code, status_name in status_choices %}
+                                <option value="{{ status_code }}" {% if status_code == application.status %}selected{% endif %}>
+                                    {{ status_name }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="text-center">No applications found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    {% if applications.has_other_pages %}
+    <div class="pagination-container">
+        <div class="pagination">
+            {% if applications.has_previous %}
+                <a href="?page=1{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if job_filter != 'all' %}&job={{ job_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-btn">First</a>
+                <a href="?page={{ applications.previous_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if job_filter != 'all' %}&job={{ job_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-btn">Previous</a>
+            {% endif %}
+
+            <span class="page-info">
+                Page {{ applications.number }} of {{ applications.paginator.num_pages }}
+            </span>
+
+            {% if applications.has_next %}
+                <a href="?page={{ applications.next_page_number }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if job_filter != 'all' %}&job={{ job_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-btn">Next</a>
+                <a href="?page={{ applications.paginator.num_pages }}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if job_filter != 'all' %}&job={{ job_filter }}{% endif %}{% if search_query %}&search={{ search_query }}{% endif %}" class="page-btn">Last</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Application Details Modal -->
+<div id="applicationModal" class="modal">
+    <div class="modal-content" style="max-width: 800px;">
+        <div class="modal-header">
+            <h2 id="modalTitle">Application Details</h2>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="modalBody">
+            <!-- Application details will be loaded here -->
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Set the current page for sidebar active state
+    window.currentPage = 'applications';
+    
+    // Theme Management
+    function toggleTheme() {
+        const body = document.body;
+        const themeIcon = document.getElementById('theme-icon');
+        const currentTheme = body.getAttribute('data-theme');
+        
+        if (currentTheme === 'dark') {
+            body.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fas fa-moon';
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+    
+    // Initialize theme from localStorage
+    function initializeTheme() {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        const themeIcon = document.getElementById('theme-icon');
+        
+        document.body.setAttribute('data-theme', savedTheme);
+        themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    
+    // Dynamic Application Details View
+    function viewApplication(applicationId) {
+        document.getElementById('modalTitle').textContent = 'Loading...';
+        document.getElementById('modalBody').innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary-gold);"></i>
+                <p style="margin-top: 1rem;">Loading application details...</p>
+            </div>
+        `;
+        document.getElementById('applicationModal').style.display = 'block';
+        
+        // Fetch application details
+        fetch(`/admin-application-detail/${applicationId}/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayApplicationDetails(data.application);
+                } else {
+                    showError('Failed to load application details: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showError('Network error while loading application details');
+            });
+    }
+    
+    function displayApplicationDetails(app) {
+        document.getElementById('modalTitle').textContent = `Application Details - ${app.full_name}`;
+        document.getElementById('modalBody').innerHTML = `
+            <div class="application-detail">
+                <!-- Personal Information -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-user"></i> Personal Information</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Full Name:</span>
+                        <span class="detail-value">${app.full_name}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Email:</span>
+                        <span class="detail-value"><a href="mailto:${app.email}" style="color: var(--primary-gold);">${app.email}</a></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Phone:</span>
+                        <span class="detail-value"><a href="tel:${app.phone}" style="color: var(--primary-gold);">${app.phone}</a></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Address:</span>
+                        <span class="detail-value">${app.address}</span>
+                    </div>
+                </div>
+                
+                <!-- Job Information -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-briefcase"></i> Job Information</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Position:</span>
+                        <span class="detail-value">${app.job_title}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Department:</span>
+                        <span class="detail-value">${app.job_department}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value">
+                            <span class="badge ${getStatusBadgeClass(app.status_code)}">${app.status}</span>
+                        </span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Applied Date:</span>
+                        <span class="detail-value">${app.application_date}</span>
+                    </div>
+                </div>
+                
+                <!-- Experience & Education -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-graduation-cap"></i> Qualifications</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Experience:</span>
+                        <span class="detail-value">${app.experience}</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Education:</span>
+                        <span class="detail-value">${app.education}</span>
+                    </div>
+                </div>
+                
+                <!-- Documents -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-file-alt"></i> Documents</h3>
+                    <div class="detail-row">
+                        <span class="detail-label">Resume:</span>
+                        <span class="detail-value">
+                            ${app.resume_url ? 
+                                `<a href="${app.resume_url}" target="_blank" style="color: var(--primary-gold); text-decoration: none;">
+                                    <i class="fas fa-download"></i> ${app.resume_name}
+                                </a>` : 
+                                'No resume uploaded'
+                            }
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Cover Letter -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-envelope"></i> Cover Letter</h3>
+                    <div class="cover-letter-text">${app.cover_letter || 'No cover letter provided'}</div>
+                </div>
+                
+                <!-- Admin Notes -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-sticky-note"></i> Admin Notes</h3>
+                    <div class="cover-letter-text">${app.notes}</div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="detail-section">
+                    <h3><i class="fas fa-tools"></i> Quick Actions</h3>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <button onclick="quickStatusUpdate(${app.id}, 'UNDER_REVIEW')" class="btn btn-warning">
+                            <i class="fas fa-eye"></i> Under Review
+                        </button>
+                        <button onclick="quickStatusUpdate(${app.id}, 'SHORTLISTED')" class="btn btn-primary">
+                            <i class="fas fa-check"></i> Shortlist
+                        </button>
+                        <button onclick="quickStatusUpdate(${app.id}, 'INTERVIEWED')" class="btn" style="background: var(--info-color); color: white;">
+                            <i class="fas fa-microphone"></i> Interviewed
+                        </button>
+                        <button onclick="quickStatusUpdate(${app.id}, 'ACCEPTED')" class="btn" style="background: var(--success-color); color: white;">
+                            <i class="fas fa-thumbs-up"></i> Accept
+                        </button>
+                        <button onclick="quickStatusUpdate(${app.id}, 'REJECTED')" class="btn" style="background: var(--error-color); color: white;">
+                            <i class="fas fa-times"></i> Reject
+                        </button>
+                        <button onclick="deleteApplicationFromModal(${app.id}, '${app.full_name}')" class="btn" style="background: #dc2626; color: white; margin-left: auto;">
+                            <i class="fas fa-trash"></i> Delete Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    function getStatusBadgeClass(status) {
+        const statusClasses = {
+            'SUBMITTED': 'badge-info',
+            'UNDER_REVIEW': 'badge-warning', 
+            'SHORTLISTED': 'badge-primary',
+            'INTERVIEWED': 'badge-secondary',
+            'ACCEPTED': 'badge-success',
+            'REJECTED': 'badge-danger'
+        };
+        return statusClasses[status] || 'badge-info';
+    }
+    
+    function showError(message) {
+        document.getElementById('modalBody').innerHTML = `
+            <div style="text-align: center; padding: 2rem;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: var(--error-color);"></i>
+                <p style="margin-top: 1rem; color: var(--error-color);">${message}</p>
+                <button onclick="closeModal()" class="btn btn-secondary" style="margin-top: 1rem;">Close</button>
+            </div>
+        `;
+    }
+
+    function closeModal() {
+        document.getElementById('applicationModal').style.display = 'none';
+    }
+    
+    function quickStatusUpdate(applicationId, newStatus) {
+        updateStatus(applicationId, newStatus);
+    }
+    
+    // Delete application functions
+    function deleteApplication(applicationId, applicantName) {
+        showDeleteConfirmation(applicationId, applicantName, false);
+    }
+    
+    function deleteApplicationFromModal(applicationId, applicantName) {
+        showDeleteConfirmation(applicationId, applicantName, true);
+    }
+    
+    function showDeleteConfirmation(applicationId, applicantName, isFromModal) {
+        const confirmationHtml = `
+            <div class="delete-confirmation-overlay" style="
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 3000;
+                animation: fadeIn 0.3s ease;
+            ">
+                <div class="delete-confirmation-modal" style="
+                    background: var(--card-bg);
+                    border-radius: 20px;
+                    padding: 2rem;
+                    max-width: 500px;
+                    width: 90%;
+                    text-align: center;
+                    border: 1px solid var(--card-border);
+                    animation: slideUp 0.4s ease;
+                ">
+                    <div style="font-size: 3rem; color: var(--error-color); margin-bottom: 1rem;">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 1rem; font-size: 1.5rem;">
+                        Delete Application
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem; line-height: 1.6;">
+                        Are you sure you want to delete the application from <strong>${applicantName}</strong>?
+                        <br><br>
+                        <span style="color: var(--error-color); font-weight: 600;">This action cannot be undone.</span>
+                        The application and resume file will be permanently deleted.
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center;">
+                        <button onclick="cancelDelete()" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button onclick="confirmDelete(${applicationId}, ${isFromModal})" class="btn" style="background: var(--error-color); color: white;">
+                            <i class="fas fa-trash"></i> Delete Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.insertAdjacentHTML('beforeend', confirmationHtml);
+    }
+    
+    function cancelDelete() {
+        const overlay = document.querySelector('.delete-confirmation-overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+    
+    function confirmDelete(applicationId, isFromModal) {
+        // Remove confirmation dialog
+        cancelDelete();
+        
+        // Show loading message
+        showLoadingMessage('Deleting application...');
+        
+        fetch(`/admin-application-delete/${applicationId}/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            hideLoadingMessage();
+            
+            if (data.success) {
+                showSuccessMessage(data.message);
+                
+                if (isFromModal) {
+                    closeModal();
+                }
+                
+                // Reload page after short delay
+                setTimeout(() => location.reload(), 1500);
+            } else {
+                showErrorMessage('Error deleting application: ' + (data.error || 'Unknown error'));
+            }
+        })
+        .catch(error => {
+            hideLoadingMessage();
+            console.error('Error:', error);
+            showErrorMessage('Network error while deleting application');
+        });
+    }
+    
+    function showLoadingMessage(message) {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'loadingMessage';
+        loadingDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        loadingDiv.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${message}`;
+        document.body.appendChild(loadingDiv);
+    }
+    
+    function hideLoadingMessage() {
+        const loadingMessage = document.getElementById('loadingMessage');
+        if (loadingMessage) {
+            loadingMessage.remove();
+        }
+    }
+    
+    function showErrorMessage(message) {
+        const messageDiv = document.createElement('div');
+        messageDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--error-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        messageDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 4000);
+    }
+
+    function updateStatus(applicationId, newStatus) {
+        if (confirm('Are you sure you want to update the application status?')) {
+            fetch(`/admin-application-status/${applicationId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({status: newStatus})
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message and reload
+                    showSuccessMessage(data.message);
+                    closeModal();
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    alert('Error updating status: ' + (data.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Network error while updating status');
+            });
+        }
+    }
+    
+    function showSuccessMessage(message) {
+        // Create a temporary success message
+        const messageDiv = document.createElement('div');
+        messageDiv.style.cssText = `
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: var(--shadow-primary);
+            animation: slideInFromRight 0.3s ease;
+        `;
+        messageDiv.innerHTML = `<i class="fas fa-check"></i> ${message}`;
+        document.body.appendChild(messageDiv);
+        
+        setTimeout(() => {
+            messageDiv.remove();
+        }, 3000);
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('applicationModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            // Close delete confirmation first, then modal
+            const deleteOverlay = document.querySelector('.delete-confirmation-overlay');
+            if (deleteOverlay) {
+                cancelDelete();
+            } else {
+                closeModal();
+            }
+        }
+    });
+    
+    // Initialize theme on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeTheme();
+    });
+</script>
+{% endblock %}

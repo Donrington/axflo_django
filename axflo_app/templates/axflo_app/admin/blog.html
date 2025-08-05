@@ -1,0 +1,280 @@
+{% extends 'axflo_app/admin/admin_base.html' %}
+{% load static %}
+
+{% block title %}Blog Management - Axflo{% endblock %}
+
+{% block content %}
+   <link rel="stylesheet" href="{% static 'axflo_app/css/admin_blog.css' %}">
+<!-- Messages -->
+{% if messages %}
+    <div class="messages-container">
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                <i class="fas {% if message.tags == 'error' %}fa-exclamation-triangle{% elif message.tags == 'success' %}fa-check-circle{% else %}fa-info-circle{% endif %}"></i>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+    <div class="admin-blog-container">
+        <!-- Header Section -->
+        <div class="admin-blog-header">
+            <h1><i class="fas fa-newspaper"></i> Blog Management</h1>
+            <p>Create, edit, and manage your blog posts and news articles</p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Stats Cards -->
+        <div class="blog-stats">
+            <div class="stat-card">
+                <div class="stat-number">{{ total_articles }}</div>
+                <div class="stat-label">Total Articles</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ published_articles }}</div>
+                <div class="stat-label">Published</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ draft_articles }}</div>
+                <div class="stat-label">Drafts</div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="admin-actions">
+            <div>
+                <a href="{% url 'axflo_app:admin_blog_create' %}" class="btn-primary">
+                    <i class="fas fa-plus"></i> Create New Post
+                </a>
+                <a href="{% url 'axflo_app:admin_blog_categories' %}" class="btn-secondary">
+                    <i class="fas fa-tags"></i> Manage Categories
+                </a>
+            </div>
+            <a href="{% url 'axflo_app:admindashboard' %}" class="btn-secondary">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+
+        <!-- Filters -->
+        <div class="blog-filters">
+            <form method="GET" class="filters-form">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label for="search">Search</label>
+                        <input type="text" id="search" name="search" value="{{ search_query }}" 
+                               placeholder="Search by title, content, or tags..." class="filter-input">
+                    </div>
+                    <div class="filter-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status" class="filter-select">
+                            <option value="all" {% if status_filter == 'all' %}selected{% endif %}>All Status</option>
+                            {% for status_code, status_name in status_choices %}
+                            <option value="{{ status_code }}" {% if status_filter == status_code %}selected{% endif %}>
+                                {{ status_name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category" class="filter-select">
+                            <option value="all" {% if category_filter == 'all' %}selected{% endif %}>All Categories</option>
+                            {% for category in categories %}
+                            <option value="{{ category.id }}" {% if category_filter == category.id|stringformat:"s" %}selected{% endif %}>
+                                {{ category.name }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>&nbsp;</label>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-search"></i> Filter
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Blog Table (Desktop) -->
+        <div class="blog-table-container">
+            {% if articles %}
+            <table class="blog-table">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Author</th>
+                        <th>Created</th>
+                        <th>Views</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td>
+                            <div class="article-info">
+                                {% if article.get_image_url %}
+                                <img src="{{ article.get_image_url }}" alt="{{ article.image_alt|default:article.title }}" 
+                                     class="article-thumbnail">
+                                {% else %}
+                                <div class="article-thumbnail" style="background: var(--bg-grey); display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-image" style="color: var(--text-light);"></i>
+                                </div>
+                                {% endif %}
+                                <div class="article-details">
+                                    <h4>{{ article.title }}</h4>
+                                    <p>{{ article.excerpt|default:"No excerpt available"|truncatewords:10 }}</p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{ article.category.name|default:"Uncategorized" }}</td>
+                        <td>
+                            <span class="status-badge status-{{ article.status|lower }}">
+                                {{ article.get_status_display }}
+                            </span>
+                        </td>
+                        <td>{{ article.author.username|default:"Unknown" }}</td>
+                        <td>{{ article.created_at|date:"M d, Y" }}</td>
+                        <td>{{ article.view_count }}</td>
+                        <td>
+                            <div class="table-actions">
+                                <a href="{% url 'axflo_app:admin_blog_edit' article.id %}" class="btn-sm btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <button onclick="deleteArticle({{ article.id }}, '{{ article.title|escapejs }}')" 
+                                        class="btn-sm btn-delete">
+                                    <i class="fas fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <h3 class="empty-title">No Articles Found</h3>
+                <p class="empty-text">
+                    {% if search_query or status_filter != 'all' or category_filter != 'all' %}
+                    No articles match your current filters. Try adjusting your search criteria.
+                    {% else %}
+                    You haven't created any blog posts yet. Start by creating your first article!
+                    {% endif %}
+                </p>
+                <a href="{% url 'axflo_app:admin_blog_create' %}" class="btn-primary">
+                    <i class="fas fa-plus"></i> Create Your First Post
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Mobile Card Layout -->
+        <div class="mobile-blog-cards">
+            {% for article in articles %}
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <div>
+                        <h4 class="blog-card-title">{{ article.title }}</h4>
+                        <div class="blog-card-meta">
+                            <span class="status-badge status-{{ article.status|lower }}">{{ article.get_status_display }}</span>
+                            • {{ article.created_at|date:"M d, Y" }}
+                            • {{ article.view_count }} views
+                        </div>
+                    </div>
+                    {% if article.get_image_url %}
+                    <img src="{{ article.get_image_url }}" alt="{{ article.image_alt|default:article.title }}" 
+                         class="blog-card-thumbnail">
+                    {% endif %}
+                </div>
+                <p>{{ article.excerpt|default:"No excerpt available"|truncatewords:15 }}</p>
+                <div class="blog-card-actions">
+                    <a href="{% url 'axflo_app:admin_blog_edit' article.id %}" class="btn-sm btn-edit">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <button onclick="deleteArticle({{ article.id }}, '{{ article.title|escapejs }}')" 
+                            class="btn-sm btn-delete">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- Pagination -->
+        {% if articles.has_other_pages %}
+        <div class="pagination-container">
+            {% if articles.has_previous %}
+            <a href="?page=1{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if category_filter != 'all' %}&category={{ category_filter }}{% endif %}" 
+               class="pagination-link">
+                <i class="fas fa-angle-double-left"></i>
+            </a>
+            <a href="?page={{ articles.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if category_filter != 'all' %}&category={{ category_filter }}{% endif %}" 
+               class="pagination-link">
+                <i class="fas fa-angle-left"></i>
+            </a>
+            {% endif %}
+            
+            <span class="pagination-link active">
+                Page {{ articles.number }} of {{ articles.paginator.num_pages }}
+            </span>
+            
+            {% if articles.has_next %}
+            <a href="?page={{ articles.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if category_filter != 'all' %}&category={{ category_filter }}{% endif %}" 
+               class="pagination-link">
+                <i class="fas fa-angle-right"></i>
+            </a>
+            <a href="?page={{ articles.paginator.num_pages }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter != 'all' %}&status={{ status_filter }}{% endif %}{% if category_filter != 'all' %}&category={{ category_filter }}{% endif %}" 
+               class="pagination-link">
+                <i class="fas fa-angle-double-right"></i>
+            </a>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function deleteArticle(articleId, articleTitle) {
+            if (confirm(`Are you sure you want to delete "${articleTitle}"? This action cannot be undone.`)) {
+                fetch(`/admin-blog-delete/${articleId}/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'X-Requested-With': 'XMLHttpRequest',
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert(data.message);
+                        window.location.reload();
+                    } else {
+                        alert(data.error || 'An error occurred while deleting the article.');
+                    }
+                })
+                .catch(error => {
+                    alert('An error occurred while deleting the article.');
+                    console.error('Error:', error);
+                });
+            }
+        }
+    </script>
+
+
+{% endblock %}

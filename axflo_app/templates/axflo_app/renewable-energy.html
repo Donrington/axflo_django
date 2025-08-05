@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Renewable-Energy - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/renewable-energy.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Renewable Energy Hero Section -->
+    <section class="renewable-hero">
+        <div class="solar-backdrop"></div>
+        
+        <div class="energy-rays">
+            <div class="solar-ray"></div>
+            <div class="solar-ray"></div>
+            <div class="solar-ray"></div>
+            <div class="solar-ray"></div>
+            <div class="solar-ray"></div>
+        </div>
+        
+        <div class="energy-nodes">
+            <div class="energy-node node-1">
+                <i class="fas fa-solar-panel"></i>
+                <div class="energy-indicator"></div>
+            </div>
+            <div class="energy-node node-2">
+                <i class="fas fa-bolt"></i>
+                <div class="energy-indicator"></div>
+            </div>
+            <div class="energy-node node-3">
+                <i class="fas fa-leaf"></i>
+                <div class="energy-indicator"></div>
+            </div>
+            <div class="energy-node node-4">
+                <i class="fas fa-battery-three-quarters"></i>
+                <div class="energy-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="renewable-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="solar-badge">
+                <div class="solar-icon"></div>
+                Sustainable Energy Solutions Since 2009
+            </div>
+            
+            <h1 class="renewable-title">Renewable Energy</h1>
+            
+            <p class="renewable-subtitle">
+                Innovative renewable energy solutions supporting Nigeria's oil and gas operations transition 
+                to sustainable energy sources, reducing carbon footprint while maintaining operational 
+                efficiency through solar power systems, hybrid solutions, and energy optimization technologies.
+            </p>
+            
+            <a href="#renewable-overview" class="renewable-cta">
+                Explore Our Solutions
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Renewable Energy Overview -->
+    <section id="renewable-overview" class="renewable-overview">
+        <div class="renewable-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Sustainable Energy for Oil & Gas Operations</h2>
+                    <p>
+                        Axflo's Renewable Energy services provide comprehensive sustainable energy solutions 
+                        for Nigeria's oil and gas sector. Our expertise focuses on integrating clean energy 
+                        technologies into environmental protection operations, remote facility power systems, 
+                        and offshore platform energy requirements.
+                    </p>
+                    <p>
+                        From solar-powered oil spill response equipment to hybrid energy systems for 
+                        environmental monitoring stations, we deliver reliable renewable energy solutions 
+                        that reduce operational costs while supporting Nigeria's commitment to environmental 
+                        sustainability and carbon footprint reduction.
+                    </p>
+                    
+                    <div class="renewable-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-letter">Sustainable</span>
+                            <span class="metric-title">Energy Focus</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-title">Clean Energy</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-letter">Environmental</span>
+                            <span class="metric-title">Protection Support</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="renewable-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                        <img src=" {% static 'axflo_app/images/lease.jpg' %}" alt="Oil Waste Recycling" loading="lazy">
+                        <p>Renewable Energy Solutions</p>
+                        <small>Sustainable power for environmental operations</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renewable Energy Services -->
+    <section class="renewable-services">
+        <div class="renewable-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Renewable Energy Solutions</h2>
+                <p>
+                    Comprehensive sustainable energy services supporting environmental protection 
+                    and clean energy transition for Nigeria's oil and gas operations.
+                </p>
+            </div>
+            
+            <div class="renewable-services-grid">
+                <!-- Solar Power Systems -->
+                <div class="renewable-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-solar-panel"></i>
+                        </div>
+                        <h3>Solar Power Systems</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced solar power systems designed for oil and gas operations including 
+                        environmental monitoring stations, oil spill response equipment, and remote 
+                        facility power supply ensuring reliable clean energy for critical operations.
+                    </p>
+                    <ul class="service-features">
+                        <li>Environmental Monitoring Station Power</li>
+                        <li>OSR Equipment Solar Integration</li>
+                        <li>Remote Facility Power Systems</li>
+                        <li>Off-Grid Solar Solutions</li>
+                        <li>Battery Storage Systems</li>
+                        <li>Grid-Tie Solar Installations</li>
+                        <li>Solar System Maintenance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Hybrid Energy Solutions -->
+                <div class="renewable-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-battery-three-quarters"></i>
+                        </div>
+                        <h3>Hybrid Energy Solutions</h3>
+                    </div>
+                    <p class="service-description">
+                        Integrated hybrid energy systems combining renewable sources with conventional 
+                        power for enhanced reliability in environmental protection operations, ensuring 
+                        uninterrupted power supply for critical oil spill response and monitoring equipment.
+                    </p>
+                    <ul class="service-features">
+                        <li>Solar-Generator Hybrid Systems</li>
+                        <li>Wind-Solar Integration</li>
+                        <li>Battery Backup Solutions</li>
+                        <li>Smart Energy Management</li>
+                        <li>Load Balancing Systems</li>
+                        <li>Emergency Power Backup</li>
+                        <li>Renewable Energy Storage</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Energy Efficiency Audits -->
+                <div class="renewable-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Energy Efficiency Audits</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive energy efficiency assessments for oil and gas facilities focusing 
+                        on environmental operations optimization, identifying opportunities for renewable 
+                        energy integration and operational cost reduction while maintaining performance.
+                    </p>
+                    <ul class="service-features">
+                        <li>Facility Energy Assessment</li>
+                        <li>Equipment Efficiency Analysis</li>
+                        <li>Renewable Integration Planning</li>
+                        <li>Cost-Benefit Analysis</li>
+                        <li>Energy Optimization Strategies</li>
+                        <li>Carbon Footprint Assessment</li>
+                        <li>Sustainability Reporting</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Green Technology Integration -->
+                <div class="renewable-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Green Technology Integration</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced green technology integration for environmental protection operations 
+                        including energy-efficient equipment, smart monitoring systems, and sustainable 
+                        technology solutions supporting Nigeria's environmental protection goals.
+                    </p>
+                    <ul class="service-features">
+                        <li>Smart Grid Technologies</li>
+                        <li>IoT Environmental Monitoring</li>
+                        <li>Energy-Efficient Equipment</li>
+                        <li>Automated Control Systems</li>
+                        <li>Sustainable Technology Solutions</li>
+                        <li>Green Building Integration</li>
+                        <li>Environmental Impact Monitoring</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Implementation Process -->
+    <section class="energy-process">
+        <div class="renewable-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Energy Solution Implementation</h2>
+                <p>
+                    Systematic approach to renewable energy integration ensuring optimal performance 
+                    and seamless integration with existing environmental protection operations.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Energy Assessment</h3>
+                    <p>Comprehensive energy audit and renewable potential analysis for optimal system design and integration planning.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>System Design</h3>
+                    <p>Custom renewable energy system design based on operational requirements and environmental conditions.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Installation & Integration</h3>
+                    <p>Professional installation and integration with existing systems ensuring minimal operational disruption.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Monitoring & Optimization</h3>
+                    <p>Continuous performance monitoring and system optimization ensuring maximum efficiency and reliability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Applications -->
+    <section class="energy-applications">
+        <div class="renewable-container">
+            <div class="applications-header" data-aos="fade-up">
+                <h2>Renewable Energy Applications</h2>
+                <p>
+                    Specialized renewable energy solutions for various applications across 
+                    Nigeria's oil and gas environmental protection operations.
+                </p>
+            </div>
+            
+            <div class="applications-grid">
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="application-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h4>Oil Spill Response</h4>
+                    <p>Solar-powered oil spill response equipment and containment systems ensuring reliable operation during emergency response activities.</p>
+                </div>
+                
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="application-icon">
+                        <i class="fas fa-satellite"></i>
+                    </div>
+                    <h4>Environmental Monitoring</h4>
+                    <p>Renewable energy for remote environmental monitoring stations providing continuous surveillance of oil and gas operations.</p>
+                </div>
+                
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="application-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h4>Marine Operations</h4>
+                    <p>Hybrid energy systems for marine support vessels and offshore platforms supporting environmental protection activities.</p>
+                </div>
+                
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="application-icon">
+                        <i class="fas fa-broadcast-tower"></i>
+                    </div>
+                    <h4>Remote Facilities</h4>
+                    <p>Off-grid renewable energy solutions for remote oil and gas facilities requiring reliable power for environmental compliance.</p>
+                </div>
+                
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="application-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h4>Remediation Projects</h4>
+                    <p>Clean energy for environmental remediation equipment and bioremediation facilities supporting ecosystem restoration.</p>
+                </div>
+                
+                <div class="energy-application" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="application-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4>Facility Operations</h4>
+                    <p>Solar and hybrid energy systems for administrative facilities and operational bases supporting environmental services.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="renewable-cta-section">
+        <div class="renewable-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Go Renewable?</h2>
+                <p>
+                    Partner with Nigeria's trusted renewable energy specialists for sustainable 
+                    solutions that support environmental protection while reducing operational costs.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#solutions" class="cta-action cta-secondary">
+                        <i class="fas fa-file-download"></i>
+                        View Our Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/renewable-energy.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

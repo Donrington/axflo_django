@@ -1,0 +1,260 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Environmental-Services - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/environmental-services.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Environmental Hero Section -->
+    <section class="environmental-hero">
+        <div class="environmental-backdrop"></div>
+        
+        <div class="environmental-elements">
+            <div class="environmental-element element-1">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <div class="environmental-element element-2">
+                <i class="fas fa-seedling"></i>
+            </div>
+            <div class="environmental-element element-3">
+                <i class="fas fa-recycle"></i>
+            </div>
+            <div class="environmental-element element-4">
+                <i class="fas fa-wind"></i>
+            </div>
+        </div>
+        
+        <div class="environmental-content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 class="environmental-title">Environmental Services</h1>
+            <p class="environmental-subtitle">Leading environmental solutions protecting Nigeria's ecosystems while supporting sustainable energy development across all sectors</p>
+            
+            <div class="cta-buttons">
+                <a href="#services" class="cta-primary">
+                    <i class="fas fa-leaf"></i>
+                    Explore Services
+                </a>
+                <a href="{% url 'axflo_app:contact' %}" class="cta-secondary">
+                    <i class="fas fa-phone"></i>
+                    Get Consultation
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories" id="services">
+        <div class="container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2>Environmental Solutions</h2>
+                <p>Comprehensive environmental services ensuring regulatory compliance and sustainable operations</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>Environmental Impact Assessment</h3>
+                    <p>Comprehensive EIA studies for oil & gas, construction, and industrial projects ensuring regulatory compliance and environmental protection.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> Baseline Environmental Studies</li>
+                        <li><i class="fas fa-check"></i> Impact Prediction & Mitigation</li>
+                        <li><i class="fas fa-check"></i> Regulatory Compliance</li>
+                        <li><i class="fas fa-check"></i> Stakeholder Engagement</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3>Environmental Monitoring</h3>
+                    <p>Continuous monitoring and analysis of air quality, water resources, soil conditions, and noise levels using advanced technology.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> Air Quality Monitoring</li>
+                        <li><i class="fas fa-check"></i> Water & Soil Analysis</li>
+                        <li><i class="fas fa-check"></i> Real-time Data Systems</li>
+                        <li><i class="fas fa-check"></i> Compliance Reporting</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-broom"></i>
+                    </div>
+                    <h3>Waste Management</h3>
+                    <p>Comprehensive waste management solutions including hazardous waste disposal, recycling programs, and waste-to-energy systems.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> Hazardous Waste Treatment</li>
+                        <li><i class="fas fa-check"></i> Recycling Programs</li>
+                        <li><i class="fas fa-check"></i> Waste-to-Energy Solutions</li>
+                        <li><i class="fas fa-check"></i> Site Remediation</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="category-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>Spill Response & Remediation</h3>
+                    <p>Emergency response services for oil spills and environmental contamination with rapid deployment and effective cleanup solutions.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> 24/7 Emergency Response</li>
+                        <li><i class="fas fa-check"></i> Rapid Containment Systems</li>
+                        <li><i class="fas fa-check"></i> Bioremediation Technology</li>
+                        <li><i class="fas fa-check"></i> Ecosystem Restoration</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="category-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Environmental Compliance</h3>
+                    <p>Ensuring full compliance with Nigerian and international environmental regulations through auditing and management systems.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> Regulatory Auditing</li>
+                        <li><i class="fas fa-check"></i> Permit Applications</li>
+                        <li><i class="fas fa-check"></i> ISO 14001 Implementation</li>
+                        <li><i class="fas fa-check"></i> Training & Capacity Building</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="category-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="category-icon">
+                        <i class="fas fa-solar-panel"></i>
+                    </div>
+                    <h3>Renewable Energy Solutions</h3>
+                    <p>Sustainable energy consulting and implementation including solar, wind, and biomass systems for reduced environmental impact.</p>
+                    <ul class="category-features">
+                        <li><i class="fas fa-check"></i> Solar Power Systems</li>
+                        <li><i class="fas fa-check"></i> Wind Energy Projects</li>
+                        <li><i class="fas fa-check"></i> Biomass Solutions</li>
+                        <li><i class="fas fa-check"></i> Energy Efficiency Audits</li>
+                    </ul>
+                    <a href="#" class="category-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental Impact Stats -->
+    <section class="environmental-impact">
+        <div class="container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2 style="color: white;">Environmental Impact</h2>
+                <p style="color: rgba(255, 255, 255, 0.8);">Measurable results in environmental protection and sustainability across Nigeria</p>
+            </div>
+
+            <div class="impact-stats">
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Environmental Assessments</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Regulatory Compliance Rate</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Hectares Protected</div>
+                </div>
+                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Emergency Response</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Showcase -->
+    <section class="expertise-showcase">
+        <div class="container">
+            <div class="expertise-grid">
+                <div class="expertise-content" data-aos="fade-right">
+                    <h3>Environmental Excellence</h3>
+                    <p>Our environmental services team combines decades of experience with cutting-edge technology to deliver comprehensive solutions that protect Nigeria's natural resources while enabling sustainable development.</p>
+                    
+                    <ul class="expertise-features">
+                        <li><i class="fas fa-check"></i> NESREA Approved Consultants</li>
+                        <li><i class="fas fa-check"></i> International Standards Compliance</li>
+                        <li><i class="fas fa-check"></i> Advanced Monitoring Technology</li>
+                        <li><i class="fas fa-check"></i> Rapid Response Capabilities</li>
+                        <li><i class="fas fa-check"></i> Sustainable Solutions Focus</li>
+                    </ul>
+
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-primary">
+                        <i class="fas fa-envelope"></i>
+                        Request Consultation
+                    </a>
+                </div>
+
+                <div class="expertise-image" data-aos="fade-left">
+                    <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Environmental Monitoring">
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/environmental-services.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}

@@ -1,0 +1,400 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Waste-Recycling - Axflo Oil & Gas{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'axflo_app/css/waste-recycling.css' %}">
+{% endblock %}
+
+{% block content %}
+{% include 'axflo_app/includes/navbar.html' %}
+    <!-- Waste Management Hero Section -->
+    <section class="waste-hero">
+        <div class="recycle-backdrop"></div>
+        
+        <div class="recycle-orbits">
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+            <div class="orbit-ring"></div>
+        </div>
+        
+        <div class="waste-nodes">
+            <div class="waste-node node-1">
+                <i class="fas fa-recycle"></i>
+                <div class="waste-indicator"></div>
+            </div>
+            <div class="waste-node node-2">
+                <i class="fas fa-trash-alt"></i>
+                <div class="waste-indicator"></div>
+            </div>
+            <div class="waste-node node-3">
+                <i class="fas fa-leaf"></i>
+                <div class="waste-indicator"></div>
+            </div>
+            <div class="waste-node node-4">
+                <i class="fas fa-biohazard"></i>
+                <div class="waste-indicator"></div>
+            </div>
+        </div>
+        
+        <div class="waste-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="recycle-badge">
+                <div class="recycle-icon"></div>
+                Environmental Waste Solutions Since 2009
+            </div>
+            
+            <h1 class="waste-title">Waste and Recycling</h1>
+            
+            <p class="waste-subtitle">
+                Comprehensive environmental waste management and recycling solutions for Nigeria's oil and gas 
+                operations, supporting circular economy principles while ensuring proper disposal of hazardous 
+                materials and minimizing environmental impact through sustainable waste treatment practices.
+            </p>
+            
+            <a href="#waste-overview" class="waste-cta">
+                Explore Our Solutions
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Waste Management Overview -->
+    <section id="waste-overview" class="waste-overview">
+        <div class="waste-container">
+            <div class="overview-layout">
+                <div class="overview-text" data-aos="slide-right" data-aos-duration="1000">
+                    <h2>Environmental Waste Management Excellence</h2>
+                    <p>
+                        Axflo's Waste and Recycling services provide comprehensive environmental solutions 
+                        for sustainable waste management in Nigeria's oil and gas sector. Our expertise 
+                        covers hazardous waste treatment, oil-contaminated materials recovery, and 
+                        environmentally responsible disposal practices.
+                    </p>
+                    <p>
+                        From contaminated soil remediation to oily waste processing, we implement 
+                        circular economy principles that minimize environmental impact while maximizing 
+                        resource recovery. Our solutions ensure regulatory compliance and support 
+                        sustainable operations across the Niger Delta region.
+                    </p>
+                    
+                    <div class="waste-metrics">
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="100">
+                            <span class="metric-number">15+</span>
+                            <span class="metric-title">Years Experience</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
+                            <span class="metric-letter">Circular</span>
+                            <span class="metric-title">Economy Focus</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
+                            <span class="metric-number">100%</span>
+                            <span class="metric-title">Compliance Rate</span>
+                        </div>
+                        <div class="metric-card" data-aos="fade-up" data-aos-delay="400">
+                            <span class="metric-letter">Environmental</span>
+                            <span class="metric-title">Protection Focus</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="waste-visual" data-aos="slide-left" data-aos-duration="1000">
+                    <div class="visual-image">
+                                    <img src=" {% static 'axflo_app/oilactivities/oil2.jpg' %}" alt="Oil Waste Recycling" loading="lazy">
+                        <p>Waste Management Solutions</p>
+                        <small>Circular economy & environmental protection</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waste Management Services -->
+    <section class="waste-services">
+        <div class="waste-container">
+            <div class="services-header" data-aos="fade-up">
+                <h2>Waste Management Solutions</h2>
+                <p>
+                    Comprehensive waste and recycling services supporting environmental protection 
+                    and sustainable operations in Nigeria's oil and gas industry.
+                </p>
+            </div>
+            
+            <div class="waste-services-grid">
+                <!-- Waste Classification -->
+                <div class="waste-service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                        <h3>Waste Classification</h3>
+                    </div>
+                    <p class="service-description">
+                        Professional waste characterization and classification services for oil and gas 
+                        operations, ensuring proper identification of hazardous materials, contaminated 
+                        substances, and recyclable materials for appropriate treatment and disposal.
+                    </p>
+                    <ul class="service-features">
+                        <li>Hazardous Waste Identification</li>
+                        <li>Oil-Contaminated Material Assessment</li>
+                        <li>Chemical Waste Characterization</li>
+                        <li>Regulatory Classification Support</li>
+                        <li>Waste Stream Analysis</li>
+                        <li>Environmental Risk Assessment</li>
+                        <li>Disposal Route Planning</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Recycling Programs -->
+                <div class="waste-service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-recycle"></i>
+                        </div>
+                        <h3>Recycling Programs</h3>
+                    </div>
+                    <p class="service-description">
+                        Comprehensive recycling programs designed for oil and gas operations, focusing 
+                        on oil recovery from contaminated materials, metal recycling from equipment, 
+                        and sustainable waste-to-resource conversion supporting circular economy principles.
+                    </p>
+                    <ul class="service-features">
+                        <li>Oil Recovery & Recycling</li>
+                        <li>Metal Equipment Recycling</li>
+                        <li>Contaminated Soil Treatment</li>
+                        <li>Waste-to-Energy Solutions</li>
+                        <li>Material Recovery Programs</li>
+                        <li>Resource Optimization</li>
+                        <li>Circular Economy Implementation</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Hazardous Waste Management -->
+                <div class="waste-service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-biohazard"></i>
+                        </div>
+                        <h3>Hazardous Waste Management</h3>
+                    </div>
+                    <p class="service-description">
+                        Specialized management of hazardous waste from oil and gas operations including 
+                        oil-contaminated materials, chemical waste, and toxic substances requiring 
+                        specialized treatment, containment, and disposal procedures.
+                    </p>
+                    <ul class="service-features">
+                        <li>Chemical Waste Treatment</li>
+                        <li>Oil-Contaminated Material Handling</li>
+                        <li>Toxic Substance Management</li>
+                        <li>Secure Transportation</li>
+                        <li>Treatment Facility Operations</li>
+                        <li>Environmental Monitoring</li>
+                        <li>Regulatory Compliance</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Contaminated Soil Remediation -->
+                <div class="waste-service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-card-header">
+                        <div class="service-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Contaminated Soil Remediation</h3>
+                    </div>
+                    <p class="service-description">
+                        Advanced soil remediation services for oil-contaminated land, including 
+                        bioremediation, soil washing, and treatment processes that restore contaminated 
+                        areas to productive use while protecting groundwater and ecosystems.
+                    </p>
+                    <ul class="service-features">
+                        <li>Bioremediation Processes</li>
+                        <li>Soil Washing & Treatment</li>
+                        <li>In-Situ Remediation</li>
+                        <li>Ex-Situ Treatment</li>
+                        <li>Groundwater Protection</li>
+                        <li>Ecosystem Restoration</li>
+                        <li>Land Use Recovery</li>
+                    </ul>
+                    <a href="{% url 'axflo_app:contact' %}" class="service-link">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waste Management Process -->
+    <section class="waste-process">
+        <div class="waste-container">
+            <div class="process-header" data-aos="fade-up">
+                <h2>Waste Management Process</h2>
+                <p>
+                    Systematic approach to waste management ensuring environmental protection 
+                    through proven classification, treatment, and disposal methodologies.
+                </p>
+            </div>
+            
+            <div class="process-stages">
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stage-icon">01</div>
+                    <h3>Assessment & Classification</h3>
+                    <p>Comprehensive waste characterization, hazard assessment, and regulatory classification ensuring proper handling protocols.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stage-icon">02</div>
+                    <h3>Treatment Planning</h3>
+                    <p>Development of customized treatment strategies based on waste characteristics and environmental protection requirements.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stage-icon">03</div>
+                    <h3>Processing & Recovery</h3>
+                    <p>Implementation of treatment processes including resource recovery, recycling, and safe disposal of residual materials.</p>
+                </div>
+                
+                <div class="process-stage" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stage-icon">04</div>
+                    <h3>Monitoring & Reporting</h3>
+                    <p>Continuous monitoring of treatment effectiveness with comprehensive reporting ensuring regulatory compliance and environmental protection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waste Categories -->
+    <section class="waste-categories">
+        <div class="waste-container">
+            <div class="categories-header" data-aos="fade-up">
+                <h2>Waste Treatment Categories</h2>
+                <p>
+                    Specialized treatment solutions for various waste categories encountered 
+                    in oil and gas operations across Nigeria.
+                </p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h4>Oily Waste</h4>
+                    <p>Treatment and recovery of oil from contaminated materials including sludge, contaminated soil, and oily water through advanced separation technologies.</p>
+                </div>
+                
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h4>Chemical Waste</h4>
+                    <p>Safe handling and treatment of chemical waste from drilling operations, processing facilities, and maintenance activities with specialized containment.</p>
+                </div>
+                
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h4>Contaminated Soil</h4>
+                    <p>Remediation of oil-contaminated soil through bioremediation, soil washing, and treatment processes restoring land to productive use.</p>
+                </div>
+                
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="category-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h4>Equipment Waste</h4>
+                    <p>Recycling and disposal of decommissioned equipment, metal components, and industrial materials following environmental best practices.</p>
+                </div>
+                
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="category-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h4>Produced Water</h4>
+                    <p>Treatment of produced water from oil operations including oil-water separation, contaminant removal, and safe disposal or reuse options.</p>
+                </div>
+                
+                <div class="waste-category" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="category-icon">
+                        <i class="fas fa-biohazard"></i>
+                    </div>
+                    <h4>Hazardous Materials</h4>
+                    <p>Specialized management of hazardous substances requiring secure containment, treatment, and disposal following strict safety protocols.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="waste-cta-section">
+        <div class="waste-container">
+            <div class="cta-content" data-aos="fade-up">
+                <h2>Ready to Optimize Your Waste Management?</h2>
+                <p>
+                    Partner with Nigeria's trusted environmental waste management specialists for 
+                    sustainable solutions that protect the environment while supporting your operations.
+                </p>
+                <div class="cta-actions">
+                    <a href="{% url 'axflo_app:contact' %}" class="cta-action cta-primary">
+                        <i class="fas fa-phone"></i>
+                        Start Your Project
+                    </a>
+                    <a href="#solutions" class="cta-action cta-secondary">
+                        <i class="fas fa-file-download"></i>
+                        View Our Portfolio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% include 'axflo_app/includes/footer.html' %}
+
+      <!-- Load AOS CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+      
+      <!-- Load Font Awesome -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0-beta3/js/all.min.js"></script>
+      
+      <!-- Load AOS JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+      
+      <!-- Load your JS files -->
+      <script src="{% static 'axflo_app/js/main.js' %}"></script>
+      <script src="{% static 'axflo_app/js/waste-recycling.js' %}"></script>
+      
+      <!-- Additional AOS initialization -->
+      <script>
+          // Fallback AOS initialization
+          window.addEventListener('load', function() {
+              if (typeof AOS !== 'undefined') {
+                  AOS.init({
+                      duration: 1000,
+                      once: true,
+                      offset: 100,
+                      delay: 0,
+                      easing: 'ease-in-out',
+                      anchorPlacement: 'top-bottom'
+                  });
+                  
+                  // Force refresh after a short delay
+                  setTimeout(() => {
+                      AOS.refresh();
+                  }, 200);
+              }
+          });
+      </script>
+
+{% endblock %}
+
+{% block extra_js %}
+<!-- Scripts are loaded in the main content area -->
+{% endblock %}
