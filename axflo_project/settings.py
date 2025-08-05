@@ -86,13 +86,24 @@ WSGI_APPLICATION = 'axflo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'axflo',
+        'USER': 'axflo_user',
+        'PASSWORD': 'OidfQ6b5D2Yr9OHPuqKK6O5IxeKQsov6',
+        'HOST': 'dpg-d28mmmjuibrs73dmrd60-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
