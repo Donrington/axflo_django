@@ -368,6 +368,57 @@ def admin_login(request):
         # Debug: return the error as a response
         return HttpResponse(f"Error in admin_login: {str(e)}", status=500)
 
+def admin_register(request):
+    from django.http import HttpResponseRedirect, HttpResponse
+    
+    try:
+        if request.method == 'POST':
+            username = request.POST.get('username', '').strip()
+            email = request.POST.get('email', '').strip()
+            password = request.POST.get('password', '').strip()
+            password_confirm = request.POST.get('password_confirm', '').strip()
+            
+            # Validation
+            if not all([username, email, password, password_confirm]):
+                messages.error(request, 'All fields are required')
+                return render(request, 'axflo_app/admin/register.html')
+            
+            if password != password_confirm:
+                messages.error(request, 'Passwords do not match')
+                return render(request, 'axflo_app/admin/register.html')
+            
+            if len(password) < 8:
+                messages.error(request, 'Password must be at least 8 characters long')
+                return render(request, 'axflo_app/admin/register.html')
+            
+            # Check if username already exists
+            if User.objects.filter(username=username).exists():
+                messages.error(request, 'Username already exists')
+                return render(request, 'axflo_app/admin/register.html')
+            
+            # Check if email already exists
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'Email already exists')
+                return render(request, 'axflo_app/admin/register.html')
+            
+            # Create the admin user
+            user = User.objects.create_user(
+                username=username,
+                email=email,
+                password=password
+            )
+            user.is_staff = True
+            user.is_superuser = True
+            user.save()
+            
+            messages.success(request, 'Admin account created successfully! You can now login.')
+            return HttpResponseRedirect('/admin-login/')
+        
+        return render(request, 'axflo_app/admin/register.html')
+    
+    except Exception as e:
+        return HttpResponse(f"Error in admin_register: {str(e)}", status=500)
+
 def admindashboard(request):
     from django.http import HttpResponseRedirect
     

@@ -39,6 +39,7 @@ urlpatterns = [
     
     # Admin Dashboard URLs
     path('admin-login/', views.admin_login, name='admin_login'),
+    path('admin-register/', views.admin_register, name='admin_register'),
     path('admindashboard/', views.admindashboard, name='admindashboard'),
     path('admin-users/', views.admin_users, name='admin_users'),
     path('admin-contacts/', views.admin_contacts, name='admin_contacts'),
