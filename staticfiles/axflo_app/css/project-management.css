@@ -1,0 +1,1117 @@
+:root {
+    --primary-gold: #d6a019;
+    --primary-gold-light: #ffcc00;
+    --bg-dark: #0a0a0a;
+    --bg-light: #fafafa;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --bg-glass-hover: rgba(255, 255, 255, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(26, 26, 26, 0.7);
+    --text-tertiary: rgba(26, 26, 26, 0.5);
+    --text-dark: #000000;
+    --border-glass: rgba(214, 160, 25, 0.3);
+    --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --blur-amount: 20px;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --background: rgb(214, 160, 25);
+    --hover-color: #ffcc00;
+    --primary-gradient: rgba(0, 0, 0, 0.8);
+    --secondary-gradient: rgba(0, 0, 0, 1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --accent-glow: rgba(214, 160, 25, 0.3);
+    --glass-border: rgba(214, 160, 25, 0.2);
+    --news-section-bg: #141414;
+    --card-bg: rgba(20, 20, 20, 0.6);
+    --card-border: rgba(214, 160, 25, 0.15);
+    --gradient-overlay: linear-gradient(135deg, rgba(214, 160, 25, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    --gradient-mesh: linear-gradient(135deg, rgba(214, 160, 25, 0.15) 0%, rgba(255, 204, 0, 0.08) 50%, rgba(0, 0, 0, 0.3) 100%);
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Epilogue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    overflow-x: hidden;
+    
+}
+
+/* Project Management Hero Section */ .project-hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(214, 160, 25, 0.1) 100%);
+    overflow: hidden;
+    
+}
+
+.project-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(214, 160, 25, 0.4) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(255, 204, 0, 0.3) 0%, transparent 50%), linear-gradient(45deg, var(--bg-dark) 0%, rgba(26, 26, 26, 0.9) 100%);
+    z-index: 1;
+    
+}
+
+.project-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    
+}
+
+.project-diagram {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid var(--border-glass);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    background: var(--bg-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: projectFloat 16s infinite ease-in-out;
+    
+}
+
+.project-diagram i {
+    font-size: 2.8rem;
+    color: var(--primary-gold);
+    
+}
+
+.diagram-1 {
+    top: 15%;
+    left: 8%;
+    animation-delay: 0s;
+    
+}
+
+.diagram-2 {
+    top: 20%;
+    right: 12%;
+    animation-delay: 5s;
+    
+}
+
+.diagram-3 {
+    bottom: 30%;
+    left: 15%;
+    animation-delay: 10s;
+    
+}
+
+.diagram-4 {
+    bottom: 25%;
+    right: 18%;
+    animation-delay: 8s;
+    
+}
+
+.diagram-5 {
+    top: 45%;
+    left: 3%;
+    animation-delay: 13s;
+    
+}
+
+@keyframes projectFloat {
+    0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    border-color: var(--border-glass);
+    box-shadow: 0 10px 30px rgba(214, 160, 25, 0.1);
+    
+}
+
+25% {
+    transform: translateY(-30px) rotate(10deg);
+    border-color: var(--primary-gold);
+    box-shadow: 0 20px 40px rgba(214, 160, 25, 0.3);
+    
+}
+
+50% {
+    transform: translateY(-20px) rotate(-10deg);
+    border-color: var(--hover-color);
+    box-shadow: 0 15px 35px rgba(255, 204, 0, 0.2);
+    
+}
+
+75% {
+    transform: translateY(-35px) rotate(6deg);
+    border-color: var(--primary-gold);
+    box-shadow: 0 25px 45px rgba(214, 160, 25, 0.4);
+    
+}
+
+
+}
+
+.project-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 950px;
+    padding: 0 2rem;
+    color: white;
+    margin: 0 auto;
+    width: 100%;
+    
+}
+
+.project-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(var(--blur-amount));
+    font-size: 0.9rem;
+    color: var(--primary-gold-light);
+    
+}
+
+.project-indicator {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    animation: projectPulse 2s infinite;
+    
+}
+
+@keyframes projectPulse {
+    0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    
+}
+
+50% {
+    opacity: 0.7;
+    transform: scale(1.5);
+    
+}
+
+
+}
+
+.project-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary-gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+}
+
+.project-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    
+}
+
+.project-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.project-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    background: var(--hover-color);
+    
+}
+
+/* Main Container */ .project-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
+}
+
+/* Project Overview */ .project-overview {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.overview-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    
+}
+
+.overview-text h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    
+}
+
+.overview-text p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    
+}
+
+.project-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    
+}
+
+.stat-block {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.stat-block::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    
+}
+
+.stat-block:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+.stat-figure {
+    display: block;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+    
+}
+
+.stat-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    
+}
+
+.overview-visual {
+    position: relative;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.visual-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+    
+}
+
+.visual-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    
+}
+
+.image-overlay p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-gold-light);
+    
+}
+
+.image-overlay small {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    
+}
+
+/* Project Management Services Detailed */ .pm-services {
+    padding: 8rem 0;
+    background: var(--news-section-bg);
+    
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.services-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    
+}
+
+.services-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.pm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    
+}
+
+.pm-service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    padding: 3rem;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.pm-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    
+}
+
+.pm-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-gold);
+    
+}
+
+.pm-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    
+}
+
+.pm-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    
+}
+
+.pm-card-header h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    
+}
+
+.pm-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    
+}
+
+.pm-capabilities {
+    list-style: none;
+    margin-bottom: 2.5rem;
+    
+}
+
+.pm-capabilities li {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(214, 160, 25, 0.1);
+    position: relative;
+    padding-left: 2rem;
+    
+}
+
+.pm-capabilities li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-gold);
+    font-weight: bold;
+    
+}
+
+.pm-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    
+}
+
+.pm-link:hover {
+    color: var(--hover-color);
+    transform: translateX(5px);
+    
+}
+
+/* Project Lifecycle Methodology */ .project-lifecycle {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.lifecycle-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.lifecycle-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    
+}
+
+.lifecycle-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.lifecycle-timeline {
+    position: relative;
+    margin-top: 4rem;
+    
+}
+
+.lifecycle-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    transform: translateX(-50%);
+    
+}
+
+.lifecycle-phase {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+    
+}
+
+.lifecycle-phase:nth-child(even) {
+    flex-direction: row-reverse;
+    
+}
+
+.phase-number {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    
+}
+
+.phase-details {
+    flex: 1;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition);
+    margin: 0 3rem;
+    
+}
+
+.phase-details:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+.phase-details h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+}
+
+.phase-details p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    
+}
+
+/* PMO Framework Section */ .pmo-framework {
+    padding: 8rem 0;
+    background: var(--gradient-mesh);
+    
+}
+
+.framework-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.framework-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    
+}
+
+.framework-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.framework-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    
+}
+
+.framework-component {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    
+}
+
+.framework-component:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-gold);
+    
+}
+
+.framework-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    
+}
+
+.framework-component h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+}
+
+.framework-component p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    
+}
+
+/* Risk Management Dashboard */ .risk-management {
+    padding: 8rem 0;
+    background: var(--bg-dark);
+    color: white;
+    
+}
+
+.risk-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.risk-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    
+}
+
+.risk-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.risk-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    
+}
+
+.risk-button {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    
+}
+
+.risk-button.active, .risk-button:hover {
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    border-color: var(--primary-gold);
+    
+}
+
+.risk-content {
+    display: none;
+    animation: riskFade 0.5s ease-in;
+    
+}
+
+.risk-content.active {
+    display: block;
+    
+}
+
+@keyframes riskFade {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+    
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+    
+}
+
+
+}
+
+.risk-showcase {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+}
+
+.risk-item {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.risk-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    
+}
+
+.risk-item:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-gold);
+    
+}
+
+.risk-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    
+}
+
+.risk-item h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+    
+}
+
+.risk-item p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    
+}
+
+.risk-status {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    
+}
+
+/* Call to Action */ .pm-cta-section {
+    padding: 8rem 0;
+    background: var(--primary-gold);
+    text-align: center;
+    
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-dark);
+    
+}
+
+.cta-content h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    
+}
+
+.cta-content p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+    
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    
+}
+
+.cta-btn {
+    padding: 1.2rem 2.5rem;
+    border: 2px solid var(--text-dark);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+
+.cta-btn-primary {
+    background: var(--text-dark);
+    color: var(--primary-gold);
+    
+}
+
+.cta-btn-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+/* Responsive Design */ @media (max-width: 768px) {
+    .project-hero {
+    padding: 2rem 0;
+    min-height: 100vh;
+    
+}
+
+.project-content {
+    padding: 2rem 1rem;
+    max-width: 100%;
+    
+}
+
+.project-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    
+}
+
+.project-subtitle {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    
+}
+
+.project-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+    
+}
+
+.project-cta {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    
+}
+
+.overview-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+}
+
+.project-stats {
+    grid-template-columns: 1fr;
+    
+}
+
+.pm-grid {
+    grid-template-columns: 1fr;
+    
+}
+
+.lifecycle-phase {
+    flex-direction: column !important;
+    text-align: center;
+    
+}
+
+.phase-details {
+    margin: 2rem 0 0 0;
+    
+}
+
+.lifecycle-timeline::before {
+    display: none;
+    
+}
+
+.framework-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
+}
+
+.cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.risk-controls {
+    flex-wrap: wrap;
+    
+}
+
+.project-diagram {
+    width: 80px;
+    height: 80px;
+    
+}
+
+.project-diagram i {
+    font-size: 1.5rem;
+    
+}
+
+
+}
+
+@media (max-width: 480px) {
+    .project-content {
+    padding: 1.5rem 0.8rem;
+    
+}
+
+.project-title {
+    font-size: clamp(1.5rem, 10vw, 2.2rem);
+    
+}
+
+.project-subtitle {
+    font-size: clamp(0.9rem, 5vw, 1.1rem);
+    padding: 0 0.5rem;
+    
+}
+
+.project-container {
+    padding: 0 1rem;
+    
+}
+
+.pm-service-card {
+    padding: 2rem 1.5rem;
+    
+}
+
+.project-diagram {
+    display: none;
+    
+}
+
+
+}

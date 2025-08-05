@@ -1,0 +1,1082 @@
+:root {
+    --primary-gold: #d6a019;
+    --primary-gold-light: #ffcc00;
+    --bg-dark: #0a0a0a;
+    --bg-light: #fafafa;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --bg-glass-hover: rgba(255, 255, 255, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(26, 26, 26, 0.7);
+    --text-tertiary: rgba(26, 26, 26, 0.5);
+    --text-dark: #000000;
+    --border-glass: rgba(214, 160, 25, 0.3);
+    --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --blur-amount: 20px;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --background: rgb(214, 160, 25);
+    --hover-color: #ffcc00;
+    --primary-gradient: rgba(0, 0, 0, 0.8);
+    --secondary-gradient: rgba(0, 0, 0, 1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --accent-glow: rgba(214, 160, 25, 0.3);
+    --glass-border: rgba(214, 160, 25, 0.2);
+    --news-section-bg: #141414;
+    --card-bg: rgba(20, 20, 20, 0.6);
+    --card-border: rgba(214, 160, 25, 0.15);
+    --gradient-overlay: linear-gradient(135deg, rgba(214, 160, 25, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    --gradient-mesh: linear-gradient(135deg, rgba(214, 160, 25, 0.15) 0%, rgba(255, 204, 0, 0.08) 50%, rgba(0, 0, 0, 0.3) 100%);
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Epilogue', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    overflow-x: hidden;
+    
+}
+
+/* Procurement Hero Section */ .procurement-hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(214, 160, 25, 0.1) 100%);
+    overflow: hidden;
+    
+}
+
+.supply-chain-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(214, 160, 25, 0.4) 0%, transparent 50%), radial-gradient(circle at 70% 70%, rgba(255, 204, 0, 0.3) 0%, transparent 50%), linear-gradient(45deg, var(--bg-dark) 0%, rgba(26, 26, 26, 0.9) 100%);
+    z-index: 1;
+    
+}
+
+.logistics-network {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    
+}
+
+.network-node {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 2px solid var(--border-glass);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    background: var(--bg-glass);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: networkPulse 15s infinite ease-in-out;
+    
+}
+
+.network-node i {
+    font-size: 2rem;
+    color: var(--primary-gold);
+    
+}
+
+.node-1 {
+    top: 15%;
+    left: 15%;
+    animation-delay: 0s;
+    
+}
+
+.node-2 {
+    top: 25%;
+    right: 20%;
+    animation-delay: 5s;
+    
+}
+
+.node-3 {
+    bottom: 20%;
+    left: 25%;
+    animation-delay: 10s;
+    
+}
+
+.node-4 {
+    bottom: 30%;
+    right: 15%;
+    animation-delay: 12s;
+    
+}
+
+@keyframes networkPulse {
+    0%, 100% {
+    transform: scale(1) rotate(0deg);
+    border-color: var(--border-glass);
+    
+}
+
+25% {
+    transform: scale(1.1) rotate(5deg);
+    border-color: var(--primary-gold);
+    
+}
+
+50% {
+    transform: scale(0.9) rotate(-5deg);
+    border-color: var(--hover-color);
+    
+}
+
+75% {
+    transform: scale(1.05) rotate(3deg);
+    border-color: var(--primary-gold);
+    
+}
+
+
+}
+
+.logistics-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 2rem;
+    color: white;
+    margin: 0 auto;
+    width: 100%;
+    
+}
+
+.supply-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-glass);
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(var(--blur-amount));
+    font-size: 0.9rem;
+    color: var(--primary-gold-light);
+    
+}
+
+.supply-indicator {
+    width: 8px;
+    height: 8px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    animation: supplyPulse 2s infinite;
+    
+}
+
+@keyframes supplyPulse {
+    0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    
+}
+
+50% {
+    opacity: 0.7;
+    transform: scale(1.3);
+    
+}
+
+
+}
+
+.logistics-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, var(--primary-gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    
+}
+
+.logistics-subtitle {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    opacity: 0.9;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+    
+}
+
+.logistics-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.logistics-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    background: var(--hover-color);
+    
+}
+
+/* Main Container */ .procurement-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
+}
+
+/* Supply Chain Overview */ .supply-overview {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.supply-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    
+}
+
+.supply-text h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    
+}
+
+.supply-text p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    
+}
+
+.supply-metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    
+}
+
+.metric-card {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.metric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    
+}
+
+.metric-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+.metric-value {
+    display: block;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+    
+}
+
+.metric-description {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    
+}
+
+.supply-visual {
+    position: relative;
+    height: 500px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.visual-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 30px;
+    
+}
+
+.visual-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    
+}
+
+.image-overlay p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--primary-gold-light);
+    
+}
+
+.image-overlay small {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 400;
+    
+}
+
+/* Procurement Services Detailed */ .procurement-services {
+    padding: 8rem 0;
+    background: var(--news-section-bg);
+    
+}
+
+.procurement-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.procurement-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+    
+}
+
+.procurement-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.procurement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    
+}
+
+.procurement-service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 25px;
+    padding: 3rem;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    
+}
+
+.procurement-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    
+}
+
+.procurement-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-gold);
+    
+}
+
+.procurement-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    
+}
+
+.procurement-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    
+}
+
+.procurement-card-header h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    
+}
+
+.procurement-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    
+}
+
+.procurement-capabilities {
+    list-style: none;
+    margin-bottom: 2.5rem;
+    
+}
+
+.procurement-capabilities li {
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(214, 160, 25, 0.1);
+    position: relative;
+    padding-left: 2rem;
+    
+}
+
+.procurement-capabilities li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-gold);
+    font-weight: bold;
+    
+}
+
+.procurement-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    
+}
+
+.procurement-link:hover {
+    color: var(--hover-color);
+    transform: translateX(5px);
+    
+}
+
+/* Supply Chain Process */ .supply-chain-process {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.process-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    
+}
+
+.process-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.supply-timeline {
+    position: relative;
+    margin-top: 4rem;
+    
+}
+
+.supply-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    transform: translateX(-50%);
+    
+}
+
+.timeline-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+    position: relative;
+    
+}
+
+.timeline-step:nth-child(even) {
+    flex-direction: row-reverse;
+    
+}
+
+.step-indicator {
+    width: 80px;
+    height: 80px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    
+}
+
+.step-content {
+    flex: 1;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-primary);
+    transition: var(--transition);
+    margin: 0 3rem;
+    
+}
+
+.step-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+.step-content h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+}
+
+.step-content p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    
+}
+
+/* Vendor Network Section */ .vendor-network {
+    padding: 8rem 0;
+    background: var(--gradient-mesh);
+    
+}
+
+.network-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.network-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    
+}
+
+.network-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.vendor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+    
+}
+
+.vendor-category {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    
+}
+
+.vendor-category:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-gold);
+    
+}
+
+.vendor-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    
+}
+
+.vendor-category h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+}
+
+.vendor-category p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    
+}
+
+/* Interactive Dashboard */ .logistics-dashboard {
+    padding: 8rem 0;
+    background: var(--bg-dark);
+    color: white;
+    
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.dashboard-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    
+}
+
+.dashboard-header p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.dashboard-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 4rem;
+    
+}
+
+.control-button {
+    padding: 1rem 2rem;
+    background: transparent;
+    border: 1px solid var(--border-glass);
+    border-radius: 50px;
+    color: white;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    
+}
+
+.control-button.active, .control-button:hover {
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    border-color: var(--primary-gold);
+    
+}
+
+.dashboard-content {
+    display: none;
+    animation: dashboardFade 0.5s ease-in;
+    
+}
+
+.dashboard-content.active {
+    display: block;
+    
+}
+
+@keyframes dashboardFade {
+    from {
+    opacity: 0;
+    transform: translateY(20px);
+    
+}
+
+to {
+    opacity: 1;
+    transform: translateY(0);
+    
+}
+
+
+}
+
+.dashboard-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+    
+}
+
+.metric-widget {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    backdrop-filter: blur(var(--blur-amount));
+    transition: var(--transition);
+    
+}
+
+.metric-widget:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-gold);
+    
+}
+
+.widget-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    
+}
+
+.widget-value {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+    
+}
+
+.widget-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    
+}
+
+/* Call to Action */ .procurement-cta {
+    padding: 8rem 0;
+    background: var(--primary-gold);
+    text-align: center;
+    
+}
+
+.cta-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-dark);
+    
+}
+
+.cta-wrapper h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    
+}
+
+.cta-wrapper p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.8;
+    
+}
+
+.cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    
+}
+
+.cta-action {
+    padding: 1.2rem 2.5rem;
+    border: 2px solid var(--text-dark);
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+
+.cta-primary {
+    background: var(--text-dark);
+    color: var(--primary-gold);
+    
+}
+
+.cta-secondary {
+    background: transparent;
+    color: var(--text-dark);
+    
+}
+
+.cta-action:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+/* Responsive Design */ @media (max-width: 768px) {
+    .procurement-hero {
+    padding: 2rem 0;
+    min-height: 100vh;
+    
+}
+
+.logistics-content {
+    padding: 2rem 1rem;
+    max-width: 100%;
+    
+}
+
+.logistics-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    
+}
+
+.logistics-subtitle {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    
+}
+
+.supply-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 1rem;
+    margin-bottom: 1.5rem;
+    
+}
+
+.logistics-cta {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+    
+}
+
+.supply-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+}
+
+.supply-metrics {
+    grid-template-columns: 1fr;
+    
+}
+
+.procurement-grid {
+    grid-template-columns: 1fr;
+    
+}
+
+.timeline-step {
+    flex-direction: column !important;
+    text-align: center;
+    
+}
+
+.step-content {
+    margin: 2rem 0 0 0;
+    
+}
+
+.supply-timeline::before {
+    display: none;
+    
+}
+
+.vendor-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    
+}
+
+.cta-actions {
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.dashboard-controls {
+    flex-wrap: wrap;
+    
+}
+
+.network-node {
+    width: 80px;
+    height: 80px;
+    
+}
+
+.network-node i {
+    font-size: 1.2rem;
+    
+}
+
+
+}
+
+@media (max-width: 480px) {
+    .logistics-content {
+    padding: 1.5rem 0.8rem;
+    
+}
+
+.logistics-title {
+    font-size: clamp(1.5rem, 10vw, 2.2rem);
+    
+}
+
+.logistics-subtitle {
+    font-size: clamp(0.9rem, 5vw, 1.1rem);
+    padding: 0 0.5rem;
+    
+}
+
+.procurement-container {
+    padding: 0 1rem;
+    
+}
+
+.procurement-service-card {
+    padding: 2rem 1.5rem;
+    
+}
+
+.network-node {
+    display: none;
+    
+}
+
+
+}

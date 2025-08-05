@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-*)tsnxbh0wxc-v3vhd@u7k0si-7@0&psa-xd!zzn3_u7e)n$b8'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+import os
+DEBUG = os.environ.get('DEBUG', 'False').lower() in ['true', '1', 'yes']
 
 ALLOWED_HOSTS = ['axflo-django.onrender.com', '127.0.0.1', 'localhost']
 
@@ -94,24 +95,25 @@ WSGI_APPLICATION = 'axflo_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'axflo',
-        'USER': 'axflo_user',
-        'PASSWORD': 'OidfQ6b5D2Yr9OHPuqKK6O5IxeKQsov6',
-        'HOST': 'dpg-d28mmmjuibrs73dmrd60-a.oregon-postgres.render.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Production database configuration (use environment variable to switch)
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'axflo',
+            'USER': 'axflo_user',
+            'PASSWORD': 'OidfQ6b5D2Yr9OHPuqKK6O5IxeKQsov6',
+            'HOST': 'dpg-d28mmmjuibrs73dmrd60-a.oregon-postgres.render.com',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

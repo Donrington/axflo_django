@@ -1,0 +1,532 @@
+:root {
+    --primary-gold: #d6a019;
+    --primary-gold-light: #ffcc00;
+    --bg-dark: #0a0a0a;
+    --bg-light: #fafafa;
+    --bg-glass: rgba(255, 255, 255, 0.08);
+    --bg-glass-hover: rgba(255, 255, 255, 0.12);
+    --text-primary: #1a1a1a;
+    --text-secondary: rgba(26, 26, 26, 0.7);
+    --text-tertiary: rgba(26, 26, 26, 0.5);
+    --text-dark: #000000;
+    --border-glass: rgba(214, 160, 25, 0.3);
+    --shadow-primary: 0 20px 40px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 25px 50px rgba(0, 0, 0, 0.4);
+    --blur-amount: 20px;
+    --transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --background: rgb(214, 160, 25);
+    --hover-color: #ffcc00;
+    --primary-gradient: rgba(0, 0, 0, 0.8);
+    --secondary-gradient: rgba(0, 0, 0, 1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --overlay-color: rgba(0, 0, 0, 0.5);
+    --accent-glow: rgba(214, 160, 25, 0.3);
+    --glass-border: rgba(214, 160, 25, 0.2);
+    --news-section-bg: #141414;
+    --card-bg: rgba(20, 20, 20, 0.6);
+    --card-border: rgba(214, 160, 25, 0.15);
+    --gradient-overlay: linear-gradient(135deg, rgba(214, 160, 25, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    --gradient-mesh: linear-gradient(135deg, rgba(214, 160, 25, 0.15) 0%, rgba(255, 204, 0, 0.08) 50%, rgba(0, 0, 0, 0.3) 100%);
+    
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: var(--bg-light);
+    overflow-x: hidden;
+    
+}
+
+/* Environmental Hero Section */ .environmental-hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, rgba(214, 160, 25, 0.1) 100%);
+    overflow: hidden;
+    
+}
+
+.environmental-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+    animation: float 20s ease-in-out infinite;
+    
+}
+
+.environmental-elements {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    
+}
+
+.environmental-element {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+}
+
+.element-1 {
+    top: 15%;
+    left: 10%;
+    animation: float 6s ease-in-out infinite;
+    
+}
+
+.element-2 {
+    top: 25%;
+    right: 15%;
+    animation: float 8s ease-in-out infinite 2s;
+    
+}
+
+.element-3 {
+    bottom: 30%;
+    left: 8%;
+    animation: float 7s ease-in-out infinite 1s;
+    
+}
+
+.element-4 {
+    bottom: 20%;
+    right: 10%;
+    animation: float 9s ease-in-out infinite 3s;
+    
+}
+
+@keyframes float {
+    0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+    
+}
+
+50% {
+    transform: translateY(-20px) rotate(5deg);
+    
+}
+
+
+}
+
+.environmental-content {
+    text-align: center;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+    color: white;
+    
+}
+
+.environmental-title {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3);
+    line-height: 1.1;
+    
+}
+
+.environmental-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+    
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.cta-primary, .cta-secondary {
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+}
+
+.cta-primary {
+    background: var(--primary-gold);
+    color: var(--text-dark);
+    box-shadow: 0 10px 30px rgba(214, 160, 25, 0.4);
+    
+}
+
+.cta-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(214, 160, 25, 0.6);
+    
+}
+
+.cta-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    
+}
+
+.cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    
+}
+
+/* Service Categories */ .service-categories {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
+}
+
+.categories-header {
+    text-align: center;
+    margin-bottom: 5rem;
+    
+}
+
+.categories-header h2 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    
+}
+
+.categories-header p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+    
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    
+}
+
+.category-card {
+    background: white;
+    border-radius: 25px;
+    padding: 3rem;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-primary);
+    
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--primary-gold-light) 50%, var(--hover-color) 100%);
+    
+}
+
+.category-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    
+}
+
+.category-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--hover-color) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px var(--accent-glow);
+    
+}
+
+.category-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    
+}
+
+.category-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    
+}
+
+.category-features {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 2rem;
+    
+}
+
+.category-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    
+}
+
+.category-features li i {
+    color: var(--primary-gold);
+    font-size: 0.9rem;
+    
+}
+
+.category-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-gold);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    
+}
+
+.category-link:hover {
+    color: var(--hover-color);
+    transform: translateX(5px);
+    
+}
+
+/* Environmental Impact Section */ .environmental-impact {
+    padding: 8rem 0;
+    background: var(--news-section-bg);
+    color: white;
+    position: relative;
+    
+}
+
+.impact-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+    
+}
+
+.stat-item {
+    text-align: center;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(20px);
+    
+}
+
+.stat-number {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-gold);
+    margin-bottom: 0.5rem;
+    
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    
+}
+
+/* Expertise Showcase */ .expertise-showcase {
+    padding: 8rem 0;
+    background: var(--bg-light);
+    
+}
+
+.expertise-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-top: 4rem;
+    
+}
+
+.expertise-content h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    
+}
+
+.expertise-content p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    
+}
+
+.expertise-features {
+    list-style: none;
+    margin-bottom: 3rem;
+    
+}
+
+.expertise-features li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    
+}
+
+.expertise-features li i {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-gold);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    
+}
+
+.expertise-image {
+    position: relative;
+    border-radius: 25px;
+    overflow: hidden;
+    height: 500px;
+    
+}
+
+.expertise-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+/* Responsive Design */ @media (max-width: 768px) {
+    .categories-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+}
+
+.category-card {
+    padding: 2rem;
+    
+}
+
+.expertise-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    
+}
+
+.cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.environmental-element {
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+    
+}
+
+
+}
+
+@media (max-width: 480px) {
+    .environmental-content {
+    padding: 1.5rem;
+    
+}
+
+.category-card {
+    padding: 1.5rem;
+    
+}
+
+.environmental-element {
+    display: none;
+    
+}
+
+
+}

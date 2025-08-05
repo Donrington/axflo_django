@@ -10,7 +10,8 @@
       "Bash(del test_job_application.py)",
       "Bash(rm:*)",
       "Bash(python:*)",
-      "Bash(del create_test_data.py)"
+      "Bash(del create_test_data.py)",
+      "Bash(set DEBUG=True)"
     ],
     "deny": []
   }
