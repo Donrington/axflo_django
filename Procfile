@@ -1,1 +1,1 @@
-web: gunicorn axflo.wsgi:application
+web: gunicorn axflo_project.wsgi:application
