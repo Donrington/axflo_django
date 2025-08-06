@@ -21,6 +21,7 @@ from axflo_app.models import (
     Newsletter, SubscriptionCategory, Subscriber
 )
 import random
+import uuid
 
 class Command(BaseCommand):
     help = 'Create comprehensive test content for quality assurance across all Axflo platform features'
@@ -45,7 +46,7 @@ class Command(BaseCommand):
         clean_data = options['clean']
         
         self.stdout.write(
-            self.style.SUCCESS(f'🧪 Starting quality test for {content_type} content...\n')
+            self.style.SUCCESS(f'>> Starting quality test for {content_type} content...\n')
         )
         
         # Ensure we have test users
@@ -76,7 +77,7 @@ class Command(BaseCommand):
             self.test_newsletter_content()
         
         self.stdout.write(
-            self.style.SUCCESS('\n🎉 Quality test completed successfully!')
+            self.style.SUCCESS('\n>> Quality test completed successfully!')
         )
         self.print_summary()
 
@@ -100,7 +101,7 @@ class Command(BaseCommand):
 
     def clean_test_data(self, content_type):
         """Clean existing test data"""
-        self.stdout.write('🧹 Cleaning existing test data...')
+        self.stdout.write('>> Cleaning existing test data...')
         
         if content_type in ['all', 'blog']:
             NewsArticle.objects.filter(title__icontains='[TEST]').delete()
@@ -122,7 +123,7 @@ class Command(BaseCommand):
 
     def test_blog_content(self):
         """Create test blog articles"""
-        self.stdout.write('📝 Creating test blog articles...')
+        self.stdout.write('>> Creating test blog articles...')
         
         # Ensure categories exist
         categories = [
@@ -144,7 +145,7 @@ class Command(BaseCommand):
         
         test_articles = [
             {
-                'title': '[TEST] Axflo Launches Revolutionary Deepwater Drilling Platform',
+                'title': '[TEST] Axflo Launches New Deepwater Platform',
                 'excerpt': 'Testing the blog system with a comprehensive article about our latest technological advancement in offshore drilling capabilities.',
                 'category': 'Company News',
                 'author': admin_user,
@@ -153,7 +154,7 @@ class Command(BaseCommand):
                 'days_ago': 1
             },
             {
-                'title': '[TEST] Digital Twin Technology Transforms Oil & Gas Operations',
+                'title': '[TEST] Digital Twin Tech in Oil & Gas',
                 'excerpt': 'Exploring how digital twin technology is revolutionizing predictive maintenance and operational efficiency in the oil and gas sector.',
                 'category': 'Technology & Innovation',
                 'author': editor_user,
@@ -162,7 +163,7 @@ class Command(BaseCommand):
                 'days_ago': 3
             },
             {
-                'title': '[TEST] Axflo Achieves Zero Incidents Milestone Across All Operations',
+                'title': '[TEST] Axflo Zero Incidents Milestone',
                 'excerpt': 'Celebrating our commitment to safety excellence with 365 consecutive days of zero safety incidents across all projects.',
                 'category': 'Safety & Environment',
                 'author': admin_user,
@@ -171,7 +172,7 @@ class Command(BaseCommand):
                 'days_ago': 5
             },
             {
-                'title': '[TEST] West Africa Energy Transition: Market Analysis 2024',
+                'title': '[TEST] West Africa Energy Market 2024',
                 'excerpt': 'Comprehensive analysis of the energy transition trends in West Africa and opportunities for sustainable development.',
                 'category': 'Industry Insights',
                 'author': editor_user,
@@ -180,7 +181,7 @@ class Command(BaseCommand):
                 'days_ago': 7
             },
             {
-                'title': '[TEST] Lagos Port Complex Expansion Project Reaches Milestone',
+                'title': '[TEST] Lagos Port Expansion Update',
                 'excerpt': 'Major progress update on the Lagos Port Complex expansion project, showcasing advanced marine engineering capabilities.',
                 'category': 'Project Updates',
                 'author': admin_user,
@@ -215,13 +216,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {article.title[:50]}...')
+                self.stdout.write(f'  + Created: {article.title[:50]}...')
         
-        self.stdout.write(f'  📊 Blog Articles: {created_count} created, {NewsArticle.objects.count()} total\n')
+        self.stdout.write(f'  >> Blog Articles: {created_count} created, {NewsArticle.objects.count()} total\n')
 
     def test_career_content(self):
         """Create test job postings and applications"""
-        self.stdout.write('💼 Creating test career content...')
+        self.stdout.write('>> Creating test career content...')
         
         # Ensure job categories exist
         job_categories = [
@@ -240,7 +241,7 @@ class Command(BaseCommand):
         
         test_jobs = [
             {
-                'title': '[TEST] Senior Offshore Platform Engineer',
+                'title': '[TEST] Senior Offshore Engineer',
                 'department': 'Engineering & Design',
                 'location': 'Lagos, Nigeria',
                 'employment_type': 'FULL_TIME',
@@ -258,7 +259,7 @@ class Command(BaseCommand):
                 'days_ago': 10
             },
             {
-                'title': '[TEST] HSE Coordinator - Offshore Operations',
+                'title': '[TEST] HSE Coordinator',
                 'department': 'Health, Safety & Environment',
                 'location': 'Warri, Nigeria',
                 'employment_type': 'FULL_TIME',
@@ -267,7 +268,7 @@ class Command(BaseCommand):
                 'days_ago': 3
             },
             {
-                'title': '[TEST] Project Manager - LNG Infrastructure',
+                'title': '[TEST] Project Manager LNG',
                 'department': 'Project Management',
                 'location': 'Abuja, Nigeria',
                 'employment_type': 'CONTRACT',
@@ -276,7 +277,7 @@ class Command(BaseCommand):
                 'days_ago': 7
             },
             {
-                'title': '[TEST] Maintenance Supervisor - Production Facility',
+                'title': '[TEST] Maintenance Supervisor',
                 'department': 'Operations & Maintenance',
                 'location': 'Bonny Island, Nigeria',
                 'employment_type': 'FULL_TIME',
@@ -305,13 +306,13 @@ class Command(BaseCommand):
             
             if created:
                 created_jobs += 1
-                self.stdout.write(f'  ✓ Created job: {job.title[:50]}...')
+                self.stdout.write(f'  + Created job: {job.title[:50]}...')
                 
                 # Create sample applications for active jobs
                 if job.status == 'ACTIVE':
                     self.create_job_applications(job)
         
-        self.stdout.write(f'  📊 Job Postings: {created_jobs} created, {JobPosting.objects.count()} total\n')
+        self.stdout.write(f'  >> Job Postings: {created_jobs} created, {JobPosting.objects.count()} total\n')
 
     def create_job_applications(self, job):
         """Create sample job applications"""
@@ -336,7 +337,7 @@ class Command(BaseCommand):
 
     def test_achievement_content(self):
         """Create test achievements"""
-        self.stdout.write('🏆 Creating test achievements...')
+        self.stdout.write('>> Creating test achievements...')
         
         # Ensure achievement categories exist
         achievement_categories = [
@@ -359,7 +360,7 @@ class Command(BaseCommand):
         
         test_achievements = [
             {
-                'title': '[TEST] West Africa Oil & Gas Excellence Award 2024',
+                'title': '[TEST] Oil & Gas Excellence Award 2024',
                 'category': 'Industry Recognition',
                 'achievement_type': 'AWARD',
                 'status': 'ACTIVE',
@@ -367,7 +368,7 @@ class Command(BaseCommand):
                 'days_ago': 30
             },
             {
-                'title': '[TEST] Zero Safety Incidents - 500 Days Milestone',
+                'title': '[TEST] Zero Safety Incidents 500 Days',
                 'category': 'Safety Awards',
                 'achievement_type': 'MILESTONE',
                 'status': 'ACTIVE',
@@ -375,7 +376,7 @@ class Command(BaseCommand):
                 'days_ago': 45
             },
             {
-                'title': '[TEST] Digital Twin Implementation Pioneer Award',
+                'title': '[TEST] Digital Twin Pioneer Award',
                 'category': 'Innovation & Technology',
                 'achievement_type': 'RECOGNITION',
                 'status': 'ACTIVE',
@@ -383,7 +384,7 @@ class Command(BaseCommand):
                 'days_ago': 60
             },
             {
-                'title': '[TEST] Lagos Port Complex Project Completion Excellence',
+                'title': '[TEST] Lagos Port Project Excellence',
                 'category': 'Project Excellence',
                 'achievement_type': 'PROJECT_SUCCESS',
                 'status': 'ACTIVE',
@@ -391,7 +392,7 @@ class Command(BaseCommand):
                 'days_ago': 90
             },
             {
-                'title': '[TEST] Environmental Impact Reduction Certificate',
+                'title': '[TEST] Environmental Impact Certificate',
                 'category': 'Environmental Stewardship',
                 'achievement_type': 'CERTIFICATION',
                 'status': 'ACTIVE',
@@ -427,18 +428,18 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {achievement.title[:50]}...')
+                self.stdout.write(f'  + Created: {achievement.title[:50]}...')
         
-        self.stdout.write(f'  📊 Achievements: {created_count} created, {Achievement.objects.count()} total\n')
+        self.stdout.write(f'  >> Achievements: {created_count} created, {Achievement.objects.count()} total\n')
 
     def test_project_content(self):
         """Create test projects and portfolio items"""
-        self.stdout.write('🚧 Creating test project content...')
+        self.stdout.write('>> Creating test project content...')
         
         # Regular projects
         test_projects = [
             {
-                'name': '[TEST] Lagos LNG Terminal Expansion Phase 2',
+                'name': '[TEST] Lagos LNG Terminal Phase 2',
                 'client': 'Nigerian LNG Limited',
                 'category': 'Engineering & Design',
                 'status': 'COMPLETED',
@@ -447,7 +448,7 @@ class Command(BaseCommand):
                 'days_complete': 30
             },
             {
-                'name': '[TEST] Offshore Platform Installation - Field Delta',
+                'name': '[TEST] Offshore Platform Delta',
                 'client': 'Shell Petroleum Development Company',
                 'category': 'Marine & Offshore',
                 'status': 'IN_PROGRESS',
@@ -456,7 +457,7 @@ class Command(BaseCommand):
                 'days_complete': None
             },
             {
-                'name': '[TEST] Warri Refinery Modernization Project',
+                'name': '[TEST] Warri Refinery Modernization',
                 'client': 'Nigerian National Petroleum Corporation',
                 'category': 'Engineering & Design',
                 'status': 'PLANNING',
@@ -490,12 +491,12 @@ class Command(BaseCommand):
             )
             
             if created:
-                self.stdout.write(f'  ✓ Created project: {project.name[:50]}...')
+                self.stdout.write(f'  + Created project: {project.name[:50]}...')
         
         # Portfolio projects
         test_portfolio = [
             {
-                'title': '[TEST] Deep Water Oil Spill Response System',
+                'title': '[TEST] Oil Spill Response System',
                 'client': 'Chevron Nigeria Limited',
                 'project_type': 'OIL_SPILL',
                 'status': 'FEATURED',
@@ -503,7 +504,7 @@ class Command(BaseCommand):
                 'days_complete': 60
             },
             {
-                'title': '[TEST] Marine Support Services - Bonny Island',
+                'title': '[TEST] Marine Support Bonny Island',
                 'client': 'Nigeria LNG Limited',
                 'project_type': 'MARINE',
                 'status': 'STANDARD',
@@ -511,7 +512,7 @@ class Command(BaseCommand):
                 'days_complete': 15
             },
             {
-                'title': '[TEST] Environmental Cleanup - Niger Delta',
+                'title': '[TEST] Environmental Niger Delta',
                 'client': 'Federal Ministry of Environment',
                 'project_type': 'ENVIRONMENTAL',
                 'status': 'FEATURED',
@@ -557,42 +558,42 @@ class Command(BaseCommand):
             
             if created:
                 portfolio_created += 1
-                self.stdout.write(f'  ✓ Created portfolio: {portfolio.title[:50]}...')
+                self.stdout.write(f'  + Created portfolio: {portfolio.title[:50]}...')
         
-        self.stdout.write(f'  📊 Projects: {Project.objects.filter(name__icontains='[TEST]').count()} created')
-        self.stdout.write(f'  📊 Portfolio: {portfolio_created} created, {ProjectPortfolio.objects.count()} total\n')
+        self.stdout.write(f'  >> Projects: {Project.objects.filter(name__icontains='[TEST]').count()} created')
+        self.stdout.write(f'  >> Portfolio: {portfolio_created} created, {ProjectPortfolio.objects.count()} total\n')
 
     def test_milestone_content(self):
         """Create test company milestones"""
-        self.stdout.write('🎯 Creating test company milestones...')
+        self.stdout.write('>> Creating test company milestones...')
         
         test_milestones = [
             {
-                'title': '[TEST] Axflo Celebrates 25 Years of Excellence',
+                'title': '[TEST] 25 Years of Excellence',
                 'milestone_date': date(2024, 1, 15),
                 'icon': 'fas fa-anniversary',
                 'featured': True
             },
             {
-                'title': '[TEST] 500th Project Completion Milestone',
+                'title': '[TEST] 500th Project Completion',
                 'milestone_date': date(2023, 9, 22),
                 'icon': 'fas fa-trophy',
                 'featured': True
             },
             {
-                'title': '[TEST] ISO 45001 Safety Management Certification',
+                'title': '[TEST] ISO 45001 Certification',
                 'milestone_date': date(2023, 6, 10),
                 'icon': 'fas fa-certificate',
                 'featured': False
             },
             {
-                'title': '[TEST] Launch of Digital Innovation Center',
+                'title': '[TEST] Digital Innovation Center',
                 'milestone_date': date(2023, 3, 5),
                 'icon': 'fas fa-rocket',
                 'featured': True
             },
             {
-                'title': '[TEST] 10,000th Employee Training Completion',
+                'title': '[TEST] 10,000th Training Completion',
                 'milestone_date': date(2022, 12, 20),
                 'icon': 'fas fa-graduation-cap',
                 'featured': False
@@ -615,13 +616,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {milestone.title[:50]}...')
+                self.stdout.write(f'  + Created: {milestone.title[:50]}...')
         
-        self.stdout.write(f'  📊 Milestones: {created_count} created, {CompanyMilestone.objects.count()} total\n')
+        self.stdout.write(f'  >> Milestones: {created_count} created, {CompanyMilestone.objects.count()} total\n')
 
     def test_contact_content(self):
         """Create test contact submissions"""
-        self.stdout.write('📞 Creating test contact submissions...')
+        self.stdout.write('>> Creating test contact submissions...')
         
         # Ensure inquiry categories exist
         sample_categories = [
@@ -705,13 +706,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {contact.name}')
+                self.stdout.write(f'  + Created: {contact.name}')
         
-        self.stdout.write(f'  📊 Contact Submissions: {created_count} created, {ContactSubmission.objects.count()} total\n')
+        self.stdout.write(f'  >> Contact Submissions: {created_count} created, {ContactSubmission.objects.count()} total\n')
 
     def test_newsletter_content(self):
         """Create test newsletter content and subscribers"""
-        self.stdout.write('📧 Creating test newsletter content...')
+        self.stdout.write('>> Creating test newsletter content...')
         
         # Create test subscribers
         test_subscribers = [
@@ -737,7 +738,8 @@ class Command(BaseCommand):
                 defaults={
                     'first_name': sub_data['first_name'],
                     'last_name': sub_data['last_name'],
-                    'active_status': True
+                    'active_status': True,
+                    'unsubscribe_token': str(uuid.uuid4())[:20]  # Generate unique token
                 }
             )
             
@@ -750,21 +752,21 @@ class Command(BaseCommand):
         # Create test newsletters
         test_newsletters = [
             {
-                'title': '[TEST] Axflo Monthly Update - March 2024',
+                'title': '[TEST] Monthly Update March 2024',
                 'content': 'Test newsletter content for quality assurance testing.',
                 'sent': True,
                 'days_ago': 10,
                 'recipient_count': 150
             },
             {
-                'title': '[TEST] Project Spotlight: Lagos LNG Expansion',
+                'title': '[TEST] Lagos LNG Project Spotlight',
                 'content': 'Special edition newsletter focusing on our major LNG project.',
                 'sent': True,
                 'days_ago': 20,
                 'recipient_count': 145
             },
             {
-                'title': '[TEST] Safety Week 2024 - Draft Newsletter',
+                'title': '[TEST] Safety Week 2024 Draft',
                 'content': 'Draft newsletter for upcoming safety awareness week.',
                 'sent': False,
                 'days_ago': 0,
@@ -792,8 +794,8 @@ class Command(BaseCommand):
                 newsletter.categories.set(random.sample(list(categories), random.randint(1, 2)))
                 newsletter_count += 1
         
-        self.stdout.write(f'  📊 Subscribers: {subscriber_count} created, {Subscriber.objects.count()} total')
-        self.stdout.write(f'  📊 Newsletters: {newsletter_count} created, {Newsletter.objects.count()} total\n')
+        self.stdout.write(f'  >> Subscribers: {subscriber_count} created, {Subscriber.objects.count()} total')
+        self.stdout.write(f'  >> Newsletters: {newsletter_count} created, {Newsletter.objects.count()} total\n')
 
     # Content generation methods
     def generate_article_content(self, title):
@@ -929,53 +931,53 @@ class Command(BaseCommand):
 
     def print_summary(self):
         """Print comprehensive summary of test content"""
-        self.stdout.write(self.style.SUCCESS('\n📊 QUALITY TEST SUMMARY'))
+        self.stdout.write(self.style.SUCCESS('\n>> QUALITY TEST SUMMARY'))
         self.stdout.write('=' * 50)
         
         # Blog content
         blog_articles = NewsArticle.objects.filter(title__icontains='[TEST]').count()
         blog_categories = BlogCategory.objects.count()
-        self.stdout.write(f'📝 Blog Articles: {blog_articles} test articles, {NewsArticle.objects.count()} total')
-        self.stdout.write(f'📂 Blog Categories: {blog_categories} categories')
+        self.stdout.write(f'>> Blog Articles: {blog_articles} test articles, {NewsArticle.objects.count()} total')
+        self.stdout.write(f'>> Blog Categories: {blog_categories} categories')
         
         # Career content
         job_postings = JobPosting.objects.filter(title__icontains='[TEST]').count()
         job_applications = JobApplication.objects.filter(first_name__icontains='TEST').count()
         job_categories = JobCategory.objects.count()
-        self.stdout.write(f'💼 Job Postings: {job_postings} test jobs, {JobPosting.objects.count()} total')
-        self.stdout.write(f'📋 Job Applications: {job_applications} test applications')
-        self.stdout.write(f'🏢 Job Categories: {job_categories} categories')
+        self.stdout.write(f'>> Job Postings: {job_postings} test jobs, {JobPosting.objects.count()} total')
+        self.stdout.write(f'>> Job Applications: {job_applications} test applications')
+        self.stdout.write(f'>> Job Categories: {job_categories} categories')
         
         # Achievement content
         achievements = Achievement.objects.filter(title__icontains='[TEST]').count()
         achievement_categories = AchievementCategory.objects.count()
-        self.stdout.write(f'🏆 Achievements: {achievements} test achievements, {Achievement.objects.count()} total')
-        self.stdout.write(f'🎯 Achievement Categories: {achievement_categories} categories')
+        self.stdout.write(f'>> Achievements: {achievements} test achievements, {Achievement.objects.count()} total')
+        self.stdout.write(f'>> Achievement Categories: {achievement_categories} categories')
         
         # Project content
         projects = Project.objects.filter(name__icontains='[TEST]').count()
         portfolio = ProjectPortfolio.objects.filter(title__icontains='[TEST]').count()
-        self.stdout.write(f'🚧 Projects: {projects} test projects, {Project.objects.count()} total')
-        self.stdout.write(f'📁 Portfolio: {portfolio} test portfolio items, {ProjectPortfolio.objects.count()} total')
+        self.stdout.write(f'>> Projects: {projects} test projects, {Project.objects.count()} total')
+        self.stdout.write(f'>> Portfolio: {portfolio} test portfolio items, {ProjectPortfolio.objects.count()} total')
         
         # Milestone content
         milestones = CompanyMilestone.objects.filter(title__icontains='[TEST]').count()
-        self.stdout.write(f'🎯 Milestones: {milestones} test milestones, {CompanyMilestone.objects.count()} total')
+        self.stdout.write(f'>> Milestones: {milestones} test milestones, {CompanyMilestone.objects.count()} total')
         
         # Contact content
         contacts = ContactSubmission.objects.filter(name__icontains='TEST').count()
         inquiry_categories = InquiryCategory.objects.count()
-        self.stdout.write(f'📞 Contacts: {contacts} test submissions, {ContactSubmission.objects.count()} total')
-        self.stdout.write(f'📋 Inquiry Categories: {inquiry_categories} categories')
+        self.stdout.write(f'>> Contacts: {contacts} test submissions, {ContactSubmission.objects.count()} total')
+        self.stdout.write(f'>> Inquiry Categories: {inquiry_categories} categories')
         
         # Newsletter content
         newsletters = Newsletter.objects.filter(title__icontains='[TEST]').count()
         subscribers = Subscriber.objects.filter(email__icontains='test').count()
         subscription_categories = SubscriptionCategory.objects.count()
-        self.stdout.write(f'📧 Newsletters: {newsletters} test newsletters, {Newsletter.objects.count()} total')
-        self.stdout.write(f'👥 Subscribers: {subscribers} test subscribers, {Subscriber.objects.count()} total')
-        self.stdout.write(f'📊 Subscription Categories: {subscription_categories} categories')
+        self.stdout.write(f'>> Newsletters: {newsletters} test newsletters, {Newsletter.objects.count()} total')
+        self.stdout.write(f'>> Subscribers: {subscribers} test subscribers, {Subscriber.objects.count()} total')
+        self.stdout.write(f'>> Subscription Categories: {subscription_categories} categories')
         
-        self.stdout.write('\n✅ All systems tested and ready for production!')
-        self.stdout.write('🔍 Check the admin interface to verify all content is displaying correctly.')
-        self.stdout.write('🌐 Test the frontend to ensure dynamic content is working properly.')
+        self.stdout.write('\n>> All systems tested and ready for production!')
+        self.stdout.write('>> Check the admin interface to verify all content is displaying correctly.')
+        self.stdout.write('>> Test the frontend to ensure dynamic content is working properly.')

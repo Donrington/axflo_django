@@ -43,12 +43,12 @@ class Command(BaseCommand):
             self.seed_inquiry_categories()
         
         self.stdout.write(
-            self.style.SUCCESS('\n✅ All category seeding completed successfully!')
+            self.style.SUCCESS('\n>> All category seeding completed successfully!')
         )
 
     def seed_blog_categories(self):
         """Seed blog categories for news and articles"""
-        self.stdout.write('🔄 Seeding Blog Categories...')
+        self.stdout.write('>> Seeding Blog Categories...')
         
         categories = [
             {
@@ -115,13 +115,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {category.name}')
+                self.stdout.write(f'  + Created: {category.name}')
         
-        self.stdout.write(f'  📊 Blog Categories: {created_count} created, {BlogCategory.objects.count()} total\n')
+        self.stdout.write(f'  >> Blog Categories: {created_count} created, {BlogCategory.objects.count()} total\n')
 
     def seed_job_categories(self):
         """Seed job categories for career opportunities"""
-        self.stdout.write('🔄 Seeding Job Categories...')
+        self.stdout.write('>> Seeding Job Categories...')
         
         categories = [
             {
@@ -191,13 +191,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {category.name}')
+                self.stdout.write(f'  + Created: {category.name}')
         
-        self.stdout.write(f'  📊 Job Categories: {created_count} created, {JobCategory.objects.count()} total\n')
+        self.stdout.write(f'  >> Job Categories: {created_count} created, {JobCategory.objects.count()} total\n')
 
     def seed_subscription_categories(self):
         """Seed subscription categories for newsletter interests"""
-        self.stdout.write('🔄 Seeding Subscription Categories...')
+        self.stdout.write('>> Seeding Subscription Categories...')
         
         categories = [
             {
@@ -251,13 +251,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {category.name}')
+                self.stdout.write(f'  + Created: {category.name}')
         
-        self.stdout.write(f'  📊 Subscription Categories: {created_count} created, {SubscriptionCategory.objects.count()} total\n')
+        self.stdout.write(f'  >> Subscription Categories: {created_count} created, {SubscriptionCategory.objects.count()} total\n')
 
     def seed_achievement_categories(self):
         """Seed achievement categories for company milestones"""
-        self.stdout.write('🔄 Seeding Achievement Categories...')
+        self.stdout.write('>> Seeding Achievement Categories...')
         
         categories = [
             {
@@ -335,13 +335,13 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {category.name}')
+                self.stdout.write(f'  + Created: {category.name}')
         
-        self.stdout.write(f'  📊 Achievement Categories: {created_count} created, {AchievementCategory.objects.count()} total\n')
+        self.stdout.write(f'  >> Achievement Categories: {created_count} created, {AchievementCategory.objects.count()} total\n')
 
     def seed_inquiry_categories(self):
         """Seed inquiry categories (calls existing command logic)"""
-        self.stdout.write('🔄 Seeding Inquiry Categories...')
+        self.stdout.write('>> Seeding Inquiry Categories...')
         
         categories = [
             {
@@ -467,6 +467,6 @@ class Command(BaseCommand):
             
             if created:
                 created_count += 1
-                self.stdout.write(f'  ✓ Created: {category.name}')
+                self.stdout.write(f'  + Created: {category.name}')
         
-        self.stdout.write(f'  📊 Inquiry Categories: {created_count} created, {InquiryCategory.objects.count()} total\n')
+        self.stdout.write(f'  >> Inquiry Categories: {created_count} created, {InquiryCategory.objects.count()} total\n')

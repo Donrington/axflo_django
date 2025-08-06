@@ -11,7 +11,8 @@
       "Bash(rm:*)",
       "Bash(python:*)",
       "Bash(del create_test_data.py)",
-      "Bash(set DEBUG=True)"
+      "Bash(set DEBUG=True)",
+      "Bash(pip install:*)"
     ],
     "deny": []
   }
