@@ -359,38 +359,39 @@
 
             <!-- Enhanced News Content -->
             <div class="news-content">
+                {% if featured_article %}
                 <!-- Enhanced Main News -->
                 <div class="main-news">
-                    <img src="{% static 'axflo_app/images/plan1.jpg' %}" alt="Low-Carbon Project" class="main-news-image" loading="lazy">
+                    {% if featured_article.get_image_url %}
+                        <img src="{{ featured_article.get_image_url }}" alt="{{ featured_article.image_alt|default:featured_article.title }}" class="main-news-image" loading="lazy">
+                    {% else %}
+                        <img src="{% static 'axflo_app/images/plan1.jpg' %}" alt="{{ featured_article.title }}" class="main-news-image" loading="lazy">
+                    {% endif %}
                     <div class="main-news-content">
-                        <span class="main-news-date">June 07, 2025</span>
-                        <h3 class="main-news-title">Low-Carbon LNG Growth Project Launches in Al Ruwais Industrial City</h3>
-                        <p class="main-news-excerpt">Axflo's innovative LNG growth project reinforces its commitment to driving a sustainable energy future, delivering efficient and eco-friendly solutions that set new industry standards.</p>
+                        <span class="main-news-date">{{ featured_article.published_at|date:"F d, Y" }}</span>
+                        <h3 class="main-news-title">{{ featured_article.title }}</h3>
+                        <p class="main-news-excerpt">{{ featured_article.excerpt|default:featured_article.content|truncatewords:25 }}</p>
                     </div>
                 </div>
+                {% endif %}
 
                 <!-- Enhanced News List -->
                 <div class="news-list">
+                    {% for article in news_articles %}
                     <div class="news-item">
-                        <span class="news-item-date">March 29, 2025</span>
-                        <h4 class="news-item-title">Axflo Commits $2.4 Billion to Revolutionize Onshore Water Supply</h4>
-                        <p class="news-item-excerpt">Innovative water supply solutions set to enhance sustainability in industrial operations across multiple sectors.</p>
+                        <span class="news-item-date">{{ article.published_at|date:"F d, Y" }}</span>
+                        <h4 class="news-item-title">{{ article.title }}</h4>
+                        <p class="news-item-excerpt">{{ article.excerpt|default:article.content|truncatewords:20 }}</p>
                         <span class="read-more">Read more →</span>
                     </div>
-                    
+                    {% empty %}
+                    <!-- Fallback content if no articles -->
                     <div class="news-item">
-                        <span class="news-item-date">Feburary 07, 2025</span>
-                        <h4 class="news-item-title">Axflo Designs Cutting-Edge Remotely Operated Marine Supply Vessels</h4>
-                        <p class="news-item-excerpt">Setting new benchmarks in maritime technology with autonomous vessel innovation and advanced navigation systems.</p>
-                        <span class="read-more">Read more →</span>
+                        <span class="news-item-date">Coming Soon</span>
+                        <h4 class="news-item-title">Stay tuned for our latest news and updates</h4>
+                        <p class="news-item-excerpt">We're working on bringing you the latest developments from Axflo.</p>
                     </div>
-                    
-                    <div class="news-item">
-                        <span class="news-item-date">January  07, 2025</span>
-                        <h4 class="news-item-title">Axflo Strengthens Global Reach with Five Next-Gen LNG Carriers</h4>
-                        <p class="news-item-excerpt">Enhancing energy logistics with efficiency, reliability, and advanced shipping solutions for global markets.</p>
-                        <span class="read-more">Read more →</span>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

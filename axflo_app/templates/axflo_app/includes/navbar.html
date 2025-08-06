@@ -160,17 +160,17 @@
         
         <li><a href="{% url 'axflo_app:achievements' %}"><i class="fas fa-project-diagram"></i>Projects</a></li>
         
-        <li>
-            <a href="{% url 'axflo_app:csr' %}" onclick="toggleMobileDropdown(event, 'qhse-dropdown')">
-                <i class="fas fa-shield-alt"></i>QHSE
-                <i class="fas fa-chevron-down" style="margin-left: auto;"></i>
-            </a>
-            <div class="mobile-dropdown" id="qhse-dropdown">
-                <a href="{% url 'axflo_app:csr' %}#policies">Policies</a>
-                <a href="{% url 'axflo_app:csr' %}#certifications">Certifications</a>
-                <a href="{% url 'axflo_app:csr' %}#safety-standards">Safety Standards</a>
-            </div>
-        </li>
+        <li class="dropdown">
+                <a href="{% url 'axflo_app:qshe' %}">
+                    QHSE
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="{% url 'axflo_app:qshe' %}#policies">Policies</a>
+                    <a href="{% url 'axflo_app:qshe' %}#certifications">Certifications</a>
+                    <a href="{% url 'axflo_app:qshe' %}#safety-standards">Safety Standards</a>
+                </div>
+            </li>
         
         <li><a href="{% url 'axflo_app:careers' %}"><i class="fas fa-briefcase"></i>Careers</a></li>
         <li><a href="{% url 'axflo_app:media' %}"><i class="fas fa-newspaper"></i>Media Centre</a></li>

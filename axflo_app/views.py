@@ -36,9 +36,20 @@ def index(request):
         job.requirements_list = requirements_list
         job.animation_delay = index * 0.1  # For staggered animation
     
+    # Get the latest published news articles for the homepage
+    featured_article = NewsArticle.objects.filter(status='PUBLISHED', featured=True).order_by('-published_at').first()
+    news_articles = NewsArticle.objects.filter(status='PUBLISHED').exclude(featured=True).order_by('-published_at')[:3]
+    
+    # If no featured article, use the latest article as featured
+    if not featured_article and news_articles.exists():
+        featured_article = news_articles.first()
+        news_articles = news_articles[1:4]  # Get next 3 articles
+    
     context = {
         'job_postings': job_postings,
-        'has_jobs': job_postings.exists()
+        'has_jobs': job_postings.exists(),
+        'featured_article': featured_article,
+        'news_articles': news_articles,
     }
     return render(request, 'axflo_app/index.html', context)
 
