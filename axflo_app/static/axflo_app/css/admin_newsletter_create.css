@@ -46,6 +46,61 @@
     --gradient-mesh: linear-gradient(135deg, rgba(214, 160, 25, 0.1) 0%, rgba(255, 204, 0, 0.05) 50%, rgba(0, 0, 0, 0.05) 100%);
 }
 
+/* Form Error Styles */
+.form-errors {
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+}
+
+.form-errors .error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+.form-errors .error:last-child {
+    margin-bottom: 0;
+}
+
+.alert {
+    padding: 16px;
+    margin-bottom: 24px;
+    border-radius: 8px;
+    backdrop-filter: blur(var(--blur-amount));
+}
+
+.alert-danger {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    color: #dc3545;
+}
+
+.alert .error {
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.alert .error:last-child {
+    margin-bottom: 0;
+}
+
+/* Input field error states */
+.form-control.error,
+.form-control:invalid {
+    border-color: rgba(220, 53, 69, 0.5);
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+.form-control.error:focus,
+.form-control:invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+}
+
 /* Main Container */
 .newsletter-create-container {
     background: var(--bg-dark);

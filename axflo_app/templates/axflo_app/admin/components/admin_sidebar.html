@@ -41,7 +41,22 @@
                     <span class="nav-text">Contact Management</span>
                 </a>
             </div>
+   
             <div class="nav-item">
+                <a href="/admin-careers/" class="nav-link {% if current_page == 'careers' %}active{% endif %}">
+                    <i class="nav-icon fas fa-briefcase"></i>
+                    <span class="nav-text">Career Portal</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="/admin-applications/" class="nav-link {% if current_page == 'applications' %}active{% endif %}">
+                    <i class="nav-icon fas fa-file-alt"></i>
+                    <span class="nav-text">Job Applications</span>
+                </a>
+            </div>
+      
+      
+                     <div class="nav-item">
                 <a href="/admin-subscribers/" class="nav-link {% if current_page == 'subscribers' %}active{% endif %}">
                     <i class="nav-icon fas fa-envelope"></i>
                     <span class="nav-text">Newsletter Subscriptions</span>
@@ -59,30 +74,12 @@
                     <span class="nav-text">Newsletter Categories</span>
                 </a>
             </div>
-            <div class="nav-item">
-                <a href="/admin-careers/" class="nav-link {% if current_page == 'careers' %}active{% endif %}">
-                    <i class="nav-icon fas fa-briefcase"></i>
-                    <span class="nav-text">Career Portal</span>
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="/admin-applications/" class="nav-link {% if current_page == 'applications' %}active{% endif %}">
-                    <i class="nav-icon fas fa-file-alt"></i>
-                    <span class="nav-text">Job Applications</span>
-                </a>
-            </div>
-            <div class="nav-item">
+                  <!-- <div class="nav-item">
                 <a href="#" class="nav-link {% if current_page == 'content' %}active{% endif %}">
                     <i class="nav-icon fas fa-edit"></i>
                     <span class="nav-text">Content Management</span>
                 </a>
-            </div>
-            <div class="nav-item">
-                <a href="{% url 'axflo_app:admin_blog' %}" class="nav-link {% if current_page == 'blog' %}active{% endif %}">
-                    <i class="nav-icon fas fa-newspaper"></i>
-                    <span class="nav-text">Blog Management</span>
-                </a>
-            </div>
+            </div> -->
         </div>
 
         <div class="nav-section">
@@ -115,7 +112,7 @@
 
         <div class="nav-section">
             <div class="nav-section-title">Media & Content</div>
-            <div class="nav-item">
+            <!-- <div class="nav-item">
                 <a href="#" class="nav-link {% if current_page == 'testimonials' %}active{% endif %}">
                     <i class="nav-icon fas fa-comments"></i>
                     <span class="nav-text">Client Testimonials</span>
@@ -125,6 +122,12 @@
                 <a href="#" class="nav-link {% if current_page == 'documents' %}active{% endif %}">
                     <i class="nav-icon fas fa-folder-open"></i>
                     <span class="nav-text">Document Management</span>
+                </a>
+            </div> -->
+                  <div class="nav-item">
+                <a href="{% url 'axflo_app:admin_blog' %}" class="nav-link {% if current_page == 'blog' %}active{% endif %}">
+                    <i class="nav-icon fas fa-newspaper"></i>
+                    <span class="nav-text">Blog Management</span>
                 </a>
             </div>
         </div>

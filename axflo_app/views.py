@@ -1005,7 +1005,10 @@ def admin_newsletter_categories(request):
         return HttpResponseRedirect('/admindashboard/')
 
 def admin_newsletter_create(request):
-    """Custom admin view for creating newsletters"""
+    """Dynamic admin view for creating newsletters using Django forms"""
+    from .forms import NewsletterCreateForm
+    from datetime import datetime, date
+    
     try:
         # Check if user is authenticated and has staff permissions
         if not request.user.is_authenticated:
@@ -1016,69 +1019,79 @@ def admin_newsletter_create(request):
         
         # Handle POST request for creating newsletter
         if request.method == 'POST':
-            title = request.POST.get('title', '').strip()
-            content = request.POST.get('content', '').strip()
-            category_ids = request.POST.getlist('categories')
-            template_type = request.POST.get('template', 'basic')
-            send_immediately = request.POST.get('send_immediately') == 'on'
+            form = NewsletterCreateForm(request.POST)
             
-            # Validation
-            if not title:
-                messages.error(request, 'Newsletter title is required.')
+            if form.is_valid():
+                try:
+                    # Get form data
+                    title = form.cleaned_data['title']
+                    content = form.cleaned_data['content']
+                    categories = form.cleaned_data['categories']
+                    send_option = form.cleaned_data['send_option']
+                    send_date = form.cleaned_data.get('send_date')
+                    send_time = form.cleaned_data.get('send_time')
+                    
+                    # Determine send parameters
+                    send_immediately = send_option == 'immediate'
+                    scheduled_datetime = None
+                    
+                    if send_option == 'scheduled' and send_date and send_time:
+                        scheduled_datetime = datetime.combine(send_date, send_time)
+                    
+                    # Create newsletter
+                    newsletter = Newsletter.objects.create(
+                        title=title,
+                        content=content,
+                        sent=send_immediately,
+                        send_date=timezone.now() if send_immediately else scheduled_datetime,
+                        created_date=timezone.now()
+                    )
+                    
+                    # Add categories if selected
+                    if categories:
+                        newsletter.categories.set(categories)
+                    
+                    # Calculate recipient count
+                    if categories:
+                        recipients = Subscriber.objects.filter(
+                            interests__in=[cat.id for cat in categories],
+                            active_status=True
+                        ).distinct()
+                    else:
+                        recipients = Subscriber.objects.filter(active_status=True)
+                    
+                    newsletter.recipient_count = recipients.count()
+                    newsletter.save()
+                    
+                    # Success message based on send option
+                    if send_immediately:
+                        messages.success(request, f'Newsletter "{title}" created and sent to {newsletter.recipient_count} subscribers!')
+                    elif send_option == 'scheduled':
+                        messages.success(request, f'Newsletter "{title}" scheduled for {scheduled_datetime.strftime("%B %d, %Y at %I:%M %p")}. Will be sent to {newsletter.recipient_count} subscribers.')
+                    else:
+                        messages.success(request, f'Newsletter "{title}" saved as draft. Ready to send to {newsletter.recipient_count} subscribers.')
+                    
+                    return HttpResponseRedirect('/admin-newsletters/')
+                    
+                except Exception as e:
+                    messages.error(request, f'Error creating newsletter: {str(e)}')
+                    # Return form with errors intact
+                    return render(request, 'axflo_app/admin/admin_newsletter_create.html', {
+                        'form': form,
+                        'current_page': 'newsletter_create'
+                    })
+            else:
+                # Form validation failed - return form with errors
                 return render(request, 'axflo_app/admin/admin_newsletter_create.html', {
-                    'categories': SubscriptionCategory.objects.all(),
+                    'form': form,
                     'current_page': 'newsletter_create'
                 })
-            
-            if not content:
-                messages.error(request, 'Newsletter content is required.')
-                return render(request, 'axflo_app/admin/admin_newsletter_create.html', {
-                    'categories': SubscriptionCategory.objects.all(),
-                    'current_page': 'newsletter_create'
-                })
-            
-            try:
-                # Create newsletter
-                newsletter = Newsletter.objects.create(
-                    title=title,
-                    content=content,
-                    sent=send_immediately,
-                    send_date=timezone.now() if send_immediately else None,
-                    created_date=timezone.now()
-                )
-                
-                # Add categories if selected
-                if category_ids:
-                    categories = SubscriptionCategory.objects.filter(id__in=category_ids)
-                    newsletter.categories.set(categories)
-                
-                # Calculate recipient count
-                if category_ids:
-                    recipients = Subscriber.objects.filter(
-                        interests__in=category_ids,
-                        active_status=True
-                    ).distinct()
-                else:
-                    recipients = Subscriber.objects.filter(active_status=True)
-                
-                newsletter.recipient_count = recipients.count()
-                newsletter.save()
-                
-                if send_immediately:
-                    messages.success(request, f'Newsletter "{title}" created and sent to {newsletter.recipient_count} subscribers!')
-                else:
-                    messages.success(request, f'Newsletter "{title}" created as draft. Ready to send to {newsletter.recipient_count} subscribers.')
-                
-                return HttpResponseRedirect('/admin-newsletters/')
-                
-            except Exception as e:
-                messages.error(request, f'Error creating newsletter: {str(e)}')
         
         # Handle GET request - show create form
-        categories = SubscriptionCategory.objects.all().order_by('name')
+        form = NewsletterCreateForm()
         
         context = {
-            'categories': categories,
+            'form': form,
             'current_page': 'newsletter_create'
         }
         
