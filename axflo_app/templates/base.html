@@ -45,6 +45,9 @@
     <!-- Base CSS -->
     <link rel="stylesheet" href="{% static 'axflo_app/css/base.css' %}">
     
+    <!-- Cookie Consent CSS -->
+    <link rel="stylesheet" href="{% static 'axflo_app/css/cookie_consent.css' %}">
+    
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
@@ -72,8 +75,14 @@
 <body>
     {% block content %}{% endblock %}
     
+    <!-- Cookie Consent Banner -->
+    {% include 'axflo_app/components/cookie_consent.html' %}
+    
     <!-- External JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Cookie Consent JS -->
+    <script src="{% static 'axflo_app/js/cookie_consent.js' %}"></script>
     
     {% block extra_js %}{% endblock %}
 </body>

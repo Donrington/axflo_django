@@ -59,6 +59,10 @@ def about(request):
 def services(request):
     return render(request, 'axflo_app/services.html')
 
+def test_cookies(request):
+    """Test page for cookie consent functionality"""
+    return render(request, 'axflo_app/test_cookies.html')
+
 def media(request):
     """Public media/blog page with pagination"""
     from django.core.paginator import Paginator

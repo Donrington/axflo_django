@@ -12,6 +12,9 @@ urlpatterns = [
     path('careers/', views.careers, name='careers'),
     path('achievements/', views.achievements, name='achievements'),
     
+    # Test Pages
+    path('test-cookies/', views.test_cookies, name='test_cookies'),
+    
     # Service Pages
     path('construction-services/', views.construction_services, name='construction_services'),
     path('engineering-consultancy/', views.engineering_consultancy, name='engineering_consultancy'),
